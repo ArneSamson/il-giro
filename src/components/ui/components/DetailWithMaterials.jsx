@@ -7,6 +7,8 @@ export default function DetailWithMaterials({
     setMaterial,
     open
 }) {
+
+    console.log(selectedMaterial)
     return (
         <details
             className="config-ui__details"
@@ -14,7 +16,7 @@ export default function DetailWithMaterials({
         >
             <summary>
                 {header}
-                <span>{selectedMaterial.split("/").slice(-2, -1)[0]}</span>
+                <span>{selectedMaterial}</span>
             </summary>
             <div className="config-ui__material-options">
                 {materials.map((material, index) => (
