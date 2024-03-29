@@ -104,6 +104,10 @@ export default function Tower({ props }) {
         aoMapIntensity: 0.8,
     });
 
+    const fridgeMaterial = new THREE.MeshBasicMaterial({
+        color: 0x000000,
+    });
+
     const { nodes, materials } = useGLTF("./models/base-island-high.glb");
 
     const { setCameraFocus, setIsFocussedOnIsland } =
@@ -161,11 +165,8 @@ export default function Tower({ props }) {
             return;
         };
         if (doorRef.current && coolerRef.current) {
-            doorRef.current.rotation.y = lerp(
-                doorRef.current.rotation.y,
-                doorOpeningRotation,
-                delta * 2
-            );
+            doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpeningRotation, delta * 2);
+            coolerRef.current.rotation.y = lerp(coolerRef.current.rotation.y, -doorOpeningRotation, delta * 2);
         }
 
         if (shelvesRef.current) {
@@ -445,6 +446,7 @@ export default function Tower({ props }) {
                                             ref={coolerRef}
                                             position={[0.313, 0.894, 0.233]}
                                             scale={[1, 0.992, 1]}
+                                            rotation={[0, -1, 0]}
                                         >
                                             <mesh
                                                 castShadow
@@ -453,7 +455,7 @@ export default function Tower({ props }) {
                                                     nodes["G-Object070"]
                                                         .geometry
                                                 }
-                                                material={materials.Material}
+                                                material={fridgeMaterial}
                                             />
                                             <mesh
                                                 castShadow
