@@ -4,11 +4,13 @@
             "lightoak",
             "chestnut",
             "cherry",
-            "mahony"
+            "mahony",
+            "darkwood"
         ],
         "metal": [
             "inox",
             "gold",
+            "goldnew",
             "bronze",
             "copper"
         ],
@@ -42,6 +44,9 @@
         "mahony": {
             "url": "/materials/mahony/"
         },
+        "darkwood": {
+            "url": "/materials/darkwood/"
+        },
         "solid surface": {
             "url": "/materials/solidsurface/"
         },
@@ -53,6 +58,9 @@
         },
         "gold": {
             "url": "/materials/gold/"
+        },
+        "goldnew": {
+            "url": "/materials/goldnew/"
         },
         "bronze": {
             "url": "/materials/bronze/"

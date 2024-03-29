@@ -56,9 +56,10 @@ root.render(
                 camera={camSettings}
                 gl={{
                     antialias: true,
-                    toneMapping: THREE.ACESFilmicToneMapping,
-                    outoutColorSpace: THREE.SRGBColorSpace,
-                    toneMappingExposure: 1.25,
+                    // toneMapping: THREE.AgXToneMapping,
+                    outputColorSpace: THREE.SRGBColorSpace,
+                    toneMappingExposure: 1,
+                    alpha: true
                 }}
                 shadows={true}
                 dpr={window.devicePixelRatio}
@@ -81,7 +82,7 @@ root.render(
 
             <Leva
                 collapsed
-                hidden
+                // hidden
             />
         </div>
     </>

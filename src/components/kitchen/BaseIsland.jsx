@@ -45,6 +45,7 @@ export default function BaseIsland({ props }) {
     const material = new THREE.MeshStandardMaterial({
         map: albedoTexture,
         normalMap: normalTexture,
+        normalScale: new THREE.Vector2(0.5, 0.5),
         roughnessMap: roughnessTexture,
         metalnessMap: metallnessTexture,
         metalness: 1,
