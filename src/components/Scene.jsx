@@ -23,13 +23,16 @@ export default function Scene() {
 
     return (
         <>
-            <Sink />
 
-            <Cooktop />
+            {sinkChosen && <Sink />}
 
-            <Tower />
+            {cooktopChosen && <Cooktop />}
 
-            <Table />
+            {towerChosen && <Tower />}
+
+            {tableChosen && <Table />}
+
+
         </>
     );
 }
