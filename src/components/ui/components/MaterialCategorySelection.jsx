@@ -47,9 +47,9 @@ export default function MaterialCategorySelection() {
                                     setTableTopMaterial(allCategories['dekton'][0].url)
                                     break;
                                 case 'dekton':
-                                    setTableTopMaterial(allCategories['wood'][0].url)
+                                    setTableTopMaterial(allCategories['natural stone'][0].url)
                                     break;
-                                case 'wood':
+                                case 'natural stone':
                                     setTableTopMaterial(allCategories['metal'][0].url)
                                     break;
                             }
