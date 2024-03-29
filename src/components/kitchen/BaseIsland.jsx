@@ -15,7 +15,12 @@ export default function BaseIsland({ props }) {
         mainMaterial,
 
         allBevelled,
-    } = useConfig();
+    } = useConfig(
+        state => ({
+            mainMaterial: state.mainMaterial,
+            allBevelled: state.allBevelled,
+        })
+    );
 
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
@@ -26,10 +31,12 @@ export default function BaseIsland({ props }) {
     ]);
 
     albedoTexture.anisotropy = 16;
-    albedoTexture.repeat.set(2.5, 2.5);
-    albedoTexture.wrapS = THREE.RepeatWrapping;
-    albedoTexture.wrapT = THREE.RepeatWrapping;
-    albedoTexture.needsUpdate = true;
+    if (albedoTexture.wrapS !== THREE.RepeatWrapping) {
+        albedoTexture.repeat.set(2.5, 2.5);
+        albedoTexture.wrapS = THREE.RepeatWrapping;
+        albedoTexture.wrapT = THREE.RepeatWrapping;
+        albedoTexture.needsUpdate = true;
+    }
 
     metallnessTexture.name = "metalnessMap";
 

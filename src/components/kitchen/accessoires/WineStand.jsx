@@ -29,7 +29,7 @@ export default function WineStand({ props }) {
         normalMap: normalTexture,
         roughnessMap: roughnessTexture,
         metalnessMap: metallnessTexture,
-        metalness: 1,
+        metalness: 0.5,
         roughness: 0,
 
     });

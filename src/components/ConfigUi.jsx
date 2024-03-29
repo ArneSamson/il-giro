@@ -69,9 +69,9 @@ export default function ConfigUi() {
 
     return (
         <>
-            {landingPageVisible &&
+            {/* {landingPageVisible &&
                 <LandingsPage />
-            }
+            } */}
 
             <ToolTip />
 

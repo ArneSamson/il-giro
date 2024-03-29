@@ -9,7 +9,7 @@ import Shadows from './components/lighting&shadows/Shadows.jsx';
 import Env from './components/lighting&shadows/Env.jsx';
 
 import useScene from './store/useScene.jsx'
-import useConfig from './store/useConfigStore.jsx'
+// import useConfig from './store/useConfigStore.jsx'
 import useUIStore from './store/useUIStore.jsx';
 
 import { Perf } from 'r3f-perf'
@@ -18,10 +18,8 @@ import { update } from '@react-spring/three';
 export default function Experience() {
 
     const camera = useRef()
-    const [cameraPosition, setCameraPosition] = useState(null)
 
     const { cameraFocus, setCameraFocus, isFocussedOnIsland, setIsFocussedOnIsland } = useScene();
-    const { isDragging } = useConfig();
     const { currentPage, setCurrentPage } = useUIStore();
 
     useEffect(() => {
@@ -58,55 +56,12 @@ export default function Experience() {
 
     const [prevCamDist, setPrevCamDist] = useState(4);
 
-    // useEffect(() => {
-    //     const handleScroll = (e) => {
-
-    //         const currentDistance = cameraPosition.distanceTo(new THREE.Vector3(...cameraFocus));
-    //         const roundedCurrentDistance = Math.round(currentDistance * 100) / 100;
-
-    //         if (prevCamDist < roundedCurrentDistance) {
-
-    //             const distance = cameraPosition.distanceTo(new THREE.Vector3(...cameraFocus));
-    //             const roundedDistanceToCamera = Math.round(distance * 100) / 100;
-
-
-    //             if (roundedDistanceToCamera && roundedDistanceToCamera > 3.98 && !isDragging) {
-    //                 setCameraFocus([0, 1, 0]);
-    //                 setCurrentPage(1);
-    //                 setIsFocussedOnIsland(false, false, false);
-    //             }
-
-    //         }
-    //         setPrevCamDist(roundedCurrentDistance);
-    //     };
-
-    //     window.addEventListener('wheel', handleScroll);
-
-    //     return () => {
-    //         window.removeEventListener('wheel', handleScroll);
-    //     };
-    // }, [
-    //     cameraPosition,
-    //     isDragging,
-    //     cameraFocus,
-    //     setCameraFocus,
-    //     setCurrentPage,
-    //     setIsFocussedOnIsland,
-    //     prevCamDist
-    // ]);
-
-    useFrame((state) => {
-        if (camera.current) {
-            setCameraPosition(state.camera.position);
-        }
-    });
-
     return <>
 
-        {/* <Perf
-        position="top-left"
-        style={{ transform: 'translateX(15vw)'}}
-    /> */}
+        <Perf
+            position="top-left"
+            style={{ transform: 'translateX(15vw)' }}
+        />
 
         <CameraControls
             ref={camera}
@@ -115,7 +70,6 @@ export default function Experience() {
             maxZoom={4}
             maxDistance={4}
             minDistance={2}
-            enabled={!isDragging}
         />
 
         <Env />
