@@ -163,6 +163,10 @@ export default function Tower({ props }) {
         return start * (1 - t) + end * t;
     }
     useFrame((state, delta) => {
+
+        if (delta > 1) {
+            return;
+        };
         if (doorRef.current && coolerRef.current) {
             doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpeningRotation, delta * 2);
             coolerRef.current.rotation.y = lerp(coolerRef.current.rotation.y, -doorOpeningRotation, delta * 2);
