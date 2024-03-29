@@ -1,7 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
-import * as THREE from 'three'
-import { useGLTF, useCursor } from '@react-three/drei'
-import { a } from '@react-spring/three';
+import React, { useRef, useState } from 'react';
+import { useCursor } from '@react-three/drei'
 
 import BaseIsland from './BaseIsland.jsx';
 import TableFlat from './TableFlat.jsx';
@@ -13,24 +11,27 @@ import useUIStore from '../../store/useUIStore.jsx';
 export default function Table({ props }) {
 
     const {
-        mainMaterial,
-        tableTopMaterial,
-
         tablePosition,
         tableRotation,
+    } = useConfig(
+        state => ({
+            tablePosition: state.tablePosition,
+            tableRotation: state.tableRotation,
+        })
+    );
 
-        allBevelled,
-    } = useConfig();
+    const { setCurrentPage } = useUIStore(
+        state => ({
+            setCurrentPage: state.setCurrentPage
+        })
+    );
 
-    const {
-        isFocussedOnIsland
-    } = useScene();
-
-    const { setCurrentPage } = useUIStore();
-
-    const meshRef = useRef();
-
-    const { cameraFocus, setCameraFocus, setIsFocussedOnIsland } = useScene();
+    const { setCameraFocus, setIsFocussedOnIsland } = useScene(
+        state => ({
+            setCameraFocus: state.setCameraFocus,
+            setIsFocussedOnIsland: state.setIsFocussedOnIsland
+        })
+    );
 
     const [needPointer, setNeedPointer] = useState(false);
 
@@ -59,7 +60,7 @@ export default function Table({ props }) {
 
     return <>
 
-        <a.group
+        <group
             name='table-group'
             ref={tableRef}
             position={tablePosition}
@@ -111,23 +112,9 @@ export default function Table({ props }) {
                     }}
                 />
 
-                {/* <mesh
-                    rotation={[-Math.PI / 2, 0, 0]}
-                    position={[0, 0.000001, 0]}
-                    receiveShadow={true}
-                    castShadow={false}
-                >
-                    <planeGeometry args={[4, 2]} />
-                    <meshStandardMaterial
-                        attach="material"
-                        color="#fff"
-                        roughness={0}
-                    />
-                </mesh> */}
-
             </group>
 
-        </a.group>
+        </group>
 
     </>
 }
