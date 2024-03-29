@@ -10,7 +10,6 @@ import Reginox from './accessoires/ReginoxBowl.jsx';
 
 import TableTopCutOut from './accessoires/TableTopCutOut.jsx';
 
-
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfigStore.jsx';
 import useUIStore from '../../store/useUIStore.jsx';
