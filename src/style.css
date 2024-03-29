@@ -62,7 +62,7 @@ body,
 
     --button-weight: 700;
 
-    background-image: url("/images/UI/bg2.png");
+    /* background-image: url("/images/UI/bg2.png"); */
     background-color: var(--off-white);
     background-position: center;
 
