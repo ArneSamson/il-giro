@@ -1,13 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
 import * as THREE from 'three'
-import { useGLTF, useCursor } from '@react-three/drei'
+import { useGLTF } from '@react-three/drei'
 import { useTexture } from '../../helper/useTexture.tsx';
 
 import { BakePlaneSmall } from '../lighting&shadows/ShadowPlanes.jsx'
 
-import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfigStore.jsx';
-import useUIStore from '../../store/useUIStore.jsx';
 
 export default function BaseIsland({ props }) {
 
@@ -52,7 +50,7 @@ export default function BaseIsland({ props }) {
         roughness: 1,
     });
 
-    const { nodes, materials } = useGLTF("./models/base-island.glb");
+    const { nodes } = useGLTF("./models/base-island.glb");
 
 
     const meshRef = useRef();
@@ -75,7 +73,6 @@ export default function BaseIsland({ props }) {
 
 
     return <>
-
         <mesh
             name='base-island-mesh'
             ref={meshRef}
