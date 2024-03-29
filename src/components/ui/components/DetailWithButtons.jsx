@@ -1,7 +1,4 @@
 import React from "react";
-import { useEffect, useState } from "react";
-
-import useConfig from "../../../store/useConfigStore.jsx";
 
 export default function DetailWithButtons({ summary, options, selectedOption, setOption }) {
 

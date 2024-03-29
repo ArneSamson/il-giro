@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useSpring, animated } from 'react-spring';
 
 import useConfig from '../store/useConfigStore.jsx';
 import useUIStore from '../store/useUIStore.jsx';

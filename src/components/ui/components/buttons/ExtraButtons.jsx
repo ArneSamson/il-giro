@@ -10,21 +10,34 @@ import ToolTipHandler from "./ToolTipHandler.jsx";
 export default function ExtraButtons() {
 
     const {
-        // dragMode,
-        // setDragMode,
         doorOpeningRotation,
         setDoorOpeningRotation,
-    } = useConfig();
+    } = useConfig(
+        state => ({
+            doorOpeningRotation: state.doorOpeningRotation,
+            setDoorOpeningRotation: state.setDoorOpeningRotation,
+        })
+    );
 
     const {
         currentPage,
         setCurrentPage,
         setLandingPageVisible,
-    } = useUIStore();
+    } = useUIStore(
+        state => ({
+            currentPage: state.currentPage,
+            setCurrentPage: state.setCurrentPage,
+            setLandingPageVisible: state.setLandingPageVisible,
+        })
+    );
 
     const {
         setCameraFocus,
-    } = useScene();
+    } = useScene(
+        state => ({
+            setCameraFocus: state.setCameraFocus,
+        })
+    );
 
     const handleZoom = () => {
         if (currentPage === 0) return;
@@ -32,10 +45,6 @@ export default function ExtraButtons() {
         setCurrentPage(0);
 
     }
-
-    // const handleDragMode = () => {
-    //     setDragMode(!dragMode);
-    // }
 
     const handleBackHome = () => {
         setLandingPageVisible(true);
@@ -112,23 +121,6 @@ export default function ExtraButtons() {
                     </button>
                 </div>
             </ToolTipHandler>
-
-            {/* <div
-                className={dragMode ? 'extra-buttons__move--active' : 'extra-buttons__move'}
-            >
-                <button
-                    onClick={handleDragMode}
-                >
-                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" className={dragMode ? 'move__image--active' : 'move__image'}>
-                        <path d="M4 8L1 11L4 14" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M8 4L11 1L14 4" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M14 18L11 21L8 18" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M18 8L21 11L18 14" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M1 11H21" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M11 1V21" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                </button>
-            </div> */}
         </div>
     </>
 }

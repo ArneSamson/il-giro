@@ -1,20 +1,29 @@
 import React from "react";
 import { useEffect } from "react";
 
-import useConfig from "../../../../store/useConfigStore.jsx";
 import useScene from "../../../../store/useScene.jsx";
 import useUIStore from "../../../../store/useUIStore.jsx";
 
 export default function ConfigNav() {
 
-    const { currentPage, setCurrentPage } = useUIStore();
+    const { currentPage, setCurrentPage } = useUIStore(
+        state => ({
+            currentPage: state.currentPage,
+            setCurrentPage: state.setCurrentPage,
+        })
+    );
 
     const pagesAmount = 6;
 
     const {
         setCameraFocus,
         setIsFocussedOnIsland,
-    } = useScene();
+    } = useScene(
+        state => ({
+            setCameraFocus: state.setCameraFocus,
+            setIsFocussedOnIsland: state.setIsFocussedOnIsland,
+        })
+    );
 
     useEffect(() => {
         checkPage(currentPage);

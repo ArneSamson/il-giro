@@ -9,7 +9,12 @@ export default function UiPage2() {
     const {
         edgeFinish,
         setEdgeFinish,
-    } = useConfigStore();
+    } = useConfigStore(
+        state => ({
+            edgeFinish: state.edgeFinish,
+            setEdgeFinish: state.setEdgeFinish,
+        })
+    );
 
     const edgeFinishOptions = [
         { label: "Square", value: "rect" },

@@ -21,7 +21,26 @@ export default function ModuleSelectionButtons({ summary, options }) {
 
         setTablePosition,
         setTableRotation,
-    } = useConfigStore();
+    } = useConfigStore(
+        state => ({
+            sinkChosen: state.sinkChosen,
+            cooktopChosen: state.cooktopChosen,
+            towerChosen: state.towerChosen,
+            tableChosen: state.tableChosen,
+
+            setSinkPosition: state.setSinkPosition,
+            setSinkRotation: state.setSinkRotation,
+
+            setCooktopPosition: state.setCooktopPosition,
+            setCooktopRotation: state.setCooktopRotation,
+
+            setTowerPosition: state.setTowerPosition,
+            setTowerRotation: state.setTowerRotation,
+
+            setTablePosition: state.setTablePosition,
+            setTableRotation: state.setTableRotation,
+        })
+    );
 
 
     function setPositions() {

@@ -7,7 +7,12 @@ export default function DoorRotationToggle() {
     const {
         doorOpeningRotation,
         setDoorOpeningRotation,
-    } = useConfig();
+    } = useConfig(
+        state => ({
+            doorOpeningRotation: state.doorOpeningRotation,
+            setDoorOpeningRotation: state.setDoorOpeningRotation,
+        })
+    );
 
     return <>
         <div

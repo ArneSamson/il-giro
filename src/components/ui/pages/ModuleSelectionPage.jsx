@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import useConfigStore from "../../../store/useConfigStore.jsx";
 
@@ -17,7 +17,19 @@ export default function ModuleSelectionPage() {
         setCooktopChosen,
         setTowerChosen,
         setTableChosen,
-    } = useConfigStore();
+    } = useConfigStore(
+        state => ({
+            sinkChosen: state.sinkChosen,
+            cooktopChosen: state.cooktopChosen,
+            towerChosen: state.towerChosen,
+            tableChosen: state.tableChosen,
+
+            setSinkChosen: state.setSinkChosen,
+            setCooktopChosen: state.setCooktopChosen,
+            setTowerChosen: state.setTowerChosen,
+            setTableChosen: state.setTableChosen,
+        })
+    );
 
     const moduleOptions = [
         { label: "Sink", value: "sink", chosen: sinkChosen, setChosen: setSinkChosen },

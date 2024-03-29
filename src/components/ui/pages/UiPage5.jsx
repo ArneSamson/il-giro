@@ -3,7 +3,6 @@ import React from "react";
 import useConfigStore from "../../../store/useConfigStore";
 
 import DetailWithButtons from "../components/DetailWithButtons";
-import DoorRotationToggle from "../components/toggle/DoorRotationToggle";
 
 export default function UiPage5() {
 
@@ -12,7 +11,14 @@ export default function UiPage5() {
         setApplianceType,
         wineStandSize,
         setWineStandSize,
-    } = useConfigStore();
+    } = useConfigStore(
+        state => ({
+            applianceType: state.applianceType,
+            setApplianceType: state.setApplianceType,
+            wineStandSize: state.wineStandSize,
+            setWineStandSize: state.setWineStandSize,
+        })
+    );
 
     const applianceOptions = [
         { label: "Oven", value: "oven" },
@@ -53,7 +59,5 @@ export default function UiPage5() {
             />
 
         </div>
-
-        {/* <DoorRotationToggle /> */}
     </>
 }

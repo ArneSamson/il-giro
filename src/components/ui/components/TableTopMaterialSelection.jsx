@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 
 import useConfig from "../../../store/useConfigStore.jsx";
-import useScene from "../../../store/useScene.jsx";
 
 export default function AccentMaterialSelection() {
 
@@ -11,7 +10,14 @@ export default function AccentMaterialSelection() {
         tableTopMaterial,
         setTableTopMaterial,
         mainMaterialCategory
-    } = useConfig();
+    } = useConfig(
+        state => ({
+            allCategories: state.allCategories,
+            tableTopMaterial: state.tableTopMaterial,
+            setTableTopMaterial: state.setTableTopMaterial,
+            mainMaterialCategory: state.mainMaterialCategory
+        })
+    );
 
 
     return <>

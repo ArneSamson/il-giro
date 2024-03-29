@@ -9,7 +9,12 @@ export default function UiPage3() {
     const {
         tapType,
         setTapType,
-    } = useConfigStore();
+    } = useConfigStore(
+        state => ({
+            tapType: state.tapType,
+            setTapType: state.setTapType,
+        })
+    );
 
     const faucetOptions = [
         { label: "Brandwood 3", value: "1" },

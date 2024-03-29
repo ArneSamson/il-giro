@@ -9,7 +9,12 @@ export default function UiPage4() {
     const {
         stoveType,
         setStoveType,
-    } = useConfigStore();
+    } = useConfigStore(
+        state => ({
+            stoveType: state.stoveType,
+            setStoveType: state.setStoveType,
+        })
+    );
 
     const stoveOptions = [
         { label: "Gas", value: "1" },

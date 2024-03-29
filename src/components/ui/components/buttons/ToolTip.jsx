@@ -4,7 +4,11 @@ import useUIStore from "../../../../store/useUIStore.jsx";
 
 export default function ToolTip() {
 
-    const { toolTip, setToolTip } = useUIStore();
+    const { toolTip } = useUIStore(
+        state => ({
+            toolTip: state.toolTip,
+        })
+    );
 
     if (!toolTip.target) {
         return;

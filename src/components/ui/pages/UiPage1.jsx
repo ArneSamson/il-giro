@@ -5,7 +5,6 @@ import useConfigStore from "../../../store/useConfigStore.jsx";
 import MaterialCategorySelection from "../components/MaterialCategorySelection.jsx";
 import TableTopMaterialSelection from "../components/TableTopMaterialSelection.jsx";
 
-import DetailWithButtons from "../components/DetailWithButtons.jsx";
 import DetailWithMaterials from "../components/DetailWithMaterials.jsx";
 
 export default function UiPage1() {
@@ -13,14 +12,18 @@ export default function UiPage1() {
     const {
         allCategories,
         setMainMaterial,
-        setMainMaterialCategory,
         mainMaterialCategory,
-        mainMaterial,
         accentMaterial,
         setAccentMaterial,
-        tableTopMaterial,
-        setTableTopMaterial,
-    } = useConfigStore();
+    } = useConfigStore(
+        state => ({
+            allCategories: state.allCategories,
+            setMainMaterial: state.setMainMaterial,
+            mainMaterialCategory: state.mainMaterialCategory,
+            accentMaterial: state.accentMaterial,
+            setAccentMaterial: state.setAccentMaterial,
+        })
+    );
 
     return <>
 

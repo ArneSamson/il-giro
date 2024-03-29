@@ -7,7 +7,12 @@ export default function BevelledSelection() {
     const {
         allBevelled,
         setAllBevelled,
-    } = useConfigStore();
+    } = useConfigStore(
+        state => ({
+            allBevelled: state.allBevelled,
+            setAllBevelled: state.setAllBevelled,
+        })
+    );
 
 
     return <>
