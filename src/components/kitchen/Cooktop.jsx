@@ -84,22 +84,22 @@ export default function Cooktop() {
             >
                 <group
                     name="cooktop-hovers-group"
-                    onPointerOver={(e) => {
-                        handlePointerOver();
-                        e.stopPropagation();
-                    }}
-                    onPointerOut={(e) => {
-                        handlePointerOut();
-                        e.stopPropagation();
-                    }}
+                    // onPointerOver={(e) => {
+                    //     handlePointerOver();
+                    //     e.stopPropagation();
+                    // }}
+                    // onPointerOut={(e) => {
+                    //     handlePointerOut();
+                    //     e.stopPropagation();
+                    // }}
                     onClick={(e) => {
                         handleClick();
                         e.stopPropagation();
                     }}
-                    onPointerMissed={(e) => {
-                        handlePointerMissed();
-                        e.stopPropagation();
-                    }}
+                // onPointerMissed={(e) => {
+                //     handlePointerMissed();
+                //     e.stopPropagation();
+                // }}
                 >
                     <BaseIsland />
 

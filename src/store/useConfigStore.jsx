@@ -126,13 +126,5 @@ export default create((set) => {
         //door opening
         setDoorOpeningRotation: (rotation) => set({ doorOpeningRotation: rotation }),
 
-        //drag mode
-        setDragMode: (mode) => set({ dragMode: mode }),
-        setIsDragging: (dragging) => set({ isDragging: dragging }),
-
-        setIsDraggingSink: (dragging) => set({ isDraggingSink: dragging }),
-        setIsDraggingCooktop: (dragging) => set({ isDraggingCooktop: dragging }),
-        setIsDraggingTower: (dragging) => set({ isDraggingTower: dragging }),
-
     }
 })

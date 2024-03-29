@@ -83,31 +83,31 @@ export default function Sink({ props }) {
         >
             <group
                 name='sink-hovers-group'
-                onPointerOver={
-                    (e) => {
-                        handlePointerOver(e);
-                        e.stopPropagation();
-                    }
-                }
-                onPointerOut={
-                    (e) => {
-                        handlePointerOut();
-                        e.stopPropagation();
-                    }
-                }
+                // onPointerOver={
+                //     (e) => {
+                //         handlePointerOver(e);
+                //         e.stopPropagation();
+                //     }
+                // }
+                // onPointerOut={
+                //     (e) => {
+                //         handlePointerOut();
+                //         e.stopPropagation();
+                //     }
+                // }
                 onClick={
                     (e) => {
                         handleClick();
                         e.stopPropagation();
                     }
                 }
-                onPointerMissed={
-                    (e) => {
-                        setIsFocussedOnIsland(false, false, false);
-                        e.stopPropagation();
-                    }
+            // onPointerMissed={
+            //     (e) => {
+            //         setIsFocussedOnIsland(false, false, false);
+            //         e.stopPropagation();
+            //     }
 
-                }
+            // }
             >
                 <BaseIsland />
 

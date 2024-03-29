@@ -6,6 +6,9 @@ import Table from "./kitchen/Table.jsx";
 import useConfig from "../store/useConfigStore.jsx";
 
 export default function Scene() {
+
+    console.log("Scene.jsx");
+
     const {
         sinkChosen,
         cooktopChosen,
@@ -20,13 +23,13 @@ export default function Scene() {
 
     return (
         <>
-            {sinkChosen && <Sink />}
+            <Sink />
 
-            {cooktopChosen && <Cooktop />}
+            <Cooktop />
 
-            {towerChosen && <Tower />}
+            <Tower />
 
-            {tableChosen && <Table />}
+            <Table />
         </>
     );
 }
