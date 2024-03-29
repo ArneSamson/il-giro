@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect, useState } from "react";
 
 import useConfig from "../../../store/useConfigStore.jsx";
 import useUIStore from "../../../store/useUIStore.jsx";

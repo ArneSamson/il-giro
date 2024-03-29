@@ -1,11 +1,9 @@
-import React, { useRef, useEffect, useState } from 'react';
-import * as THREE from 'three'
+import React, { useRef, useEffect } from 'react';
 import { useTexture, useGLTF } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber';
 
 export function BakePlane({ props }) {
 
-    const { nodes, materials } = useGLTF("./models/bake-plat.glb");
+    const { nodes } = useGLTF("./models/bake-plat.glb");
 
     const alphaMap1 = useTexture('./images/bakes/bake.jpg');
     alphaMap1.flipY = false;
@@ -17,16 +15,6 @@ export function BakePlane({ props }) {
             bigPlaneRef.current.rotation.y = - bigPlaneRef.current.parent.rotation.y;
         }
     }, [props]);
-
-    // useFrame(() => {
-    //     if(bigPlaneRef.current){
-    //         bigPlaneRef.current.position.y =  - bigPlaneRef.current.parent.position.y;
-    //         bigPlaneRef.current.position.z =  - bigPlaneRef.current.parent.position.y / 3;
-    //         if(bigPlaneRef.current.children[0].material){
-    //             bigPlaneRef.current.children[0].material.opacity = (1 - (bigPlaneRef.current.parent.position.y * 1.5)) * 1;
-    //         };
-    //     }
-    // });
 
     return (
         <group
@@ -72,17 +60,6 @@ export function BakePlaneSmall({ props }) {
             smallPlaneRef.current.rotation.y = - smallPlaneRef.current.parent.parent.rotation.y;
         }
     }, [props]);
-
-    // useFrame(() => {
-    //     if (smallPlaneRef.current) {
-    //         smallPlaneRef.current.position.y = - smallPlaneRef.current.parent.position.y;
-    //         smallPlaneRef.current.position.z = - smallPlaneRef.current.parent.position.y / 3;
-    //         if (smallPlaneRef.current.children[0].material) {
-    //             smallPlaneRef.current.children[0].material.opacity = (1 - (smallPlaneRef.current.parent.position.y * 1.5)) * 1;
-    //         };
-    //     }
-    // }
-    // );
 
     return (
         <group
