@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useFrame } from "@react-three/fiber";
 import { CameraControls } from "@react-three/drei";
 import * as THREE from "three";
 
@@ -8,30 +7,18 @@ import Lights from "./components/lighting&shadows/Lights.jsx";
 import Env from "./components/lighting&shadows/Env.jsx";
 
 import useScene from "./store/useScene.jsx";
-import useConfig from "./store/useConfigStore.jsx";
-import useUIStore from "./store/useUIStore.jsx";
 
 import { Perf } from "r3f-perf";
 
 export default function Experience() {
     const camera = useRef();
-    const [cameraPosition, setCameraPosition] = useState(null);
 
     const {
         cameraFocus,
         setCameraFocus,
-        isFocussedOnIsland,
-        setIsFocussedOnIsland,
     } = useScene((state) => ({
         cameraFocus: state.cameraFocus,
         setCameraFocus: state.setCameraFocus,
-        isFocussedOnIsland: state.isFocussedOnIsland,
-        setIsFocussedOnIsland: state.setIsFocussedOnIsland,
-    }));
-    const isDragging = useConfig((state) => state.isDragging);
-    const { currentPage, setCurrentPage } = useUIStore((state) => ({
-        currentPage: state.currentPage,
-        setCurrentPage: state.setCurrentPage,
     }));
 
     useEffect(() => {
@@ -77,8 +64,6 @@ export default function Experience() {
             camera.current.camera.updateProjectionMatrix();
         }
     };
-
-    const [prevCamDist, setPrevCamDist] = useState(4);
 
     return <>
 
