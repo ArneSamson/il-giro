@@ -159,43 +159,10 @@ export default function Tower({ props }) {
         }
     }, [nodes, allBevelled]);
 
-    //animate tower and dragging_____________________________________________________________________________________
-    const springProps = useSpring({
-        position: hovered
-            ? [towerPosition[0], 0.1, towerPosition[2]]
-            : [towerPosition[0], 0, towerPosition[2]],
-        scale: isDraggingTower ? [1.1, 1.1, 1.1] : [1, 1, 1],
-        config: {
-            tension: 250,
-            friction: 50,
-        },
-    });
-
-    const planeIntersectPoint = new THREE.Vector3();
-    const floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
-
-    const dragPos = useDrag(({ active, event }) => {
-        setIsDraggingTower(active);
-        setIsDragging(active);
-
-        if (active) {
-            event.ray.intersectPlane(floorPlane, planeIntersectPoint);
-            let newPosition = [planeIntersectPoint.x, 0, planeIntersectPoint.z];
-
-            newPosition[0] = THREE.MathUtils.clamp(newPosition[0], -4.5, 4.5);
-            newPosition[2] = THREE.MathUtils.clamp(newPosition[2], -4.5, 4.5);
-
-            setPosition(newPosition);
-        }
-
-        event.stopPropagation();
-
-        return;
-    });
-    //_____________________________________________________________________________________________________________
     function lerp(start, end, t) {
         return start * (1 - t) + end * t;
     }
+
     useFrame((state, delta) => {
 
         if (delta > 1) {
@@ -207,7 +174,6 @@ export default function Tower({ props }) {
                 doorOpeningRotation,
                 delta * 2
             );
-            // coolerRef.current.rotation.y = lerp(coolerRef.current.rotation.y, -doorOpeningRotation, delta * 2);
         }
 
         if (shelvesRef.current) {
@@ -303,7 +269,7 @@ export default function Tower({ props }) {
                 position={towerPosition}
                 rotation={towerRotation}
                 dispose={null}
-                // {...springProps}
+            // {...springProps}
             >
                 <group
                     name="tower-hovers-group"
@@ -420,7 +386,7 @@ export default function Tower({ props }) {
                                         geometry={nodes.grill002.geometry}
                                         material={
                                             materials[
-                                                "[Metal_Aluminum_Anodized]"
+                                            "[Metal_Aluminum_Anodized]"
                                             ]
                                         }
                                         position={[-0.304, 0.055, 0.291]}
@@ -517,7 +483,7 @@ export default function Tower({ props }) {
                                                 }
                                                 material={
                                                     materials[
-                                                        "[Translucent_Glass_Gray]"
+                                                    "[Translucent_Glass_Gray]"
                                                     ]
                                                 }
                                             />
@@ -596,7 +562,7 @@ export default function Tower({ props }) {
                                                 0.544,
                                                 shelvesRef.current
                                                     ? shelvesRef.current
-                                                          .position.z
+                                                        .position.z
                                                     : 0.059,
                                             ]}
                                             rotation={[0, -1.571, 0]}
@@ -615,7 +581,7 @@ export default function Tower({ props }) {
                                                 0.788,
                                                 shelvesRef.current
                                                     ? shelvesRef.current
-                                                          .position.z
+                                                        .position.z
                                                     : 0.059,
                                             ]}
                                             rotation={[0, -1.571, 0]}
