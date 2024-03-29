@@ -30,16 +30,30 @@ export default function ConfigUi() {
         setAccentMaterial,
 
         setTableTopMaterial,
+    } = useConfig(
+        state => ({
+            allMaterials: state.allMaterials,
+            allCategories: state.allCategories,
 
-        doorOpeningRotation,
-        setDoorOpeningRotation,
+            mainMaterial: state.mainMaterial,
+            setMainMaterial: state.setMainMaterial,
 
-    } = useConfig();
+            accentMaterial: state.accentMaterial,
+            setAccentMaterial: state.setAccentMaterial,
+
+            setTableTopMaterial: state.setTableTopMaterial,
+        })
+    );
 
     const {
         currentPage,
         landingPageVisible,
-    } = useUIStore();
+    } = useUIStore(
+        state => ({
+            currentPage: state.currentPage,
+            landingPageVisible: state.landingPageVisible,
+        })
+    );
 
     const [loaded, setLoaded] = useState(false);
 
