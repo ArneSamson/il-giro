@@ -44,12 +44,12 @@ export default function MaterialCategorySelection() {
 
                             switch (category) {
                                 case 'metal':
-                                    setTableTopMaterial(allCategories['micro topping'][0].url)
+                                    setTableTopMaterial(allCategories['dekton'][0].url)
                                     break;
-                                case 'micro topping':
-                                    setTableTopMaterial(allCategories['wood'][0].url)
+                                case 'dekton':
+                                    setTableTopMaterial(allCategories['natural stone'][0].url)
                                     break;
-                                case 'wood':
+                                case 'natural stone':
                                     setTableTopMaterial(allCategories['metal'][0].url)
                                     break;
                             }

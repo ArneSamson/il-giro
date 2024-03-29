@@ -41,7 +41,7 @@ export default function UiPage1() {
             <DetailWithMaterials
                 header="Choices in "
                 materials={allCategories[mainMaterialCategory]}
-                selectedMaterial={mainMaterial}
+                selectedMaterial={mainMaterialCategory}
                 setMaterial={setMainMaterial}
                 open={true}
             />
@@ -53,7 +53,7 @@ export default function UiPage1() {
             <DetailWithMaterials
                 header="Accent material: "
                 materials={allCategories.metal}
-                selectedMaterial={accentMaterial}
+                selectedMaterial={accentMaterial.split("/").slice(-2, -1)[0]}
                 setMaterial={setAccentMaterial}
                 open={false}
             />

@@ -20,6 +20,15 @@
         "micro topping": [
             "micro topping",
             "concrete"
+        ],
+        "dekton": [
+            "radium dekton",
+            "bedrock dekton",
+            "fossil dekton"
+        ],
+        "natural stone": [
+            "white granite",
+            "red granite"
         ]
     },
     "materials": {
@@ -41,11 +50,11 @@
         "solid surface": {
             "url": "/materials/solidsurface/"
         },
+        "concrete": {
+            "url": "/materials/concrete/"
+        },
         "micro topping": {
             "url": "/materials/microtopping/"
-        },
-        "innox": {
-            "url": "/materials/innox/"
         },
         "gold": {
             "url": "/materials/gold/"
@@ -62,8 +71,20 @@
         "inox": {
             "url": "/materials/inox/"
         },
-        "concrete": {
-            "url": "/materials/concrete/"
+        "bedrock dekton": {
+            "url": "/materials/bedrock/"
+        },
+        "radium dekton": {
+            "url": "/materials/radium/"
+        },
+        "fossil dekton": {
+            "url": "/materials/fossil/"
+        },
+        "white granite": {
+            "url": "/materials/whitegranite/"
+        },
+        "red granite": {
+            "url": "/materials/redgranite/"
         }
     }
 }

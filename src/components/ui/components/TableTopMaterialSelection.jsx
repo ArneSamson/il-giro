@@ -24,9 +24,9 @@ export default function AccentMaterialSelection() {
                 </span>
             </summary>
 
-            {mainMaterialCategory !== 'micro topping' && <>
+            {mainMaterialCategory !== 'dekton' && <>
                 <div className="config-ui__material-options ">
-                    {allCategories['micro topping'].map((material, index) => (
+                    {allCategories['dekton'].map((material, index) => (
                         <div
                             key={index}
                             className={`config-ui__material-options__option ${tableTopMaterial === material.url ? 'selected-material-n-category' : ""}`}
@@ -41,9 +41,9 @@ export default function AccentMaterialSelection() {
                 </div>
             </>}
 
-            {mainMaterialCategory !== 'wood' && <>
+            {mainMaterialCategory !== 'natural stone' && <>
                 <div className="config-ui__material-options ">
-                    {allCategories['wood'].map((material, index) => (
+                    {allCategories['natural stone'].map((material, index) => (
                         <div
                             key={index}
                             className={`config-ui__material-options__option ${tableTopMaterial === material.url ? 'selected-material-n-category' : ""}`}
