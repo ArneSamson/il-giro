@@ -24,29 +24,28 @@ export default function Sink({ props }) {
         sinkRotation,
 
         tapType,
-    } = useConfig(
-        state => ({
-            tableTopMaterial: state.tableTopMaterial,
+    } = useConfig(state => ({
+        tableTopMaterial: state.tableTopMaterial,
 
-            sinkPosition: state.sinkPosition,
-            sinkRotation: state.sinkRotation,
+        sinkPosition: state.sinkPosition,
+        sinkRotation: state.sinkRotation,
 
-            tapType: state.tapType,
-        })
-    );
+        tapType: state.tapType,
+    }));
 
-    const { setCurrentPage } = useUIStore(
-        state => ({
-            setCurrentPage: state.setCurrentPage
-        })
-    );
+    const {
+        setCurrentPage
+    } = useUIStore(state => ({
+        setCurrentPage: state.setCurrentPage
+    }));
 
-    const { setCameraFocus, setIsFocussedOnIsland } = useScene(
-        state => ({
-            setCameraFocus: state.setCameraFocus,
-            setIsFocussedOnIsland: state.setIsFocussedOnIsland
-        })
-    );
+    const {
+        setCameraFocus,
+        setIsFocussedOnIsland
+    } = useScene(state => ({
+        setCameraFocus: state.setCameraFocus,
+        setIsFocussedOnIsland: state.setIsFocussedOnIsland
+    }));
 
     const [needPointer, setNeedPointer] = useState(false);
 
