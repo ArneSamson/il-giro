@@ -1,9 +1,5 @@
-import React, { useRef, useState, useEffect } from "react";
-import * as THREE from "three";
-import { useGLTF, useCursor } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
-import { useSpring, a } from "@react-spring/three";
-import { useDrag } from "@use-gesture/react";
+import React, { useRef, useState } from "react";
+import { useCursor } from "@react-three/drei";
 
 import BaseIsland from "./BaseIsland.jsx";
 
@@ -11,11 +7,6 @@ import TableTop from "./accessoires/TableTop.jsx";
 
 import GasStove from "./accessoires/GasStove.jsx";
 import ElectricStove from "./accessoires/ElectricStove.jsx";
-
-import { BakePlaneSmall } from "../lighting&shadows/ShadowPlanes.jsx";
-import Indicator from "../indicator/Indicator.jsx";
-
-import { useTexture } from "../../helper/useTexture.tsx";
 
 import useScene from "../../store/useScene.jsx";
 import useConfig from "../../store/useConfigStore.jsx";
@@ -29,19 +20,30 @@ export default function Cooktop() {
         cooktopRotation,
 
         stoveType,
+    } = useConfig(
+        (state) => ({
+            tableTopMaterial: state.tableTopMaterial,
 
-        dragMode,
-        isDraggingCooktop,
-        setIsDraggingCooktop,
-        setIsDragging,
-    } = useConfig();
+            cooktopPosition: state.cooktopPosition,
+            cooktopRotation: state.cooktopRotation,
 
-    const { setCurrentPage } = useUIStore();
+            stoveType: state.stoveType,
+        })
+    );
 
-    const { setCameraFocus, setIsFocussedOnIsland, isFocussedOnIsland } =
-        useScene();
+    const { setCurrentPage } = useUIStore(
+        (state) => ({
+            setCurrentPage: state.setCurrentPage,
+        })
+    );
 
-    const [hovered, setHover] = useState(null);
+    const { setCameraFocus, setIsFocussedOnIsland } =
+        useScene(
+            (state) => ({
+                setCameraFocus: state.setCameraFocus,
+                setIsFocussedOnIsland: state.setIsFocussedOnIsland,
+            })
+        );
 
     const [needPointer, setNeedPointer] = useState(false);
 
@@ -49,46 +51,7 @@ export default function Cooktop() {
 
     const cookTopRef = useRef();
 
-    //animate sink and dragging_____________________________________________________________________________________
-    const springProps = useSpring({
-        position: hovered
-            ? [cooktopPosition[0], 0.1, cooktopPosition[2]]
-            : [cooktopPosition[0], 0, cooktopPosition[2]],
-        scale: isDraggingCooktop ? [1.1, 1.1, 1.1] : [1, 1, 1],
-        rotation: isDraggingCooktop ? [0, 0, 0] : cooktopRotation,
-        config: {
-            tension: 250,
-            friction: 50,
-        },
-    });
-
-    const planeIntersectPoint = new THREE.Vector3();
-    const floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
-
-    const dragPos = useDrag(({ active, event }) => {
-        setIsDraggingCooktop(active);
-        setIsDragging(active);
-
-        if (active) {
-            event.ray.intersectPlane(floorPlane, planeIntersectPoint);
-            let newPosition = [planeIntersectPoint.x, 0, planeIntersectPoint.z];
-
-            newPosition[0] = THREE.MathUtils.clamp(newPosition[0], -4.5, 4.5);
-            newPosition[2] = THREE.MathUtils.clamp(newPosition[2], -4.5, 4.5);
-
-            setPosition(newPosition);
-        }
-
-        event.stopPropagation();
-
-        return;
-    });
-    //_____________________________________________________________________________________________________________
-
-    // const indicatorPosition = [cooktopPosition[0], 0.1, cooktopPosition[2]];
-
     const handleClick = () => {
-        if (dragMode) return;
         setCurrentPage(4);
         setCameraFocus([
             cooktopPosition[0],
@@ -100,32 +63,24 @@ export default function Cooktop() {
 
     const handlePointerOver = () => {
         setNeedPointer(true);
-        if (dragMode) return;
-        setHover(true);
     };
 
     const handlePointerOut = () => {
-        if (dragMode) return;
         setNeedPointer(false);
-        setHover(false);
     };
 
     const handlePointerMissed = () => {
-        if (dragMode) return;
         setIsFocussedOnIsland(false, false, false);
     };
 
     return (
         <>
-            {/* {isFocussedOnIsland.cooktop && <Indicator position={indicatorPosition} />} */}
-
-            <a.group
+            <group
                 name="cooktop-group"
                 ref={cookTopRef}
                 rotation={cooktopRotation}
                 position={cooktopPosition}
                 dispose={null}
-                // {...springProps}
             >
                 <group
                     name="cooktop-hovers-group"
@@ -141,12 +96,10 @@ export default function Cooktop() {
                         handleClick();
                         e.stopPropagation();
                     }}
-                    //on misclick
                     onPointerMissed={(e) => {
                         handlePointerMissed();
                         e.stopPropagation();
                     }}
-                    {...(dragMode ? dragPos() : {})}
                 >
                     <BaseIsland />
 
@@ -176,7 +129,7 @@ export default function Cooktop() {
                         />
                     )}
                 </group>
-            </a.group>
+            </group>
         </>
     );
 }

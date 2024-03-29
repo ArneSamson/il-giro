@@ -1,9 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
-import * as THREE from 'three'
-import { useGLTF, useCursor } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
-import { useSpring, a } from '@react-spring/three';
-import { useDrag } from "@use-gesture/react";
+import React, { useRef, useState } from 'react';
+import { useCursor } from '@react-three/drei'
 
 import BaseIsland from './BaseIsland.jsx';
 
@@ -12,14 +8,8 @@ import Tap2 from './accessoires/Tap2.jsx';
 
 import Reginox from './accessoires/ReginoxBowl.jsx';
 
-import TableTop from './accessoires/TableTop.jsx';
-import TableTopCutFilled from './accessoires/TableTopCutFilled.jsx';
 import TableTopCutOut from './accessoires/TableTopCutOut.jsx';
 
-import { BakePlaneSmall } from '../lighting&shadows/ShadowPlanes.jsx'
-import Indicator from '../indicator/Indicator.jsx';
-
-import { useTexture } from '../../helper/useTexture.tsx';
 
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfigStore.jsx';
@@ -34,22 +24,29 @@ export default function Sink({ props }) {
         sinkRotation,
 
         tapType,
+    } = useConfig(
+        state => ({
+            tableTopMaterial: state.tableTopMaterial,
 
-        dragMode,
-        isDraggingSink,
-        setIsDraggingSink,
-        setIsDragging
-    } = useConfig();
+            sinkPosition: state.sinkPosition,
+            sinkRotation: state.sinkRotation,
 
-    const {
-        isFocussedOnIsland
-    } = useScene();
+            tapType: state.tapType,
+        })
+    );
 
-    const { setCurrentPage } = useUIStore();
+    const { setCurrentPage } = useUIStore(
+        state => ({
+            setCurrentPage: state.setCurrentPage
+        })
+    );
 
-    const { setCameraFocus, setIsFocussedOnIsland } = useScene();
-
-    const [hovered, setHover] = useState(null);
+    const { setCameraFocus, setIsFocussedOnIsland } = useScene(
+        state => ({
+            setCameraFocus: state.setCameraFocus,
+            setIsFocussedOnIsland: state.setIsFocussedOnIsland
+        })
+    );
 
     const [needPointer, setNeedPointer] = useState(false);
 
@@ -57,91 +54,32 @@ export default function Sink({ props }) {
 
     const sinkRef = useRef();
 
-
-    //animate sink and dragging_____________________________________________________________________________________
-    const springProps = useSpring({
-        position: hovered ? [sinkPosition[0], 0.1, sinkPosition[2]] : [sinkPosition[0], 0, sinkPosition[2]],
-        rotation: isDraggingSink ? [0, 0, 0] : sinkRotation,
-        scale: isDraggingSink ? [1.1, 1.1, 1.1] : [1, 1, 1],
-        config: {
-            tension: 250,
-            friction: 50,
-        }
-    });
-
-    const planeIntersectPoint = new THREE.Vector3();
-    const floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
-
-    const dragPos = useDrag(
-        ({ active, event }) => {
-            setIsDraggingSink(active);
-            setIsDragging(active);
-
-            if (active) {
-                event.ray.intersectPlane(floorPlane, planeIntersectPoint);
-                let newPosition = ([planeIntersectPoint.x, 0, planeIntersectPoint.z]);
-
-                newPosition[0] = THREE.MathUtils.clamp(newPosition[0], -4.5, 4.5);
-                newPosition[2] = THREE.MathUtils.clamp(newPosition[2], -4.5, 4.5);
-
-                setPosition(newPosition);
-            }
-
-            event.stopPropagation();
-
-            return;
-        }
-    );
-    //_____________________________________________________________________________________________________________
-
-    // const indicatorPosition = [sinkPosition[0], 0.1, sinkPosition[2]];
-
     const handleClick = () => {
-        if (dragMode) return;
         setCurrentPage(3);
         setCameraFocus([sinkPosition[0], sinkPosition[1] + 1, sinkPosition[2]]);
         setIsFocussedOnIsland(true, false, false);
     }
 
     const handlePointerOver = (e) => {
-        e.stopPropagation();
-        // const hasBakePlaneChild = sinkRef.current.children.some((child) => {
-        //     return child.children.some((grandchild) => {
-        //         return grandchild.name === "bakePlaneSmall-group";
-        //     });
-        // });
-
-        // if (hasBakePlaneChild) {
-        //     return;
-        // }
         setNeedPointer(true);
-        if (dragMode) return;
-        setHover(true);
     }
 
     const handlePointerOut = () => {
         setNeedPointer(false);
-        setHover(false);
     }
 
     const handlePointerMissed = () => {
-        if (dragMode) return;
         setIsFocussedOnIsland(false, false, false);
     }
 
 
     return <>
-
-        {/* {isFocussedOnIsland.sink && <Indicator position={indicatorPosition} />} */}
-
-
-        <a.group
+        <group
             name='sink-group'
             ref={sinkRef}
             rotation={sinkRotation}
             position={sinkPosition}
             dispose={null}
-        // {...springProps}
         >
             <group
                 name='sink-hovers-group'
@@ -165,14 +103,11 @@ export default function Sink({ props }) {
                 }
                 onPointerMissed={
                     (e) => {
-                        if (dragMode) return;
                         setIsFocussedOnIsland(false, false, false);
                         e.stopPropagation();
                     }
 
                 }
-                {...(dragMode ? dragPos() : {})}
-
             >
                 <BaseIsland />
 
@@ -220,9 +155,8 @@ export default function Sink({ props }) {
                         }
                     />
                 }
-
             </group>
 
-        </a.group>
+        </group>
     </>
 }
