@@ -2,15 +2,12 @@ import React, { useRef, useState, useEffect } from "react";
 import * as THREE from "three";
 import { useGLTF, useCursor } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useSpring, a } from "@react-spring/three";
-import { useDrag } from "@use-gesture/react";
 
 import WineStand from "./accessoires/WineStand.jsx";
 
 import { BakePlane } from "../lighting&shadows/ShadowPlanes.jsx";
 
 import { useTexture } from "../../helper/useTexture.tsx";
-import Indicator from "../indicator/Indicator.jsx";
 
 import useScene from "../../store/useScene.jsx";
 import useConfig from "../../store/useConfigStore.jsx";
@@ -27,11 +24,6 @@ export default function Tower({ props }) {
         doorOpeningRotation,
 
         allBevelled,
-
-        dragMode,
-        isDraggingTower,
-        setIsDraggingTower,
-        setIsDragging,
     } = useConfig((state) => ({
         mainMaterial: state.mainMaterial,
 
@@ -42,11 +34,6 @@ export default function Tower({ props }) {
         doorOpeningRotation: state.doorOpeningRotation,
 
         allBevelled: state.allBevelled,
-
-        dragMode: state.dragMode,
-        isDraggingTower: state.isDraggingTower,
-        setIsDraggingTower: state.setIsDraggingTower,
-        setIsDragging: state.setIsDragging,
     }));
 
     const setCurrentPage = useUIStore((state) => state.setCurrentPage);
@@ -116,17 +103,19 @@ export default function Tower({ props }) {
 
     const { nodes, materials } = useGLTF("./models/base-island-high.glb");
 
-    const { setCameraFocus, isFocussedOnIsland, setIsFocussedOnIsland } =
-        useScene();
-
-    const [hovered, setHover] = useState(null);
+    const { setCameraFocus, setIsFocussedOnIsland } =
+        useScene(
+            (state) => ({
+                setCameraFocus: state.setCameraFocus,
+                setIsFocussedOnIsland: state.setIsFocussedOnIsland,
+            })
+        );
 
     const [needPointer, setNeedPointer] = useState(false);
 
     useCursor(needPointer, "pointer");
 
     const towerRef = useRef();
-
     const cabinetRef = useRef();
     const doorRef = useRef();
     const coolerRef = useRef();
@@ -229,10 +218,7 @@ export default function Tower({ props }) {
         }
     });
 
-    const indicatorPosition = [towerPosition[0], 0.1, towerPosition[2]];
-
     const handleClick = () => {
-        if (dragMode) return;
         setCurrentPage(5);
         setCameraFocus([
             towerPosition[0],
@@ -244,32 +230,25 @@ export default function Tower({ props }) {
 
     const handlePointerOver = () => {
         setNeedPointer(true);
-        if (dragMode) return;
-        setHover(true);
     };
 
     const handlePointerOut = () => {
         setNeedPointer(false);
-        setHover(false);
     };
 
     const handlePointerMissed = () => {
-        if (dragMode) return;
         setIsFocussedOnIsland(false, false, false);
     };
 
     return (
         <>
-            {/* {isFocussedOnIsland.tower && <Indicator position={indicatorPosition} />} */}
-
-            <a.group
+            <group
                 name="tower-group"
                 ref={towerRef}
                 {...props}
                 position={towerPosition}
                 rotation={towerRotation}
                 dispose={null}
-            // {...springProps}
             >
                 <group
                     name="tower-hovers-group"
@@ -289,7 +268,6 @@ export default function Tower({ props }) {
                         handlePointerMissed();
                         e.stopPropagation();
                     }}
-                    {...(dragMode ? dragPos() : {})}
                 >
                     <mesh
                         name="cabinet"
@@ -600,7 +578,7 @@ export default function Tower({ props }) {
                         }}
                     />
                 </group>
-            </a.group>
+            </group>
 
             <BakePlane
                 props={{
