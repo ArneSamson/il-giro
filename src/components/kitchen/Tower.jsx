@@ -36,7 +36,11 @@ export default function Tower({ props }) {
         allBevelled: state.allBevelled,
     }));
 
-    const setCurrentPage = useUIStore((state) => state.setCurrentPage);
+    const { setCurrentPage } = useUIStore(
+        (state) => ({
+            setCurrentPage: state.setCurrentPage,
+        })
+    );
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] =
         useTexture(
