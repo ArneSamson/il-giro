@@ -46,7 +46,6 @@ export default function Tower({ props }) {
         useTexture(
             [
                 mainMaterial + "albedo.jpg",
-                // "uv.jpg",
                 mainMaterial + "normal.jpg",
                 mainMaterial + "roughness.jpg",
                 mainMaterial + "metallic.jpg",
