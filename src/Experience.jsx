@@ -11,6 +11,9 @@ import useScene from "./store/useScene.jsx";
 import { Perf } from "r3f-perf";
 
 export default function Experience() {
+
+    console.log("Experience");
+
     const camera = useRef();
 
     const {
