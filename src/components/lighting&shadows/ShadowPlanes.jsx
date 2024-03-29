@@ -12,7 +12,7 @@ export function BakePlane({ props }) {
 
     useEffect(() => {
         if (bigPlaneRef.current) {
-            bigPlaneRef.current.rotation.y = - bigPlaneRef.current.parent.rotation.y;
+            bigPlaneRef.current.rotation.y = - bigPlaneRef.current.parent.rotation.y - Math.PI / 3.5;
         }
     }, [props]);
 
@@ -57,7 +57,7 @@ export function BakePlaneSmall({ props }) {
 
     useEffect(() => {
         if (smallPlaneRef.current) {
-            smallPlaneRef.current.rotation.y = - smallPlaneRef.current.parent.parent.rotation.y;
+            smallPlaneRef.current.rotation.y = - smallPlaneRef.current.parent.parent.rotation.y - Math.PI / 3.5;
         }
     }, [props]);
 
