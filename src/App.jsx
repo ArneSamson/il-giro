@@ -12,7 +12,6 @@ import Experience from './Experience.jsx'
 import Effects from './Effects/Effects.jsx'
 import ConfigUi from './components/ConfigUi.jsx'
 
-
 const root = ReactDOM.createRoot(document.querySelector('#root'))
 
 const camSettings = {
@@ -56,7 +55,6 @@ root.render(
                 camera={camSettings}
                 gl={{
                     antialias: true,
-                    // toneMapping: THREE.AgXToneMapping,
                     outputColorSpace: THREE.SRGBColorSpace,
                     toneMappingExposure: 1,
                     alpha: true
@@ -82,7 +80,7 @@ root.render(
 
             <Leva
                 collapsed
-                // hidden
+                hidden
             />
         </div>
     </>
