@@ -7,8 +7,6 @@ export default function DetailWithMaterials({
     setMaterial,
     open
 }) {
-
-    console.log(selectedMaterial)
     return (
         <details
             className="config-ui__details"
