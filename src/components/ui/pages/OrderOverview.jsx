@@ -81,7 +81,7 @@ export default function OrderOverview() {
 
                 <h4
                     className="config-ui__options__overview__title"
-                >Bevelled: <span>{allBevelled ? "Yes" : "No"}</span></h4>
+                >Curved: <span>{allBevelled ? "yes" : "no"}</span></h4>
 
                 <h4
                     className="config-ui__options__overview__title"
