@@ -57,17 +57,17 @@ export default function ModuleSelectionButtons({ summary, options }) {
     function setPositions() {
         switch (true) {
             case sinkChosen && cooktopChosen && towerChosen && tableChosen:
-                setSinkPosition([-1.7, 0, 0.5]);
-                setSinkRotation([0, 1, 0]);
+                setSinkPosition([-1.5, 0, 0.5]);
+                setSinkRotation([0, 0.5, 0]);
 
-                setCooktopPosition([-0.8, 0, -0.5]);
-                setCooktopRotation([0, 0.6, 0]);
+                setCooktopPosition([1.5, 0, 0.5]);
+                setCooktopRotation([0, -0.5, 0]);
 
-                setTowerPosition([0.5, 0, -1]);
+                setTowerPosition([-1.5, 0, -1.7]);
                 setTowerRotation([0, 0, 0]);
 
-                setTablePosition([2.2, 0, 0.5]);
-                setTableRotation([0, -1.4, 0]);
+                setTablePosition([1.5, 0, -1.7]);
+                setTableRotation([0, 0, 0]);
                 break;
             case sinkChosen && cooktopChosen && towerChosen:
                 setSinkPosition([-1.5, 0, 0]);
@@ -80,24 +80,24 @@ export default function ModuleSelectionButtons({ summary, options }) {
                 setTowerRotation([0, 0, 0]);
                 break;
             case sinkChosen && cooktopChosen && tableChosen:
-                setSinkPosition([-1.5, 0, 0]);
+                setSinkPosition([-1, 0, 0.5]);
                 setSinkRotation([0, 0.5, 0]);
 
-                setCooktopPosition([1.5, 0, 0]);
+                setCooktopPosition([1, 0, 0.5]);
                 setCooktopRotation([0, -0.5, 0]);
 
-                setTablePosition([0, 0, 0]);
-                setTableRotation([0, 1.53, 0]);
+                setTablePosition([0, 0, -1]);
+                setTableRotation([0, 0, 0]);
                 break;
             case sinkChosen && towerChosen && tableChosen:
                 setSinkPosition([-1, 0, 0]);
                 setSinkRotation([0, 0.5, 0]);
 
-                setTowerPosition([0.5, 0, -1.5]);
+                setTowerPosition([1, 0, 0]);
                 setTowerRotation([0, 0, 0]);
 
-                setTablePosition([2.3, 0, 0]);
-                setTableRotation([0, -1.3, 0]);
+                setTablePosition([0, 0, -1.5]);
+                setTableRotation([0, 0, 0]);
                 break;
             case cooktopChosen && towerChosen && tableChosen:
                 setCooktopPosition([-1, 0, 0]);
@@ -145,11 +145,11 @@ export default function ModuleSelectionButtons({ summary, options }) {
                 setTableRotation([0, -0.8, 0]);
                 break;
             case towerChosen && tableChosen:
-                setTowerPosition([-1, 0, 0]);
-                setTowerRotation([0, 0.5, 0]);
+                setTowerPosition([1, 0, 0]);
+                setTowerRotation([0, 0, 0]);
 
-                setTablePosition([1.5, 0, 0]);
-                setTableRotation([0, -0.8, 0]);
+                setTablePosition([-1.5, 0, 0]);
+                setTableRotation([0, 0.8, 0]);
                 break;
             case sinkChosen:
                 setSinkPosition([0, 0, 0]);
