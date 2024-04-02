@@ -131,7 +131,7 @@ export default function Sink({ props }) {
                 </>
 
 
-                {tapType === '1' &&
+                {tapType === 1 &&
                     <Tap1
                         props={
                             {
@@ -142,7 +142,7 @@ export default function Sink({ props }) {
                     />
                 }
 
-                {tapType === '2' &&
+                {tapType === 2 &&
 
                     <Tap2
                         props={
