@@ -1,5 +1,5 @@
 // ModuleSelectionButtons.jsx
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import useConfigStore from "../../../store/useConfigStore";
 
@@ -42,6 +42,17 @@ export default function ModuleSelectionButtons({ summary, options }) {
         })
     );
 
+    function handleClick(option, e) {
+
+        let activeCount = options.filter(option => option.chosen).length;
+
+        if (option.chosen && activeCount === 1) {
+            return;
+        } else {
+            option.setChosen(!option.chosen);
+            setPositions();
+        }
+    }
 
     function setPositions() {
         switch (true) {
@@ -178,9 +189,8 @@ export default function ModuleSelectionButtons({ summary, options }) {
                     <button
                         key={index}
                         className={option.chosen ? "active-selection-button" : ""}
-                        onClick={() => {
-                            option.setChosen(!option.chosen)
-                            setPositions()
+                        onClick={(e) => {
+                            handleClick(option, e)
                         }}
                     >
                         {option.label}
