@@ -3,7 +3,7 @@ import Sink from "./kitchen/Sink.jsx";
 import Tower from "./kitchen/Tower.jsx";
 import Table from "./kitchen/Table.jsx";
 
-import useConfig from "../store/useConfigStore.jsx";
+import useConfigStore from "../store/useConfigStore.jsx";
 
 export default function Scene() {
 
@@ -14,7 +14,7 @@ export default function Scene() {
         cooktopChosen,
         towerChosen,
         tableChosen,
-    } = useConfig((state) => ({
+    } = useConfigStore((state) => ({
         sinkChosen: state.sinkChosen,
         cooktopChosen: state.cooktopChosen,
         towerChosen: state.towerChosen,
