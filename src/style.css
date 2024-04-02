@@ -576,14 +576,14 @@ input[type=range]::-ms-track {
 
 .config-ui__selection-buttons button {
     padding: 10px 20px;
-    outline: 1px solid var(--light-grey);
-    background-color: var(--light-grey);
+    outline: 1px solid var(--extra-light-grey);
+    background-color: var(--off-white);
     color: var(--extra-light-grey);
     cursor: pointer;
 }
 
 .config-ui__selection-buttons button.active-selection-button {
-    /* outline: 2px solid var(--off-black); */
+    outline: 1px solid var(--off-black);
     background-color: var(--off-white);
     color: var(--off-black);
 }
@@ -719,7 +719,7 @@ summary span {
         flex-direction: row;
         gap: 5px;
         justify-content: center;
-        margin-top: -85px;
+        margin-top: -60px;
         pointer-events: none;
         margin-left: auto;
         margin-right: auto;
