@@ -39,7 +39,7 @@ export default function UiPage2() {
     );
 
     const edgeFinishOptions = [
-        { label: "Square", value: "rect" },
+        { label: "Square", value: "square" },
         { label: "Curved", value: "curved" }
     ];
 

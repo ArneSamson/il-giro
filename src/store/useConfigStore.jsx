@@ -69,7 +69,7 @@ export default create((set) => {
         applianceType: 'fridge',
         wineStandSize: 'medium',
 
-        edgeFinish: 'rect',
+        edgeFinish: 'square',
 
         doorOpeningRotation: 1.5,
 
