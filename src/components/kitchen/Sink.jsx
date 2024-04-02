@@ -7,6 +7,7 @@ import Tap1 from './accessoires/Tap1.jsx';
 import Tap2 from './accessoires/Tap2.jsx';
 
 import Reginox from './accessoires/ReginoxBowl.jsx';
+import Drawers from './accessoires/Drawers.jsx';
 
 import TableTopCutOut from './accessoires/TableTopCutOut.jsx';
 
@@ -108,6 +109,8 @@ export default function Sink({ props }) {
             // }
             >
                 <BaseIsland />
+
+                <Drawers />
 
                 <>
                     <TableTopCutOut
