@@ -18,8 +18,7 @@ export default function BevelledSelection() {
     return <>
         <details open className='config-ui__details'>
             <summary>
-                curved:
-                <span>{allBevelled ? ' yes' : ' no'}</span>
+                {allBevelled ? "Curved" : "Not curved"}
             </summary>
             <label className="config-ui__toggle">
                 <input
