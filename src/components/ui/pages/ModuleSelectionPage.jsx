@@ -3,7 +3,7 @@ import React from "react";
 import useConfigStore from "../../../store/useConfigStore.jsx";
 
 import ModuleSelectionButtons from "../components/ModuleSelectionButtons.jsx";
-import BevelledSelection from "../components/BevelledSelection.jsx";
+import BevelledSelection from "../components/toggle/BevelledSelection.jsx";
 
 export default function ModuleSelectionPage() {
 
