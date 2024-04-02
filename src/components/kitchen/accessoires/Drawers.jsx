@@ -43,8 +43,6 @@ export default function Drawers(props) {
                         delta * 2
                     );
                 }
-
-                console.log("closing", drawersRef.current.children[0].position.z);
             } else if (doorOpeningRotation === 1.5) {
                 if (drawersRef.current.children[0].position.z > 0.034) {
                     return;
@@ -69,7 +67,6 @@ export default function Drawers(props) {
                         delta * 2
                     );
                 }
-                console.log("opening", drawersRef.current.children[0].position.z);
             }
         }
     });
