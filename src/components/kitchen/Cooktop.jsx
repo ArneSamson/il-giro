@@ -52,13 +52,13 @@ export default function Cooktop() {
     const cookTopRef = useRef();
 
     const handleClick = () => {
-        setCurrentPage(4);
+        // setCurrentPage(4);
         setCameraFocus([
             cooktopPosition[0],
             cooktopPosition[1] + 1,
             cooktopPosition[2],
         ]);
-        setIsFocussedOnIsland(false, true, false);
+        // setIsFocussedOnIsland(false, true, false);
     };
 
     const handlePointerOver = () => {

@@ -223,13 +223,13 @@ export default function Tower({ props }) {
     });
 
     const handleClick = () => {
-        setCurrentPage(5);
+        // setCurrentPage(5);
         setCameraFocus([
             towerPosition[0],
             towerPosition[1] + 1,
             towerPosition[2],
         ]);
-        setIsFocussedOnIsland(false, false, true);
+        // setIsFocussedOnIsland(false, false, true);
     };
 
     const handlePointerOver = () => {

@@ -40,9 +40,9 @@ export default function Table({ props }) {
     const tableRef = useRef();
 
     const handleClick = () => {
-        setCurrentPage(2);
+        // setCurrentPage(2);
         setCameraFocus([tablePosition[0], tablePosition[1] + 1, tablePosition[2]]);
-        setIsFocussedOnIsland(true, false, false);
+        // setIsFocussedOnIsland(true, false, false);
     }
 
     const handlePointerOver = () => {

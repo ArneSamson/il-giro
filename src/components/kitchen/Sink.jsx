@@ -53,9 +53,9 @@ export default function Sink({ props }) {
     const sinkRef = useRef();
 
     const handleClick = () => {
-        setCurrentPage(3);
+        // setCurrentPage(3);
         setCameraFocus([sinkPosition[0], sinkPosition[1] + 1, sinkPosition[2]]);
-        setIsFocussedOnIsland(true, false, false);
+        // setIsFocussedOnIsland(true, false, false);
     }
 
     const handlePointerOver = (e) => {
