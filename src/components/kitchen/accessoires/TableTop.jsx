@@ -1,17 +1,17 @@
 import React, { useRef } from 'react';
 import * as THREE from 'three'
-import {  useGLTF } from '@react-three/drei'
+import { useGLTF } from '@react-three/drei'
 
 import { useTexture } from '../../../helper/useTexture.tsx';
 
 
-export default function TableTop({props, materialUrl}){
+export default function TableTop({ props, materialUrl }) {
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
-        materialUrl+"albedo.jpg",
-        materialUrl+"normal.jpg",
-        materialUrl+"roughness.jpg",
-        materialUrl+"metallic.jpg"
+        materialUrl + "albedo.jpg",
+        materialUrl + "normal.jpg",
+        materialUrl + "roughness.jpg",
+        materialUrl + "metallic.jpg"
     ]);
 
     albedoTexture.colorSpace = THREE.SRGBColorSpace;
@@ -37,9 +37,8 @@ export default function TableTop({props, materialUrl}){
                 name='tabletopMesh'
                 castShadow
                 receiveShadow
-                geometry={nodes.tabletop.geometry}
+                geometry={nodes.tabletop002.geometry}
                 material={material}
-                scale={[1.111, 1, 1.111]}
             />
         </group>
     );

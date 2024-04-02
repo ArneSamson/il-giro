@@ -4,13 +4,13 @@ import { useGLTF } from '@react-three/drei'
 
 import { useTexture } from '../../../helper/useTexture.tsx';
 
-export default function TableTopCutOut({props, materialUrl}){
+export default function TableTopCutOut({ props, materialUrl }) {
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
-        materialUrl+"albedo.jpg",
-        materialUrl+"normal.jpg",
-        materialUrl+"roughness.jpg",
-        materialUrl+"metallic.jpg"
+        materialUrl + "albedo.jpg",
+        materialUrl + "normal.jpg",
+        materialUrl + "roughness.jpg",
+        materialUrl + "metallic.jpg"
     ]);
 
     albedoTexture.colorSpace = THREE.SRGBColorSpace;
@@ -37,7 +37,6 @@ export default function TableTopCutOut({props, materialUrl}){
                 receiveShadow
                 geometry={nodes['table-top-cut-out'].geometry}
                 material={material}
-                scale={[1.111, 1, 1.111]}
             />
         </group>
     );
