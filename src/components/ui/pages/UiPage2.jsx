@@ -20,6 +20,9 @@ export default function UiPage2() {
         setApplianceType,
         wineStandSize,
         setWineStandSize,
+
+        mainDrawers,
+        setMainDrawers,
     } = useConfigStore(
         state => ({
             edgeFinish: state.edgeFinish,
@@ -35,6 +38,9 @@ export default function UiPage2() {
             setApplianceType: state.setApplianceType,
             wineStandSize: state.wineStandSize,
             setWineStandSize: state.setWineStandSize,
+
+            mainDrawers: state.mainDrawers,
+            setMainDrawers: state.setMainDrawers,
         })
     );
 
@@ -63,6 +69,11 @@ export default function UiPage2() {
         { label: "Small", value: "small" },
         { label: "Medium", value: "medium" },
         { label: "Large", value: "tall" },
+    ];
+
+    const mainDrawerOptions = [
+        { label: "Yes", value: true },
+        { label: "No", value: false }
     ];
 
     return <>
@@ -110,6 +121,13 @@ export default function UiPage2() {
                 options={applianceOptions}
                 selectedOption={applianceOptions.find(option => option.value === applianceType).label}
                 setOption={setApplianceType}
+            />
+
+            <DetailWithButtons
+                summary="Exta drawers: "
+                options={mainDrawerOptions}
+                selectedOption={mainDrawerOptions.find(option => option.value === mainDrawers).label}
+                setOption={setMainDrawers}
             />
 
         </div>

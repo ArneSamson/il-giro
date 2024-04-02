@@ -7,7 +7,7 @@ import { BakePlaneSmall } from '../lighting&shadows/ShadowPlanes.jsx'
 
 import useConfig from '../../store/useConfigStore.jsx';
 
-export default function BaseIsland({ props }) {
+export default function BaseIsland({ props, needsDrawers }) {
 
     const {
         mainMaterial,
@@ -50,9 +50,7 @@ export default function BaseIsland({ props }) {
         roughness: 1,
     });
 
-    const drawers = true;
-
-    const { nodes } = useGLTF(drawers ? './models/base-island-drawers.glb' : './models/base-island.glb');
+    const { nodes } = useGLTF(needsDrawers ? './models/base-island-drawers.glb' : './models/base-island.glb');
 
 
     const meshRef = useRef();
@@ -75,7 +73,7 @@ export default function BaseIsland({ props }) {
 
 
     return <>
-        {drawers && <>
+        {needsDrawers && <>
             <mesh
                 name='base-island-mesh'
                 ref={meshRef}
@@ -103,7 +101,7 @@ export default function BaseIsland({ props }) {
             </mesh>
         </>}
 
-        {!drawers && <>
+        {!needsDrawers && <>
             <mesh
                 name='base-island-mesh'
                 ref={meshRef}

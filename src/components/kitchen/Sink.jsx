@@ -24,6 +24,8 @@ export default function Sink({ props }) {
         sinkRotation,
 
         tapType,
+
+        mainDrawers,
     } = useConfig(state => ({
         tableTopMaterial: state.tableTopMaterial,
 
@@ -31,6 +33,8 @@ export default function Sink({ props }) {
         sinkRotation: state.sinkRotation,
 
         tapType: state.tapType,
+
+        mainDrawers: state.mainDrawers,
     }));
 
     const {
@@ -108,9 +112,13 @@ export default function Sink({ props }) {
 
             // }
             >
-                <BaseIsland />
+                <BaseIsland
+                    needsDrawers={mainDrawers}
+                />
 
-                <Drawers />
+                {mainDrawers &&
+                    <Drawers />
+                }
 
                 <>
                     <TableTopCutOut

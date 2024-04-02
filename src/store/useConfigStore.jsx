@@ -69,6 +69,8 @@ export default create((set) => {
         applianceType: 'fridge',
         wineStandSize: 'medium',
 
+        mainDrawers: false,
+
         edgeFinish: 'square',
 
         doorOpeningRotation: 1.5,
@@ -119,6 +121,9 @@ export default create((set) => {
         //appliances and winestand in tower
         setApplianceType: (type) => set({ applianceType: type }),
         setWineStandSize: (size) => set({ wineStandSize: size }),
+
+        //main drawers
+        setMainDrawers: (drawers) => set({ mainDrawers: drawers }),
 
         //edge finish
         setEdgeFinish: (finish) => set({ edgeFinish: finish }),
