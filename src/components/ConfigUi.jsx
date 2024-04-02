@@ -19,10 +19,8 @@ export default function ConfigUi() {
         allMaterials,
         allCategories,
 
-        mainMaterial,
         setMainMaterial,
 
-        accentMaterial,
         setAccentMaterial,
 
         setTableTopMaterial,
@@ -31,10 +29,8 @@ export default function ConfigUi() {
             allMaterials: state.allMaterials,
             allCategories: state.allCategories,
 
-            mainMaterial: state.mainMaterial,
             setMainMaterial: state.setMainMaterial,
 
-            accentMaterial: state.accentMaterial,
             setAccentMaterial: state.setAccentMaterial,
 
             setTableTopMaterial: state.setTableTopMaterial,
@@ -66,12 +62,11 @@ export default function ConfigUi() {
             setTableTopMaterial(allCategories['metal'][0].url);
 
         }
-    }, [allMaterials,
+    }, [
+        allMaterials,
 
-        mainMaterial,
         setMainMaterial,
 
-        accentMaterial,
         setAccentMaterial
     ]);
 
