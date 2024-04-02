@@ -50,7 +50,9 @@ export default function BaseIsland({ props }) {
         roughness: 1,
     });
 
-    const { nodes } = useGLTF("./models/base-island.glb");
+    const drawers = true;
+
+    const { nodes } = useGLTF(drawers ? './models/base-island-drawers.glb' : './models/base-island.glb');
 
 
     const meshRef = useRef();
@@ -73,31 +75,61 @@ export default function BaseIsland({ props }) {
 
 
     return <>
-        <mesh
-            name='base-island-mesh'
-            ref={meshRef}
-            castShadow
-            receiveShadow
-            geometry={nodes['island-low'].geometry}
-            material={material}
-            rotation={[0, Math.PI, 0]}
-            {...props}
-        >
+        {drawers && <>
             <mesh
-                visible={allBevelled}
+                name='base-island-mesh'
+                ref={meshRef}
                 castShadow
                 receiveShadow
-                geometry={nodes.bevel.geometry}
+                geometry={nodes['island-low-drawers'].geometry}
                 material={material}
-            />
+                rotation={[0, Math.PI, 0]}
+                {...props}
+            >
+                <mesh
+                    visible={allBevelled}
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.bevel.geometry}
+                    material={material}
+                />
+                <mesh
+                    visible={!allBevelled}
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.straight.geometry}
+                    material={material}
+                />
+            </mesh>
+        </>}
+
+        {!drawers && <>
             <mesh
-                visible={!allBevelled}
+                name='base-island-mesh'
+                ref={meshRef}
                 castShadow
                 receiveShadow
-                geometry={nodes.straight.geometry}
+                geometry={nodes['island-low'].geometry}
                 material={material}
-            />
-        </mesh>
+                rotation={[0, Math.PI, 0]}
+                {...props}
+            >
+                <mesh
+                    visible={allBevelled}
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.bevel.geometry}
+                    material={material}
+                />
+                <mesh
+                    visible={!allBevelled}
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.straight.geometry}
+                    material={material}
+                />
+            </mesh>
+        </>}
 
         <BakePlaneSmall
             props={{ ...props }}
