@@ -164,60 +164,83 @@ export default function Tower({ props }) {
         if (delta > 1) {
             return;
         };
-        if (doorRef.current && coolerRef.current) {
-            doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpeningRotation, delta * 2);
-            coolerRef.current.rotation.y = lerp(coolerRef.current.rotation.y, -doorOpeningRotation, delta * 2);
-        }
 
-        if (shelvesRef.current) {
-            if (doorOpeningRotation === 0) {
-                doorRef.current.rotation.y = lerp(
-                    doorRef.current.rotation.y,
-                    doorOpeningRotation,
-                    delta * 2
-                );
+        if (doorOpeningRotation === 0) {
+            if (doorRef.current) {
+                if (doorRef.current.rotation.y < 0.001) {
+                    return;
+                } else {
+                    doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpeningRotation, delta * 2);
+                }
+            }
+            if (coolerRef.current) {
+                if (coolerRef.current.rotation.y > -0.01) {
+                    return;
+                } else {
+                    coolerRef.current.rotation.y = lerp(coolerRef.current.rotation.y, doorOpeningRotation, delta * 2);
+                }
+            }
+            if (shelvesRef.current) {
+                if (shelvesRef.current.children[0].position.z < 0.06) {
+                    return;
+                } else {
+                    shelvesRef.current.children[0].position.z = lerp(
+                        shelvesRef.current.children[0].position.z,
+                        0.059,
+                        delta * 2
+                    );
+                    shelvesRef.current.children[1].position.z = lerp(
+                        shelvesRef.current.children[1].position.z,
+                        0.059,
+                        delta * 2
+                    );
+                    shelvesRef.current.children[2].position.z = lerp(
+                        shelvesRef.current.children[2].position.z,
+                        0.059,
+                        delta * 2
+                    );
+                }
+            }
 
-                shelvesRef.current.children[0].position.z = lerp(
-                    shelvesRef.current.children[0].position.z,
-                    0.059,
-                    delta * 2
-                );
-                shelvesRef.current.children[1].position.z = lerp(
-                    shelvesRef.current.children[1].position.z,
-                    0.059,
-                    delta * 2
-                );
-                shelvesRef.current.children[2].position.z = lerp(
-                    shelvesRef.current.children[2].position.z,
-                    0.059,
-                    delta * 2
-                );
-            } else if (doorOpeningRotation === 1.5) {
-                doorRef.current.rotation.y = lerp(
-                    doorRef.current.rotation.y,
-                    doorOpeningRotation,
-                    delta * 2
-                );
+        } else if (doorOpeningRotation === 1.5) {
+            if (doorRef.current) {
+                if (doorRef.current.rotation.y > 1.49) {
+                    return;
+                } else {
+                    doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpeningRotation, delta * 2);
+                }
+            }
+            if (coolerRef.current) {
+                if (coolerRef.current.rotation.y < -1.49) {
+                    return;
+                } else {
+                    coolerRef.current.rotation.y = lerp(coolerRef.current.rotation.y, -doorOpeningRotation, delta * 2);
+                }
+            }
+            if (shelvesRef.current) {
+                if (shelvesRef.current.children[0].position.z > 0.425) {
+                    return;
+                } else {
+                    const bottomShelfZ = doorOpeningRotation / 3.5;
+                    const middleShelfZ = doorOpeningRotation / 3.5 - 0.1; // Adjust as needed
+                    const topShelfZ = doorOpeningRotation / 3.5 - 0.2; // Adjust as needed
 
-                const bottomShelfZ = doorOpeningRotation / 3.5;
-                const middleShelfZ = doorOpeningRotation / 3.5 - 0.1; // Adjust as needed
-                const topShelfZ = doorOpeningRotation / 3.5 - 0.2; // Adjust as needed
-
-                shelvesRef.current.children[0].position.z = lerp(
-                    shelvesRef.current.children[0].position.z,
-                    bottomShelfZ,
-                    delta * 2
-                );
-                shelvesRef.current.children[1].position.z = lerp(
-                    shelvesRef.current.children[1].position.z,
-                    middleShelfZ,
-                    delta * 2
-                );
-                shelvesRef.current.children[2].position.z = lerp(
-                    shelvesRef.current.children[2].position.z,
-                    topShelfZ,
-                    delta * 2
-                );
+                    shelvesRef.current.children[0].position.z = lerp(
+                        shelvesRef.current.children[0].position.z,
+                        bottomShelfZ,
+                        delta * 2
+                    );
+                    shelvesRef.current.children[1].position.z = lerp(
+                        shelvesRef.current.children[1].position.z,
+                        middleShelfZ,
+                        delta * 2
+                    );
+                    shelvesRef.current.children[2].position.z = lerp(
+                        shelvesRef.current.children[2].position.z,
+                        topShelfZ,
+                        delta * 2
+                    );
+                }
             }
         }
     });
