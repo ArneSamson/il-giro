@@ -87,14 +87,14 @@ export default function BaseIsland({ props }) {
                 visible={allBevelled}
                 castShadow
                 receiveShadow
-                geometry={nodes.bevel.geometry}
+                geometry={nodes.bevel001.geometry}
                 material={material}
             />
             <mesh
                 visible={!allBevelled}
                 castShadow
                 receiveShadow
-                geometry={nodes.straight.geometry}
+                geometry={nodes.straight001.geometry}
                 material={material}
             />
         </mesh>
