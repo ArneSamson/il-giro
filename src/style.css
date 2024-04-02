@@ -577,11 +577,15 @@ input[type=range]::-ms-track {
 .config-ui__selection-buttons button {
     padding: 10px 20px;
     outline: 1px solid var(--light-grey);
+    background-color: var(--light-grey);
+    color: var(--extra-light-grey);
     cursor: pointer;
 }
 
 .config-ui__selection-buttons button.active-selection-button {
-    outline: 2px solid var(--off-black);
+    /* outline: 2px solid var(--off-black); */
+    background-color: var(--off-white);
+    color: var(--off-black);
 }
 
 
@@ -669,7 +673,8 @@ summary span {
 .config-ui__material-options__option {
     width: 45px;
     height: 45px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
+    border-radius: 6px;
     border: 1px solid var(--off-black);
 
     &:hover {
