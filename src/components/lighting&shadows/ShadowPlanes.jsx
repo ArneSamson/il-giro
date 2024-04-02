@@ -1,12 +1,14 @@
 import React, { useRef, useEffect } from 'react';
+import * as THREE from 'three';
 import { useTexture, useGLTF } from '@react-three/drei'
 
 export function BakePlane({ props }) {
 
     const { nodes } = useGLTF("./models/bake-plat.glb");
 
-    const alphaMap1 = useTexture('./images/bakes/bake.jpg');
+    const alphaMap1 = useTexture('./images/bakes/tower-bake.jpg');
     alphaMap1.flipY = false;
+    alphaMap1.colorSpace = THREE.SRGBColorSpace;
 
     const bigPlaneRef = useRef();
 
