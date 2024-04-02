@@ -566,6 +566,22 @@ input[type=range]::-ms-track {
     display: none;
 }
 
+.config-ui__options__overview {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.config-ui__options__overview__title {
+    font-size: var(--body-size);
+    color: var(--light-grey);
+}
+
+.config-ui__options__overview__title span {
+    color: var(--dark-grey);
+}
 
 .config-ui__selection-buttons {
     margin-top: 20px;

@@ -44,13 +44,13 @@ export default function UiPage2() {
     ];
 
     const faucetOptions = [
-        { label: "Brandwood 3", value: "1" },
-        { label: "Bridge", value: "2" }
+        { label: "Brandwood 3", value: 1 },
+        { label: "Bridge", value: 2 }
     ];
 
     const stoveOptions = [
-        { label: "Gas", value: "1" },
-        { label: "Electric", value: "2" }
+        { label: "Gas", value: 1 },
+        { label: "Electric", value: 2 }
     ];
 
     const applianceOptions = [
