@@ -10,10 +10,7 @@ import ToolTip from './ui/components/buttons/ToolTip.jsx';
 import LandingsPage from './ui/pages/LandingsPage.jsx';
 import UiPage1 from './ui/pages/UiPage1.jsx';
 import UiPage2 from './ui/pages/UiPage2.jsx';
-import UiPage3 from './ui/pages/UiPage3.jsx';
-import UiPage4 from './ui/pages/UiPage4.jsx';
-import UiPage5 from './ui/pages/UiPage5.jsx';
-import UiPage6 from './ui/pages/UiPage6.jsx';
+import OrderOverview from './ui/pages/OrderOverview.jsx';
 import ModuleSelectionPage from './ui/pages/ModuleSelectionPage.jsx';
 
 export default function ConfigUi() {
@@ -113,19 +110,7 @@ export default function ConfigUi() {
                     </>}
 
                     {currentPage === 3 && <>
-                        <UiPage3 />
-                    </>}
-
-                    {currentPage === 4 && <>
-                        <UiPage4 />
-                    </>}
-
-                    {currentPage === 5 && <>
-                        <UiPage5 />
-                    </>}
-
-                    {currentPage === 6 && <>
-                        <UiPage6 />
+                        <OrderOverview />
                     </>}
 
                 </div>
