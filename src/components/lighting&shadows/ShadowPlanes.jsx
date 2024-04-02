@@ -6,7 +6,7 @@ export function BakePlane({ props }) {
 
     const { nodes } = useGLTF("./models/bake-plat.glb");
 
-    const alphaMap1 = useTexture('./images/bakes/tower-bake.jpg');
+    const alphaMap1 = useTexture('./images/bakes/big-bake.jpg');
     alphaMap1.flipY = false;
     alphaMap1.colorSpace = THREE.SRGBColorSpace;
 
@@ -51,7 +51,7 @@ export function BakePlaneSmall({ props }) {
 
     const { nodes, materials } = useGLTF("./models/bake-plat.glb");
 
-    const alphaMap1 = useTexture('./images/bakes/bake2.jpg');
+    const alphaMap1 = useTexture('./images/bakes/small-bake.jpg');
     alphaMap1.flipY = false;
 
     const smallPlaneRef = useRef();
