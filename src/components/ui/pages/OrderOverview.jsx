@@ -99,25 +99,32 @@ export default function OrderOverview() {
                     className="config-ui__options__overview__title"
                 >Edge Finish: <span>{edgeFinish}</span></h4>
 
-                <h4
-                    className="config-ui__options__overview__title"
-                >Tap Type: <span>{
-                    tapType === 1 ? "Brandwood 3" : tapType === 2 ? "Bridge" : ""
-                }</span></h4>
+                {sinkChosen &&
+                    <h4
+                        className="config-ui__options__overview__title"
+                    >Tap Type: <span>{
+                        tapType === 1 ? "Brandwood 3" : tapType === 2 ? "Bridge" : ""
+                    }</span></h4>
+                }
 
-                <h4
-                    className="config-ui__options__overview__title"
-                >Stove Type: <span>{
-                    stoveType === 1 ? "Gas" : stoveType === 2 ? "Electric" : ""
-                }</span></h4>
+                {cooktopChosen &&
+                    <h4
+                        className="config-ui__options__overview__title"
+                    >Stove Type: <span>{
+                        stoveType === 1 ? "Gas" : stoveType === 2 ? "Electric" : ""
+                    }</span></h4>
+                }
 
-                <h4
-                    className="config-ui__options__overview__title"
-                >Appliance Type: <span>{applianceType}</span></h4>
+                {towerChosen && <>
+                    <h4
+                        className="config-ui__options__overview__title"
+                    >Appliance Type: <span>{applianceType}</span></h4>
 
-                <h4
-                    className="config-ui__options__overview__title"
-                >Wine Stand Size: <span>{wineStandSize}</span></h4>
+                    <h4
+                        className="config-ui__options__overview__title"
+                    >Wine Stand Size: <span>{wineStandSize}</span>
+                    </h4>
+                </>}
 
 
 
