@@ -12,10 +12,14 @@ export default function ExtraButtons() {
     const {
         doorOpeningRotation,
         setDoorOpeningRotation,
+        showChairs,
+        setShowChairs,
     } = useConfig(
         state => ({
             doorOpeningRotation: state.doorOpeningRotation,
             setDoorOpeningRotation: state.setDoorOpeningRotation,
+            showChairs: state.showChairs,
+            setShowChairs: state.setShowChairs,
         })
     );
 
@@ -52,6 +56,10 @@ export default function ExtraButtons() {
 
     const handleOpening = () => {
         setDoorOpeningRotation(doorOpeningRotation === 1.5 ? 0 : 1.5);
+    }
+
+    const handleChairs = () => {
+        setShowChairs(!showChairs);
     }
 
 
@@ -129,7 +137,9 @@ export default function ExtraButtons() {
                 <div
                     className='extra-buttons__button'
                 >
-                    <button>
+                    <button
+                        onClick={handleChairs}
+                    >
                         <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6.25 21H13.75" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             <path d="M13.125 13.7679L10 13.7683M10 13.7683V20V13.75V7.5M10 13.7683H6.875" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
