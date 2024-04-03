@@ -80,8 +80,16 @@ export default function PDFButton() {
         });
 
     return (<>
-        <a href={instance.url} rel="noopener noreferrer" target="_blank">
-            Download PDF overview
+        <a
+            href={instance.url}
+            rel="noopener noreferrer"
+            target="_blank"
+            className="config-ui__options__overview__PDF-link"
+        >
+            <button
+            >
+                Download PDF overview
+            </button>
         </a>
     </>);
 }

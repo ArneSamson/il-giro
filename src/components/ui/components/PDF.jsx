@@ -6,26 +6,24 @@ Font.register({ family: 'Kaisei Decol', src: '/fonts/KaiseiDecol-Regular.ttf' })
 const styles = StyleSheet.create({
     page: {
         flexDirection: 'column',
-        backgroundColor: '#fafafa'
+        backgroundColor: '#fafafa',
     },
     section: {
-        margin: 10,
-        padding: 10,
+        margin: 20,
     },
     subsection: {
-        margin: 10,
-        padding: 10,
-        flexGrow: 1
+        flexGrow: 1,
+        paddingBottom: 10
     },
     title: {
         fontFamily: 'Kaisei Decol',
-        fontSize: 42,
+        fontSize: 36,
         fontWeight: 400,
         marginBottom: 10
     },
     subtitle: {
         fontFamily: 'Kaisei Decol',
-        fontSize: 24,
+        fontSize: 18,
         marginBottom: 5
     },
     value: {
@@ -72,7 +70,7 @@ export function MyDocument({ props }) {
             keywords="order, overview, il giro"
             language='en'
         >
-            <Page size="A4" style={styles.page} wrap>
+            <Page size="A4" style={styles.page} wrap={true}>
 
                 <View
                     style={styles.banner}
@@ -88,6 +86,7 @@ export function MyDocument({ props }) {
                         style={styles.heroImage}
                     />
                 </View>
+
 
                 <View style={styles.section}>
                     <Image

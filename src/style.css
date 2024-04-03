@@ -590,6 +590,25 @@ input[type=range]::-ms-track {
     color: var(--dark-grey);
 }
 
+.config-ui__options__overview__PDF-link {
+    width: fit-content;
+}
+
+.config-ui__options__overview__PDF-link button {
+    padding: 10px;
+    border: 1px solid var(--off-black);
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: var(--off-white);
+    color: var(--off-black);
+    font-weight: var(--button-weight);
+    transition: background-color 0.5s ease;
+}
+
+.config-ui__options__overview__PDF-link button:hover {
+    background-color: var(--light-grey);
+}
+
 .config-ui__selection-buttons {
     margin-top: 20px;
     display: flex;
