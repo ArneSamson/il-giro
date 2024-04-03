@@ -20,12 +20,11 @@ export default function BaseIsland({ props, needsDrawers }) {
         })
     );
 
-
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
-        mainMaterial + "albedo.jpg",
-        mainMaterial + "normal.jpg",
-        mainMaterial + "roughness.jpg",
-        mainMaterial + "metallic.jpg"
+        mainMaterial.url + "albedo.jpg",
+        mainMaterial.url + "normal.jpg",
+        mainMaterial.url + "roughness.jpg",
+        mainMaterial.url + "metallic.jpg"
     ]);
 
     albedoTexture.anisotropy = 16;

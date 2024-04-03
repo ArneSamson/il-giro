@@ -22,7 +22,7 @@ export default function DetailWithMaterials({
                         key={index}
                         className={`config-ui__material-options__option ${selectedMaterial === material.url ? "selected-material-n-category" : ""
                             }`}
-                        onClick={() => setMaterial(material.url)}
+                        onClick={() => setMaterial(material)}
                         style={{ backgroundImage: `url(${material.url}albedo.jpg)` }}
                     ></div>
                 ))}

@@ -50,17 +50,17 @@ export default function MaterialCategorySelection() {
                         onClick={() => {
                             setMainMaterialCategory(category)
                             setIsSecondDetailsOpen(true)
-                            setMainMaterial(materials[0].url)
+                            setMainMaterial(materials[0])
 
                             switch (category) {
                                 case 'metal':
-                                    setTableTopMaterial(allCategories['dekton'][0].url)
+                                    setTableTopMaterial(allCategories['dekton'][0])
                                     break;
                                 case 'dekton':
-                                    setTableTopMaterial(allCategories['natural stone'][0].url)
+                                    setTableTopMaterial(allCategories['natural stone'][0])
                                     break;
                                 case 'natural stone':
-                                    setTableTopMaterial(allCategories['metal'][0].url)
+                                    setTableTopMaterial(allCategories['metal'][0])
                                     break;
                             }
                         }}

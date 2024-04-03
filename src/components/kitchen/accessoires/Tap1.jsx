@@ -15,8 +15,8 @@ export default function Tap1({ props }) {
     } = useConfig();
 
     const [albedoTexture, metallnessTexture] = useTexture([
-        accentMaterial + "albedo.jpg",
-        accentMaterial + "metallic.jpg"
+        accentMaterial.url + "albedo.jpg",
+        accentMaterial.url + "metallic.jpg"
     ]);
 
     albedoTexture.colorSpace = THREE.SRGBColorSpace;

@@ -14,11 +14,13 @@ export default function Reginox({ props }) {
 
     } = useConfig();
 
+    console.log(accentMaterial);
+
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
-        accentMaterial + "albedo.jpg",
-        accentMaterial + "normal.jpg",
-        accentMaterial + "roughness.jpg",
-        accentMaterial + "metallic.jpg"
+        accentMaterial.url + "albedo.jpg",
+        accentMaterial.url + "normal.jpg",
+        accentMaterial.url + "roughness.jpg",
+        accentMaterial.url + "metallic.jpg"
     ]);
 
     albedoTexture.colorSpace = THREE.SRGBColorSpace;

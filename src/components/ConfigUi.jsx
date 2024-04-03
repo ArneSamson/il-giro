@@ -58,8 +58,8 @@ export default function ConfigUi() {
 
             if (loaded) return;
 
-            setMainMaterial(allMaterials[0].url);
-            setAccentMaterial(allCategories['metal'][0].url);
+            setMainMaterial(allMaterials[0]);
+            setAccentMaterial(allCategories['metal'][0]);
             setTableTopMaterial(allCategories['metal'][0].url);
 
         }

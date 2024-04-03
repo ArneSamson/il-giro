@@ -26,7 +26,7 @@ export default function AccentMaterialSelection() {
         >
             <summary>Tabletop material:
                 <span>
-                    {' ' + tableTopMaterial.split('/').slice(-2, -1)[0]}
+                    {' ' + tableTopMaterial.name}
                 </span>
             </summary>
 

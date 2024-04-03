@@ -25,7 +25,7 @@ export default create((set) => {
                 url: material.url
             }));
 
-            // console.log('allMaterials:', allMaterials);
+            console.log('allMaterials:', allMaterials);
             console.log('allCategories:', allCategories);
 
             set({ allMaterials, allCategories });

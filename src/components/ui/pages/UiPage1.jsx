@@ -25,6 +25,8 @@ export default function UiPage1() {
         })
     );
 
+    console.log(accentMaterial);
+
     return <>
 
         <div
@@ -56,7 +58,7 @@ export default function UiPage1() {
             <DetailWithMaterials
                 header="Accent material: "
                 materials={allCategories.metal}
-                selectedMaterial={accentMaterial.split("/").slice(-2, -1)[0]}
+                selectedMaterial={accentMaterial.name}
                 setMaterial={setAccentMaterial}
                 open={false}
             />
