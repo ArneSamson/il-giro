@@ -46,7 +46,7 @@ export default function ExtraButtons() {
     const handleZoom = () => {
         // if (currentPage === 0) return;
         setCameraFocus([0, 1, 0]);
-        setCurrentPage(0);
+        // setCurrentPage(0);
 
     }
 
