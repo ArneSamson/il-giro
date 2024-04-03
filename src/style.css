@@ -432,17 +432,18 @@ input[type=range]::-ms-track {
     opacity: 1;
 }
 
-.extra-buttons__zoom-out button {
+.extra-buttons__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 10px; */
+    /* border-radius: 50%;
+    background-color: var(--off-white);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2); */
 
-    &:hover {
-        path {
-            stroke: var(--light-grey);
-        }
-
-    }
 }
 
-.extra-buttons__move button {
+.extra-buttons__button button {
 
     &:hover {
         path {

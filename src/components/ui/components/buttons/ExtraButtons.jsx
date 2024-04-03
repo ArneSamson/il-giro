@@ -63,13 +63,13 @@ export default function ExtraButtons() {
                 content='Back to selection'
             >
                 <div
-                    className='extra-buttons__zoom-out'
+                    className='extra-buttons__button'
                 >
                     <button
                         onClick={handleBackHome}
                     >
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5.375 9.75L1 5.375M1 5.375L5.375 1M1 5.375H11.5C12.4283 5.375 13.3185 5.74375 13.9749 6.40013C14.6313 7.0565 15 7.94674 15 8.875V15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.625 12.25L1 6.625M1 6.625L6.625 1M1 6.625H14.5C15.6935 6.625 16.8381 7.09911 17.682 7.94302C18.5259 8.78693 19 9.93153 19 11.125V19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                 </div>
@@ -79,15 +79,15 @@ export default function ExtraButtons() {
                 content='Zoom out'
             >
                 <div
-                    className='extra-buttons__zoom-out'
+                    className='extra-buttons__button'
                 >
                     <button
                         onClick={handleZoom}
                     >
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className='zoom-out__image'>
-                            <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M19 19L14.65 14.65" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M6 9H12" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.88888 18.7778C14.7981 18.7778 18.7778 14.7981 18.7778 9.88888C18.7778 4.97969 14.7981 1 9.88888 1C4.97969 1 1 4.97969 1 9.88888C1 14.7981 4.97969 18.7778 9.88888 18.7778Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M21 20.9998L16.1666 16.1665" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M6.55554 9.88892H13.2222" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                 </div>
@@ -97,30 +97,51 @@ export default function ExtraButtons() {
                 content={`${doorOpeningRotation === 0 ? 'Open ' : 'Close '} doors and drawers`}
             >
                 <div
-                    className='extra-buttons__zoom-out'
+                    className='extra-buttons__button'
                 >
                     <button
                         onClick={handleOpening}
                     >
-                        {doorOpeningRotation === 0 && <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14.461 1.1875H2.53891C1.80732 1.1875 1.21423 1.76749 1.21423 2.48295V16.733C1.21423 17.4484 1.80732 18.0284 2.53891 18.0284H14.461C15.1926 18.0284 15.7857 17.4484 15.7857 16.733V2.48295C15.7857 1.76749 15.1926 1.1875 14.461 1.1875Z" stroke="black" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M8.5 1.1875V18.0284" stroke="black" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M10.8116 8.96021V10.2557" stroke="black" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M6.18823 8.96021V10.2557" stroke="black" strokeLinecap="round" strokeLinejoin="round" />
+                        {doorOpeningRotation === 0 && <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.7316 1H2.57316C1.70434 1 1 1.68879 1 2.53846V19.4615C1 20.3112 1.70434 21 2.57316 21H16.7316C17.6005 21 18.3048 20.3112 18.3048 19.4615V2.53846C18.3048 1.68879 17.6005 1 16.7316 1Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M9.65247 1V21" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M12.3978 10.2307V11.7692" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M6.90698 10.2307V11.7692" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>}
-                        {doorOpeningRotation === 1.5 && <svg width="17" height="21" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15.5714 14V2.29545C15.5714 1.57999 14.9784 1 14.2468 1H2.32468C1.59308 1 1 1.57999 1 2.29545V16.5455C1 17.2609 1.59308 17.8409 2.32468 17.8409H7.5" stroke="black" strokeLinecap="square" strokeLinejoin="round" />
-                            <path d="M11.5 11V11.6477V12.7" stroke="black" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M5.974 8.77271V10.0682" stroke="black" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M10 4V20.4387" stroke="black" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M8 1.5V17.8362" stroke="black" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M10 4L15 1.5" stroke="black" />
-                            <path d="M10 20.45L13.5 18.5001L14.25 18C15.75 17.15 15.57 15 15.57 14" stroke="black" />
+                        {doorOpeningRotation === 1.5 && <svg width="17" height="22" viewBox="0 0 17 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.9835 14.3676V2.33209C15.9835 1.5964 15.3737 1 14.6214 1H2.36214C1.60986 1 1 1.5964 1 2.33209V16.9851C1 17.7208 1.60986 18.3172 2.36214 18.3172H7.16968" stroke="black" stroke-width="2" stroke-linecap="square" stroke-linejoin="round" />
+                            <path d="M12.311 11.2827V11.9488V13.0308" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M6.11462 8.99243V10.3245" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M10.2545 4.08496V20.9885" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M8.198 1.51416V18.3123" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M10.2545 4.08486L15.3959 1.51416" stroke="black" stroke-width="2" />
+                            <path d="M10.2545 21.0001L13.8535 18.995L14.6248 18.4808C16.1672 17.6068 15.9821 15.396 15.9821 14.3677" stroke="black" stroke-width="2" />
                         </svg>
+
                         }
                     </button>
                 </div>
             </ToolTipHandler>
+
+            <ToolTipHandler
+                content='Show chairs'
+            >
+                <div
+                    className='extra-buttons__button'
+                >
+                    <button>
+                        <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.25 21H13.75" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M13.125 13.7679L10 13.7683M10 13.7683V20V13.75V7.5M10 13.7683H6.875" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M5.625 1H10H14.375V4H10C7.58929 4 7.992 4 5.625 4L5.625 1Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M5 4V7.12469C8.125 7.12469 6.61357 7.12469 9.375 7.12469C12.1364 7.12469 11.875 7.12469 15 7.12469V4H10H5Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+
+                    </button>
+                </div>
+            </ToolTipHandler>
+
         </div>
     </>
 }
