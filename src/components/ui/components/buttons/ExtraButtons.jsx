@@ -132,7 +132,7 @@ export default function ExtraButtons() {
             </ToolTipHandler>
 
             <ToolTipHandler
-                content='Show chairs'
+                content={`${showChairs === true ? 'Hide ' : 'Show '} chairs`}
             >
                 <div
                     className='extra-buttons__button'
