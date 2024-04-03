@@ -71,16 +71,11 @@ export default create((set) => {
 
         mainDrawers: false,
 
+        showChairs: false,
+
         edgeFinish: 'square',
 
         doorOpeningRotation: 1.5,
-
-        dragMode: false,
-        isDragging: false,
-
-        isDraggingSink: false,
-        isDraggingCooktop: false,
-        isDraggingTower: false,
 
         //Setters_______________________________________________________________________________________
 
@@ -124,6 +119,9 @@ export default create((set) => {
 
         //main drawers
         setMainDrawers: (drawers) => set({ mainDrawers: drawers }),
+
+        //chairs
+        setShowChairs: (show) => set({ showChairs: show }),
 
         //edge finish
         setEdgeFinish: (finish) => set({ edgeFinish: finish }),

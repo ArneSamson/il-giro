@@ -3,6 +3,7 @@ import { useCursor } from '@react-three/drei'
 
 import BaseIsland from './BaseIsland.jsx';
 import TableFlat from './TableFlat.jsx';
+import Stool from './accessoires/Stool.jsx';
 
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfigStore.jsx';
@@ -13,10 +14,12 @@ export default function Table({ props }) {
     const {
         tablePosition,
         tableRotation,
+        showChairs,
     } = useConfig(
         state => ({
             tablePosition: state.tablePosition,
             tableRotation: state.tableRotation,
+            showChairs: state.showChairs
         })
     );
 
@@ -110,6 +113,37 @@ export default function Table({ props }) {
                         position: [-0.995, 0, -0.005]
                     }}
                 />
+
+                {showChairs && <>
+                    <Stool
+                        props={{
+                            position: [0.5, 0, 0.7],
+                            rotation: [0, Math.PI, 0]
+                        }}
+                    />
+
+                    <Stool
+                        props={{
+                            position: [-0.5, 0, 0.7],
+                            rotation: [0, Math.PI, 0]
+                        }}
+                    />
+
+                    <Stool
+                        props={{
+                            position: [0.5, 0, -0.7],
+                            rotation: [0, 0, 0]
+                        }}
+                    />
+
+                    <Stool
+                        props={{
+                            position: [-0.5, 0, -0.7],
+                            rotation: [0, 0, 0]
+                        }}
+                    />
+                </>}
+
 
             </group>
 
