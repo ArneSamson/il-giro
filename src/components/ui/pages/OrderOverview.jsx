@@ -10,6 +10,7 @@ export default function OrderOverview() {
         edgeFinish,
 
         tapType,
+        mainDrawers,
 
         stoveType,
 
@@ -32,6 +33,7 @@ export default function OrderOverview() {
             edgeFinish: state.edgeFinish,
 
             tapType: state.tapType,
+            mainDrawers: state.mainDrawers,
 
             stoveType: state.stoveType,
 
@@ -104,13 +106,18 @@ export default function OrderOverview() {
                     className="config-ui__options__overview__title"
                 >Edge Finish: <span>{edgeFinish}</span></h4>
 
-                {sinkChosen &&
+                {sinkChosen && <>
                     <h4
                         className="config-ui__options__overview__title"
                     >Tap Type: <span>{
                         tapType === 1 ? "Brandwood 3" : tapType === 2 ? "Bridge" : ""
                     }</span></h4>
-                }
+
+                    <h4
+                        className="config-ui__options__overview__title"
+                    >Extra Drawers: <span>{mainDrawers ? "Yes" : "No"
+                    }</span></h4>
+                </>}
 
                 {cooktopChosen &&
                     <h4

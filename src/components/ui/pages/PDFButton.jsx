@@ -12,6 +12,7 @@ export default function PDFButton() {
         edgeFinish,
 
         tapType,
+        mainDrawers,
 
         stoveType,
 
@@ -34,6 +35,7 @@ export default function PDFButton() {
             edgeFinish: state.edgeFinish,
 
             tapType: state.tapType,
+            mainDrawers: state.mainDrawers,
 
             stoveType: state.stoveType,
 
@@ -71,6 +73,7 @@ export default function PDFButton() {
                     bevelled: allBevelled ? 'curved' : 'straight',
                     edgeFinish: edgeFinish,
                     tapType: sinkChosen ? tapType === 1 ? 'Brandwood 3' : 'Bridge' : null,
+                    mainDrawers: sinkChosen ? mainDrawers ? "yes" : "no" : null,
                     stoveType: cooktopChosen ? stoveType === 1 ? 'gas' : 'electric' : null,
                     applianceType: towerChosen ? applianceType : null,
                     wineStandSize: towerChosen ? wineStandSize : null,

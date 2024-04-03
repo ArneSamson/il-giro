@@ -97,6 +97,21 @@ export function MyDocument({ props }) {
 
                     <Text style={styles.title}>Overview of Your Order</Text>
 
+
+                    <View
+                        style={styles.subsection}
+                    >
+                        <Text style={styles.subtitle}>Chosen Modules:</Text>
+                        <Text style={styles.value}>{props.chosenModules}</Text>
+                    </View>
+
+                    <View
+                        style={styles.subsection}
+                    >
+                        <Text style={styles.subtitle}>Curved:</Text>
+                        <Text style={styles.value}>{props.bevelled}</Text>
+                    </View>
+
                     <View
                         style={styles.subsection}
                     >
@@ -125,23 +140,43 @@ export function MyDocument({ props }) {
                     <View
                         style={styles.subsection}
                     >
-                        <Text style={styles.subtitle}>Chosen Modules:</Text>
-                        <Text style={styles.value}>{props.chosenModules}</Text>
-                    </View>
-
-                    <View
-                        style={styles.subsection}
-                    >
-                        <Text style={styles.subtitle}>Curved:</Text>
-                        <Text style={styles.value}>{props.bevelled}</Text>
-                    </View>
-
-                    <View
-                        style={styles.subsection}
-                    >
                         <Text style={styles.subtitle}>Edge Finish:</Text>
                         <Text style={styles.value}>{props.edgeFinish}</Text>
                     </View>
+
+                    {props.tapType && (
+                        <>
+                            <View
+                                style={styles.subsection}
+                            >
+                                <Text style={styles.subtitle}>Tap Type:</Text>
+                                <Text style={styles.value}>{props.tapType}</Text>
+                            </View>
+                        </>
+                    )}
+
+                    {props.mainDrawers && (
+                        <>
+                            <View
+                                style={styles.subsection}
+                            >
+                                <Text style={styles.subtitle}>Extra Drawers:</Text>
+                                <Text style={styles.value}>{props.mainDrawers}</Text>
+                            </View>
+                        </>
+                    )}
+
+
+                    {props.stoveType && (
+                        <>
+                            <View
+                                style={styles.subsection}
+                            >
+                                <Text style={styles.subtitle}>Stove Type:</Text>
+                                <Text style={styles.value}>{props.stoveType}</Text>
+                            </View>
+                        </>
+                    )}
 
                     {props.applianceType && (
                         <>
@@ -165,27 +200,6 @@ export function MyDocument({ props }) {
                         </>
                     )}
 
-                    {props.tapType && (
-                        <>
-                            <View
-                                style={styles.subsection}
-                            >
-                                <Text style={styles.subtitle}>Tap Type:</Text>
-                                <Text style={styles.value}>{props.tapType}</Text>
-                            </View>
-                        </>
-                    )}
-
-                    {props.stoveType && (
-                        <>
-                            <View
-                                style={styles.subsection}
-                            >
-                                <Text style={styles.subtitle}>Stove Type:</Text>
-                                <Text style={styles.value}>{props.stoveType}</Text>
-                            </View>
-                        </>
-                    )}
                 </View>
             </Page>
         </Document>
