@@ -72,8 +72,8 @@ export default function PDFButton() {
                     edgeFinish: edgeFinish,
                     tapType: sinkChosen ? tapType === 1 ? 'Brandwood 3' : 'Bridge' : null,
                     stoveType: cooktopChosen ? stoveType === 1 ? 'gas' : 'electric' : null,
-                    applianceType: applianceType,
-                    wineStandSize: wineStandSize,
+                    applianceType: towerChosen ? applianceType : null,
+                    wineStandSize: towerChosen ? wineStandSize : null,
                     chosenModules: chosenModules,
                 }}
             />
