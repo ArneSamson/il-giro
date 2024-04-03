@@ -9,19 +9,72 @@ import useConfigStore from "../../../store/useConfigStore";
 export default function PDFView() {
 
     const {
-        allBevelled,
+        edgeFinish,
+
+        tapType,
+
+        stoveType,
+
+        applianceType,
+
+        wineStandSize,
+
+        sinkChosen,
+        cooktopChosen,
+        towerChosen,
+        tableChosen,
+
+        mainMaterial,
+        tableTopMaterial,
+        accentMaterial,
+
+        allBevelled
     } = useConfigStore(
         state => ({
-            allBevelled: state.allBevelled,
+            edgeFinish: state.edgeFinish,
+
+            tapType: state.tapType,
+
+            stoveType: state.stoveType,
+
+            applianceType: state.applianceType,
+
+            wineStandSize: state.wineStandSize,
+
+            sinkChosen: state.sinkChosen,
+            cooktopChosen: state.cooktopChosen,
+            towerChosen: state.towerChosen,
+            tableChosen: state.tableChosen,
+
+            mainMaterial: state.mainMaterial,
+            tableTopMaterial: state.tableTopMaterial,
+            accentMaterial: state.accentMaterial,
+
+            allBevelled: state.allBevelled
         })
     );
+
+    const chosenModules = [
+        sinkChosen ? 'Sink' : '',
+        cooktopChosen ? 'Cooktop' : '',
+        towerChosen ? 'Tower' : '',
+        tableChosen ? 'Table' : ''
+    ].filter(Boolean).join(', ');
 
     const [instance, updateInstance] = usePDF(
         {
             document: <MyDocument
                 props={{
-                    title: allBevelled ? 'bevelled' : 'not bevelled',
-                    content: 'test'
+                    mainMaterial: mainMaterial,
+                    tableTopMaterial: tableTopMaterial,
+                    accentMaterial: towerChosen || sinkChosen ? accentMaterial : null,
+                    bevelled: allBevelled ? 'curved' : 'straight',
+                    edgeFinish: edgeFinish,
+                    tapType: sinkChosen ? tapType === 1 ? 'Brandwood 3' : 'Bridge' : null,
+                    stoveType: cooktopChosen ? stoveType === 1 ? 'gas' : 'electric' : null,
+                    applianceType: applianceType,
+                    wineStandSize: wineStandSize,
+                    chosenModules: chosenModules,
                 }}
             />
         });
