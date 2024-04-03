@@ -2,6 +2,8 @@ import React from "react";
 
 import useConfigStore from "../../../store/useConfigStore";
 
+import PDFButton from "./PDFButton.jsx";
+
 export default function OrderOverview() {
 
     const {
@@ -128,6 +130,9 @@ export default function OrderOverview() {
                     >Wine Stand Size: <span>{wineStandSize}</span>
                     </h4>
                 </>}
+
+
+                <PDFButton />
 
 
 

@@ -66,7 +66,7 @@ export function MyDocument({ props }) {
     return (
 
         <Document>
-            <Page size="A4" style={styles.page}>
+            <Page size="A4" style={styles.page} wrap>
 
                 <View
                     style={styles.banner}

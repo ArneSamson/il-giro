@@ -4,9 +4,9 @@ import { PDFViewer, usePDF, PDFDownloadLink, BlobProvider } from '@react-pdf/ren
 
 import { MyDocument } from "../components/PDF.jsx";
 
-import useConfigStore from "../../../store/useConfigStore";
+import useConfigStore from "../../../store/useConfigStore.jsx";
 
-export default function PDFView() {
+export default function PDFButton() {
 
     const {
         edgeFinish,
@@ -80,14 +80,8 @@ export default function PDFView() {
         });
 
     return (<>
-        <div
-            className='config-ui__title'
-        >
-            <span><h2>PDF</h2></span>
-        </div>
-
         <a href={instance.url} rel="noopener noreferrer" target="_blank">
-            Download
+            Download PDF overview
         </a>
     </>);
 }
