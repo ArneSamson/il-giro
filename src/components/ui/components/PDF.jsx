@@ -65,7 +65,13 @@ export function MyDocument({ props }) {
 
     return (
 
-        <Document>
+        <Document
+            title="Order Overview"
+            author="Arne Samson"
+            subject="Order Overview"
+            keywords="order, overview, il giro"
+            language='en'
+        >
             <Page size="A4" style={styles.page} wrap>
 
                 <View
