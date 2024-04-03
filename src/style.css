@@ -510,6 +510,12 @@ input[type=range]::-ms-track {
     display: none;
 }
 
+.config-ui iframe {
+    width: 100%;
+    height: 100%;
+
+}
+
 
 .config-ui__nav {
     display: flex;
