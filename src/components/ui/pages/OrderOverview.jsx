@@ -91,9 +91,12 @@ export default function OrderOverview() {
                     className="config-ui__options__overview__title"
                 >Table Top Material: <span>{tableTopMaterial.split("/").slice(-2, -1)[0]}</span></h4>
 
-                <h4
-                    className="config-ui__options__overview__title"
-                >Accent Material: <span>{accentMaterial.split("/").slice(-2, -1)[0]}</span></h4>
+                {(towerChosen || sinkChosen) && (
+                    <h4
+                        className="config-ui__options__overview__title"
+                    >Accent Material: <span>{accentMaterial.split("/").slice(-2, -1)[0]}</span>
+                    </h4>
+                )}
 
                 <h4
                     className="config-ui__options__overview__title"
