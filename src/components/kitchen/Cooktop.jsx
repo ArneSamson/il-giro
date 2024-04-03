@@ -108,7 +108,6 @@ export default function Cooktop() {
                             position: [0, 0, 0],
                             rotation: [0, 0, 0],
                         }}
-                        materialUrl={tableTopMaterial}
                     />
 
                     {stoveType === 1 && (

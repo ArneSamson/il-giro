@@ -102,14 +102,14 @@ export function MyDocument({ props }) {
                         style={styles.subsection}
                     >
                         <Text style={styles.subtitle}>Main Material:</Text>
-                        <Text style={styles.value}>{props.mainMaterial}</Text>
+                        <Text style={styles.value}>{props.mainMaterial.name}</Text>
                     </View>
 
                     <View
                         style={styles.subsection}
                     >
                         <Text style={styles.subtitle}>Table Top Material:</Text>
-                        <Text style={styles.value}>{props.tableTopMaterial}</Text>
+                        <Text style={styles.value}>{props.tableTopMaterial.name}</Text>
                     </View>
 
                     {props.accentMaterial &&
@@ -118,7 +118,7 @@ export function MyDocument({ props }) {
                                 style={styles.subsection}
                             >
                                 <Text style={styles.subtitle}>Accent Material:</Text>
-                                <Text style={styles.value}>{props.accentMaterial}</Text>
+                                <Text style={styles.value}>{props.accentMaterial.name}</Text>
                             </View>
                         </>
                     }

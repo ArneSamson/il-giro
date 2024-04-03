@@ -14,8 +14,6 @@ export default function Reginox({ props }) {
 
     } = useConfig();
 
-    console.log(accentMaterial);
-
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
         accentMaterial.url + "albedo.jpg",
         accentMaterial.url + "normal.jpg",

@@ -35,9 +35,9 @@ export default function AccentMaterialSelection() {
                     {allCategories['dekton'].map((material, index) => (
                         <div
                             key={index}
-                            className={`config-ui__material-options__option ${tableTopMaterial === material.url ? 'selected-material-n-category' : ""}`}
+                            className={`config-ui__material-options__option ${tableTopMaterial === material ? 'selected-material-n-category' : ""}`}
                             onClick={() => {
-                                setTableTopMaterial(material.url)
+                                setTableTopMaterial(material)
                             }}
                             style={{
                                 backgroundImage: `url(${material.url}albedo.jpg)`,
@@ -52,9 +52,9 @@ export default function AccentMaterialSelection() {
                     {allCategories['natural stone'].map((material, index) => (
                         <div
                             key={index}
-                            className={`config-ui__material-options__option ${tableTopMaterial === material.url ? 'selected-material-n-category' : ""}`}
+                            className={`config-ui__material-options__option ${tableTopMaterial === material ? 'selected-material-n-category' : ""}`}
                             onClick={() => {
-                                setTableTopMaterial(material.url)
+                                setTableTopMaterial(material)
                             }}
                             style={{
                                 backgroundImage: `url(${material.url}albedo.jpg)`,
@@ -71,9 +71,9 @@ export default function AccentMaterialSelection() {
                         material.url.includes('inox') &&
                         <div
                             key={index}
-                            className={`config-ui__material-options__option ${tableTopMaterial === material.url ? 'selected-material-n-category' : ""}`}
+                            className={`config-ui__material-options__option ${tableTopMaterial === material ? 'selected-material-n-category' : ""}`}
                             onClick={() => {
-                                setTableTopMaterial(material.url)
+                                setTableTopMaterial(material)
                             }}
                             style={{
                                 backgroundImage: `url(${material.url}albedo.jpg)`,

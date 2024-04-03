@@ -25,8 +25,6 @@ export default function UiPage1() {
         })
     );
 
-    console.log(accentMaterial);
-
     return <>
 
         <div

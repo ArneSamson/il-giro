@@ -60,7 +60,7 @@ export default function ConfigUi() {
 
             setMainMaterial(allMaterials[0]);
             setAccentMaterial(allCategories['metal'][0]);
-            setTableTopMaterial(allCategories['metal'][0].url);
+            setTableTopMaterial(allCategories['metal'][0]);
 
         }
     }, [

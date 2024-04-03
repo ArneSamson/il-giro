@@ -128,7 +128,6 @@ export default function Sink({ props }) {
                                 rotation: [0, 0, 0],
                             }
                         }
-                        materialUrl={tableTopMaterial}
                     />
 
                     <Reginox
