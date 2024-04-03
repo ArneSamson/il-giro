@@ -13,7 +13,7 @@ export default function ConfigNav() {
         })
     );
 
-    const pagesAmount = 3;
+    const pagesAmount = 4;
 
     const {
         setCameraFocus,
