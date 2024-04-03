@@ -19,22 +19,32 @@ export default function Stool({ props }) {
 
     const [isVisible, setIsVisible] = useState(showChairs);
 
-    // Define spring animation for stool scale
     const [stoolScale, setStoolScale] = useSpring(() => ({
-        scale: [0.01, 0.01, 0.01],
+        scale: showChairs ? [1, 1, 1] : [0.01, 0.01, 0.01],
         config: { duration: 250 },
         reverse: !showChairs,
+        onStart: () => {
+            setIsVisible(true);
+        },
         onRest: () => {
-            setIsVisible(showChairs);
+            if (showChairs === false && isVisible === true) {
+                setIsVisible(false);
+            }
         }
     }));
 
     useEffect(() => {
         setStoolScale({
             scale: showChairs ? [1, 1, 1] : [0.01, 0.01, 0.01],
-            reverse: !showChairs,
         });
+
+        // console.log('showChairs:', showChairs, 'isVisible:', isVisible);
     }, [showChairs, setStoolScale]);
+
+    useEffect(() => {
+        console.log('isvisble', isVisible);
+        console.log(showChairs);
+    }, [isVisible]);
 
     return isVisible ? (
         <a.group
