@@ -41,10 +41,10 @@ export default function Stool({ props }) {
         // console.log('showChairs:', showChairs, 'isVisible:', isVisible);
     }, [showChairs, setStoolScale]);
 
-    useEffect(() => {
-        console.log('isvisble', isVisible);
-        console.log(showChairs);
-    }, [isVisible]);
+    // useEffect(() => {
+    //     console.log('isvisble', isVisible);
+    //     console.log(showChairs);
+    // }, [isVisible]);
 
     return isVisible ? (
         <a.group
