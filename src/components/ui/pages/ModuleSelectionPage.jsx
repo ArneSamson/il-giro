@@ -44,7 +44,7 @@ export default function ModuleSelectionPage() {
         <div
             className='config-ui__title'
         >
-            <span><h2>Choose your modules</h2></span>
+            <span><h2>1. Choose your modules</h2></span>
         </div>
 
         <div
