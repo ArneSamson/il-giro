@@ -36,7 +36,7 @@ export default function BaseIsland({ props }) {
         roughnessMap: roughnessTexture,
         metalnessMap: metallnessTexture,
         metalness: 1,
-        roughness: 1,
+        roughness: 0.5,
     });
 
     const { nodes } = useGLTF("./models/table.glb");

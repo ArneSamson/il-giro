@@ -21,7 +21,7 @@ export default function TableTopCutOut({ props, materialUrl }) {
         roughnessMap: roughnessTexture,
         metalnessMap: metallnessTexture,
         metalness: 1,
-        roughness: 1,
+        roughness: 0.5,
     });
 
 
