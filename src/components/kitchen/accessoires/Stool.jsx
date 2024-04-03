@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useGLTF } from '@react-three/drei'
-import { useSpring, a } from '@react-spring/three'
+import { useSpring, a, easings } from '@react-spring/three'
 
 import useConfigStore from '../../../store/useConfigStore';
 
@@ -23,8 +23,7 @@ export default function Stool({ props }) {
         scale: showChairs ? [1, 1, 1] : [0.01, 0.01, 0.01],
         config: {
             duration: 250,
-            friction: 8,
-            tension: 500
+            easing: easings.easeOutExpo
         },
         reverse: !showChairs,
         onStart: () => {
