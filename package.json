@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.0",
+    "@react-pdf/renderer": "^3.4.2",
     "@react-spring/three": "^9.7.3",
     "@react-three/drei": "^9.99.0",
     "@react-three/fiber": "^8.15.16",
