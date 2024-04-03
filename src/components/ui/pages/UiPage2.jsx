@@ -23,6 +23,11 @@ export default function UiPage2() {
 
         mainDrawers,
         setMainDrawers,
+
+        sinkChosen,
+        cooktopChosen,
+        towerChosen,
+        tableChosen,
     } = useConfigStore(
         state => ({
             edgeFinish: state.edgeFinish,
@@ -41,6 +46,11 @@ export default function UiPage2() {
 
             mainDrawers: state.mainDrawers,
             setMainDrawers: state.setMainDrawers,
+
+            sinkChosen: state.sinkChosen,
+            cooktopChosen: state.cooktopChosen,
+            towerChosen: state.towerChosen,
+            tableChosen: state.tableChosen,
         })
     );
 
@@ -95,40 +105,46 @@ export default function UiPage2() {
                 setOption={setEdgeFinish}
             />
 
-            <DetailWithButtons
-                summary="Faucet type: "
-                options={faucetOptions}
-                selectedOption={faucetOptions.find(option => option.value === tapType).label}
-                setOption={setTapType}
-            />
+            {sinkChosen && <>
+                <DetailWithButtons
+                    summary="Faucet type: "
+                    options={faucetOptions}
+                    selectedOption={faucetOptions.find(option => option.value === tapType).label}
+                    setOption={setTapType}
+                />
 
-            <DetailWithButtons
-                summary="Stove type: "
-                options={stoveOptions}
-                selectedOption={stoveOptions.find(option => option.value === stoveType).label}
-                setOption={setStoveType}
-            />
+                <DetailWithButtons
+                    summary="Exta drawers: "
+                    options={mainDrawerOptions}
+                    selectedOption={mainDrawerOptions.find(option => option.value === mainDrawers).label}
+                    setOption={setMainDrawers}
+                />
+            </>}
 
-            <DetailWithButtons
-                summary="Winestand size: "
-                options={winestandOptions}
-                selectedOption={winestandOptions.find(option => option.value === wineStandSize).label}
-                setOption={setWineStandSize}
-            />
+            {cooktopChosen && <>
+                <DetailWithButtons
+                    summary="Stove type: "
+                    options={stoveOptions}
+                    selectedOption={stoveOptions.find(option => option.value === stoveType).label}
+                    setOption={setStoveType}
+                />
+            </>}
 
-            <DetailWithButtons
-                summary="Appliance type: "
-                options={applianceOptions}
-                selectedOption={applianceOptions.find(option => option.value === applianceType).label}
-                setOption={setApplianceType}
-            />
+            {towerChosen && <>
+                <DetailWithButtons
+                    summary="Winestand size: "
+                    options={winestandOptions}
+                    selectedOption={winestandOptions.find(option => option.value === wineStandSize).label}
+                    setOption={setWineStandSize}
+                />
 
-            <DetailWithButtons
-                summary="Exta drawers: "
-                options={mainDrawerOptions}
-                selectedOption={mainDrawerOptions.find(option => option.value === mainDrawers).label}
-                setOption={setMainDrawers}
-            />
+                <DetailWithButtons
+                    summary="Appliance type: "
+                    options={applianceOptions}
+                    selectedOption={applianceOptions.find(option => option.value === applianceType).label}
+                    setOption={setApplianceType}
+                />
+            </>}
 
         </div>
     </>
