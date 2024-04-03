@@ -1,14 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useGLTF } from '@react-three/drei'
+import { useSpring, a } from '@react-spring/three'
+
+import useConfigStore from '../../../store/useConfigStore';
 
 export default function Stool({ props }) {
 
 
+    const {
+        showChairs,
+    } = useConfigStore(
+        state => ({
+            showChairs: state.showChairs
+        })
+    );
+
     const { nodes, materials } = useGLTF("/models/stool.glb");
 
-    return (
-        <group
+    const [isVisible, setIsVisible] = useState(showChairs);
+
+    // Define spring animation for stool scale
+    const [stoolScale, setStoolScale] = useSpring(() => ({
+        scale: [0.01, 0.01, 0.01],
+        config: { duration: 250 },
+        reverse: !showChairs,
+        onRest: () => {
+            setIsVisible(showChairs);
+        }
+    }));
+
+    useEffect(() => {
+        setStoolScale({
+            scale: showChairs ? [1, 1, 1] : [0.01, 0.01, 0.01],
+            reverse: !showChairs,
+        });
+    }, [showChairs, setStoolScale]);
+
+    return isVisible ? (
+        <a.group
             name="stool-group-container"
+            scale={stoolScale.scale}
             {...props}
             dispose={null}
         >
@@ -37,8 +68,8 @@ export default function Stool({ props }) {
                     material={materials['Material2 plastic']}
                 />
             </mesh>
-        </group>
-    );
+        </a.group>
+    ) : null;
 }
 
 useGLTF.preload('/models/stool.glb')

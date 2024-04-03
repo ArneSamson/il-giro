@@ -113,8 +113,7 @@ export default function Table({ props }) {
                         position: [-0.995, 0, -0.005]
                     }}
                 />
-
-                {showChairs && <>
+                <>
                     <Stool
                         props={{
                             position: [0.5, 0, 0.7],
@@ -142,7 +141,7 @@ export default function Table({ props }) {
                             rotation: [0, 0, 0]
                         }}
                     />
-                </>}
+                </>
 
 
             </group>
