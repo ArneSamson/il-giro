@@ -21,7 +21,11 @@ export default function Stool({ props }) {
 
     const [stoolScale, setStoolScale] = useSpring(() => ({
         scale: showChairs ? [1, 1, 1] : [0.01, 0.01, 0.01],
-        config: { duration: 250 },
+        config: {
+            duration: 250,
+            friction: 500,
+            tension: 100
+        },
         reverse: !showChairs,
         onStart: () => {
             setIsVisible(true);
