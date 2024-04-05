@@ -622,9 +622,9 @@ input[type=range]::-ms-track {
 
 .config-ui__selection-buttons button {
     padding: 10px 20px;
-    outline: 1px solid var(--extra-light-grey);
+    outline: 1px solid var(--light-grey);
     background-color: var(--off-white);
-    color: var(--extra-light-grey);
+    color: var(--light-grey);
     cursor: pointer;
 }
 
