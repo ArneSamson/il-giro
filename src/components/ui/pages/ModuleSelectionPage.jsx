@@ -3,6 +3,7 @@ import React from "react";
 import useConfigStore from "../../../store/useConfigStore.jsx";
 
 import ModuleSelectionButtons from "../components/ModuleSelectionButtons.jsx";
+import DetailWithButtons from "../components/DetailWithButtons.jsx";
 import BevelledSelection from "../components/toggle/BevelledSelection.jsx";
 
 export default function ModuleSelectionPage() {
@@ -17,6 +18,9 @@ export default function ModuleSelectionPage() {
         setCooktopChosen,
         setTowerChosen,
         setTableChosen,
+
+        allBevelled,
+        setAllBevelled,
     } = useConfigStore(
         state => ({
             sinkChosen: state.sinkChosen,
@@ -28,6 +32,9 @@ export default function ModuleSelectionPage() {
             setCooktopChosen: state.setCooktopChosen,
             setTowerChosen: state.setTowerChosen,
             setTableChosen: state.setTableChosen,
+
+            allBevelled: state.allBevelled,
+            setAllBevelled: state.setAllBevelled,
         })
     );
 
@@ -37,7 +44,11 @@ export default function ModuleSelectionPage() {
         { label: "Tower", value: "tower", chosen: towerChosen, setChosen: setTowerChosen },
         { label: "Table", value: "table", chosen: tableChosen, setChosen: setTableChosen },
     ];
-    const anyModuleChosen = moduleOptions.some(option => option.chosen);
+
+    const bevelledOptions = [
+        { label: "Curved", value: true, chosen: allBevelled, setChosen: setAllBevelled },
+        { label: "Straight", value: false, chosen: !allBevelled, setChosen: setAllBevelled }
+    ];
 
     return <>
 
@@ -50,16 +61,17 @@ export default function ModuleSelectionPage() {
         <div
             className='config-ui__options'
         >
-            <div
-                style={anyModuleChosen ? { border: "none" } : { border: "2px dashed var(--off-black)", borderWidth: "2px", animation: "pulse 1s infinite" }}
-            >
-                <ModuleSelectionButtons
-                    summary="Select module(s): "
-                    options={moduleOptions}
-                />
-            </div>
+            <ModuleSelectionButtons
+                summary="Select module(s): "
+                options={moduleOptions}
+            />
 
-            <BevelledSelection />
+            <DetailWithButtons
+                summary="Bottom finish: "
+                options={bevelledOptions}
+                selectedOption={bevelledOptions.find(option => option.value === allBevelled).label}
+                setOption={setAllBevelled}
+            />
 
 
         </div >
