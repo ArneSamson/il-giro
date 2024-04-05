@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderBottom: '1px solid black',
         padding: 5,
+        gap: 10,
     },
 
     appliances: {
@@ -310,6 +311,10 @@ export function MyDocument({ props }) {
                             >
                                 <Text>
                                     countertop : {props.tableTopMaterial.name}
+                                </Text>
+
+                                <Text>
+                                    {props.tableTopInset}
                                 </Text>
                             </View>
 

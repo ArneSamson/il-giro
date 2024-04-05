@@ -29,7 +29,8 @@ export default function PDFButton() {
         tableTopMaterial,
         accentMaterial,
 
-        allBevelled
+        allBevelled,
+        tableTopInset,
     } = useConfigStore(
         state => ({
             edgeFinish: state.edgeFinish,
@@ -52,7 +53,8 @@ export default function PDFButton() {
             tableTopMaterial: state.tableTopMaterial,
             accentMaterial: state.accentMaterial,
 
-            allBevelled: state.allBevelled
+            allBevelled: state.allBevelled,
+            tableTopInset: state.tableTopInset,
         })
     );
 
@@ -69,6 +71,7 @@ export default function PDFButton() {
                 props={{
                     mainMaterial: mainMaterial,
                     tableTopMaterial: tableTopMaterial,
+                    tableTopInset: tableTopInset ? 'inset' : 'overlay',
                     accentMaterial: towerChosen || sinkChosen ? accentMaterial : null,
                     bevelled: allBevelled ? 'curved' : 'straight',
                     edgeFinish: edgeFinish,
