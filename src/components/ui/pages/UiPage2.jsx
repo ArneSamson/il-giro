@@ -28,6 +28,9 @@ export default function UiPage2() {
         cooktopChosen,
         towerChosen,
         tableChosen,
+
+        tableTopInset,
+        setTableTopInset,
     } = useConfigStore(
         state => ({
             edgeFinish: state.edgeFinish,
@@ -51,6 +54,9 @@ export default function UiPage2() {
             cooktopChosen: state.cooktopChosen,
             towerChosen: state.towerChosen,
             tableChosen: state.tableChosen,
+
+            tableTopInset: state.tableTopInset,
+            setTableTopInset: state.setTableTopInset,
         })
     );
 
@@ -86,6 +92,11 @@ export default function UiPage2() {
         { label: "No", value: false }
     ];
 
+    const tableTopInsetOptions = [
+        { label: "Yes", value: true },
+        { label: "No", value: false }
+    ];
+
     return <>
 
         <div
@@ -103,6 +114,13 @@ export default function UiPage2() {
                 options={edgeFinishOptions}
                 selectedOption={edgeFinishOptions.find(option => option.value === edgeFinish).label}
                 setOption={setEdgeFinish}
+            />
+
+            <DetailWithButtons
+                summary="Countertop inset: "
+                options={tableTopInsetOptions}
+                selectedOption={tableTopInsetOptions.find(option => option.value === tableTopInset).label}
+                setOption={setTableTopInset}
             />
 
             {sinkChosen && <>

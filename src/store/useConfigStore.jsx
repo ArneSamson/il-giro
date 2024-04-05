@@ -75,6 +75,8 @@ export default create((set) => {
 
         edgeFinish: 'square',
 
+        tableTopInset: true,
+
         doorOpeningRotation: 1.5,
 
         //Setters_______________________________________________________________________________________
@@ -125,6 +127,9 @@ export default create((set) => {
 
         //edge finish
         setEdgeFinish: (finish) => set({ edgeFinish: finish }),
+
+        //table top inset
+        setTableTopInset: (inset) => set({ tableTopInset: inset }),
 
         //door opening
         setDoorOpeningRotation: (rotation) => set({ doorOpeningRotation: rotation }),

@@ -26,6 +26,8 @@ export default function Sink({ props }) {
         tapType,
 
         mainDrawers,
+
+        tableTopInset,
     } = useConfig(state => ({
         tableTopMaterial: state.tableTopMaterial,
 
@@ -35,6 +37,8 @@ export default function Sink({ props }) {
         tapType: state.tapType,
 
         mainDrawers: state.mainDrawers,
+
+        tableTopInset: state.tableTopInset,
     }));
 
     const {
@@ -120,49 +124,53 @@ export default function Sink({ props }) {
                     <Drawers />
                 }
 
-                <>
-                    <TableTopCutOut
-                        props={
-                            {
-                                position: [0, 0, 0],
-                                rotation: [0, 0, 0],
+                <group
+                    position={tableTopInset ? [0, 0, 0] : [0, 0.02, 0]}
+                >
+                    <>
+                        <TableTopCutOut
+                            props={
+                                {
+                                    scale: tableTopInset ? [1, 1, 1] : [1.05, 1, 1.05],
+                                }
                             }
-                        }
-                    />
+                        />
 
-                    <Reginox
-                        props={
-                            {
-                                position: [0, 0, 0],
-                                rotation: [0, 0, 0],
+                        <Reginox
+                            props={
+                                {
+                                    position: [0, 0, 0],
+                                    rotation: [0, 0, 0],
+                                }
                             }
-                        }
-                    />
-                </>
+                        />
+                    </>
 
 
-                {tapType === 1 &&
-                    <Tap1
-                        props={
-                            {
-                                position: [0, 0.01, 0],
-                                rotation: [0, 0, 0],
+                    {tapType === 1 &&
+                        <Tap1
+                            props={
+                                {
+                                    position: [0, 0.01, 0],
+                                    rotation: [0, 0, 0],
+                                }
                             }
-                        }
-                    />
-                }
+                        />
+                    }
 
-                {tapType === 2 &&
+                    {tapType === 2 &&
 
-                    <Tap2
-                        props={
-                            {
-                                position: [0, 0, 0],
-                                rotation: [0, 0, 0],
+                        <Tap2
+                            props={
+                                {
+                                    position: [0, 0, 0],
+                                    rotation: [0, 0, 0],
+                                }
                             }
-                        }
-                    />
-                }
+                        />
+                    }
+
+                </group>
             </group>
 
         </group>

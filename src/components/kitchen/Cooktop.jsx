@@ -20,6 +20,8 @@ export default function Cooktop() {
         cooktopRotation,
 
         stoveType,
+
+        tableTopInset,
     } = useConfig(
         (state) => ({
             tableTopMaterial: state.tableTopMaterial,
@@ -28,6 +30,8 @@ export default function Cooktop() {
             cooktopRotation: state.cooktopRotation,
 
             stoveType: state.stoveType,
+
+            tableTopInset: state.tableTopInset,
         })
     );
 
@@ -103,30 +107,34 @@ export default function Cooktop() {
                 >
                     <BaseIsland />
 
-                    <TableTop
-                        props={{
-                            position: [0, 0, 0],
-                            rotation: [0, 0, 0],
-                        }}
-                    />
-
-                    {stoveType === 1 && (
-                        <GasStove
+                    <group
+                        position={tableTopInset ? [0, 0, 0] : [0, 0.02, 0]}
+                    >
+                        <TableTop
                             props={{
-                                position: [0, 0, 0],
+                                scale: tableTopInset ? [1, 1, 1] : [1.05, 1, 1.05],
                             }}
                         />
-                    )}
 
-                    {stoveType === 2 && (
-                        <ElectricStove
-                            props={{
-                                position: [0, 0.97, 0.1],
-                                scale: [0.9, 0.9, 0.9],
-                                rotation: [0, 0, 0],
-                            }}
-                        />
-                    )}
+                        {stoveType === 1 && (
+                            <GasStove
+                                props={{
+                                    position: [0, 0, 0],
+                                }}
+                            />
+                        )}
+
+                        {stoveType === 2 && (
+                            <ElectricStove
+                                props={{
+                                    position: [0, 0.97, 0.1],
+                                    scale: [0.9, 0.9, 0.9],
+                                    rotation: [0, 0, 0],
+                                }}
+                            />
+                        )}
+                    </group>
+
                 </group>
             </group>
         </>
