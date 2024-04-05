@@ -30,7 +30,7 @@ export default function UiPage1() {
         <div
             className='config-ui__title'
         >
-            <span><h2>2. Materials</h2></span>
+            <span><h2>Materials</h2></span>
         </div>
 
         <div

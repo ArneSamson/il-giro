@@ -91,7 +91,7 @@ export default function UiPage2() {
         <div
             className='config-ui__title'
         >
-            <span><h2>3. Options</h2></span>
+            <span><h2>Options</h2></span>
         </div>
 
         <div
