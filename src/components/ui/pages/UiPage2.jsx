@@ -93,8 +93,8 @@ export default function UiPage2() {
     ];
 
     const tableTopInsetOptions = [
-        { label: "Yes", value: true },
-        { label: "No", value: false }
+        { label: "Inset", value: true },
+        { label: "Overlay", value: false }
     ];
 
     return <>
@@ -118,7 +118,7 @@ export default function UiPage2() {
 
             {sinkChosen || cooktopChosen && <>
                 <DetailWithButtons
-                    summary="Countertop inset: "
+                    summary="Countertop: "
                     options={tableTopInsetOptions}
                     selectedOption={tableTopInsetOptions.find(option => option.value === tableTopInset).label}
                     setOption={setTableTopInset}
