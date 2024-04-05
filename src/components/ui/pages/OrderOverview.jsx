@@ -27,7 +27,8 @@ export default function OrderOverview() {
         tableTopMaterial,
         accentMaterial,
 
-        allBevelled
+        allBevelled,
+        tableTopInset,
     } = useConfigStore(
         state => ({
             edgeFinish: state.edgeFinish,
@@ -50,7 +51,8 @@ export default function OrderOverview() {
             tableTopMaterial: state.tableTopMaterial,
             accentMaterial: state.accentMaterial,
 
-            allBevelled: state.allBevelled
+            allBevelled: state.allBevelled,
+            tableTopInset: state.tableTopInset,
         })
     );
 
@@ -105,6 +107,10 @@ export default function OrderOverview() {
                 <h4
                     className="config-ui__options__overview__title"
                 >Edge Finish: <span>{edgeFinish}</span></h4>
+
+                <h4
+                    className="config-ui__options__overview__title"
+                >Table Top Inset: <span>{tableTopInset ? 'inset' : 'overlay'}</span></h4>
 
                 {sinkChosen && <>
                     <h4
