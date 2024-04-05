@@ -406,8 +406,12 @@ input[type=range]::-ms-track {
     top: 50%;
     left: 75px;
     transform: translateY(-50%);
-    background-color: white;
-    border-radius: 32px;
+
+    background: var(--trans-white);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    border-radius: 6px;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
 }
 
