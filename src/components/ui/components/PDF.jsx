@@ -2,7 +2,19 @@ import React from 'react';
 import { Page, Text, View, Document, StyleSheet, BlobProvider, Image, Font } from '@react-pdf/renderer';
 
 // Font.register({ family: 'Kaisei Decol', src: '/fonts/KaiseiDecol-Regular.ttf' });
-Font.register({ family: 'calibri', src: '/fonts/calibri.ttf' });
+// Font.register({ family: 'calibri', src: '/fonts/calibri.ttf' });
+
+Font.register(
+    {
+        family: 'Roboto', fonts: [
+            { src: '/fonts/Roboto-regular.ttf' },
+            { src: '/fonts/Roboto-Bold.ttf', fontWeight: 700 },
+        ]
+    },
+    {
+        family: 'Kaisei Decol', src: '/fonts/KaiseiDecol-Regular.ttf'
+    },
+);
 
 const styles = StyleSheet.create({
     page: {
@@ -76,14 +88,15 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         width: '100%',
-        alignContent: 'space-between',
     },
     row: {
         width: '100%',
+        height: '100%',
         flexDirection: 'row',
     },
     cell: {
         width: '100%',
+        height: '100%',
         border: '1px solid black',
     },
     cellContent: {
@@ -92,9 +105,17 @@ const styles = StyleSheet.create({
         textAlign: 'left',
     },
 
+    orderTitle: {
+        // fontFamily: 'Helvetica',
+        fontFamily: 'Roboto',
+        fontWeight: 700,
+    }
+
 });
 
 export function MyDocument({ props }) {
+
+    const currentDate = new Date().toLocaleDateString();
 
     return (
 
@@ -114,10 +135,10 @@ export function MyDocument({ props }) {
                         style={styles.table}
                     >
                         <View
-                            style={[styles.row, { width: '100%', height: 100 }]}
+                            style={[styles.row, { width: '100%', height: 75 }]}
                         >
                             <View
-                                style={[styles.cell, { width: 'auto', height: 100 }]}
+                                style={[styles.cell, { width: 200, height: 'auto' }]}
                             >
                                 <Image
                                     style={{ padding: 10 }}
@@ -136,7 +157,7 @@ export function MyDocument({ props }) {
                                         style={styles.cell}
                                     >
                                         <Text
-                                            style={styles.cellContent}
+                                            style={[styles.cellContent, styles.orderTitle]}
                                         >
                                             PURCHASE ORDER IL GIRO
                                         </Text>
@@ -148,7 +169,7 @@ export function MyDocument({ props }) {
                                         <Text
                                             style={styles.cellContent}
                                         >
-                                            date :
+                                            date : {currentDate}
                                         </Text>
                                     </View>
 
@@ -173,7 +194,7 @@ export function MyDocument({ props }) {
                                             style={styles.cellContent}
                                         >
 
-                                            ...
+
                                         </Text>
                                     </View>
 
@@ -240,7 +261,7 @@ export function MyDocument({ props }) {
                                 style={styles.modelOption}
                             >
                                 <Text>
-                                    model name : {props.chosenModules}
+                                    model name(s) : {props.chosenModules}
                                 </Text>
                             </View>
 
@@ -312,7 +333,7 @@ export function MyDocument({ props }) {
                                 style={styles.applianceOption}
                             >
                                 <Text>
-                                    type of wine cooler:
+                                    type of tower appliance : {props.applianceType}
                                 </Text>
                             </View>
 
@@ -320,7 +341,7 @@ export function MyDocument({ props }) {
                                 style={styles.applianceOption}
                             >
                                 <Text>
-                                    type of refrigerator :
+                                    size of winestand : {props.wineStandSize}
                                 </Text>
                             </View>
 
@@ -328,24 +349,15 @@ export function MyDocument({ props }) {
                                 style={styles.applianceOption}
                             >
                                 <Text>
-                                    type of cooking fire :
+                                    type of cooking fire : {props.stoveType}
                                 </Text>
-                            </View>
-
-                            <View
-                                style={styles.applianceOption}
-                            >
-                                <Text>
-                                    type of sink :
-                                </Text>
-
                             </View>
 
                             <View
                                 style={[styles.applianceOption, { borderBottom: 'none' }]}
                             >
                                 <Text>
-                                    type of faucet :
+                                    type of faucet : {props.tapType}
                                 </Text>
 
                             </View>
