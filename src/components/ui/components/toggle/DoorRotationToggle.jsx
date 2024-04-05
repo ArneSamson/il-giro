@@ -18,7 +18,7 @@ export default function DoorRotationToggle() {
         <div
             className='config-ui__slider'
         >
-            <h5>Open doors and shelves:</h5>
+            <h5>Open doors and drawers:</h5>
 
             <label className="config-ui__toggle">
                 <input

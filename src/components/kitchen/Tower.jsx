@@ -126,7 +126,7 @@ export default function Tower({ props }) {
     const cabinetRef = useRef();
     const doorRef = useRef();
     const coolerRef = useRef();
-    const shelvesRef = useRef();
+    const drawersRef = useRef();
 
     useEffect(() => {
         if (cabinetRef.current && doorRef.current) {
@@ -180,22 +180,22 @@ export default function Tower({ props }) {
                     coolerRef.current.rotation.y = lerp(coolerRef.current.rotation.y, doorOpeningRotation, delta * 2);
                 }
             }
-            if (shelvesRef.current) {
-                if (shelvesRef.current.children[0].position.z < 0.06) {
+            if (drawersRef.current) {
+                if (drawersRef.current.children[0].position.z < 0.06) {
                     return;
                 } else {
-                    shelvesRef.current.children[0].position.z = lerp(
-                        shelvesRef.current.children[0].position.z,
+                    drawersRef.current.children[0].position.z = lerp(
+                        drawersRef.current.children[0].position.z,
                         0.059,
                         delta * 2
                     );
-                    shelvesRef.current.children[1].position.z = lerp(
-                        shelvesRef.current.children[1].position.z,
+                    drawersRef.current.children[1].position.z = lerp(
+                        drawersRef.current.children[1].position.z,
                         0.059,
                         delta * 2
                     );
-                    shelvesRef.current.children[2].position.z = lerp(
-                        shelvesRef.current.children[2].position.z,
+                    drawersRef.current.children[2].position.z = lerp(
+                        drawersRef.current.children[2].position.z,
                         0.059,
                         delta * 2
                     );
@@ -217,26 +217,26 @@ export default function Tower({ props }) {
                     coolerRef.current.rotation.y = lerp(coolerRef.current.rotation.y, -doorOpeningRotation, delta * 2);
                 }
             }
-            if (shelvesRef.current) {
-                if (shelvesRef.current.children[0].position.z > 0.425) {
+            if (drawersRef.current) {
+                if (drawersRef.current.children[0].position.z > 0.425) {
                     return;
                 } else {
                     const bottomShelfZ = doorOpeningRotation / 3.5;
                     const middleShelfZ = doorOpeningRotation / 3.5 - 0.1; // Adjust as needed
                     const topShelfZ = doorOpeningRotation / 3.5 - 0.2; // Adjust as needed
 
-                    shelvesRef.current.children[0].position.z = lerp(
-                        shelvesRef.current.children[0].position.z,
+                    drawersRef.current.children[0].position.z = lerp(
+                        drawersRef.current.children[0].position.z,
                         bottomShelfZ,
                         delta * 2
                     );
-                    shelvesRef.current.children[1].position.z = lerp(
-                        shelvesRef.current.children[1].position.z,
+                    drawersRef.current.children[1].position.z = lerp(
+                        drawersRef.current.children[1].position.z,
                         middleShelfZ,
                         delta * 2
                     );
-                    shelvesRef.current.children[2].position.z = lerp(
-                        shelvesRef.current.children[2].position.z,
+                    drawersRef.current.children[2].position.z = lerp(
+                        drawersRef.current.children[2].position.z,
                         topShelfZ,
                         delta * 2
                     );
@@ -510,10 +510,10 @@ export default function Tower({ props }) {
                             </>
                         )}
 
-                        {applianceType === "shelves" && (
+                        {applianceType === "drawers" && (
                             <>
                                 <mesh
-                                    name="shelves"
+                                    name="drawers"
                                     castShadow
                                     receiveShadow
                                     geometry={nodes["inside-shelf"].geometry}
@@ -539,8 +539,8 @@ export default function Tower({ props }) {
                                         material={material}
                                     />
                                     <group
-                                        name="shelves-group"
-                                        ref={shelvesRef}
+                                        name="drawers-group"
+                                        ref={drawersRef}
                                     >
                                         <mesh
                                             castShadow
@@ -566,8 +566,8 @@ export default function Tower({ props }) {
                                             position={[
                                                 0,
                                                 0.544,
-                                                shelvesRef.current
-                                                    ? shelvesRef.current
+                                                drawersRef.current
+                                                    ? drawersRef.current
                                                         .position.z
                                                     : 0.059,
                                             ]}
@@ -585,8 +585,8 @@ export default function Tower({ props }) {
                                             position={[
                                                 0,
                                                 0.788,
-                                                shelvesRef.current
-                                                    ? shelvesRef.current
+                                                drawersRef.current
+                                                    ? drawersRef.current
                                                         .position.z
                                                     : 0.059,
                                             ]}
