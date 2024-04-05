@@ -1,12 +1,14 @@
 import React from 'react';
 import { CameraControls } from '@react-three/drei';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 import useScene from '../store/useScene';
 
 export default function CameraHandler() {
 
     const camera = useRef();
+
+    const [maxDistance, setMaxDistance] = useState(4);
 
     const {
         cameraFocus,
@@ -52,6 +54,13 @@ export default function CameraHandler() {
             );
             camera.current.camera.updateProjectionMatrix();
         }
+
+        if (window.innerWidth < 1200) {
+            setMaxDistance(4 + window.innerWidth / 200);
+        } else {
+            setMaxDistance(4);
+        }
+
     };
 
     useEffect(() => {
@@ -66,7 +75,7 @@ export default function CameraHandler() {
             draggingSmoothTime={0.2}
             maxPolarAngle={Math.PI / 2}
             maxZoom={4}
-            maxDistance={4}
+            maxDistance={maxDistance}
             minDistance={2}
         />
     )
