@@ -116,12 +116,15 @@ export default function UiPage2() {
                 setOption={setEdgeFinish}
             />
 
-            <DetailWithButtons
-                summary="Countertop inset: "
-                options={tableTopInsetOptions}
-                selectedOption={tableTopInsetOptions.find(option => option.value === tableTopInset).label}
-                setOption={setTableTopInset}
-            />
+            {sinkChosen || cooktopChosen &&
+                <DetailWithButtons
+                    summary="Countertop inset: "
+                    options={tableTopInsetOptions}
+                    selectedOption={tableTopInsetOptions.find(option => option.value === tableTopInset).label}
+                    setOption={setTableTopInset}
+                />
+            }
+
 
             {sinkChosen && <>
                 <DetailWithButtons
