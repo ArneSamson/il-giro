@@ -58,6 +58,7 @@ export default function UiPage1() {
                 selectedMaterial={accentMaterial.name}
                 setMaterial={setAccentMaterial}
                 open={true}
+                extraMessage="*The sink will always be inox if the tabletop is inox."
             />
 
         </div>

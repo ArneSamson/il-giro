@@ -5,7 +5,8 @@ export default function DetailWithMaterials({
     materials,
     selectedMaterial,
     setMaterial,
-    open
+    open,
+    extraMessage
 }) {
     return (
         <details
@@ -26,6 +27,7 @@ export default function DetailWithMaterials({
                         style={{ backgroundImage: `url(${material.url}preview.jpg)` }}
                     ></div>
                 ))}
+                <p>{extraMessage}</p>
             </div>
         </details>
     );
