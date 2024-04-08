@@ -6,7 +6,7 @@ import { useTexture } from '../../../helper/useTexture.tsx';
 
 import useConfig from '../../../store/useConfigStore.jsx';
 
-export default function BaseIsland({ props }) {
+export default function TableFlat({ props }) {
 
     const {
         tableTopMaterial,
