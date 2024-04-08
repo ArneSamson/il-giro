@@ -1,11 +1,10 @@
 {
     "categories": {
         "wood": [
-            "light oak",
+            "dark wood",
             "chestnut",
             "cherry",
-            "mahony",
-            "dark wood"
+            "mahony"
         ],
         "metal": [
             "inox",
@@ -32,20 +31,17 @@
         ]
     },
     "materials": {
-        "light oak": {
-            "url": "/materials/lightoak/"
+        "dark wood": {
+            "url": "/materials/darkwood/"
+        },
+        "mahony": {
+            "url": "/materials/mahony/"
         },
         "chestnut": {
             "url": "/materials/chestnut/"
         },
         "cherry": {
             "url": "/materials/cherry/"
-        },
-        "mahony": {
-            "url": "/materials/mahony/"
-        },
-        "dark wood": {
-            "url": "/materials/darkwood/"
         },
         "solid surface": {
             "url": "/materials/solidsurface/"
