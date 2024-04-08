@@ -485,7 +485,8 @@ input[type=range]::-ms-track {
 }
 
 .config-ui__selection-buttons button,
-.config-ui__options__overview__PDF-link button {
+.config-ui__options__overview__PDF-link button,
+.config-ui__nav button {
     padding: 10px 20px;
     outline: none;
     background-color: transparent;
