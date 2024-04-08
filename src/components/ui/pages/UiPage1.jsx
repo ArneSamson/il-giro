@@ -50,7 +50,6 @@ export default function UiPage1() {
             />
 
             <TableTopMaterialSelection
-
             />
 
             <DetailWithMaterials
@@ -58,7 +57,7 @@ export default function UiPage1() {
                 materials={allCategories.metal}
                 selectedMaterial={accentMaterial.name}
                 setMaterial={setAccentMaterial}
-                open={false}
+                open={true}
             />
 
         </div>

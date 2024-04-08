@@ -180,6 +180,7 @@ export default function ModuleSelectionButtons({ summary, options }) {
         <details
             open
             className="config-ui__details"
+            onClick={(e) => e.preventDefault()}
         >
             <summary>
                 {summary}

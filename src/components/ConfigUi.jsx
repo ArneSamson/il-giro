@@ -91,7 +91,6 @@ export default function ConfigUi() {
                     className='config-ui'
                 >
 
-                    <ConfigNav />
 
                     {currentPage === 0 && <>
                         <ModuleSelectionPage />
@@ -112,6 +111,9 @@ export default function ConfigUi() {
                     {/* {currentPage === 4 && <>
                         <PDFView />
                     </>} */}
+
+                    <ConfigNav />
+
 
                 </div>
                 }

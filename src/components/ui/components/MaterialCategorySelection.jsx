@@ -31,8 +31,9 @@ export default function MaterialCategorySelection() {
 
     return <>
         <details
-            open
+            open={true}
             className='config-ui__details'
+            onClick={(e) => e.preventDefault()}
         >
             <summary>Base material:
                 <span>

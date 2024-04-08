@@ -10,7 +10,8 @@ export default function DetailWithMaterials({
     return (
         <details
             className="config-ui__details"
-            open={open}
+            open={true}
+            onClick={(e) => e.preventDefault()}
         >
             <summary>
                 {header}

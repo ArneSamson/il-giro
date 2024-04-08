@@ -22,7 +22,9 @@ export default function AccentMaterialSelection() {
 
     return <>
         <details
+            open={true}
             className='config-ui__details'
+            onClick={(e) => e.preventDefault()}
         >
             <summary>Tabletop material:
                 <span>

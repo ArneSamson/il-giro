@@ -92,10 +92,9 @@ export default function PDFButton() {
             target="_blank"
             className="config-ui__options__overview__PDF-link"
         >
-            <button
-            >
-                Download PDF overview
-            </button>
+
+            Download PDF overview
+
         </a>
     </>);
 }
