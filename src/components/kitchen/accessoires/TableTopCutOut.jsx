@@ -45,7 +45,7 @@ export default function TableTopCutOut({ props }) {
             <mesh
                 castShadow
                 receiveShadow
-                geometry={nodes['table-top-cut-out'].geometry}
+                geometry={nodes['table-top-cut-out002'].geometry}
                 material={material}
             />
         </group>

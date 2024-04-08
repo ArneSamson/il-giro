@@ -126,9 +126,11 @@ export default function Sink({ props }) {
 
                 <group
                     position={tableTopInset ? [0, 0, 0] : [0, 0.02, 0]}
-                    scale={tableTopInset ? [1, 1, 1] : [1.05, 1, 1.05]}
                 >
-                    <>
+                    <group
+                        scale={tableTopInset ? [1, 1, 1] : [1.05, 1, 1.05]}
+                    >
+
                         <TableTopCutOut
 
                         />
@@ -141,7 +143,7 @@ export default function Sink({ props }) {
                                 }
                             }
                         />
-                    </>
+                    </group>
 
 
                     {tapType === 1 &&
