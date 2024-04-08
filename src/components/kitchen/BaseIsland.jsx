@@ -80,7 +80,7 @@ export default function BaseIsland({ props, needsDrawers }) {
                 receiveShadow
                 geometry={nodes['island-low-drawers'].geometry}
                 material={material}
-                rotation={[0, Math.PI, 0]}
+                rotation={[0, Math.PI / 2, 0]}
                 {...props}
             >
                 <mesh
@@ -108,8 +108,8 @@ export default function BaseIsland({ props, needsDrawers }) {
                 receiveShadow
                 geometry={nodes['island-low'].geometry}
                 material={material}
-                rotation={[0, Math.PI, 0]}
                 {...props}
+                rotation={[0, Math.PI / 2, 0]}
             >
                 <mesh
                     visible={allBevelled}
