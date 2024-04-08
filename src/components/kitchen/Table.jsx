@@ -116,28 +116,28 @@ export default function Table({ props }) {
                 <>
                     <Stool
                         props={{
-                            position: [0.5, 0, 0.7],
+                            position: [0.3, 0, 0.7],
                             rotation: [0, Math.PI, 0]
                         }}
                     />
 
                     <Stool
                         props={{
-                            position: [-0.5, 0, 0.7],
+                            position: [-0.3, 0, 0.7],
                             rotation: [0, Math.PI, 0]
                         }}
                     />
 
                     <Stool
                         props={{
-                            position: [0.5, 0, -0.7],
+                            position: [0.3, 0, -0.7],
                             rotation: [0, 0, 0]
                         }}
                     />
 
                     <Stool
                         props={{
-                            position: [-0.5, 0, -0.7],
+                            position: [-0.3, 0, -0.7],
                             rotation: [0, 0, 0]
                         }}
                     />
