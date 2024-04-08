@@ -58,9 +58,9 @@ export default function ConfigUi() {
 
             if (loaded) return;
 
-            setMainMaterial(allMaterials[0]);
+            setMainMaterial(allCategories['wood'][0]);
             setAccentMaterial(allCategories['metal'][0]);
-            setTableTopMaterial(allCategories['metal'][0]);
+            setTableTopMaterial(allCategories['dekton'][1]);
 
         }
     }, [
