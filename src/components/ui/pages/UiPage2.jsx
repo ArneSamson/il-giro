@@ -116,7 +116,7 @@ export default function UiPage2() {
                 setOption={setEdgeFinish}
             />
 
-            {sinkChosen || cooktopChosen && <>
+            {(sinkChosen || cooktopChosen) && <>
                 <DetailWithButtons
                     summary="Countertop: "
                     options={tableTopInsetOptions}
