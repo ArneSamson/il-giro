@@ -78,7 +78,7 @@ export default function UiPage2() {
     const applianceOptions = [
         { label: "Oven", value: "oven" },
         { label: "Fridge", value: "fridge" },
-        { label: "drawers", value: "drawers" },
+        { label: "Drawers", value: "drawers" },
     ];
 
     const winestandOptions = [
