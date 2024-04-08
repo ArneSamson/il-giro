@@ -4,6 +4,7 @@ import { useCursor } from "@react-three/drei";
 import BaseIsland from "./BaseIsland.jsx";
 
 import TableTop from "./accessoires/TableTop.jsx";
+import TableTopRound from "./tabletops/TableTopRound.jsx";
 
 import GasStove from "./accessoires/GasStove.jsx";
 import ElectricStove from "./accessoires/ElectricStove.jsx";
@@ -77,6 +78,8 @@ export default function Cooktop() {
         setIsFocussedOnIsland(false, false, false);
     };
 
+    const a = false;
+
     return (
         <>
             <group
@@ -107,14 +110,17 @@ export default function Cooktop() {
                 >
                     <BaseIsland />
 
+
                     <group
                         position={tableTopInset ? [0, 0, 0] : [0, 0.02, 0]}
                     >
+
                         <TableTop
                             props={{
                                 scale: tableTopInset ? [1, 1, 1] : [1.05, 1, 1.05],
                             }}
                         />
+
 
                         {stoveType === 1 && (
                             <GasStove
