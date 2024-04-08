@@ -41,7 +41,7 @@ export default create((set) => {
         sinkChosen: true,
         cooktopChosen: true,
         towerChosen: true,
-        tableChosen: true,
+        tableChosen: false,
 
         sinkPosition: [0, 0, 0],
         sinkRotation: [0, 0, 0],
