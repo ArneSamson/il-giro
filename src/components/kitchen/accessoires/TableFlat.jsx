@@ -2,9 +2,9 @@ import React from 'react';
 import * as THREE from 'three'
 import { useGLTF } from '@react-three/drei'
 
-import { useTexture } from '../../helper/useTexture.tsx';
+import { useTexture } from '../../../helper/useTexture.tsx';
 
-import useConfig from '../../store/useConfigStore.jsx';
+import useConfig from '../../../store/useConfigStore.jsx';
 
 export default function BaseIsland({ props }) {
 
@@ -36,7 +36,7 @@ export default function BaseIsland({ props }) {
         roughnessMap: roughnessTexture,
         metalnessMap: metallnessTexture,
         metalness: 1,
-        roughness: 0.5,
+        roughness: 1,
     });
 
     const { nodes } = useGLTF("./models/table.glb");

@@ -31,7 +31,7 @@ export default function TableTop({ props }) {
         roughnessMap: roughnessTexture,
         metalnessMap: metallnessTexture,
         metalness: 1,
-        roughness: 0.5,
+        roughness: 1,
     });
 
 
