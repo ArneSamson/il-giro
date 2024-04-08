@@ -1,5 +1,4 @@
-import React, { useRef, useState } from "react";
-import { useCursor } from "@react-three/drei";
+import React, { useRef } from "react";
 
 import BaseIsland from "./BaseIsland.jsx";
 
@@ -11,12 +10,9 @@ import ElectricStove from "./accessoires/ElectricStove.jsx";
 
 import useScene from "../../store/useScene.jsx";
 import useConfig from "../../store/useConfigStore.jsx";
-import useUIStore from "../../store/useUIStore.jsx";
 
 export default function Cooktop() {
     const {
-        tableTopMaterial,
-
         cooktopPosition,
         cooktopRotation,
 
@@ -36,46 +32,23 @@ export default function Cooktop() {
         })
     );
 
-    const { setCurrentPage } = useUIStore(
+    const {
+        setCameraFocus,
+    } = useScene(
         (state) => ({
-            setCurrentPage: state.setCurrentPage,
+            setCameraFocus: state.setCameraFocus,
+            setIsFocussedOnIsland: state.setIsFocussedOnIsland,
         })
     );
-
-    const { setCameraFocus, setIsFocussedOnIsland } =
-        useScene(
-            (state) => ({
-                setCameraFocus: state.setCameraFocus,
-                setIsFocussedOnIsland: state.setIsFocussedOnIsland,
-            })
-        );
-
-    const [needPointer, setNeedPointer] = useState(false);
-
-    useCursor(needPointer, "pointer");
 
     const cookTopRef = useRef();
 
     const handleClick = () => {
-        // setCurrentPage(4);
         setCameraFocus([
             cooktopPosition[0],
             cooktopPosition[1] + 1,
             cooktopPosition[2],
         ]);
-        // setIsFocussedOnIsland(false, true, false);
-    };
-
-    const handlePointerOver = () => {
-        setNeedPointer(true);
-    };
-
-    const handlePointerOut = () => {
-        setNeedPointer(false);
-    };
-
-    const handlePointerMissed = () => {
-        setIsFocussedOnIsland(false, false, false);
     };
 
     const a = false;
@@ -91,22 +64,10 @@ export default function Cooktop() {
             >
                 <group
                     name="cooktop-hovers-group"
-                    // onPointerOver={(e) => {
-                    //     handlePointerOver();
-                    //     e.stopPropagation();
-                    // }}
-                    // onPointerOut={(e) => {
-                    //     handlePointerOut();
-                    //     e.stopPropagation();
-                    // }}
                     onClick={(e) => {
                         handleClick();
                         e.stopPropagation();
                     }}
-                // onPointerMissed={(e) => {
-                //     handlePointerMissed();
-                //     e.stopPropagation();
-                // }}
                 >
                     <BaseIsland />
 
