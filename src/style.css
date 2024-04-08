@@ -451,6 +451,8 @@ input[type=range]::-ms-track {
 
 .config-ui__options__overview__title span {
     color: var(--dark-grey);
+    font-family: var(--subheading-family);
+    font-weight: var(--mini-title-size);
 }
 
 .config-ui__options__overview__PDF-link {
