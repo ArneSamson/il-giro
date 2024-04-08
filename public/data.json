@@ -9,7 +9,6 @@
         "metal": [
             "inox",
             "gold",
-            "goldnew",
             "bronze",
             "copper"
         ],
@@ -54,9 +53,6 @@
         },
         "gold": {
             "url": "/materials/gold/"
-        },
-        "goldnew": {
-            "url": "/materials/goldnew/"
         },
         "bronze": {
             "url": "/materials/bronze/"

@@ -29,7 +29,7 @@ export default function Reginox({ props }) {
         } else {
             setBowlMaterial(accentMaterial);
         }
-    }, [accentMaterial]);
+    }, [tableTopMaterial]);
 
 
 
