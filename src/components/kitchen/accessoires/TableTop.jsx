@@ -46,7 +46,7 @@ export default function TableTop({ props }) {
                 name='tabletopMesh'
                 castShadow
                 receiveShadow
-                geometry={nodes.tabletop002.geometry}
+                geometry={nodes['table-top003'].geometry}
                 material={material}
             />
         </group>

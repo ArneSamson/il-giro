@@ -104,13 +104,13 @@ export default function Table({ props }) {
                 />
                 <BaseIsland
                     props={{
-                        position: [0.995, 0, -0.005]
+                        position: [1.005, 0, 0]
                     }}
                 />
 
                 <BaseIsland
                     props={{
-                        position: [-0.995, 0, -0.005]
+                        position: [-0.992, 0, 0]
                     }}
                 />
                 <>

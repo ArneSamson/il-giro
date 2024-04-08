@@ -50,10 +50,10 @@ export default function BaseIsland({ props }) {
             <mesh
                 castShadow
                 receiveShadow
-                geometry={nodes.table.geometry}
+                geometry={nodes['table-tabletop001'].geometry}
                 material={material}
                 position={[0.008, 0, 0]}
-                rotation={[0, Math.PI / 2, 0]}
+                rotation={[0, 0, 0]}
             />
         </group>
 
