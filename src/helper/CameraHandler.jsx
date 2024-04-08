@@ -65,7 +65,7 @@ export default function CameraHandler() {
 
     useEffect(() => {
         if (camera.current) {
-            camera.current.dollyTo(4, false);
+            camera.current.dollyTo(maxDistance, false);
         }
     }, [camera.current]);
 
