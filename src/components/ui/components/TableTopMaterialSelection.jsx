@@ -42,7 +42,7 @@ export default function AccentMaterialSelection() {
                                 setTableTopMaterial(material)
                             }}
                             style={{
-                                backgroundImage: `url(${material.url}albedo.jpg)`,
+                                backgroundImage: `url(${material.url}preview.jpg)`,
                             }}
                         ></div>
                     ))}
@@ -59,7 +59,7 @@ export default function AccentMaterialSelection() {
                                 setTableTopMaterial(material)
                             }}
                             style={{
-                                backgroundImage: `url(${material.url}albedo.jpg)`,
+                                backgroundImage: `url(${material.url}preview.jpg)`,
                             }}
                         ></div>
                     ))}
@@ -78,7 +78,7 @@ export default function AccentMaterialSelection() {
                                 setTableTopMaterial(material)
                             }}
                             style={{
-                                backgroundImage: `url(${material.url}albedo.jpg)`,
+                                backgroundImage: `url(${material.url}preview.jpg)`,
                             }}
                         ></div>
                     ))}

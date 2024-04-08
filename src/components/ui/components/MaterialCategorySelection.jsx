@@ -66,7 +66,7 @@ export default function MaterialCategorySelection() {
                             }
                         }}
                         style={{
-                            backgroundImage: `url(${materials[0].url}albedo.jpg)`,
+                            backgroundImage: `url(${materials[0].url}preview.jpg)`,
                         }}
                     ></div>
                 ))}
