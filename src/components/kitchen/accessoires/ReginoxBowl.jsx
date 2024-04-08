@@ -12,12 +12,10 @@ export default function Reginox({ props }) {
     const {
         accentMaterial,
         tableTopMaterial,
-        allMaterials,
     } = useConfig(
         state => ({
             accentMaterial: state.accentMaterial,
             tableTopMaterial: state.tableTopMaterial,
-            allMaterials: state.allMaterials,
         })
     );
 
@@ -25,7 +23,7 @@ export default function Reginox({ props }) {
 
     useEffect(() => {
         if (tableTopMaterial.name === 'inox') {
-            setBowlMaterial(allMaterials.find(material => material.name === 'inox'));
+            setBowlMaterial(tableTopMaterial);
         } else {
             setBowlMaterial(accentMaterial);
         }
