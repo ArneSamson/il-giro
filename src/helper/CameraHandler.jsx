@@ -56,7 +56,7 @@ export default function CameraHandler() {
         }
 
         if (window.innerWidth < 1200) {
-            setMaxDistance(4 + window.innerWidth / 200);
+            setMaxDistance(4 + (1200 - window.innerWidth) / 200);
         } else {
             setMaxDistance(4);
         }
