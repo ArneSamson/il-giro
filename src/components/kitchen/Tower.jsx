@@ -173,13 +173,6 @@ export default function Tower({ props }) {
                     doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpeningRotation, delta * 2);
                 }
             }
-            if (coolerRef.current) {
-                if (coolerRef.current.rotation.y > -0.01) {
-                    return;
-                } else {
-                    coolerRef.current.rotation.y = lerp(coolerRef.current.rotation.y, doorOpeningRotation, delta * 2);
-                }
-            }
             if (drawersRef.current) {
                 if (drawersRef.current.children[0].position.z < 0.06) {
                     return;
@@ -208,13 +201,6 @@ export default function Tower({ props }) {
                     return;
                 } else {
                     doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpeningRotation, delta * 2);
-                }
-            }
-            if (coolerRef.current) {
-                if (coolerRef.current.rotation.y < -1.49) {
-                    return;
-                } else {
-                    coolerRef.current.rotation.y = lerp(coolerRef.current.rotation.y, -doorOpeningRotation, delta * 2);
                 }
             }
             if (drawersRef.current) {
@@ -469,7 +455,7 @@ export default function Tower({ props }) {
                                             ref={coolerRef}
                                             position={[0.313, 0.894, 0.233]}
                                             scale={[1, 0.992, 1]}
-                                            rotation={[0, -1, 0]}
+                                            rotation={[0, 0, 0]}
                                         >
                                             <mesh
                                                 castShadow
