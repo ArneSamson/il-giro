@@ -2,6 +2,8 @@ import React from 'react';
 import { SwatchesPicker } from 'react-color';
 import { ralData } from './dataColors.js';
 
+import useConfigStore from '../../../../store/useConfigStore.jsx';
+
 function organizeRalColors(ralData) {
     const ralColors = {};
 
@@ -19,11 +21,20 @@ function organizeRalColors(ralData) {
 const ralColors = organizeRalColors(ralData);
 
 export default function ColorPicker({ color, setColor }) {
+
+    const {
+        ralColor,
+        setRalColor,
+    } = useConfigStore(state => ({
+        ralColor: state.ralColors,
+        setRalColor: state.setRalColor,
+    }));
+
     return (
         <SwatchesPicker
             color={color}
             colors={ralColors}
-        // onChangeComplete={(color) => setColor(color.hex)}
+            onChangeComplete={color => setRalColor(color.hex)}
         />
     );
 }

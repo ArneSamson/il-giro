@@ -15,6 +15,7 @@ import useConfig from "../../store/useConfigStore.jsx";
 export default function Tower({ props }) {
     const {
         mainMaterial,
+        mainMaterialCategory,
 
         towerPosition,
         towerRotation,
@@ -23,8 +24,11 @@ export default function Tower({ props }) {
         doorOpeningRotation,
 
         allBevelled,
+
+        ralColor,
     } = useConfig((state) => ({
         mainMaterial: state.mainMaterial,
+        mainMaterialCategory: state.mainMaterialCategory,
 
         towerPosition: state.towerPosition,
         towerRotation: state.towerRotation,
@@ -33,6 +37,8 @@ export default function Tower({ props }) {
         doorOpeningRotation: state.doorOpeningRotation,
 
         allBevelled: state.allBevelled,
+
+        ralColor: state.ralColor,
     }));
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] =
@@ -58,6 +64,7 @@ export default function Tower({ props }) {
 
     const normalScale = new THREE.Vector2(0.5, 0.5);
     const material = new THREE.MeshStandardMaterial({
+        color: mainMaterialCategory === 'paint work' ? ralColor : undefined,
         map: albedoTexture,
         normalMap: normalTexture,
         normalScale: normalScale,
@@ -74,6 +81,7 @@ export default function Tower({ props }) {
     towerAOMapBevelled.flipY = false;
 
     const materialWithAo = new THREE.MeshStandardMaterial({
+        color: mainMaterialCategory === 'paint work' ? ralColor : undefined,
         map: albedoTexture,
         normalMap: normalTexture,
         normalScale: normalScale,
@@ -86,6 +94,7 @@ export default function Tower({ props }) {
     });
 
     const materialWithAoBevelled = new THREE.MeshStandardMaterial({
+        color: mainMaterialCategory === 'paint work' ? ralColor : undefined,
         map: albedoTexture,
         normalMap: normalTexture,
         normalScale: normalScale,

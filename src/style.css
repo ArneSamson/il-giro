@@ -518,6 +518,7 @@ input[type=range]::-ms-track {
 .config-ui__details {
     width: 100%;
     padding: 15px 0px 15px 5px;
+    margin-bottom: 15px;
     transition: opacity 0.5s ease-in-out;
 }
 
@@ -536,6 +537,11 @@ input[type=range]::-ms-track {
     line-height: var(--heading5-line-height);
     cursor: auto;
     transition: color 0.5s ease;
+}
+
+.swatches-picker {
+    margin-bottom: 15px;
+    width: 100%;
 }
 
 summary span {

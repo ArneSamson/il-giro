@@ -61,6 +61,8 @@ export default create((set) => {
         tableTopMaterialCategory: 'dekton',
         mainMaterialCategory: 'wood',
 
+        ralColor: '#C2B078',
+
         allBevelled: false,
 
         tapType: 1,
@@ -111,6 +113,9 @@ export default create((set) => {
         setTableTopMaterial: (material) => set({ tableTopMaterial: material }),
         setTableTopMaterialCategory: (category) => set({ tableTopMaterialCategory: category }),
         setMainMaterialCategory: (category) => set({ mainMaterialCategory: category }),
+
+        //ral color
+        setRalColor: (color) => set({ ralColor: color }),
 
         //bevel
         setAllBevelled: (bevelled) => set({ allBevelled: bevelled }),

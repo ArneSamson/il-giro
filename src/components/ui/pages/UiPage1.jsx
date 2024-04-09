@@ -29,6 +29,8 @@ export default function UiPage1() {
         })
     );
 
+    // console.log(mainMaterialCategory)
+
     return <>
 
         <div
@@ -53,7 +55,12 @@ export default function UiPage1() {
                 open={true}
             />
 
-            <ColorPicker />
+            {mainMaterialCategory === "paint work" &&
+                <ColorPicker
+
+                />
+            }
+
 
             <TableTopMaterialSelection
             />
