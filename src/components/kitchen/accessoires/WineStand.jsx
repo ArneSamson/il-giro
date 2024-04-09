@@ -13,7 +13,12 @@ export default function WineStand({ props }) {
         accentMaterial,
         wineStandSize,
 
-    } = useConfig();
+    } = useConfig(
+        state => ({
+            accentMaterial: state.accentMaterial,
+            wineStandSize: state.wineStandSize,
+        })
+    );
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
         accentMaterial.url + "albedo.jpg",
