@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import * as THREE from "three";
-import { useGLTF, useCursor } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
 import WineStand from "./accessoires/WineStand.jsx";
@@ -11,7 +11,6 @@ import { useTexture } from "../../helper/useTexture.tsx";
 
 import useScene from "../../store/useScene.jsx";
 import useConfig from "../../store/useConfigStore.jsx";
-import useUIStore from "../../store/useUIStore.jsx";
 
 export default function Tower({ props }) {
     const {
@@ -35,12 +34,6 @@ export default function Tower({ props }) {
 
         allBevelled: state.allBevelled,
     }));
-
-    const { setCurrentPage } = useUIStore(
-        (state) => ({
-            setCurrentPage: state.setCurrentPage,
-        })
-    );
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] =
         useTexture(
@@ -110,17 +103,13 @@ export default function Tower({ props }) {
 
     const { nodes, materials } = useGLTF("./models/base-island-high.glb");
 
-    const { setCameraFocus, setIsFocussedOnIsland } =
-        useScene(
-            (state) => ({
-                setCameraFocus: state.setCameraFocus,
-                setIsFocussedOnIsland: state.setIsFocussedOnIsland,
-            })
-        );
-
-    const [needPointer, setNeedPointer] = useState(false);
-
-    useCursor(needPointer, "pointer");
+    const {
+        setCameraFocus
+    } = useScene(
+        (state) => ({
+            setCameraFocus: state.setCameraFocus,
+        })
+    );
 
     const towerRef = useRef();
     const cabinetRef = useRef();
@@ -232,25 +221,11 @@ export default function Tower({ props }) {
     });
 
     const handleClick = () => {
-        // setCurrentPage(5);
         setCameraFocus([
             towerPosition[0],
             towerPosition[1] + 1,
             towerPosition[2],
         ]);
-        // setIsFocussedOnIsland(false, false, true);
-    };
-
-    const handlePointerOver = () => {
-        setNeedPointer(true);
-    };
-
-    const handlePointerOut = () => {
-        setNeedPointer(false);
-    };
-
-    const handlePointerMissed = () => {
-        setIsFocussedOnIsland(false, false, false);
     };
 
     return (
@@ -265,22 +240,10 @@ export default function Tower({ props }) {
             >
                 <group
                     name="tower-hovers-group"
-                    // onPointerOver={(e) => {
-                    //     handlePointerOver();
-                    //     e.stopPropagation();
-                    // }}
-                    // onPointerOut={(e) => {
-                    //     handlePointerOut();
-                    //     e.stopPropagation();
-                    // }}
                     onClick={(e) => {
                         handleClick();
                         e.stopPropagation();
                     }}
-                // onPointerMissed={(e) => {
-                //     handlePointerMissed();
-                //     e.stopPropagation();
-                // }}
                 >
                     <mesh
                         name="cabinet"

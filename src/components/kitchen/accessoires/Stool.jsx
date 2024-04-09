@@ -40,14 +40,7 @@ export default function Stool({ props }) {
         setStoolScale({
             scale: showChairs ? [1, 1, 1] : [0.01, 0.01, 0.01],
         });
-
-        // console.log('showChairs:', showChairs, 'isVisible:', isVisible);
     }, [showChairs, setStoolScale]);
-
-    // useEffect(() => {
-    //     console.log('isvisble', isVisible);
-    //     console.log(showChairs);
-    // }, [isVisible]);
 
     return isVisible ? (
         <a.group

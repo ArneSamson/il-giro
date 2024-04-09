@@ -1,5 +1,4 @@
-import React, { useRef, useState } from 'react';
-import { useCursor } from '@react-three/drei'
+import React, { useRef } from 'react';
 
 import BaseIsland from './BaseIsland.jsx';
 
@@ -13,13 +12,10 @@ import TableTopCutOut from './tabletops/TableTopCutOut.jsx';
 
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfigStore.jsx';
-import useUIStore from '../../store/useUIStore.jsx';
 
 export default function Sink({ props }) {
 
     const {
-        tableTopMaterial,
-
         sinkPosition,
         sinkRotation,
 
@@ -29,8 +25,6 @@ export default function Sink({ props }) {
 
         tableTopInset,
     } = useConfig(state => ({
-        tableTopMaterial: state.tableTopMaterial,
-
         sinkPosition: state.sinkPosition,
         sinkRotation: state.sinkRotation,
 
@@ -42,42 +36,17 @@ export default function Sink({ props }) {
     }));
 
     const {
-        setCurrentPage
-    } = useUIStore(state => ({
-        setCurrentPage: state.setCurrentPage
-    }));
-
-    const {
         setCameraFocus,
-        setIsFocussedOnIsland
     } = useScene(state => ({
         setCameraFocus: state.setCameraFocus,
-        setIsFocussedOnIsland: state.setIsFocussedOnIsland
     }));
-
-    const [needPointer, setNeedPointer] = useState(false);
-
-    useCursor(needPointer, "pointer")
 
     const sinkRef = useRef();
 
     const handleClick = () => {
-        // setCurrentPage(3);
         setCameraFocus([sinkPosition[0], sinkPosition[1] + 1, sinkPosition[2]]);
-        // setIsFocussedOnIsland(true, false, false);
     }
 
-    const handlePointerOver = (e) => {
-        setNeedPointer(true);
-    }
-
-    const handlePointerOut = () => {
-        setNeedPointer(false);
-    }
-
-    const handlePointerMissed = () => {
-        setIsFocussedOnIsland(false, false, false);
-    }
 
 
     return <>
@@ -90,31 +59,12 @@ export default function Sink({ props }) {
         >
             <group
                 name='sink-hovers-group'
-                // onPointerOver={
-                //     (e) => {
-                //         handlePointerOver(e);
-                //         e.stopPropagation();
-                //     }
-                // }
-                // onPointerOut={
-                //     (e) => {
-                //         handlePointerOut();
-                //         e.stopPropagation();
-                //     }
-                // }
                 onClick={
                     (e) => {
                         handleClick();
                         e.stopPropagation();
                     }
                 }
-            // onPointerMissed={
-            //     (e) => {
-            //         setIsFocussedOnIsland(false, false, false);
-            //         e.stopPropagation();
-            //     }
-
-            // }
             >
                 <BaseIsland
                     needsDrawers={mainDrawers}

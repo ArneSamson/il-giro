@@ -1,5 +1,4 @@
-import React, { useRef, useState } from 'react';
-import { useCursor } from '@react-three/drei'
+import React, { useRef } from 'react';
 
 import BaseIsland from './BaseIsland.jsx';
 import TableFlat from './tabletops/TableFlat.jsx';
@@ -7,57 +6,29 @@ import Stool from './accessoires/Stool.jsx';
 
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfigStore.jsx';
-import useUIStore from '../../store/useUIStore.jsx';
 
 export default function Table({ props }) {
 
     const {
         tablePosition,
         tableRotation,
-        showChairs,
     } = useConfig(
         state => ({
             tablePosition: state.tablePosition,
             tableRotation: state.tableRotation,
-            showChairs: state.showChairs
         })
     );
 
-    const { setCurrentPage } = useUIStore(
-        state => ({
-            setCurrentPage: state.setCurrentPage
-        })
-    );
-
-    const { setCameraFocus, setIsFocussedOnIsland } = useScene(
+    const { setCameraFocus } = useScene(
         state => ({
             setCameraFocus: state.setCameraFocus,
-            setIsFocussedOnIsland: state.setIsFocussedOnIsland
         })
     );
-
-    const [needPointer, setNeedPointer] = useState(false);
-
-    useCursor(needPointer, "pointer")
 
     const tableRef = useRef();
 
     const handleClick = () => {
-        // setCurrentPage(2);
         setCameraFocus([tablePosition[0], tablePosition[1] + 1, tablePosition[2]]);
-        // setIsFocussedOnIsland(true, false, false);
-    }
-
-    const handlePointerOver = () => {
-        setNeedPointer(true);
-    }
-
-    const handlePointerOut = () => {
-        setNeedPointer(false);
-    }
-
-    const handlePointerMissed = () => {
-        setIsFocussedOnIsland(false, false, false);
     }
 
 
@@ -72,30 +43,12 @@ export default function Table({ props }) {
         >
             <group
                 name='table-hovers-group'
-                // onPointerOver={
-                //     (e) => {
-                //         handlePointerOver();
-                //         e.stopPropagation();
-                //     }
-                // }
-                // onPointerOut={
-                //     (e) => {
-                //         handlePointerOut();
-                //         e.stopPropagation();
-                //     }
-                // }
                 onClick={
                     (e) => {
                         handleClick();
                         e.stopPropagation();
                     }
                 }
-            // onPointerMissed={
-            //     (e) => {
-            //         setIsFocussedOnIsland(false, false, false);
-            //         e.stopPropagation();
-            //     }
-            // }
             >
                 <TableFlat
                     props={{
