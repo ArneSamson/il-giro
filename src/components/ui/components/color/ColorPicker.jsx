@@ -20,6 +20,7 @@ function organizeRalColors(ralData) {
 
 const ralColors = organizeRalColors(ralData);
 
+
 export default function ColorPicker({ color, setColor }) {
 
     const {
@@ -30,12 +31,24 @@ export default function ColorPicker({ color, setColor }) {
         setRalColor: state.setRalColor,
     }));
 
+    const handleInput = (value) => {
+        if (value.length === 4) {
+            //compare the value with the ralData
+            const color = ralData[value];
+            if (color) {
+                setRalColor(color.hex);
+            } else {
+                console.log("Color not found");
+            }
+        }
+    }
+
     return (<>
         <SwatchesPicker
             color={color}
             colors={ralColors}
             onChangeComplete={color => setRalColor(color.hex)}
-            width={(window.innerWidth * 0.2) - 50}
+            width={(window.innerWidth * 0.2)}
             height={300}
         />
 
@@ -44,6 +57,8 @@ export default function ColorPicker({ color, setColor }) {
             value={ralColor}
             maxLength={4}
             pattern="[0-9]*"
+            onBlur={e => handleInput(e.target.value)}
+
         />
     </>
 
