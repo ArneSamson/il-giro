@@ -5,6 +5,8 @@ import useConfigStore from "../../../store/useConfigStore.jsx";
 import MaterialCategorySelection from "../components/MaterialCategorySelection.jsx";
 import TableTopMaterialSelection from "../components/TableTopMaterialSelection.jsx";
 
+import ColorPicker from "../components/color/ColorPicker.jsx";
+
 import DetailWithMaterials from "../components/DetailWithMaterials.jsx";
 
 export default function UiPage1() {
@@ -50,6 +52,8 @@ export default function UiPage1() {
                 setMaterial={setMainMaterial}
                 open={true}
             />
+
+            <ColorPicker />
 
             <TableTopMaterialSelection
             />
