@@ -23,6 +23,7 @@ export default function Cooktop() {
         setTableTopRounded,
 
         tableTopMaterialCategory,
+        tableTopHeight,
     } = useConfig(
         (state) => ({
 
@@ -36,6 +37,7 @@ export default function Cooktop() {
             setTableTopRounded: state.setTableTopRounded,
 
             tableTopMaterialCategory: state.tableTopMaterialCategory,
+            tableTopHeight: state.tableTopHeight,
         })
     );
 
@@ -75,6 +77,7 @@ export default function Cooktop() {
     }, [tableTopInset]);
 
     useEffect(() => {
+        console.log(tableTopHeight)
         switch (tableTopMaterialCategory) {
             case "dekton":
                 if (tableTopInset) {
@@ -82,9 +85,15 @@ export default function Cooktop() {
                     setTableTopPosition([0, 0.905, 0]);
                     setStovePosition([0, -0.005, 0]);
                 } else {
-                    setTableTopScale([1.05, 0.5, 1.05]);
-                    setTableTopPosition([0, 0.96, 0]);
-                    setStovePosition([0, 0.03, 0]);
+                    if (tableTopHeight === 0.5) {
+                        setTableTopScale([1.05, 0.5, 1.05]);
+                        setTableTopPosition([0, 0.96, 0]);
+                        setStovePosition([0, 0.03, 0]);
+                    } else if (tableTopHeight === 0.3) {
+                        setTableTopScale([1.05, 0.3, 1.05]);
+                        setTableTopPosition([0, 0.96, 0]);
+                        setStovePosition([0, 0.02, 0]);
+                    }
                 }
                 break;
             case "natural stone":
@@ -112,7 +121,7 @@ export default function Cooktop() {
                 }
                 break;
         }
-    }, [tableTopMaterialCategory, tableTopInset, tableTopRounded]);
+    }, [tableTopMaterialCategory, tableTopInset, tableTopRounded, tableTopHeight]);
 
     return (
         <>

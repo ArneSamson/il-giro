@@ -34,6 +34,9 @@ export default function UiPage2() {
 
         tableTopRounded,
         setTableTopRounded,
+
+        tableTopHeight,
+        setTableTopHeight,
     } = useConfigStore(
         state => ({
             edgeFinish: state.edgeFinish,
@@ -63,6 +66,9 @@ export default function UiPage2() {
 
             tableTopRounded: state.tableTopRounded,
             setTableTopRounded: state.setTableTopRounded,
+
+            tableTopHeight: state.tableTopHeight,
+            setTableTopHeight: state.setTableTopHeight,
         })
     );
 
@@ -108,6 +114,11 @@ export default function UiPage2() {
         { label: "Straight", value: false }
     ];
 
+    const tableTopHeightOptions = [
+        { label: "12mm", value: 0.3 },
+        { label: "20mm", value: 0.5 },
+    ];
+
     return <>
 
         <div
@@ -143,6 +154,13 @@ export default function UiPage2() {
                         setOption={setTableTopRounded}
                     />
                 }
+
+                <DetailWithButtons
+                    summary="Countertop height: "
+                    options={tableTopHeightOptions}
+                    selectedOption={tableTopHeightOptions.find(option => option.value === tableTopHeight).label}
+                    setOption={setTableTopHeight}
+                />
 
 
             </>}

@@ -80,6 +80,8 @@ export default create((set) => {
 
         tableTopRounded: true,
 
+        tableTopHeight: 0.5,
+
         doorOpeningRotation: 1.5,
 
         //Setters_______________________________________________________________________________________
@@ -137,6 +139,9 @@ export default create((set) => {
 
         //table top rounded
         setTableTopRounded: (rounded) => set({ tableTopRounded: rounded }),
+
+        //table top height
+        setTableTopHeight: (height) => set({ tableTopHeight: height }),
 
         //door opening
         setDoorOpeningRotation: (rotation) => set({ doorOpeningRotation: rotation }),
