@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 
 import BaseIsland from "./BaseIsland.jsx";
 
-import TableTop from "./accessoires/TableTop.jsx";
+import TableTop from "./tabletops/TableTop.jsx";
 import TableTopRound from "./tabletops/TableTopRound.jsx";
 
 import GasStove from "./accessoires/GasStove.jsx";

@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { useCursor } from '@react-three/drei'
 
 import BaseIsland from './BaseIsland.jsx';
-import TableFlat from './accessoires/TableFlat.jsx';
+import TableFlat from './tabletops/TableFlat.jsx';
 import Stool from './accessoires/Stool.jsx';
 
 import useScene from '../../store/useScene.jsx';

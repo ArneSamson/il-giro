@@ -9,7 +9,7 @@ import Tap2 from './accessoires/Tap2.jsx';
 import Reginox from './accessoires/ReginoxBowl.jsx';
 import Drawers from './accessoires/Drawers.jsx';
 
-import TableTopCutOut from './accessoires/TableTopCutOut.jsx';
+import TableTopCutOut from './tabletops/TableTopCutOut.jsx';
 
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfigStore.jsx';
