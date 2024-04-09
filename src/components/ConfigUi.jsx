@@ -12,7 +12,6 @@ import UiPage1 from './ui/pages/UiPage1.jsx';
 import UiPage2 from './ui/pages/UiPage2.jsx';
 import OrderOverview from './ui/pages/OrderOverview.jsx';
 import ModuleSelectionPage from './ui/pages/ModuleSelectionPage.jsx';
-// import PDFView from './ui/pages/PDFView.jsx';
 
 export default function ConfigUi() {
 
@@ -107,10 +106,6 @@ export default function ConfigUi() {
                     {currentPage === 3 && <>
                         <OrderOverview />
                     </>}
-
-                    {/* {currentPage === 4 && <>
-                        <PDFView />
-                    </>} */}
 
                     <ConfigNav />
 
