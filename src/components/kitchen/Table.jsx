@@ -17,6 +17,7 @@ export default function Table({ props }) {
         tableTopMaterialCategory,
         tableTopInset,
         tableTopRounded,
+        tableTopHeight,
     } = useConfig(
         state => ({
             tablePosition: state.tablePosition,
@@ -25,6 +26,7 @@ export default function Table({ props }) {
             tableTopMaterialCategory: state.tableTopMaterialCategory,
             tableTopInset: state.tableTopInset,
             tableTopRounded: state.tableTopRounded,
+            tableTopHeight: state.tableTopHeight,
         })
     );
 
@@ -46,7 +48,7 @@ export default function Table({ props }) {
     useEffect(() => {
         switch (tableTopMaterialCategory) {
             case "dekton":
-                setTableTopScale([1, 0.5, 1]);
+                setTableTopScale([1, tableTopHeight, 1]);
                 // setTableTopPosition([0, 0.96, 0]);
 
                 break;
@@ -59,7 +61,7 @@ export default function Table({ props }) {
                 // setTableTopPosition([0, 0.96, 0]);
                 break;
         }
-    }, [tableTopMaterialCategory, tableTopInset, tableTopRounded]);
+    }, [tableTopMaterialCategory, tableTopInset, tableTopRounded, tableTopHeight]);
 
 
     return <>

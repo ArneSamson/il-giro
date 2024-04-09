@@ -77,7 +77,6 @@ export default function Cooktop() {
     }, [tableTopInset]);
 
     useEffect(() => {
-        console.log(tableTopHeight)
         switch (tableTopMaterialCategory) {
             case "dekton":
                 if (tableTopInset) {

@@ -37,6 +37,8 @@ export default function UiPage2() {
 
         tableTopHeight,
         setTableTopHeight,
+
+        tableTopMaterialCategory,
     } = useConfigStore(
         state => ({
             edgeFinish: state.edgeFinish,
@@ -69,6 +71,8 @@ export default function UiPage2() {
 
             tableTopHeight: state.tableTopHeight,
             setTableTopHeight: state.setTableTopHeight,
+
+            tableTopMaterialCategory: state.tableTopMaterialCategory,
         })
     );
 
@@ -139,6 +143,9 @@ export default function UiPage2() {
             /> */}
 
             {(sinkChosen || cooktopChosen) && <>
+
+                <h4>Countertop</h4>
+
                 <DetailWithButtons
                     summary="Countertop: "
                     options={tableTopInsetOptions}
@@ -155,12 +162,15 @@ export default function UiPage2() {
                     />
                 }
 
-                <DetailWithButtons
-                    summary="Countertop height: "
-                    options={tableTopHeightOptions}
-                    selectedOption={tableTopHeightOptions.find(option => option.value === tableTopHeight).label}
-                    setOption={setTableTopHeight}
-                />
+                {tableTopMaterialCategory === 'dekton' &&
+                    <DetailWithButtons
+                        summary="Countertop height: "
+                        options={tableTopHeightOptions}
+                        selectedOption={tableTopHeightOptions.find(option => option.value === tableTopHeight).label}
+                        setOption={setTableTopHeight}
+                    />
+                }
+
 
 
             </>}

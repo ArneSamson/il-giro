@@ -403,7 +403,6 @@ input[type=range]::-ms-track {
 .config-ui__title {
     display: flex;
     flex-direction: column;
-    padding-left: 5px;
     margin-bottom: 20px;
 }
 
