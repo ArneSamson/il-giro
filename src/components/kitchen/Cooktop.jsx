@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
 import BaseIsland from "./BaseIsland.jsx";
 
@@ -19,9 +19,12 @@ export default function Cooktop() {
         stoveType,
 
         tableTopInset,
+        tableTopRounded,
+        setTableTopRounded,
+
+        tableTopMaterialCategory,
     } = useConfig(
         (state) => ({
-            tableTopMaterial: state.tableTopMaterial,
 
             cooktopPosition: state.cooktopPosition,
             cooktopRotation: state.cooktopRotation,
@@ -29,6 +32,10 @@ export default function Cooktop() {
             stoveType: state.stoveType,
 
             tableTopInset: state.tableTopInset,
+            tableTopRounded: state.tableTopRounded,
+            setTableTopRounded: state.setTableTopRounded,
+
+            tableTopMaterialCategory: state.tableTopMaterialCategory,
         })
     );
 
@@ -51,7 +58,62 @@ export default function Cooktop() {
         ]);
     };
 
-    const a = false;
+    const [stovePosition, setStovePosition] = useState([0, 0, 0]);
+
+    const [tableTopPosition, setTableTopPosition] = useState([0, 0, 0]);
+    const [tableTopScale, setTableTopScale] = useState([1, 1, 1]);
+
+    useEffect(() => {
+        if (tableTopInset) {
+            setTableTopRounded(false);
+            setTableTopPosition([0, -0.005, 0]);
+            setTableTopScale([1, 1, 1]);
+        } else if (!tableTopInset) {
+            setTableTopPosition([0, 0.047, 0]);
+            setTableTopScale([1.05, 1, 1.05]);
+        }
+    }, [tableTopInset]);
+
+    useEffect(() => {
+        switch (tableTopMaterialCategory) {
+            case "dekton":
+                console.log("dekton");
+                if (tableTopInset) {
+                    setTableTopScale([1, 1, 1]);
+                    setTableTopPosition([0, 0.905, 0]);
+                    setStovePosition([0, -0.005, 0]);
+                } else {
+                    setTableTopScale([1.05, 0.5, 1.05]);
+                    setTableTopPosition([0, 0.96, 0]);
+                    setStovePosition([0, 0.03, 0]);
+                }
+                break;
+            case "natural stone":
+                if (tableTopInset) {
+                    setTableTopScale([1, 1, 1]);
+                    setTableTopPosition([0, 0.905, 0]);
+                    setStovePosition([0, -0.005, 0]);
+                }
+                else {
+                    setTableTopScale([1.05, 1, 1.05]);
+                    setTableTopPosition([0, 0.96, 0]);
+                    setStovePosition([0, 0.048, 0]);
+                }
+                break;
+            case "metal":
+                if (tableTopInset) {
+                    setTableTopScale([1, 1, 1]);
+                    setTableTopPosition([0, 0.905, 0]);
+                    setStovePosition([0, -0.005, 0]);
+                }
+                else {
+                    setTableTopScale([1.05, 0.125, 1.05]);
+                    setTableTopPosition([0, 0.96, 0]);
+                    setStovePosition([0, 0.03, 0]);
+                }
+                break;
+        }
+    }, [tableTopMaterialCategory, tableTopInset, tableTopRounded]);
 
     return (
         <>
@@ -71,36 +133,69 @@ export default function Cooktop() {
                 >
                     <BaseIsland />
 
+                    {tableTopRounded &&
+                        <group>
 
-                    <group
-                        position={tableTopInset ? [0, 0, 0] : [0, 0.02, 0]}
-                    >
-
-                        <TableTop
-                            props={{
-                                scale: tableTopInset ? [1, 1, 1] : [1.05, 1, 1.05],
-                            }}
-                        />
-
-
-                        {stoveType === 1 && (
-                            <GasStove
+                            <TableTopRound
                                 props={{
-                                    position: [0, 0, 0],
+                                    scale: tableTopScale,
                                 }}
                             />
-                        )}
 
-                        {stoveType === 2 && (
-                            <ElectricStove
+                            {stoveType === 1 && (
+                                <GasStove
+                                    props={{
+                                        position: stovePosition,
+                                    }}
+                                />
+                            )}
+
+                            {stoveType === 2 && (
+                                <ElectricStove
+                                    props={{
+                                        position: [stovePosition[0], stovePosition[1] + 0.97, stovePosition[2] + 0.1],
+                                        scale: [0.9, 0.9, 0.9],
+                                        rotation: [0, 0, 0],
+                                    }}
+                                />
+                            )}
+
+                        </group>
+                    }
+
+                    {!tableTopRounded &&
+
+                        <group
+                        >
+
+                            <TableTop
                                 props={{
-                                    position: [0, 0.97, 0.1],
-                                    scale: [0.9, 0.9, 0.9],
-                                    rotation: [0, 0, 0],
+                                    scale: tableTopScale,
+                                    position: tableTopPosition,
                                 }}
                             />
-                        )}
-                    </group>
+
+
+
+                            {stoveType === 1 && (
+                                <GasStove
+                                    props={{
+                                        position: stovePosition,
+                                    }}
+                                />
+                            )}
+
+                            {stoveType === 2 && (
+                                <ElectricStove
+                                    props={{
+                                        position: [stovePosition[0], stovePosition[1] + 0.97, stovePosition[2] + 0.1],
+                                        scale: [0.9, 0.9, 0.9],
+                                        rotation: [0, 0, 0],
+                                    }}
+                                />
+                            )}
+                        </group>
+                    }
 
                 </group>
             </group>

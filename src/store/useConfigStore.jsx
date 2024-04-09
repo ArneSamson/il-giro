@@ -58,6 +58,7 @@ export default create((set) => {
         mainMaterial: "./placeholder/",
         accentMaterial: "./placeholder/",
         tableTopMaterial: "./placeholder/",
+        tableTopMaterialCategory: 'dekton',
         mainMaterialCategory: 'wood',
 
         allBevelled: false,
@@ -76,6 +77,8 @@ export default create((set) => {
         edgeFinish: 'square',
 
         tableTopInset: true,
+
+        tableTopRounded: true,
 
         doorOpeningRotation: 1.5,
 
@@ -104,6 +107,7 @@ export default create((set) => {
         setMainMaterial: (material) => set({ mainMaterial: material }),
         setAccentMaterial: (material) => set({ accentMaterial: material }),
         setTableTopMaterial: (material) => set({ tableTopMaterial: material }),
+        setTableTopMaterialCategory: (category) => set({ tableTopMaterialCategory: category }),
         setMainMaterialCategory: (category) => set({ mainMaterialCategory: category }),
 
         //bevel
@@ -130,6 +134,9 @@ export default create((set) => {
 
         //table top inset
         setTableTopInset: (inset) => set({ tableTopInset: inset }),
+
+        //table top rounded
+        setTableTopRounded: (rounded) => set({ tableTopRounded: rounded }),
 
         //door opening
         setDoorOpeningRotation: (rotation) => set({ doorOpeningRotation: rotation }),

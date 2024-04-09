@@ -31,6 +31,9 @@ export default function UiPage2() {
 
         tableTopInset,
         setTableTopInset,
+
+        tableTopRounded,
+        setTableTopRounded,
     } = useConfigStore(
         state => ({
             edgeFinish: state.edgeFinish,
@@ -57,6 +60,9 @@ export default function UiPage2() {
 
             tableTopInset: state.tableTopInset,
             setTableTopInset: state.setTableTopInset,
+
+            tableTopRounded: state.tableTopRounded,
+            setTableTopRounded: state.setTableTopRounded,
         })
     );
 
@@ -97,6 +103,11 @@ export default function UiPage2() {
         { label: "Overlay", value: false }
     ];
 
+    const tableTopRoundedOptions = [
+        { label: "Rounded", value: true },
+        { label: "Straight", value: false }
+    ];
+
     return <>
 
         <div
@@ -109,12 +120,12 @@ export default function UiPage2() {
             className='config-ui__options'
         >
 
-            <DetailWithButtons
+            {/* <DetailWithButtons
                 summary="Edge finish: "
                 options={edgeFinishOptions}
                 selectedOption={edgeFinishOptions.find(option => option.value === edgeFinish).label}
                 setOption={setEdgeFinish}
-            />
+            /> */}
 
             {(sinkChosen || cooktopChosen) && <>
                 <DetailWithButtons
@@ -123,6 +134,17 @@ export default function UiPage2() {
                     selectedOption={tableTopInsetOptions.find(option => option.value === tableTopInset).label}
                     setOption={setTableTopInset}
                 />
+
+                {!tableTopInset &&
+                    <DetailWithButtons
+                        summary="Countertop edge: "
+                        options={tableTopRoundedOptions}
+                        selectedOption={tableTopRoundedOptions.find(option => option.value === tableTopRounded).label}
+                        setOption={setTableTopRounded}
+                    />
+                }
+
+
             </>}
 
 

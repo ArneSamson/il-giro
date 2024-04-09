@@ -35,11 +35,12 @@ export default function TableTopRound({ props }) {
     });
 
 
+    //is 40mm high in model
+
     const { nodes } = useGLTF("./models/tabletop-round.glb");
     return (
         <group
             name='tabletop'
-            {...props}
             dispose={null}
         >
             <mesh
@@ -48,6 +49,8 @@ export default function TableTopRound({ props }) {
                 receiveShadow
                 geometry={nodes['tabletop-round'].geometry}
                 material={material}
+                position={[0, 0.96, 0]}
+                {...props}
             />
         </group>
     );

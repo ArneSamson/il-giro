@@ -42,17 +42,19 @@ export default function TableFlat({ props }) {
     const { nodes } = useGLTF("./models/table.glb");
 
 
+    //base is 40mm high in model
+
     return <>
 
         <group
-
         >
             <mesh
                 castShadow
                 receiveShadow
                 geometry={nodes['table-tabletop001'].geometry}
                 material={material}
-                position={[0.008, 0, 0]}
+                position={[0.008, 0.96, 0]}
+                scale={[1, 1, 1]}
                 rotation={[0, 0, 0]}
             />
         </group>

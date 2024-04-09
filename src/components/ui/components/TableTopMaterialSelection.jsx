@@ -9,12 +9,16 @@ export default function AccentMaterialSelection() {
         allCategories,
         tableTopMaterial,
         setTableTopMaterial,
+        tableTopMaterialCategory,
+        setTableTopMaterialCategory,
         mainMaterialCategory
     } = useConfig(
         state => ({
             allCategories: state.allCategories,
             tableTopMaterial: state.tableTopMaterial,
             setTableTopMaterial: state.setTableTopMaterial,
+            tableTopMaterialCategory: state.tableTopMaterialCategory,
+            setTableTopMaterialCategory: state.setTableTopMaterialCategory,
             mainMaterialCategory: state.mainMaterialCategory
         })
     );
@@ -40,6 +44,7 @@ export default function AccentMaterialSelection() {
                             className={`config-ui__material-options__option ${tableTopMaterial === material ? 'selected-material-n-category' : ""}`}
                             onClick={() => {
                                 setTableTopMaterial(material)
+                                setTableTopMaterialCategory('dekton')
                             }}
                             style={{
                                 backgroundImage: `url(${material.url}preview.jpg)`,
@@ -57,6 +62,7 @@ export default function AccentMaterialSelection() {
                             className={`config-ui__material-options__option ${tableTopMaterial === material ? 'selected-material-n-category' : ""}`}
                             onClick={() => {
                                 setTableTopMaterial(material)
+                                setTableTopMaterialCategory('natural stone')
                             }}
                             style={{
                                 backgroundImage: `url(${material.url}preview.jpg)`,
@@ -76,6 +82,7 @@ export default function AccentMaterialSelection() {
                             className={`config-ui__material-options__option ${tableTopMaterial === material ? 'selected-material-n-category' : ""}`}
                             onClick={() => {
                                 setTableTopMaterial(material)
+                                setTableTopMaterialCategory('metal')
                             }}
                             style={{
                                 backgroundImage: `url(${material.url}preview.jpg)`,
