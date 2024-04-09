@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 import useConfigStore from "../../../store/useConfigStore";
+import useScene from "../../../store/useScene";
 
 export default function ModuleSelectionButtons({ summary, options }) {
 
@@ -39,6 +40,15 @@ export default function ModuleSelectionButtons({ summary, options }) {
 
             setTablePosition: state.setTablePosition,
             setTableRotation: state.setTableRotation,
+        })
+    );
+
+    const {
+        setCameraFocus,
+    } = useScene(
+        (state) => ({
+            setCameraFocus: state.setCameraFocus,
+            setIsFocussedOnIsland: state.setIsFocussedOnIsland,
         })
     );
 
@@ -173,6 +183,7 @@ export default function ModuleSelectionButtons({ summary, options }) {
 
     useEffect(() => {
         setPositions()
+        setCameraFocus([0, 1, 0]);
     }, [sinkChosen, cooktopChosen, towerChosen, tableChosen]);
 
 
