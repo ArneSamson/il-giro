@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 import BaseIsland from './BaseIsland.jsx';
 
@@ -9,6 +9,7 @@ import Reginox from './accessoires/ReginoxBowl.jsx';
 import Drawers from './accessoires/Drawers.jsx';
 
 import TableTopCutOut from './tabletops/TableTopCutOut.jsx';
+import TableTopCutRound from './tabletops/TableTopCutRound.jsx';
 
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfigStore.jsx';
@@ -24,6 +25,11 @@ export default function Sink({ props }) {
         mainDrawers,
 
         tableTopInset,
+        tableTopRounded,
+        setTableTopRounded,
+
+        tableTopMaterialCategory,
+
     } = useConfig(state => ({
         sinkPosition: state.sinkPosition,
         sinkRotation: state.sinkRotation,
@@ -33,6 +39,10 @@ export default function Sink({ props }) {
         mainDrawers: state.mainDrawers,
 
         tableTopInset: state.tableTopInset,
+        tableTopRounded: state.tableTopRounded,
+        setTableTopRounded: state.setTableTopRounded,
+
+        tableTopMaterialCategory: state.tableTopMaterialCategory,
     }));
 
     const {
@@ -47,6 +57,61 @@ export default function Sink({ props }) {
         setCameraFocus([sinkPosition[0], sinkPosition[1] + 1, sinkPosition[2]]);
     }
 
+    const [bowlPosition, setBowlPosition] = useState([0, 0, 0]);
+
+    const [tableTopPosition, setTableTopPosition] = useState([0, 0, 0]);
+    const [tableTopScale, setTableTopScale] = useState([1, 1, 1]);
+
+    useEffect(() => {
+        if (tableTopInset) {
+            setTableTopRounded(false);
+            setTableTopPosition([0, -0.005, 0]);
+            setTableTopScale([1, 1, 1]);
+        } else if (!tableTopInset) {
+            setTableTopPosition([0, 0.047, 0]);
+            setTableTopScale([1.05, 1, 1.05]);
+        }
+    }, [tableTopInset]);
+
+    useEffect(() => {
+        switch (tableTopMaterialCategory) {
+            case "dekton":
+                if (tableTopInset) {
+                    setTableTopScale([1, 1, 1]);
+                    setTableTopPosition([0, 0.905, 0]);
+                    setBowlPosition([0, -0.005, 0]);
+                } else {
+                    setTableTopScale([1.05, 0.5, 1.05]);
+                    setTableTopPosition([0, 0.96, 0]);
+                    setBowlPosition([0, 0.03, 0]);
+                }
+                break;
+            case "natural stone":
+                if (tableTopInset) {
+                    setTableTopScale([1, 1, 1]);
+                    setTableTopPosition([0, 0.905, 0]);
+                    setBowlPosition([0, -0.005, 0]);
+                }
+                else {
+                    setTableTopScale([1.05, 1, 1.05]);
+                    setTableTopPosition([0, 0.96, 0]);
+                    setBowlPosition([0, 0.048, 0]);
+                }
+                break;
+            case "metal":
+                if (tableTopInset) {
+                    setTableTopScale([1, 1, 1]);
+                    setTableTopPosition([0, 0.905, 0]);
+                    setBowlPosition([0, -0.005, 0]);
+                }
+                else {
+                    setTableTopScale([1.05, 0.125, 1.05]);
+                    setTableTopPosition([0, 0.96, 0]);
+                    setBowlPosition([0, 0.01, 0]);
+                }
+                break;
+        }
+    }, [tableTopMaterialCategory, tableTopInset, tableTopRounded]);
 
 
     return <>
@@ -74,52 +139,94 @@ export default function Sink({ props }) {
                     <Drawers />
                 }
 
-                <group
-                    position={tableTopInset ? [0, 0, 0] : [0, 0.02, 0]}
-                >
+                {tableTopRounded &&
                     <group
-                        scale={tableTopInset ? [1, 1, 1] : [1.05, 1, 1.05]}
                     >
-
-                        <TableTopCutOut
-
+                        <TableTopCutRound
+                            props={{
+                                scale: [1, tableTopScale[1], 1],
+                            }}
                         />
 
                         <Reginox
                             props={
                                 {
-                                    position: [0, 0, 0],
-                                    rotation: [0, 0, 0],
+                                    position: bowlPosition,
                                 }
                             }
                         />
+
+
+                        {tapType === 1 &&
+                            <Tap1
+                                props={
+                                    {
+                                        position: bowlPosition,
+                                    }
+                                }
+                            />
+                        }
+
+                        {tapType === 2 &&
+
+                            <Tap2
+                                props={
+                                    {
+                                        position: bowlPosition,
+                                    }
+                                }
+                            />
+                        }
+
                     </group>
 
+                }
 
-                    {tapType === 1 &&
-                        <Tap1
+                {!tableTopRounded &&
+                    <group
+                    >
+                        <TableTopCutOut
+                            props={{
+                                position: tableTopPosition,
+                                scale: tableTopScale,
+                            }}
+                        />
+
+                        <Reginox
                             props={
                                 {
-                                    position: [0, 0.01, 0],
-                                    rotation: [0, 0, 0],
+                                    position: bowlPosition,
+                                    scale: [tableTopScale[0], 1, tableTopScale[2]],
                                 }
                             }
                         />
-                    }
 
-                    {tapType === 2 &&
 
-                        <Tap2
-                            props={
-                                {
-                                    position: [0, 0, 0],
-                                    rotation: [0, 0, 0],
+                        {tapType === 1 &&
+                            <Tap1
+                                props={
+                                    {
+                                        position: bowlPosition,
+                                    }
                                 }
-                            }
-                        />
-                    }
+                            />
+                        }
 
-                </group>
+                        {tapType === 2 &&
+
+                            <Tap2
+                                props={
+                                    {
+                                        position: bowlPosition,
+                                    }
+                                }
+                            />
+                        }
+
+                    </group>
+
+                }
+
             </group>
 
         </group>

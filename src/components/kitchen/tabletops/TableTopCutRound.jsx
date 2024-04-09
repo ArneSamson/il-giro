@@ -4,13 +4,13 @@ import { useGLTF } from '@react-three/drei'
 
 import { useTexture } from '../../../helper/useTexture.tsx';
 
-import useConfig from '../../../store/useConfigStore.jsx';
+import useConfigStore from '../../../store/useConfigStore.jsx';
 
-export default function TableTopCutOut({ props }) {
+export default function TableTopRound({ props }) {
 
     const {
         tableTopMaterial,
-    } = useConfig(
+    } = useConfigStore(
         state => ({
             tableTopMaterial: state.tableTopMaterial,
         })
@@ -35,22 +35,25 @@ export default function TableTopCutOut({ props }) {
     });
 
 
-    const { nodes, materials } = useGLTF("./models/table-top-cut-out.glb");
+    //is 40mm high in model
+
+    const { nodes } = useGLTF("./models/tabletop-cut-round.glb");
     return (
         <group
             name='tabletop'
             dispose={null}
         >
             <mesh
+                name='tabletopMesh'
                 castShadow
                 receiveShadow
-                geometry={nodes['table-top-cut-out002'].geometry}
+                geometry={nodes['tabletop-cut-round'].geometry}
                 material={material}
-                position={[0, 0.913, 0]}
+                position={[0, 0.96, 0]}
                 {...props}
             />
         </group>
     );
 }
 
-useGLTF.preload('./models/table-top-cut-out.glb')
+useGLTF.preload('./models/tabletop-cut-round.glb')

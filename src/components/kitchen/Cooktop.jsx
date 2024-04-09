@@ -137,7 +137,7 @@ export default function Cooktop() {
 
                             <TableTopRound
                                 props={{
-                                    scale: tableTopScale,
+                                    scale: [1, tableTopScale[1], 1],
                                 }}
                             />
 
