@@ -11,6 +11,7 @@ export default function UiPage1() {
 
     const {
         allCategories,
+        mainMaterial,
         setMainMaterial,
         mainMaterialCategory,
         accentMaterial,
@@ -18,6 +19,7 @@ export default function UiPage1() {
     } = useConfigStore(
         state => ({
             allCategories: state.allCategories,
+            mainMaterial: state.mainMaterial,
             setMainMaterial: state.setMainMaterial,
             mainMaterialCategory: state.mainMaterialCategory,
             accentMaterial: state.accentMaterial,
@@ -44,7 +46,7 @@ export default function UiPage1() {
             <DetailWithMaterials
                 header="Choices in "
                 materials={allCategories[mainMaterialCategory]}
-                selectedMaterial={mainMaterialCategory}
+                selectedMaterial={mainMaterialCategory + ": " + mainMaterial.name}
                 setMaterial={setMainMaterial}
                 open={true}
             />
