@@ -3,6 +3,7 @@ import React from "react";
 import useConfigStore from "../../../store/useConfigStore";
 
 import DetailWithButtons from "../components/DetailWithButtons";
+import { ButtonCategoryTitle } from "../components/text/TextComponents";
 
 export default function UiPage2() {
 
@@ -144,77 +145,91 @@ export default function UiPage2() {
 
             {(sinkChosen || cooktopChosen) && <>
 
-                <h4>Countertop</h4>
-
-                <DetailWithButtons
-                    summary="Countertop: "
-                    options={tableTopInsetOptions}
-                    selectedOption={tableTopInsetOptions.find(option => option.value === tableTopInset).label}
-                    setOption={setTableTopInset}
-                />
-
-                {!tableTopInset &&
+                <ButtonCategoryTitle
+                    title="Countertop"
+                >
                     <DetailWithButtons
-                        summary="Countertop edge: "
-                        options={tableTopRoundedOptions}
-                        selectedOption={tableTopRoundedOptions.find(option => option.value === tableTopRounded).label}
-                        setOption={setTableTopRounded}
+                        summary="Countertop: "
+                        options={tableTopInsetOptions}
+                        selectedOption={tableTopInsetOptions.find(option => option.value === tableTopInset).label}
+                        setOption={setTableTopInset}
                     />
-                }
 
-                {tableTopMaterialCategory === 'dekton' &&
-                    <DetailWithButtons
-                        summary="Countertop height: "
-                        options={tableTopHeightOptions}
-                        selectedOption={tableTopHeightOptions.find(option => option.value === tableTopHeight).label}
-                        setOption={setTableTopHeight}
-                    />
-                }
+                    {!tableTopInset &&
+                        <DetailWithButtons
+                            summary="Countertop edge: "
+                            options={tableTopRoundedOptions}
+                            selectedOption={tableTopRoundedOptions.find(option => option.value === tableTopRounded).label}
+                            setOption={setTableTopRounded}
+                        />
+                    }
+
+                    {tableTopMaterialCategory === 'dekton' &&
+                        <DetailWithButtons
+                            summary="Countertop height: "
+                            options={tableTopHeightOptions}
+                            selectedOption={tableTopHeightOptions.find(option => option.value === tableTopHeight).label}
+                            setOption={setTableTopHeight}
+                        />
+                    }
+                </ButtonCategoryTitle>
 
 
 
             </>}
+
+            <ButtonCategoryTitle
+                title="Appliances"
+            >
+
+
+                {sinkChosen && <>
+                    <DetailWithButtons
+                        summary="Faucet type: "
+                        options={faucetOptions}
+                        selectedOption={faucetOptions.find(option => option.value === tapType).label}
+                        setOption={setTapType}
+                    />
+                </>}
+
+                {cooktopChosen && <>
+                    <DetailWithButtons
+                        summary="Stove type: "
+                        options={stoveOptions}
+                        selectedOption={stoveOptions.find(option => option.value === stoveType).label}
+                        setOption={setStoveType}
+                    />
+                </>}
+
+                {towerChosen && <>
+                    <DetailWithButtons
+                        summary="Winestand size: "
+                        options={winestandOptions}
+                        selectedOption={winestandOptions.find(option => option.value === wineStandSize).label}
+                        setOption={setWineStandSize}
+                    />
+
+                    <DetailWithButtons
+                        summary="Tower appliance: "
+                        options={applianceOptions}
+                        selectedOption={applianceOptions.find(option => option.value === applianceType).label}
+                        setOption={setApplianceType}
+                    />
+                </>}
+            </ButtonCategoryTitle>
 
 
             {sinkChosen && <>
-                <DetailWithButtons
-                    summary="Faucet type: "
-                    options={faucetOptions}
-                    selectedOption={faucetOptions.find(option => option.value === tapType).label}
-                    setOption={setTapType}
-                />
-
-                <DetailWithButtons
-                    summary="Exta drawers: "
-                    options={mainDrawerOptions}
-                    selectedOption={mainDrawerOptions.find(option => option.value === mainDrawers).label}
-                    setOption={setMainDrawers}
-                />
-            </>}
-
-            {cooktopChosen && <>
-                <DetailWithButtons
-                    summary="Stove type: "
-                    options={stoveOptions}
-                    selectedOption={stoveOptions.find(option => option.value === stoveType).label}
-                    setOption={setStoveType}
-                />
-            </>}
-
-            {towerChosen && <>
-                <DetailWithButtons
-                    summary="Winestand size: "
-                    options={winestandOptions}
-                    selectedOption={winestandOptions.find(option => option.value === wineStandSize).label}
-                    setOption={setWineStandSize}
-                />
-
-                <DetailWithButtons
-                    summary="Appliance type: "
-                    options={applianceOptions}
-                    selectedOption={applianceOptions.find(option => option.value === applianceType).label}
-                    setOption={setApplianceType}
-                />
+                <ButtonCategoryTitle
+                    title="Extras"
+                >
+                    <DetailWithButtons
+                        summary="Exta drawers: "
+                        options={mainDrawerOptions}
+                        selectedOption={mainDrawerOptions.find(option => option.value === mainDrawers).label}
+                        setOption={setMainDrawers}
+                    />
+                </ButtonCategoryTitle>
             </>}
 
         </div>

@@ -603,6 +603,13 @@ summary span {
     outline-offset: 4px;
 }
 
+.config-ui__button-category-title {
+    font-family: var(--subheading-family);
+    font-size: var(--heading4-size);
+    font-weight: 500;
+    color: var(--dark-grey);
+}
+
 @keyframes pulse {
     0% {
         border-color: var(--off-black);
