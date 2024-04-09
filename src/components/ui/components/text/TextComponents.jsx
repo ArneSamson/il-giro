@@ -14,7 +14,12 @@ export const ButtonCategoryTitle = ({ children, title }) => {
             </h4>
             <hr
                 style={{
-                    border: "1px solid #272727",
+                    height: "1px",
+                    borderWidth: 0,
+                    borderColor: "#272727",
+                    borderStyle: "solid",
+                    borderBottomWidth: "1px",
+                    margin: 0,
                 }}
             />
             {children}
