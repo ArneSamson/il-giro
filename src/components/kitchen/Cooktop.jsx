@@ -108,7 +108,7 @@ export default function Cooktop() {
                 else {
                     setTableTopScale([1.05, 0.125, 1.05]);
                     setTableTopPosition([0, 0.96, 0]);
-                    setStovePosition([0, 0.03, 0]);
+                    setStovePosition([0, 0.01, 0]);
                 }
                 break;
         }
