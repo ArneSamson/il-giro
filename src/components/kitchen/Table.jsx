@@ -1,7 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 import BaseIsland from './BaseIsland.jsx';
 import TableFlat from './tabletops/TableFlat.jsx';
+import TableFlatRound from './tabletops/TableFlatRound.jsx';
 import Stool from './accessoires/Stool.jsx';
 
 import useScene from '../../store/useScene.jsx';
@@ -12,10 +13,18 @@ export default function Table({ props }) {
     const {
         tablePosition,
         tableRotation,
+
+        tableTopMaterialCategory,
+        tableTopInset,
+        tableTopRounded,
     } = useConfig(
         state => ({
             tablePosition: state.tablePosition,
             tableRotation: state.tableRotation,
+
+            tableTopMaterialCategory: state.tableTopMaterialCategory,
+            tableTopInset: state.tableTopInset,
+            tableTopRounded: state.tableTopRounded,
         })
     );
 
@@ -30,6 +39,27 @@ export default function Table({ props }) {
     const handleClick = () => {
         setCameraFocus([tablePosition[0], tablePosition[1] + 1, tablePosition[2]]);
     }
+
+    const [tableTopPosition, setTableTopPosition] = useState([0, 0, 0]);
+    const [tableTopScale, setTableTopScale] = useState([1, 1, 1]);
+
+    useEffect(() => {
+        switch (tableTopMaterialCategory) {
+            case "dekton":
+                setTableTopScale([1, 0.5, 1]);
+                // setTableTopPosition([0, 0.96, 0]);
+
+                break;
+            case "natural stone":
+                setTableTopScale([1, 1, 1]);
+                // setTableTopPosition([0, 0.96, 0]);
+                break;
+            case "metal":
+                setTableTopScale([1, 0.125, 1]);
+                // setTableTopPosition([0, 0.96, 0]);
+                break;
+        }
+    }, [tableTopMaterialCategory, tableTopInset, tableTopRounded]);
 
 
     return <>
@@ -50,20 +80,34 @@ export default function Table({ props }) {
                     }
                 }
             >
-                <TableFlat
-                    props={{
 
-                    }}
-                />
+                {tableTopRounded &&
+                    <TableFlatRound
+                        props={{
+                            // position: tableTopPosition,
+                            scale: tableTopScale
+                        }}
+                    />
+                }
+                {!tableTopRounded &&
+                    <TableFlat
+                        props={{
+                            // position: tableTopPosition,
+                            scale: tableTopScale
+                        }}
+                    />
+
+                }
+
                 <BaseIsland
                     props={{
-                        position: [1.005, 0, 0]
+                        position: [1, 0, 0]
                     }}
                 />
 
                 <BaseIsland
                     props={{
-                        position: [-0.992, 0, 0]
+                        position: [-1, 0, 0]
                     }}
                 />
                 <>

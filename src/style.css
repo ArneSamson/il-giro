@@ -593,7 +593,7 @@ summary span {
     border: 1px solid var(--light-grey);
     outline: 1px solid transparent;
     cursor: pointer;
-    border-radius: 50%;
+    border-radius: 15%;
     transition: all .3s ease;
 }
 

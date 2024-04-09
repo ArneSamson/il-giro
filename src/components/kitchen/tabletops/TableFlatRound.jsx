@@ -1,21 +1,20 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import * as THREE from 'three'
 import { useGLTF } from '@react-three/drei'
 
 import { useTexture } from '../../../helper/useTexture.tsx';
 
-import useConfig from '../../../store/useConfigStore.jsx';
+import useConfigStore from '../../../store/useConfigStore.jsx';
 
-export default function TableFlat({ props }) {
+export default function TableTopRound({ props }) {
 
     const {
         tableTopMaterial,
-    } = useConfig(
+    } = useConfigStore(
         state => ({
             tableTopMaterial: state.tableTopMaterial,
         })
     );
-
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
         tableTopMaterial.url + "albedo.jpg",
@@ -23,10 +22,6 @@ export default function TableFlat({ props }) {
         tableTopMaterial.url + "roughness.jpg",
         tableTopMaterial.url + "metallic.jpg"
     ]);
-
-    albedoTexture.anisotropy = 16;
-
-    metallnessTexture.name = "metalnessMap";
 
     albedoTexture.colorSpace = THREE.SRGBColorSpace;
 
@@ -39,27 +34,26 @@ export default function TableFlat({ props }) {
         roughness: 1,
     });
 
-    const { nodes } = useGLTF("./models/table.glb");
 
+    //is 40mm high in model
 
-    //base is 40mm high in model
-
-    return <>
-
+    const { nodes } = useGLTF("./models/table-round.glb");
+    return (
         <group
+            name='tabletop'
+            dispose={null}
         >
             <mesh
+                name='tabletopMesh'
                 castShadow
                 receiveShadow
-                geometry={nodes['table-tabletop001'].geometry}
+                geometry={nodes['tabletop-round'].geometry}
                 material={material}
                 position={[0, 0.96, 0]}
-                scale={[1, 1, 1]}
                 {...props}
             />
         </group>
-
-    </>
+    );
 }
 
-useGLTF.preload('./models/table.glb')
+useGLTF.preload('./models/table-round   .glb')
