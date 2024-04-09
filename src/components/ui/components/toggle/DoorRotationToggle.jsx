@@ -7,13 +7,18 @@ export default function DoorRotationToggle() {
     const {
         doorOpeningRotation,
         setDoorOpeningRotation,
-    } = useConfig();
+    } = useConfig(
+        state => ({
+            doorOpeningRotation: state.doorOpeningRotation,
+            setDoorOpeningRotation: state.setDoorOpeningRotation,
+        })
+    );
 
     return <>
         <div
             className='config-ui__slider'
         >
-            <h5>Open doors and shelves:</h5>
+            <h5>Open doors and drawers:</h5>
 
             <label className="config-ui__toggle">
                 <input

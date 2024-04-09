@@ -25,7 +25,7 @@ export default create((set) => {
                 url: material.url
             }));
 
-            // console.log('allMaterials:', allMaterials);
+            console.log('allMaterials:', allMaterials);
             console.log('allCategories:', allCategories);
 
             set({ allMaterials, allCategories });
@@ -41,7 +41,7 @@ export default create((set) => {
         sinkChosen: true,
         cooktopChosen: true,
         towerChosen: true,
-        tableChosen: true,
+        tableChosen: false,
 
         sinkPosition: [0, 0, 0],
         sinkRotation: [0, 0, 0],
@@ -58,27 +58,31 @@ export default create((set) => {
         mainMaterial: "./placeholder/",
         accentMaterial: "./placeholder/",
         tableTopMaterial: "./placeholder/",
+        tableTopMaterialCategory: 'dekton',
         mainMaterialCategory: 'wood',
 
         allBevelled: false,
 
-        tapType: '1',
+        tapType: 1,
 
-        stoveType: '1',
+        stoveType: 1,
 
         applianceType: 'fridge',
         wineStandSize: 'medium',
 
-        edgeFinish: 'rect',
+        mainDrawers: false,
+
+        showChairs: false,
+
+        edgeFinish: 'square',
+
+        tableTopInset: true,
+
+        tableTopRounded: true,
+
+        tableTopHeight: 0.5,
 
         doorOpeningRotation: 1.5,
-
-        dragMode: false,
-        isDragging: false,
-
-        isDraggingSink: false,
-        isDraggingCooktop: false,
-        isDraggingTower: false,
 
         //Setters_______________________________________________________________________________________
 
@@ -105,6 +109,7 @@ export default create((set) => {
         setMainMaterial: (material) => set({ mainMaterial: material }),
         setAccentMaterial: (material) => set({ accentMaterial: material }),
         setTableTopMaterial: (material) => set({ tableTopMaterial: material }),
+        setTableTopMaterialCategory: (category) => set({ tableTopMaterialCategory: category }),
         setMainMaterialCategory: (category) => set({ mainMaterialCategory: category }),
 
         //bevel
@@ -120,19 +125,26 @@ export default create((set) => {
         setApplianceType: (type) => set({ applianceType: type }),
         setWineStandSize: (size) => set({ wineStandSize: size }),
 
+        //main drawers
+        setMainDrawers: (drawers) => set({ mainDrawers: drawers }),
+
+        //chairs
+        setShowChairs: (show) => set({ showChairs: show }),
+
         //edge finish
         setEdgeFinish: (finish) => set({ edgeFinish: finish }),
 
+        //table top inset
+        setTableTopInset: (inset) => set({ tableTopInset: inset }),
+
+        //table top rounded
+        setTableTopRounded: (rounded) => set({ tableTopRounded: rounded }),
+
+        //table top height
+        setTableTopHeight: (height) => set({ tableTopHeight: height }),
+
         //door opening
         setDoorOpeningRotation: (rotation) => set({ doorOpeningRotation: rotation }),
-
-        //drag mode
-        setDragMode: (mode) => set({ dragMode: mode }),
-        setIsDragging: (dragging) => set({ isDragging: dragging }),
-
-        setIsDraggingSink: (dragging) => set({ isDraggingSink: dragging }),
-        setIsDraggingCooktop: (dragging) => set({ isDraggingCooktop: dragging }),
-        setIsDraggingTower: (dragging) => set({ isDraggingTower: dragging }),
 
     }
 })

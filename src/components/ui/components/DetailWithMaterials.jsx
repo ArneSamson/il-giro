@@ -5,12 +5,14 @@ export default function DetailWithMaterials({
     materials,
     selectedMaterial,
     setMaterial,
-    open
+    open,
+    extraMessage
 }) {
     return (
         <details
             className="config-ui__details"
-            open={open}
+            open={true}
+            onClick={(e) => e.preventDefault()}
         >
             <summary>
                 {header}
@@ -20,12 +22,12 @@ export default function DetailWithMaterials({
                 {materials.map((material, index) => (
                     <div
                         key={index}
-                        className={`config-ui__material-options__option ${selectedMaterial === material.url ? "selected-material-n-category" : ""
-                            }`}
-                        onClick={() => setMaterial(material.url)}
-                        style={{ backgroundImage: `url(${material.url}albedo.jpg)` }}
+                        className={`config-ui__material-options__option ${selectedMaterial === material.url ? "selected-material-n-category" : ""}`}
+                        onClick={() => setMaterial(material)}
+                        style={{ backgroundImage: `url(${material.url}preview.jpg)` }}
                     ></div>
                 ))}
+                <p>{extraMessage}</p>
             </div>
         </details>
     );

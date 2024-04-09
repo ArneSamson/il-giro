@@ -1,20 +1,29 @@
 import React from "react";
 import { useEffect } from "react";
 
-import useConfig from "../../../../store/useConfigStore.jsx";
 import useScene from "../../../../store/useScene.jsx";
 import useUIStore from "../../../../store/useUIStore.jsx";
 
 export default function ConfigNav() {
 
-    const { currentPage, setCurrentPage } = useUIStore();
+    const { currentPage, setCurrentPage } = useUIStore(
+        state => ({
+            currentPage: state.currentPage,
+            setCurrentPage: state.setCurrentPage,
+        })
+    );
 
-    const pagesAmount = 6;
+    const pagesAmount = 3;
 
     const {
         setCameraFocus,
         setIsFocussedOnIsland,
-    } = useScene();
+    } = useScene(
+        state => ({
+            setCameraFocus: state.setCameraFocus,
+            setIsFocussedOnIsland: state.setIsFocussedOnIsland,
+        })
+    );
 
     useEffect(() => {
         checkPage(currentPage);
@@ -62,10 +71,11 @@ export default function ConfigNav() {
                 className={currentPage === 0 ? 'config-ui__nav__button--disabled' : ''}
                 onClick={handleBack}
             >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15 8H1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M8 15L1 8L8 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                {/* <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 8H1" stroke="black" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M8 15L1 8L8 1" stroke="black" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+                </svg> */}
+                Back
             </button>
 
             <button
@@ -73,11 +83,11 @@ export default function ConfigNav() {
                 className={currentPage === pagesAmount ? 'config-ui__nav__button--disabled' : ''}
                 onClick={handleNext}
             >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 8H15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M8 1L15 8L8 15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-
+                Next
+                {/* <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 8H15" stroke="black" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M8 1L15 8L8 15" stroke="black" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+                </svg> */}
             </button>
         </div>
     </>

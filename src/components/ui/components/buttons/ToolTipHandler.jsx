@@ -4,7 +4,12 @@ import useUIStore from "../../../../store/useUIStore.jsx";
 
 export default function ToolTipHandler({ children, content }) {
 
-    const { toolTip, setToolTip } = useUIStore();
+    const { setToolTip } = useUIStore(
+        state => ({
+            toolTip: state.toolTip,
+            setToolTip: state.setToolTip,
+        })
+    );
 
     return <>
         <div

@@ -1,15 +1,16 @@
 import React from "react";
-import { useEffect, useState } from "react";
-
-import useConfig from "../../../store/useConfigStore.jsx";
 
 export default function DetailWithButtons({ summary, options, selectedOption, setOption }) {
 
     return (
-        <details open className='config-ui__details'>
+        <details
+            open={true}
+            className='config-ui__details'
+            onClick={(e) => e.preventDefault()}
+        >
             <summary>
                 {summary}
-                <span>{selectedOption}</span>
+                {/* <span>{selectedOption}</span> */}
             </summary>
             <div className='config-ui__selection-buttons'>
                 {options.map((option, index) => (

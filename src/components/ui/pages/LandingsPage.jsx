@@ -4,35 +4,23 @@ import useConfig from "../../../store/useConfigStore";
 import useScene from "../../../store/useScene";
 import useUIStore from "../../../store/useUIStore";
 
-import BevelledSelection from "../components/BevelledSelection";
-
 export default function LandingsPage() {
 
     const {
-        sinkChosen,
-        cooktopChosen,
-        towerChosen,
-        tableChosen,
-        setSinkChosen,
-        setCooktopChosen,
-        setTowerChosen,
-        setTableChosen,
-
-        setSinkPosition,
-        setSinkRotation,
-        setCooktopPosition,
-        setCooktopRotation,
-        setTowerPosition,
-        setTablePosition,
-    } = useConfig();
-
-    const {
         setCameraFocus,
-    } = useScene();
+    } = useScene(
+        state => ({
+            setCameraFocus: state.setCameraFocus,
+        })
+    );
 
     const {
         setLandingPageVisible,
-    } = useUIStore();
+    } = useUIStore(
+        state => ({
+            setLandingPageVisible: state.setLandingPageVisible,
+        })
+    );
 
     return <>
         <div

@@ -16,10 +16,10 @@ export default function WineStand({ props }) {
     } = useConfig();
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
-        accentMaterial + "albedo.jpg",
-        accentMaterial + "normal.jpg",
-        accentMaterial + "roughness.jpg",
-        accentMaterial + "metallic.jpg"
+        accentMaterial.url + "albedo.jpg",
+        accentMaterial.url + "normal.jpg",
+        accentMaterial.url + "roughness.jpg",
+        accentMaterial.url + "metallic.jpg"
     ]);
 
     albedoTexture.colorSpace = THREE.SRGBColorSpace;
@@ -29,9 +29,9 @@ export default function WineStand({ props }) {
         normalMap: normalTexture,
         roughnessMap: roughnessTexture,
         metalnessMap: metallnessTexture,
-        metalness: 1,
+        metalness: 0.5,
         roughness: 0,
-
+        envMapIntensity: 0.4,
     });
 
 

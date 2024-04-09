@@ -1,65 +1,72 @@
 import React, { useRef, useState, useEffect } from 'react';
-import * as THREE from 'three'
-import { useGLTF, useCursor } from '@react-three/drei'
-import { a } from '@react-spring/three';
 
 import BaseIsland from './BaseIsland.jsx';
-import TableFlat from './TableFlat.jsx';
+import TableFlat from './tabletops/TableFlat.jsx';
+import TableFlatRound from './tabletops/TableFlatRound.jsx';
+import Stool from './accessoires/Stool.jsx';
 
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfigStore.jsx';
-import useUIStore from '../../store/useUIStore.jsx';
 
 export default function Table({ props }) {
 
     const {
-        mainMaterial,
-        tableTopMaterial,
-
         tablePosition,
         tableRotation,
 
-        allBevelled,
-    } = useConfig();
+        tableTopMaterialCategory,
+        tableTopInset,
+        tableTopRounded,
+        tableTopHeight,
+    } = useConfig(
+        state => ({
+            tablePosition: state.tablePosition,
+            tableRotation: state.tableRotation,
 
-    const {
-        isFocussedOnIsland
-    } = useScene();
+            tableTopMaterialCategory: state.tableTopMaterialCategory,
+            tableTopInset: state.tableTopInset,
+            tableTopRounded: state.tableTopRounded,
+            tableTopHeight: state.tableTopHeight,
+        })
+    );
 
-    const { setCurrentPage } = useUIStore();
-
-    const meshRef = useRef();
-
-    const { cameraFocus, setCameraFocus, setIsFocussedOnIsland } = useScene();
-
-    const [needPointer, setNeedPointer] = useState(false);
-
-    useCursor(needPointer, "pointer")
+    const { setCameraFocus } = useScene(
+        state => ({
+            setCameraFocus: state.setCameraFocus,
+        })
+    );
 
     const tableRef = useRef();
 
     const handleClick = () => {
-        setCurrentPage(2);
         setCameraFocus([tablePosition[0], tablePosition[1] + 1, tablePosition[2]]);
-        setIsFocussedOnIsland(true, false, false);
     }
 
-    const handlePointerOver = () => {
-        setNeedPointer(true);
-    }
+    const [tableTopPosition, setTableTopPosition] = useState([0, 0, 0]);
+    const [tableTopScale, setTableTopScale] = useState([1, 1, 1]);
 
-    const handlePointerOut = () => {
-        setNeedPointer(false);
-    }
+    useEffect(() => {
+        switch (tableTopMaterialCategory) {
+            case "dekton":
+                setTableTopScale([1, tableTopHeight, 1]);
+                // setTableTopPosition([0, 0.96, 0]);
 
-    const handlePointerMissed = () => {
-        setIsFocussedOnIsland(false, false, false);
-    }
+                break;
+            case "natural stone":
+                setTableTopScale([1, 1, 1]);
+                // setTableTopPosition([0, 0.96, 0]);
+                break;
+            case "metal":
+                setTableTopScale([1, 0.125, 1]);
+                // setTableTopPosition([0, 0.96, 0]);
+                break;
+        }
+    }, [tableTopMaterialCategory, tableTopInset, tableTopRounded, tableTopHeight]);
 
 
     return <>
 
-        <a.group
+        <group
             name='table-group'
             ref={tableRef}
             position={tablePosition}
@@ -68,66 +75,77 @@ export default function Table({ props }) {
         >
             <group
                 name='table-hovers-group'
-                onPointerOver={
-                    (e) => {
-                        handlePointerOver();
-                        e.stopPropagation();
-                    }
-                }
-                onPointerOut={
-                    (e) => {
-                        handlePointerOut();
-                        e.stopPropagation();
-                    }
-                }
                 onClick={
                     (e) => {
                         handleClick();
                         e.stopPropagation();
                     }
                 }
-                onPointerMissed={
-                    (e) => {
-                        setIsFocussedOnIsland(false, false, false);
-                        e.stopPropagation();
-                    }
+            >
+
+                {tableTopRounded &&
+                    <TableFlatRound
+                        props={{
+                            // position: tableTopPosition,
+                            scale: tableTopScale
+                        }}
+                    />
+                }
+                {!tableTopRounded &&
+                    <TableFlat
+                        props={{
+                            // position: tableTopPosition,
+                            scale: tableTopScale
+                        }}
+                    />
 
                 }
-            >
-                <TableFlat
-                    props={{
 
-                    }}
-                />
                 <BaseIsland
                     props={{
-                        position: [0.995, 0, -0.005]
+                        position: [1, 0, 0]
                     }}
                 />
 
                 <BaseIsland
                     props={{
-                        position: [-0.995, 0, -0.005]
+                        position: [-1, 0, 0]
                     }}
                 />
-
-                {/* <mesh
-                    rotation={[-Math.PI / 2, 0, 0]}
-                    position={[0, 0.000001, 0]}
-                    receiveShadow={true}
-                    castShadow={false}
-                >
-                    <planeGeometry args={[4, 2]} />
-                    <meshStandardMaterial
-                        attach="material"
-                        color="#fff"
-                        roughness={0}
+                <>
+                    <Stool
+                        props={{
+                            position: [0.3, 0, 0.7],
+                            rotation: [0, Math.PI, 0]
+                        }}
                     />
-                </mesh> */}
+
+                    <Stool
+                        props={{
+                            position: [-0.3, 0, 0.7],
+                            rotation: [0, Math.PI, 0]
+                        }}
+                    />
+
+                    <Stool
+                        props={{
+                            position: [0.3, 0, -0.7],
+                            rotation: [0, 0, 0]
+                        }}
+                    />
+
+                    <Stool
+                        props={{
+                            position: [-0.3, 0, -0.7],
+                            rotation: [0, 0, 0]
+                        }}
+                    />
+                </>
+
 
             </group>
 
-        </a.group>
+        </group>
 
     </>
 }

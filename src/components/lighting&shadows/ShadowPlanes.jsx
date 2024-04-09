@@ -1,32 +1,22 @@
-import React, { useRef, useEffect, useState } from 'react';
-import * as THREE from 'three'
+import React, { useRef, useEffect } from 'react';
+import * as THREE from 'three';
 import { useTexture, useGLTF } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber';
 
 export function BakePlane({ props }) {
 
-    const { nodes, materials } = useGLTF("./models/bake-plat.glb");
+    const { nodes } = useGLTF("./models/bake-plat.glb");
 
-    const alphaMap1 = useTexture('./images/bakes/bake.jpg');
+    const alphaMap1 = useTexture('./images/bakes/big-bake.jpg');
     alphaMap1.flipY = false;
+    alphaMap1.colorSpace = THREE.SRGBColorSpace;
 
     const bigPlaneRef = useRef();
 
     useEffect(() => {
         if (bigPlaneRef.current) {
-            bigPlaneRef.current.rotation.y = - bigPlaneRef.current.parent.rotation.y;
+            bigPlaneRef.current.rotation.y = - bigPlaneRef.current.parent.rotation.y - Math.PI / 3.5;
         }
     }, [props]);
-
-    // useFrame(() => {
-    //     if(bigPlaneRef.current){
-    //         bigPlaneRef.current.position.y =  - bigPlaneRef.current.parent.position.y;
-    //         bigPlaneRef.current.position.z =  - bigPlaneRef.current.parent.position.y / 3;
-    //         if(bigPlaneRef.current.children[0].material){
-    //             bigPlaneRef.current.children[0].material.opacity = (1 - (bigPlaneRef.current.parent.position.y * 1.5)) * 1;
-    //         };
-    //     }
-    // });
 
     return (
         <group
@@ -61,7 +51,7 @@ export function BakePlaneSmall({ props }) {
 
     const { nodes, materials } = useGLTF("./models/bake-plat.glb");
 
-    const alphaMap1 = useTexture('./images/bakes/bake2.jpg');
+    const alphaMap1 = useTexture('./images/bakes/small-bake.jpg');
     alphaMap1.flipY = false;
 
     const smallPlaneRef = useRef();
@@ -69,20 +59,9 @@ export function BakePlaneSmall({ props }) {
 
     useEffect(() => {
         if (smallPlaneRef.current) {
-            smallPlaneRef.current.rotation.y = - smallPlaneRef.current.parent.parent.rotation.y;
+            smallPlaneRef.current.rotation.y = - smallPlaneRef.current.parent.parent.rotation.y - Math.PI / 3.5;
         }
     }, [props]);
-
-    // useFrame(() => {
-    //     if (smallPlaneRef.current) {
-    //         smallPlaneRef.current.position.y = - smallPlaneRef.current.parent.position.y;
-    //         smallPlaneRef.current.position.z = - smallPlaneRef.current.parent.position.y / 3;
-    //         if (smallPlaneRef.current.children[0].material) {
-    //             smallPlaneRef.current.children[0].material.opacity = (1 - (smallPlaneRef.current.parent.position.y * 1.5)) * 1;
-    //         };
-    //     }
-    // }
-    // );
 
     return (
         <group

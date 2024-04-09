@@ -1,8 +1,6 @@
 import React from "react";
-import { useEffect, useState } from "react";
 
 import useConfig from "../../../store/useConfigStore.jsx";
-import useScene from "../../../store/useScene.jsx";
 import useUIStore from "../../../store/useUIStore.jsx";
 
 export default function MaterialCategorySelection() {
@@ -13,16 +11,29 @@ export default function MaterialCategorySelection() {
         setTableTopMaterial,
         mainMaterialCategory,
         setMainMaterialCategory,
-    } = useConfig();
+    } = useConfig(
+        state => ({
+            allCategories: state.allCategories,
+            setMainMaterial: state.setMainMaterial,
+            setTableTopMaterial: state.setTableTopMaterial,
+            mainMaterialCategory: state.mainMaterialCategory,
+            setMainMaterialCategory: state.setMainMaterialCategory,
+        })
+    );
 
-    const { setIsSecondDetailsOpen } = useUIStore();
+    const { setIsSecondDetailsOpen } = useUIStore(
+        state => ({
+            setIsSecondDetailsOpen: state.setIsSecondDetailsOpen,
+        })
+    );
 
 
 
     return <>
         <details
-            open
+            open={true}
             className='config-ui__details'
+            onClick={(e) => e.preventDefault()}
         >
             <summary>Base material:
                 <span>
@@ -40,22 +51,22 @@ export default function MaterialCategorySelection() {
                         onClick={() => {
                             setMainMaterialCategory(category)
                             setIsSecondDetailsOpen(true)
-                            setMainMaterial(materials[0].url)
+                            setMainMaterial(materials[0])
 
                             switch (category) {
                                 case 'metal':
-                                    setTableTopMaterial(allCategories['dekton'][0].url)
+                                    setTableTopMaterial(allCategories['dekton'][0])
                                     break;
                                 case 'dekton':
-                                    setTableTopMaterial(allCategories['natural stone'][0].url)
+                                    setTableTopMaterial(allCategories['natural stone'][0])
                                     break;
                                 case 'natural stone':
-                                    setTableTopMaterial(allCategories['metal'][0].url)
+                                    setTableTopMaterial(allCategories['metal'][0])
                                     break;
                             }
                         }}
                         style={{
-                            backgroundImage: `url(${materials[0].url}albedo.jpg)`,
+                            backgroundImage: `url(${materials[0].url}preview.jpg)`,
                         }}
                     ></div>
                 ))}

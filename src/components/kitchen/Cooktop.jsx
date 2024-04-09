@@ -1,182 +1,211 @@
-import React, { useRef, useState, useEffect } from "react";
-import * as THREE from "three";
-import { useGLTF, useCursor } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
-import { useSpring, a } from "@react-spring/three";
-import { useDrag } from "@use-gesture/react";
+import React, { useRef, useEffect, useState } from "react";
 
 import BaseIsland from "./BaseIsland.jsx";
 
-import TableTop from "./accessoires/TableTop.jsx";
+import TableTop from "./tabletops/TableTop.jsx";
+import TableTopRound from "./tabletops/TableTopRound.jsx";
 
 import GasStove from "./accessoires/GasStove.jsx";
 import ElectricStove from "./accessoires/ElectricStove.jsx";
 
-import { BakePlaneSmall } from "../lighting&shadows/ShadowPlanes.jsx";
-import Indicator from "../indicator/Indicator.jsx";
-
-import { useTexture } from "../../helper/useTexture.tsx";
-
 import useScene from "../../store/useScene.jsx";
 import useConfig from "../../store/useConfigStore.jsx";
-import useUIStore from "../../store/useUIStore.jsx";
 
 export default function Cooktop() {
     const {
-        tableTopMaterial,
-
         cooktopPosition,
         cooktopRotation,
 
         stoveType,
 
-        dragMode,
-        isDraggingCooktop,
-        setIsDraggingCooktop,
-        setIsDragging,
-    } = useConfig();
+        tableTopInset,
+        tableTopRounded,
+        setTableTopRounded,
 
-    const { setCurrentPage } = useUIStore();
+        tableTopMaterialCategory,
+        tableTopHeight,
+    } = useConfig(
+        (state) => ({
 
-    const { setCameraFocus, setIsFocussedOnIsland, isFocussedOnIsland } =
-        useScene();
+            cooktopPosition: state.cooktopPosition,
+            cooktopRotation: state.cooktopRotation,
 
-    const [hovered, setHover] = useState(null);
+            stoveType: state.stoveType,
 
-    const [needPointer, setNeedPointer] = useState(false);
+            tableTopInset: state.tableTopInset,
+            tableTopRounded: state.tableTopRounded,
+            setTableTopRounded: state.setTableTopRounded,
 
-    useCursor(needPointer, "pointer");
+            tableTopMaterialCategory: state.tableTopMaterialCategory,
+            tableTopHeight: state.tableTopHeight,
+        })
+    );
+
+    const {
+        setCameraFocus,
+    } = useScene(
+        (state) => ({
+            setCameraFocus: state.setCameraFocus,
+            setIsFocussedOnIsland: state.setIsFocussedOnIsland,
+        })
+    );
 
     const cookTopRef = useRef();
 
-    //animate sink and dragging_____________________________________________________________________________________
-    const springProps = useSpring({
-        position: hovered
-            ? [cooktopPosition[0], 0.1, cooktopPosition[2]]
-            : [cooktopPosition[0], 0, cooktopPosition[2]],
-        scale: isDraggingCooktop ? [1.1, 1.1, 1.1] : [1, 1, 1],
-        rotation: isDraggingCooktop ? [0, 0, 0] : cooktopRotation,
-        config: {
-            tension: 250,
-            friction: 50,
-        },
-    });
-
-    const planeIntersectPoint = new THREE.Vector3();
-    const floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
-
-    const dragPos = useDrag(({ active, event }) => {
-        setIsDraggingCooktop(active);
-        setIsDragging(active);
-
-        if (active) {
-            event.ray.intersectPlane(floorPlane, planeIntersectPoint);
-            let newPosition = [planeIntersectPoint.x, 0, planeIntersectPoint.z];
-
-            newPosition[0] = THREE.MathUtils.clamp(newPosition[0], -4.5, 4.5);
-            newPosition[2] = THREE.MathUtils.clamp(newPosition[2], -4.5, 4.5);
-
-            setPosition(newPosition);
-        }
-
-        event.stopPropagation();
-
-        return;
-    });
-    //_____________________________________________________________________________________________________________
-
-    // const indicatorPosition = [cooktopPosition[0], 0.1, cooktopPosition[2]];
-
     const handleClick = () => {
-        if (dragMode) return;
-        setCurrentPage(4);
         setCameraFocus([
             cooktopPosition[0],
             cooktopPosition[1] + 1,
             cooktopPosition[2],
         ]);
-        setIsFocussedOnIsland(false, true, false);
     };
 
-    const handlePointerOver = () => {
-        setNeedPointer(true);
-        if (dragMode) return;
-        setHover(true);
-    };
+    const [stovePosition, setStovePosition] = useState([0, 0, 0]);
 
-    const handlePointerOut = () => {
-        if (dragMode) return;
-        setNeedPointer(false);
-        setHover(false);
-    };
+    const [tableTopPosition, setTableTopPosition] = useState([0, 0, 0]);
+    const [tableTopScale, setTableTopScale] = useState([1, 1, 1]);
 
-    const handlePointerMissed = () => {
-        if (dragMode) return;
-        setIsFocussedOnIsland(false, false, false);
-    };
+    useEffect(() => {
+        if (tableTopInset) {
+            setTableTopRounded(false);
+            setTableTopPosition([0, -0.005, 0]);
+            setTableTopScale([1, 1, 1]);
+        } else if (!tableTopInset) {
+            setTableTopPosition([0, 0.047, 0]);
+            setTableTopScale([1.05, 1, 1.05]);
+        }
+    }, [tableTopInset]);
+
+    useEffect(() => {
+        switch (tableTopMaterialCategory) {
+            case "dekton":
+                if (tableTopInset) {
+                    setTableTopScale([1, 1, 1]);
+                    setTableTopPosition([0, 0.905, 0]);
+                    setStovePosition([0, -0.005, 0]);
+                } else {
+                    if (tableTopHeight === 0.5) {
+                        setTableTopScale([1.05, 0.5, 1.05]);
+                        setTableTopPosition([0, 0.96, 0]);
+                        setStovePosition([0, 0.03, 0]);
+                    } else if (tableTopHeight === 0.3) {
+                        setTableTopScale([1.05, 0.3, 1.05]);
+                        setTableTopPosition([0, 0.96, 0]);
+                        setStovePosition([0, 0.02, 0]);
+                    }
+                }
+                break;
+            case "natural stone":
+                if (tableTopInset) {
+                    setTableTopScale([1, 1, 1]);
+                    setTableTopPosition([0, 0.905, 0]);
+                    setStovePosition([0, -0.005, 0]);
+                }
+                else {
+                    setTableTopScale([1.05, 1, 1.05]);
+                    setTableTopPosition([0, 0.96, 0]);
+                    setStovePosition([0, 0.048, 0]);
+                }
+                break;
+            case "metal":
+                if (tableTopInset) {
+                    setTableTopScale([1, 1, 1]);
+                    setTableTopPosition([0, 0.905, 0]);
+                    setStovePosition([0, -0.005, 0]);
+                }
+                else {
+                    setTableTopScale([1.05, 0.125, 1.05]);
+                    setTableTopPosition([0, 0.96, 0]);
+                    setStovePosition([0, 0.01, 0]);
+                }
+                break;
+        }
+    }, [tableTopMaterialCategory, tableTopInset, tableTopRounded, tableTopHeight]);
 
     return (
         <>
-            {/* {isFocussedOnIsland.cooktop && <Indicator position={indicatorPosition} />} */}
-
-            <a.group
+            <group
                 name="cooktop-group"
                 ref={cookTopRef}
                 rotation={cooktopRotation}
                 position={cooktopPosition}
                 dispose={null}
-                // {...springProps}
             >
                 <group
                     name="cooktop-hovers-group"
-                    onPointerOver={(e) => {
-                        handlePointerOver();
-                        e.stopPropagation();
-                    }}
-                    onPointerOut={(e) => {
-                        handlePointerOut();
-                        e.stopPropagation();
-                    }}
                     onClick={(e) => {
                         handleClick();
                         e.stopPropagation();
                     }}
-                    //on misclick
-                    onPointerMissed={(e) => {
-                        handlePointerMissed();
-                        e.stopPropagation();
-                    }}
-                    {...(dragMode ? dragPos() : {})}
                 >
                     <BaseIsland />
 
-                    <TableTop
-                        props={{
-                            position: [0, 0, 0],
-                            rotation: [0, 0, 0],
-                        }}
-                        materialUrl={tableTopMaterial}
-                    />
+                    {tableTopRounded &&
+                        <group>
 
-                    {stoveType === "1" && (
-                        <GasStove
-                            props={{
-                                position: [0, 0, 0],
-                            }}
-                        />
-                    )}
+                            <TableTopRound
+                                props={{
+                                    scale: [1, tableTopScale[1], 1],
+                                }}
+                            />
 
-                    {stoveType === "2" && (
-                        <ElectricStove
-                            props={{
-                                position: [0, 0.97, 0.1],
-                                scale: [0.9, 0.9, 0.9],
-                                rotation: [0, 0, 0],
-                            }}
-                        />
-                    )}
+                            {stoveType === 1 && (
+                                <GasStove
+                                    props={{
+                                        position: stovePosition,
+                                    }}
+                                />
+                            )}
+
+                            {stoveType === 2 && (
+                                <ElectricStove
+                                    props={{
+                                        position: [stovePosition[0], stovePosition[1] + 0.97, stovePosition[2] + 0.1],
+                                        scale: [0.9, 0.9, 0.9],
+                                        rotation: [0, 0, 0],
+                                    }}
+                                />
+                            )}
+
+                        </group>
+                    }
+
+                    {!tableTopRounded &&
+
+                        <group
+                        >
+
+                            <TableTop
+                                props={{
+                                    scale: tableTopScale,
+                                    position: tableTopPosition,
+                                }}
+                            />
+
+
+
+                            {stoveType === 1 && (
+                                <GasStove
+                                    props={{
+                                        position: stovePosition,
+                                    }}
+                                />
+                            )}
+
+                            {stoveType === 2 && (
+                                <ElectricStove
+                                    props={{
+                                        position: [stovePosition[0], stovePosition[1] + 0.97, stovePosition[2] + 0.1],
+                                        scale: [0.9, 0.9, 0.9],
+                                        rotation: [0, 0, 0],
+                                    }}
+                                />
+                            )}
+                        </group>
+                    }
+
                 </group>
-            </a.group>
+            </group>
         </>
     );
 }

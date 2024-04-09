@@ -8,33 +8,33 @@ export default function Env() {
             background={false}
             blur={0.1}
         >
-        <Lightformer
-            visible={true}
-            form="rect"
-            intensity={0.8}
-            position={new THREE.Vector3().setFromSphericalCoords(
-                2, // distance
-                1.2, // phi
-                1.75 // theta
-            )}
-            scale={[5, 2, 5]}
-            target={[0, 0, 0]}
-            color={"#ffffff"}
+            <Lightformer
+                visible={true}
+                form="rect"
+                intensity={0.8}
+                position={new THREE.Vector3().setFromSphericalCoords(
+                    2, // distance
+                    1.2, // phi
+                    1.75 // theta
+                )}
+                scale={[5, 2, 5]}
+                target={[0, 0, 0]}
+                color={"#ffffff"}
             />
             <Lightformer
-            visible={true}
-            form="rect"
-            intensity={0.8}
-            position={new THREE.Vector3().setFromSphericalCoords(
-                1.5, // distance
-                1, // phi
-                4.2 // theta
-            )}
-            rotation={[0, 0, 0]}
-            scale={[5, 2, 5]}
-            target={[0, 0, 0]}
-            castShadow={false}
-            receiveShadow={false}
+                visible={true}
+                form="rect"
+                intensity={0.8}
+                position={new THREE.Vector3().setFromSphericalCoords(
+                    1.5, // distance
+                    1, // phi
+                    4.2 // theta
+                )}
+                rotation={[0, 0, 0]}
+                scale={[5, 2, 5]}
+                target={[0, 0, 0]}
+                castShadow={false}
+                receiveShadow={false}
             />
 
             <Lightformer
@@ -42,16 +42,16 @@ export default function Env() {
                 form="rect"
                 intensity={0.3}
                 position={new THREE.Vector3().setFromSphericalCoords(
-                1, // distance
-                Math.PI, // phi
-                0 // theta
+                    1, // distance
+                    Math.PI, // phi
+                    0 // theta
                 )}
                 scale={[5, 5, 5]}
                 target={[0, 0, 0]}
                 color={"#ffffff"}
             />
-            
-            <Lightformer
+
+            {/* <Lightformer
                 visible={true}
                 form="rect"
                 intensity={1}
@@ -63,7 +63,7 @@ export default function Env() {
                 scale={[5, 5, 5]}
                 target={[0, 0, 0]}
                 color={"#595959"}
-            />      
+            />       */}
 
         </Environment>
     </>

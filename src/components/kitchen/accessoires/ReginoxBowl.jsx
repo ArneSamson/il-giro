@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState, useEffect } from "react";
 import * as THREE from 'three'
 import { useGLTF } from "@react-three/drei";
 
@@ -11,14 +11,31 @@ export default function Reginox({ props }) {
 
     const {
         accentMaterial,
+        tableTopMaterial,
+    } = useConfig(
+        state => ({
+            accentMaterial: state.accentMaterial,
+            tableTopMaterial: state.tableTopMaterial,
+        })
+    );
 
-    } = useConfig();
+    const [bowlMaterial, setBowlMaterial] = useState(accentMaterial);
+
+    useEffect(() => {
+        if (tableTopMaterial.name === 'inox') {
+            setBowlMaterial(tableTopMaterial);
+        } else {
+            setBowlMaterial(accentMaterial);
+        }
+    }, [tableTopMaterial, accentMaterial]);
+
+
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
-        accentMaterial + "albedo.jpg",
-        accentMaterial + "normal.jpg",
-        accentMaterial + "roughness.jpg",
-        accentMaterial + "metallic.jpg"
+        bowlMaterial.url + "albedo.jpg",
+        bowlMaterial.url + "normal.jpg",
+        bowlMaterial.url + "roughness.jpg",
+        bowlMaterial.url + "metallic.jpg"
     ]);
 
     albedoTexture.colorSpace = THREE.SRGBColorSpace;

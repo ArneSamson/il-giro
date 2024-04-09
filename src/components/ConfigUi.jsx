@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useSpring, animated } from 'react-spring';
 
 import useConfig from '../store/useConfigStore.jsx';
 import useUIStore from '../store/useUIStore.jsx';
@@ -11,10 +10,7 @@ import ToolTip from './ui/components/buttons/ToolTip.jsx';
 import LandingsPage from './ui/pages/LandingsPage.jsx';
 import UiPage1 from './ui/pages/UiPage1.jsx';
 import UiPage2 from './ui/pages/UiPage2.jsx';
-import UiPage3 from './ui/pages/UiPage3.jsx';
-import UiPage4 from './ui/pages/UiPage4.jsx';
-import UiPage5 from './ui/pages/UiPage5.jsx';
-import UiPage6 from './ui/pages/UiPage6.jsx';
+import OrderOverview from './ui/pages/OrderOverview.jsx';
 import ModuleSelectionPage from './ui/pages/ModuleSelectionPage.jsx';
 
 export default function ConfigUi() {
@@ -23,23 +19,33 @@ export default function ConfigUi() {
         allMaterials,
         allCategories,
 
-        mainMaterial,
         setMainMaterial,
 
-        accentMaterial,
         setAccentMaterial,
 
         setTableTopMaterial,
+    } = useConfig(
+        state => ({
+            allMaterials: state.allMaterials,
+            allCategories: state.allCategories,
 
-        doorOpeningRotation,
-        setDoorOpeningRotation,
+            setMainMaterial: state.setMainMaterial,
 
-    } = useConfig();
+            setAccentMaterial: state.setAccentMaterial,
+
+            setTableTopMaterial: state.setTableTopMaterial,
+        })
+    );
 
     const {
         currentPage,
         landingPageVisible,
-    } = useUIStore();
+    } = useUIStore(
+        state => ({
+            currentPage: state.currentPage,
+            landingPageVisible: state.landingPageVisible,
+        })
+    );
 
     const [loaded, setLoaded] = useState(false);
 
@@ -51,17 +57,16 @@ export default function ConfigUi() {
 
             if (loaded) return;
 
-            setMainMaterial(allMaterials[0].url);
-            setAccentMaterial(allCategories['metal'][0].url);
-            setTableTopMaterial(allCategories['metal'][0].url);
+            setMainMaterial(allCategories['wood'][0]);
+            setAccentMaterial(allCategories['metal'][0]);
+            setTableTopMaterial(allCategories['dekton'][1]);
 
         }
-    }, [allMaterials,
+    }, [
+        allMaterials,
 
-        mainMaterial,
         setMainMaterial,
 
-        accentMaterial,
         setAccentMaterial
     ]);
 
@@ -69,9 +74,9 @@ export default function ConfigUi() {
 
     return (
         <>
-            {landingPageVisible &&
+            {/* {landingPageVisible &&
                 <LandingsPage />
-            }
+            } */}
 
             <ToolTip />
 
@@ -85,7 +90,6 @@ export default function ConfigUi() {
                     className='config-ui'
                 >
 
-                    <ConfigNav />
 
                     {currentPage === 0 && <>
                         <ModuleSelectionPage />
@@ -100,20 +104,11 @@ export default function ConfigUi() {
                     </>}
 
                     {currentPage === 3 && <>
-                        <UiPage3 />
+                        <OrderOverview />
                     </>}
 
-                    {currentPage === 4 && <>
-                        <UiPage4 />
-                    </>}
+                    <ConfigNav />
 
-                    {currentPage === 5 && <>
-                        <UiPage5 />
-                    </>}
-
-                    {currentPage === 6 && <>
-                        <UiPage6 />
-                    </>}
 
                 </div>
                 }
