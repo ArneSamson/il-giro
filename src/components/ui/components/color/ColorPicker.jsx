@@ -30,11 +30,22 @@ export default function ColorPicker({ color, setColor }) {
         setRalColor: state.setRalColor,
     }));
 
-    return (
+    return (<>
         <SwatchesPicker
             color={color}
             colors={ralColors}
             onChangeComplete={color => setRalColor(color.hex)}
+            width={(window.innerWidth * 0.2) - 50}
+            height={300}
         />
+
+        <input
+            type="text"
+            value={ralColor}
+            maxLength={4}
+            pattern="[0-9]*"
+        />
+    </>
+
     );
 }
