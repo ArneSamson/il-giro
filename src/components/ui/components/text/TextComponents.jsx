@@ -4,7 +4,7 @@ export const ButtonCategoryTitle = ({ children, title }) => {
     return (
         <div
             style={{
-                marginBottom: "50px",
+                marginBottom: "25px",
             }}
         >
             <h4
@@ -12,6 +12,11 @@ export const ButtonCategoryTitle = ({ children, title }) => {
             >
                 {title}
             </h4>
+            <hr
+                style={{
+                    border: "1px solid #272727",
+                }}
+            />
             {children}
         </div>
     );
