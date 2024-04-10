@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import * as THREE from "three";
+import { SRGBColorSpace, NoColorSpace, Vector2, MeshStandardMaterial, MeshBasicMaterial, RepeatWrapping, BufferAttribute } from "three";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
@@ -51,20 +52,35 @@ export default function Tower({ props }) {
             ],
             (textures) => {
                 for (const texture of textures) {
-                    if (texture.wrapS !== THREE.RepeatWrapping) {
-                        texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                    if (texture.wrapS !== RepeatWrapping) {
+                        texture.wrapS = texture.wrapT = RepeatWrapping;
                         texture.needsUpdate = true;
                     }
                 }
             }
         );
 
-    albedoTexture.anisotropy = 16;
-    albedoTexture.colorSpace = THREE.SRGBColorSpace;
+    if (albedoTexture.anisotropy !== 16) {
+        albedoTexture.anisotropy = 16;
+        albedoTexture.colorSpace = SRGBColorSpace;
+        albedoTexture.needsUpdate = true;
 
-    const normalScale = new THREE.Vector2(0.5, 0.5);
-    const material = new THREE.MeshStandardMaterial({
-        color: mainMaterialCategory === 'paint work' ? ralColor : undefined,
+        metallnessTexture.anisotropy = 16;
+        metallnessTexture.colorSpace = NoColorSpace;
+        metallnessTexture.needsUpdate = true;
+
+        roughnessTexture.anisotropy = 16;
+        roughnessTexture.colorSpace = NoColorSpace;
+        roughnessTexture.needsUpdate = true;
+
+        normalTexture.anisotropy = 16;
+        normalTexture.colorSpace = NoColorSpace;
+        normalTexture.needsUpdate = true;
+    }
+
+    const normalScale = new Vector2(0.5, 0.5);
+    const material = new MeshStandardMaterial({
+        color: mainMaterialCategory === 'paint work' ? ralColor : '#ffffff',
         map: albedoTexture,
         normalMap: normalTexture,
         normalScale: normalScale,
@@ -80,8 +96,8 @@ export default function Tower({ props }) {
     const towerAOMapBevelled = useTexture("/images/bakes/tower-ao2.jpg");
     towerAOMapBevelled.flipY = false;
 
-    const materialWithAo = new THREE.MeshStandardMaterial({
-        color: mainMaterialCategory === 'paint work' ? ralColor : undefined,
+    const materialWithAo = new MeshStandardMaterial({
+        color: mainMaterialCategory === 'paint work' ? ralColor : '#ffffff',
         map: albedoTexture,
         normalMap: normalTexture,
         normalScale: normalScale,
@@ -93,8 +109,8 @@ export default function Tower({ props }) {
         aoMapIntensity: 0.8,
     });
 
-    const materialWithAoBevelled = new THREE.MeshStandardMaterial({
-        color: mainMaterialCategory === 'paint work' ? ralColor : undefined,
+    const materialWithAoBevelled = new MeshStandardMaterial({
+        color: mainMaterialCategory === 'paint work' ? ralColor : '#ffffff',
         map: albedoTexture,
         normalMap: normalTexture,
         normalScale: normalScale,
@@ -106,7 +122,7 @@ export default function Tower({ props }) {
         aoMapIntensity: 0.8,
     });
 
-    const fridgeMaterial = new THREE.MeshBasicMaterial({
+    const fridgeMaterial = new MeshBasicMaterial({
         color: 0x000000,
     });
 
@@ -138,11 +154,11 @@ export default function Tower({ props }) {
             const uvAttributeDoor = doorGeometry.getAttribute(uvAttributeName);
 
             if (uvAttributeCabinet && uvAttributeDoor) {
-                const uvBufferAttribute = new THREE.BufferAttribute(
+                const uvBufferAttribute = new BufferAttribute(
                     uvAttributeCabinet.array,
                     uvAttributeCabinet.itemSize
                 );
-                const uvBufferAttributeDoor = new THREE.BufferAttribute(
+                const uvBufferAttributeDoor = new BufferAttribute(
                     uvAttributeDoor.array,
                     uvAttributeDoor.itemSize
                 );
