@@ -7,7 +7,7 @@ import { useTexture } from "../../helper/useTexture";
 
 import { BakePlaneSmall } from '../lighting&shadows/ShadowPlanes.jsx'
 
-import ModuleMaterial from './ModuleMaterial.jsx';
+import ModuleMaterial from '../../helper/NewMaterial.jsx';
 
 import useConfig from '../../store/useConfigStore.jsx';
 

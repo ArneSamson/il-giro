@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei'
 
-import ModuleMaterial from '../ModuleMaterial.jsx';
+import ModuleMaterial from '../../../helper/NewMaterial.jsx';;
 
 export default function TableTop({ props }) {
 

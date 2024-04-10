@@ -8,7 +8,7 @@ import WineStand from "./accessoires/WineStand.jsx";
 
 import { BakePlane } from "../lighting&shadows/ShadowPlanes.jsx";
 
-import ModuleMaterial from './ModuleMaterial.jsx';
+import ModuleMaterial from '../../helper/NewMaterial.jsx';
 
 import { useTexture } from "../../helper/useTexture.tsx";
 

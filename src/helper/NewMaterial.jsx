@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-import { useTexture } from "../../helper/useTexture";
-import useConfigStore from "../../store/useConfigStore";
+import { useTexture } from "./useTexture";
+import useConfigStore from "../store/useConfigStore";
 import { NoColorSpace, RepeatWrapping, SRGBColorSpace, Vector2 } from "three";
 
 export default function ModuleMaterial({ ambientOcclusion, type }) {
