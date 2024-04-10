@@ -38,7 +38,7 @@ export default function ColorPicker({ color, setColor }) {
             //compare the value with the ralData
             const color = ralData[value];
             if (color) {
-                setRalColor(color.hex);
+                setRalColor(color);
             } else {
                 window.alert("RAL color doesn't exist.");
             }

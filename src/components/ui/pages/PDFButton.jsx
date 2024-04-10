@@ -26,6 +26,7 @@ export default function PDFButton() {
         tableChosen,
 
         mainMaterial,
+        mainMaterialCategory,
         tableTopMaterial,
         tableTopMaterialCategory,
         accentMaterial,
@@ -34,6 +35,8 @@ export default function PDFButton() {
         tableTopInset,
         tableTopHeight,
         tableTopRounded,
+
+        ralColor,
     } = useConfigStore(
         state => ({
             edgeFinish: state.edgeFinish,
@@ -53,6 +56,7 @@ export default function PDFButton() {
             tableChosen: state.tableChosen,
 
             mainMaterial: state.mainMaterial,
+            mainMaterialCategory: state.mainMaterialCategory,
             tableTopMaterial: state.tableTopMaterial,
             tableTopMaterialCategory: state.tableTopMaterialCategory,
             accentMaterial: state.accentMaterial,
@@ -61,6 +65,8 @@ export default function PDFButton() {
             tableTopInset: state.tableTopInset,
             tableTopHeight: state.tableTopHeight,
             tableTopRounded: state.tableTopRounded,
+
+            ralColor: state.ralColor,
         })
     );
 
@@ -86,11 +92,13 @@ export default function PDFButton() {
         counterTopHeight = "5mm";
     }
 
+
     const [instance, updateInstance] = usePDF(
         {
             document: <MyDocument
                 props={{
                     mainMaterial: mainMaterial,
+                    ralColor: mainMaterialCategory === 'ral' ? ralColor : null,
                     tableTopMaterial: tableTopMaterial,
                     tableTopInset: tableTopInset ? 'inset' : 'overlay',
                     accentMaterial: towerChosen || sinkChosen ? accentMaterial : null,

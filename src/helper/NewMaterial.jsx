@@ -85,12 +85,15 @@ export default function NewMaterial({ ambientOcclusion, type, ralExclude }) {
             return;
         }
         setRal(ralColor);
+        console.log(ral);
     }, [ralColor, mainMaterial]);
 
+
     return (<>
-        {mainMaterialCategory === 'ral' &&
+
+        {!ralExclude && mainMaterialCategory === 'ral' &&
             <meshStandardMaterial
-                color={ral}
+                color={ral.hex}
                 map={albedoTexture}
                 roughnessMap={roughnessTexture}
                 normalMap={normalTexture}
@@ -102,8 +105,7 @@ export default function NewMaterial({ ambientOcclusion, type, ralExclude }) {
                 aoMapIntensity={0.8}
             />
         }
-        {
-            mainMaterialCategory !== 'ral' &&
+        {(ralExclude || mainMaterialCategory !== 'ral') &&
             <meshStandardMaterial
                 map={albedoTexture}
                 roughnessMap={roughnessTexture}

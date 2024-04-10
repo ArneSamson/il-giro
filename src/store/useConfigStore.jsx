@@ -61,7 +61,12 @@ export default create((set) => {
         tableTopMaterialCategory: 'dekton',
         mainMaterialCategory: 'wood',
 
-        ralColor: '#C2B078',
+        ralColor: {
+            "code": "1001",
+            "name": "Beige",
+            "rgb": "217-186-140",
+            "hex": "#C2B078"
+        },
 
         allBevelled: false,
 

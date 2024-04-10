@@ -103,10 +103,13 @@ export function MyDocument({ props }) {
     const currentDate = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
     const currentTime = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
 
-    const materialOptions = [
+    const moduleOptions = [
         { name: 'module name(s)', value: props.chosenModules },
         { name: 'module finish', value: props.bevelled },
-        { name: 'material for modules', value: props.mainMaterial.name },
+    ];
+
+    const materialOptions = [
+        { name: 'material for modules', value: props.ralColor ? 'ral color ' + props.ralColor.code : props.mainMaterial.name },
         { name: 'material for countertops', value: props.tableTopMaterial.name },
     ];
 
@@ -228,6 +231,32 @@ export function MyDocument({ props }) {
                             style={styles.chapterOptions}
                         >
                             {materialOptions.map((option, index) => (
+                                <View
+                                    key={index}
+                                    style={styles.chapterOption}
+                                >
+                                    <Text>
+                                        {option.name} : {option.value}
+                                    </Text>
+                                </View>
+                            ))}
+                        </View>
+
+                    </View>
+
+                    <View
+                        style={styles.chapter}
+                    >
+                        <Text
+                            style={styles.chapterTitle}
+                        >
+                            modules :
+                        </Text>
+
+                        <View
+                            style={styles.chapterOptions}
+                        >
+                            {moduleOptions.map((option, index) => (
                                 <View
                                     key={index}
                                     style={styles.chapterOption}
