@@ -4,51 +4,27 @@ import { useGLTF } from "@react-three/drei";
 
 import useConfig from '../../../store/useConfigStore.jsx';
 
-import { useTexture } from '../../../helper/useTexture.tsx';
-
+import NewMaterial from '../../../helper/NewMaterial.jsx';
 
 export default function Reginox({ props }) {
 
     const {
-        accentMaterial,
         tableTopMaterial,
     } = useConfig(
         state => ({
-            accentMaterial: state.accentMaterial,
             tableTopMaterial: state.tableTopMaterial,
         })
     );
 
-    const [bowlMaterial, setBowlMaterial] = useState(accentMaterial);
+    const [bowlMaterialType, setBowlMaterialType] = useState("accent");
 
     useEffect(() => {
         if (tableTopMaterial.name === 'inox') {
-            setBowlMaterial(tableTopMaterial);
+            setBowlMaterialType("tableTop");
         } else {
-            setBowlMaterial(accentMaterial);
+            setBowlMaterialType("accent");
         }
-    }, [tableTopMaterial, accentMaterial]);
-
-
-
-    const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
-        bowlMaterial.url + "albedo.jpg",
-        bowlMaterial.url + "normal.jpg",
-        bowlMaterial.url + "roughness.jpg",
-        bowlMaterial.url + "metallic.jpg"
-    ]);
-
-    albedoTexture.colorSpace = THREE.SRGBColorSpace;
-
-    const material = new THREE.MeshStandardMaterial({
-        map: albedoTexture,
-        normalMap: normalTexture,
-        roughnessMap: roughnessTexture,
-        metalnessMap: metallnessTexture,
-        metalness: 1,
-        roughness: 0,
-    });
-
+    }, [tableTopMaterial]);
 
     const { nodes, materials } = useGLTF("./models/Reginox.glb");
 
@@ -63,9 +39,12 @@ export default function Reginox({ props }) {
                 castShadow
                 receiveShadow
                 geometry={nodes.Reginox.geometry}
-                material={material}
                 position={[0, 0.782, 0.242]}
-            />
+            >
+                <NewMaterial
+                    type={bowlMaterialType}
+                />
+            </mesh>
         </group>
     );
 }

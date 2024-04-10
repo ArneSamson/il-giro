@@ -4,7 +4,7 @@ import { useTexture } from "./useTexture";
 import useConfigStore from "../store/useConfigStore";
 import { NoColorSpace, RepeatWrapping, SRGBColorSpace, Vector2 } from "three";
 
-export default function ModuleMaterial({ ambientOcclusion, type }) {
+export default function NewMaterial({ ambientOcclusion, type }) {
     const {
         mainMaterial,
         accentMaterial,

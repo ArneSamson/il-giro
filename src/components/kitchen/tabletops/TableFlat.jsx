@@ -1,7 +1,7 @@
 import React from 'react';
 import { useGLTF } from '@react-three/drei'
 
-import ModuleMaterial from '../../../helper/NewMaterial.jsx';;
+import NewMaterial from '../../../helper/NewMaterial.jsx';;
 
 export default function TableFlat({ props }) {
 
@@ -22,7 +22,7 @@ export default function TableFlat({ props }) {
                 scale={[1, 1, 1]}
                 {...props}
             >
-                <ModuleMaterial
+                <NewMaterial
                     type={"tableTop"}
                 />
             </mesh>

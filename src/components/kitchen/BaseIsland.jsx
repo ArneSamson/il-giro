@@ -7,7 +7,7 @@ import { useTexture } from "../../helper/useTexture";
 
 import { BakePlaneSmall } from '../lighting&shadows/ShadowPlanes.jsx'
 
-import ModuleMaterial from '../../helper/NewMaterial.jsx';
+import NewMaterial from '../../helper/NewMaterial.jsx';
 
 import useConfig from '../../store/useConfigStore.jsx';
 
@@ -56,7 +56,7 @@ export default function BaseIsland({ props, needsDrawers }) {
                 rotation={[0, Math.PI / 2, 0]}
                 {...props}
             >
-                <ModuleMaterial
+                <NewMaterial
                     type={"main"}
                 />
                 <mesh
@@ -65,7 +65,7 @@ export default function BaseIsland({ props, needsDrawers }) {
                     receiveShadow
                     geometry={nodes.bevel.geometry}
                 >
-                    <ModuleMaterial
+                    <NewMaterial
                         type={"main"}
                     />
                 </mesh>
@@ -75,7 +75,7 @@ export default function BaseIsland({ props, needsDrawers }) {
                     receiveShadow
                     geometry={nodes.straight.geometry}
                 >
-                    <ModuleMaterial
+                    <NewMaterial
                         type={"main"}
                     />
                 </mesh>
@@ -92,7 +92,7 @@ export default function BaseIsland({ props, needsDrawers }) {
                 {...props}
                 rotation={[0, Math.PI / 2, 0]}
             >
-                <ModuleMaterial
+                <NewMaterial
                     type={"main"}
                 />
 
@@ -102,7 +102,7 @@ export default function BaseIsland({ props, needsDrawers }) {
                     receiveShadow
                     geometry={nodes.bevel.geometry}
                 >
-                    <ModuleMaterial
+                    <NewMaterial
                         type={"main"}
                     />
                 </mesh>
@@ -112,7 +112,7 @@ export default function BaseIsland({ props, needsDrawers }) {
                     receiveShadow
                     geometry={nodes.straight.geometry}
                 >
-                    <ModuleMaterial
+                    <NewMaterial
                         type={"main"}
                     />
                 </mesh>

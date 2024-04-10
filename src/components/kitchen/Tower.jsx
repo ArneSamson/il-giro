@@ -8,7 +8,7 @@ import WineStand from "./accessoires/WineStand.jsx";
 
 import { BakePlane } from "../lighting&shadows/ShadowPlanes.jsx";
 
-import ModuleMaterial from '../../helper/NewMaterial.jsx';
+import NewMaterial from '../../helper/NewMaterial.jsx';
 
 import { useTexture } from "../../helper/useTexture.tsx";
 
@@ -198,7 +198,7 @@ export default function Tower({ props }) {
                         receiveShadow
                         geometry={nodes.tower.geometry}
                     >
-                        <ModuleMaterial
+                        <NewMaterial
                             ambientOcclusion={
                                 allBevelled
                                     ? towerAOMapBevelled
@@ -213,7 +213,7 @@ export default function Tower({ props }) {
                             receiveShadow
                             geometry={nodes["tower-bevel"].geometry}
                         >
-                            <ModuleMaterial
+                            <NewMaterial
                                 type={"main"}
                             />
                         </mesh>
@@ -224,7 +224,7 @@ export default function Tower({ props }) {
                             receiveShadow
                             geometry={nodes["tower-sraight"].geometry}
                         >
-                            <ModuleMaterial
+                            <NewMaterial
                                 type={"main"}
                             />
                         </mesh>
@@ -237,7 +237,7 @@ export default function Tower({ props }) {
                             geometry={nodes.door.geometry}
                             position={[0.425, 1.185, 0.339]}
                         >
-                            <ModuleMaterial
+                            <NewMaterial
                                 type={"main"}
                             />
                             <mesh
@@ -248,7 +248,7 @@ export default function Tower({ props }) {
                                 geometry={nodes["door-bevel"].geometry}
                                 rotation={[Math.PI, -0.646, Math.PI]}
                             >
-                                <ModuleMaterial
+                                <NewMaterial
                                     type={"main"}
                                 />
                             </mesh>
@@ -260,7 +260,7 @@ export default function Tower({ props }) {
                                 geometry={nodes["door-straight"].geometry}
                                 rotation={[Math.PI, -0.646, Math.PI]}
                             >
-                                <ModuleMaterial
+                                <NewMaterial
                                     type={"main"}
                                 />
                             </mesh>
@@ -274,7 +274,7 @@ export default function Tower({ props }) {
                                     receiveShadow
                                     geometry={nodes["inside-cooler"].geometry}
                                 >
-                                    <ModuleMaterial
+                                    <NewMaterial
                                         type={"main"}
                                     />
                                     <mesh
@@ -286,7 +286,7 @@ export default function Tower({ props }) {
                                             nodes["cooler-bevel"].geometry
                                         }
                                     >
-                                        <ModuleMaterial
+                                        <NewMaterial
                                             type={"main"}
                                         />
                                     </mesh>
@@ -299,7 +299,7 @@ export default function Tower({ props }) {
                                             nodes["cooler-straight"].geometry
                                         }
                                     >
-                                        <ModuleMaterial
+                                        <NewMaterial
                                             type={"main"}
                                         />
                                     </mesh>
@@ -439,7 +439,7 @@ export default function Tower({ props }) {
                                     geometry={nodes["inside-shelf"].geometry}
                                     position={[0, -0.048, 0]}
                                 >
-                                    <ModuleMaterial
+                                    <NewMaterial
                                         type={"main"}
                                     />
                                     <mesh
@@ -449,7 +449,7 @@ export default function Tower({ props }) {
                                         receiveShadow
                                         geometry={nodes["shelf-bevel"].geometry}
                                     >
-                                        <ModuleMaterial
+                                        <NewMaterial
                                             type={"main"}
                                         />
                                     </mesh>
@@ -462,7 +462,7 @@ export default function Tower({ props }) {
                                             nodes["shelf-straight"].geometry
                                         }
                                     >
-                                        <ModuleMaterial
+                                        <NewMaterial
                                             type={"main"}
                                         />
                                     </mesh>

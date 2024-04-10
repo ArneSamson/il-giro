@@ -1,44 +1,22 @@
 import React, { useRef } from 'react';
-import * as THREE from 'three'
 import { useGLTF } from '@react-three/drei'
 
 import useConfig from '../../../store/useConfigStore.jsx';
 
-import { useTexture } from '../../../helper/useTexture.tsx';
+import NewMaterial from '../../../helper/NewMaterial.jsx';
+
 
 export default function WineStand({ props }) {
 
 
     const {
-        accentMaterial,
         wineStandSize,
 
     } = useConfig(
         state => ({
-            accentMaterial: state.accentMaterial,
             wineStandSize: state.wineStandSize,
         })
     );
-
-    const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
-        accentMaterial.url + "albedo.jpg",
-        accentMaterial.url + "normal.jpg",
-        accentMaterial.url + "roughness.jpg",
-        accentMaterial.url + "metallic.jpg"
-    ]);
-
-    albedoTexture.colorSpace = THREE.SRGBColorSpace;
-
-    const material = new THREE.MeshStandardMaterial({
-        map: albedoTexture,
-        normalMap: normalTexture,
-        roughnessMap: roughnessTexture,
-        metalnessMap: metallnessTexture,
-        metalness: 0.5,
-        roughness: 0,
-        envMapIntensity: 0.4,
-    });
-
 
     const { nodes } = useGLTF("./models/winestand.glb");
     return (
@@ -52,24 +30,33 @@ export default function WineStand({ props }) {
                     castShadow
                     receiveShadow
                     geometry={nodes['tall-stand'].geometry}
-                    material={material}
-                />
+                >
+                    <NewMaterial
+                        type={"accent"}
+                    />
+                </mesh>
             }
             {wineStandSize === 'medium' &&
                 <mesh
                     castShadow
                     receiveShadow
                     geometry={nodes['medium-stand'].geometry}
-                    material={material}
-                />
+                >
+                    <NewMaterial
+                        type={"accent"}
+                    />
+                </mesh>
             }
             {wineStandSize === 'small' &&
                 <mesh
                     castShadow
                     receiveShadow
                     geometry={nodes['small-stand'].geometry}
-                    material={material}
-                />
+                >
+                    <NewMaterial
+                        type={"accent"}
+                    />
+                </mesh>
             }
         </group>
     );
