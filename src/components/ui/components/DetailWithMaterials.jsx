@@ -6,7 +6,8 @@ export default function DetailWithMaterials({
     selectedMaterial,
     setMaterial,
     open,
-    extraMessage
+    extraMessage,
+    customSpan
 }) {
     return (
         <details
@@ -15,7 +16,7 @@ export default function DetailWithMaterials({
             onClick={(e) => e.preventDefault()}
         >
             <summary>
-                {header}
+                {header}{customSpan}
                 <span>{selectedMaterial}</span>
             </summary>
             <div className="config-ui__material-options">

@@ -49,8 +49,9 @@ export default function UiPage1() {
 
             <DetailWithMaterials
                 header="Choices in "
+                customSpan={mainMaterialCategory + ': '}
                 materials={allCategories[mainMaterialCategory]}
-                selectedMaterial={mainMaterialCategory + ": " + mainMaterial.name}
+                selectedMaterial={mainMaterial.name}
                 setMaterial={setMainMaterial}
                 open={true}
             />
