@@ -35,8 +35,6 @@ export default function Tower({ props }) {
         doorOpeningRotation: state.doorOpeningRotation,
 
         allBevelled: state.allBevelled,
-
-        ralColor: state.ralColor,
     }));
 
     const towerAOMap = "/images/bakes/tower-ao.jpg";
