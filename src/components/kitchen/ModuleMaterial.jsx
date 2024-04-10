@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useTexture } from "../../helper/useTexture";
 import useConfigStore from "../../store/useConfigStore";
 import { NoColorSpace, RepeatWrapping, SRGBColorSpace, Vector2 } from "three";
 
-export default function ModuleMaterial() {
+export default function ModuleMaterial({ ambientOcclusion }) {
     const {
         mainMaterial,
     } = useConfigStore((state) => ({
@@ -47,6 +47,12 @@ export default function ModuleMaterial() {
 
     }, [mainMaterial]);
 
+    let aoMap = null;
+    if (ambientOcclusion) {
+        aoMap = useTexture(ambientOcclusion);
+        aoMap.flipY = false;
+    }
+
     return (
         <meshStandardMaterial
             map={albedoTexture}
@@ -56,6 +62,8 @@ export default function ModuleMaterial() {
             metalnessMap={metallnessTexture}
             roughness={1}
             metalness={1}
+            aoMap={aoMap}
+            aoMapIntensity={0.8}
         />
     );
 }

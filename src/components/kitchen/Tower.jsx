@@ -8,6 +8,8 @@ import WineStand from "./accessoires/WineStand.jsx";
 
 import { BakePlane } from "../lighting&shadows/ShadowPlanes.jsx";
 
+import ModuleMaterial from './ModuleMaterial.jsx';
+
 import { useTexture } from "../../helper/useTexture.tsx";
 
 import useScene from "../../store/useScene.jsx";
@@ -90,37 +92,22 @@ export default function Tower({ props }) {
         roughness: 1,
     });
 
-    const towerAOMap = useTexture("/images/bakes/tower-ao.jpg");
-    towerAOMap.flipY = false;
+    const towerAOMap = "/images/bakes/tower-ao.jpg";
 
-    const towerAOMapBevelled = useTexture("/images/bakes/tower-ao2.jpg");
-    towerAOMapBevelled.flipY = false;
+    const towerAOMapBevelled = "/images/bakes/tower-ao2.jpg"
 
-    const materialWithAo = new MeshStandardMaterial({
-        color: mainMaterialCategory === 'paint work' ? ralColor : '#ffffff',
-        map: albedoTexture,
-        normalMap: normalTexture,
-        normalScale: normalScale,
-        roughnessMap: roughnessTexture,
-        metalnessMap: metallnessTexture,
-        metalness: 1,
-        roughness: 1,
-        aoMap: towerAOMap,
-        aoMapIntensity: 0.8,
-    });
-
-    const materialWithAoBevelled = new MeshStandardMaterial({
-        color: mainMaterialCategory === 'paint work' ? ralColor : '#ffffff',
-        map: albedoTexture,
-        normalMap: normalTexture,
-        normalScale: normalScale,
-        roughnessMap: roughnessTexture,
-        metalnessMap: metallnessTexture,
-        metalness: 1,
-        roughness: 1,
-        aoMap: towerAOMapBevelled,
-        aoMapIntensity: 0.8,
-    });
+    // const materialWithAo = new MeshStandardMaterial({
+    //     color: mainMaterialCategory === 'paint work' ? ralColor : '#ffffff',
+    //     map: albedoTexture,
+    //     normalMap: normalTexture,
+    //     normalScale: normalScale,
+    //     roughnessMap: roughnessTexture,
+    //     metalnessMap: metallnessTexture,
+    //     metalness: 1,
+    //     roughness: 1,
+    //     aoMap: towerAOMap,
+    //     aoMapIntensity: 0.8,
+    // });
 
     const fridgeMaterial = new MeshBasicMaterial({
         color: 0x000000,
@@ -276,28 +263,35 @@ export default function Tower({ props }) {
                         castShadow
                         receiveShadow
                         geometry={nodes.tower.geometry}
-                        material={
-                            allBevelled
-                                ? materialWithAoBevelled
-                                : materialWithAo
-                        }
                     >
+                        <ModuleMaterial
+                            ambientOcclusion={
+                                allBevelled
+                                    ? towerAOMapBevelled
+                                    : towerAOMap
+                                // towerAOMap
+                            }
+                        />
                         <mesh
                             name="tower-bevel"
                             visible={allBevelled}
                             castShadow
                             receiveShadow
                             geometry={nodes["tower-bevel"].geometry}
-                            material={material}
-                        />
+                        >
+                            <ModuleMaterial
+                            />
+                        </mesh>
                         <mesh
                             name="tower-sraight"
                             visible={!allBevelled}
                             castShadow
                             receiveShadow
                             geometry={nodes["tower-sraight"].geometry}
-                            material={material}
-                        />
+                        >
+                            <ModuleMaterial
+                            />
+                        </mesh>
 
                         <mesh
                             name="door"
@@ -305,27 +299,31 @@ export default function Tower({ props }) {
                             castShadow
                             receiveShadow
                             geometry={nodes.door.geometry}
-                            material={material}
                             position={[0.425, 1.185, 0.339]}
                         >
+                            <ModuleMaterial />
                             <mesh
                                 name="door-bevel"
                                 visible={allBevelled}
                                 castShadow
                                 receiveShadow
                                 geometry={nodes["door-bevel"].geometry}
-                                material={material}
                                 rotation={[Math.PI, -0.646, Math.PI]}
-                            />
+                            >
+                                <ModuleMaterial
+                                />
+                            </mesh>
                             <mesh
                                 name="door-straight"
                                 visible={!allBevelled}
                                 castShadow
                                 receiveShadow
                                 geometry={nodes["door-straight"].geometry}
-                                material={material}
                                 rotation={[Math.PI, -0.646, Math.PI]}
-                            />
+                            >
+                                <ModuleMaterial
+                                />
+                            </mesh>
                         </mesh>
 
                         {applianceType === "fridge" && (
@@ -335,8 +333,8 @@ export default function Tower({ props }) {
                                     castShadow
                                     receiveShadow
                                     geometry={nodes["inside-cooler"].geometry}
-                                    material={material}
                                 >
+                                    <ModuleMaterial />
                                     <mesh
                                         name="cooler-bevel"
                                         visible={allBevelled}
@@ -345,8 +343,10 @@ export default function Tower({ props }) {
                                         geometry={
                                             nodes["cooler-bevel"].geometry
                                         }
-                                        material={material}
-                                    />
+                                    >
+                                        <ModuleMaterial
+                                        />
+                                    </mesh>
                                     <mesh
                                         name="cooler-straight"
                                         visible={!allBevelled}
@@ -355,8 +355,10 @@ export default function Tower({ props }) {
                                         geometry={
                                             nodes["cooler-straight"].geometry
                                         }
-                                        material={material}
-                                    />
+                                    >
+                                        <ModuleMaterial
+                                        />
+                                    </mesh>
 
                                     <mesh
                                         name="grill"
@@ -491,17 +493,19 @@ export default function Tower({ props }) {
                                     castShadow
                                     receiveShadow
                                     geometry={nodes["inside-shelf"].geometry}
-                                    material={material}
                                     position={[0, -0.048, 0]}
                                 >
+                                    <ModuleMaterial />
                                     <mesh
                                         name="shelf-bevel"
                                         visible={allBevelled}
                                         castShadow
                                         receiveShadow
                                         geometry={nodes["shelf-bevel"].geometry}
-                                        material={material}
-                                    />
+                                    >
+                                        <ModuleMaterial
+                                        />
+                                    </mesh>
                                     <mesh
                                         name="shelf-straight"
                                         visible={!allBevelled}
@@ -510,8 +514,10 @@ export default function Tower({ props }) {
                                         geometry={
                                             nodes["shelf-straight"].geometry
                                         }
-                                        material={material}
-                                    />
+                                    >
+                                        <ModuleMaterial
+                                        />
+                                    </mesh>
                                     <group
                                         name="drawers-group"
                                         ref={drawersRef}
