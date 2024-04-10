@@ -33,6 +33,7 @@ export default function WineStand({ props }) {
                 >
                     <NewMaterial
                         type={"accent"}
+                        ralExclude={true}
                     />
                 </mesh>
             }
@@ -44,6 +45,7 @@ export default function WineStand({ props }) {
                 >
                     <NewMaterial
                         type={"accent"}
+                        ralExclude={true}
                     />
                 </mesh>
             }
@@ -55,6 +57,7 @@ export default function WineStand({ props }) {
                 >
                     <NewMaterial
                         type={"accent"}
+                        ralExclude={true}
                     />
                 </mesh>
             }

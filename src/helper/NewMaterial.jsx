@@ -4,15 +4,20 @@ import { useTexture } from "./useTexture";
 import useConfigStore from "../store/useConfigStore";
 import { NoColorSpace, RepeatWrapping, SRGBColorSpace, Vector2 } from "three";
 
-export default function NewMaterial({ ambientOcclusion, type }) {
+export default function NewMaterial({ ambientOcclusion, type, ralExclude }) {
+
     const {
         mainMaterial,
+        mainMaterialCategory,
         accentMaterial,
         tableTopMaterial,
+        ralColor,
     } = useConfigStore((state) => ({
         mainMaterial: state.mainMaterial,
+        mainMaterialCategory: state.mainMaterialCategory,
         accentMaterial: state.accentMaterial,
         tableTopMaterial: state.tableTopMaterial,
+        ralColor: state.ralColor,
     }));
 
     let materialObject = null;
@@ -73,17 +78,44 @@ export default function NewMaterial({ ambientOcclusion, type }) {
         aoMap.flipY = false;
     }
 
-    return (
-        <meshStandardMaterial
-            map={albedoTexture}
-            roughnessMap={roughnessTexture}
-            normalMap={normalTexture}
-            normalScale={new Vector2(0.3, 0.3)}
-            metalnessMap={metallnessTexture}
-            roughness={1}
-            metalness={1}
-            aoMap={aoMap}
-            aoMapIntensity={0.8}
-        />
+    const [ral, setRal] = useState(undefined);
+
+    useEffect(() => {
+        if (ralExclude) {
+            return;
+        }
+        setRal(ralColor);
+    }, [ralColor, mainMaterial]);
+
+    return (<>
+        {mainMaterialCategory === 'ral' &&
+            <meshStandardMaterial
+                color={ral}
+                map={albedoTexture}
+                roughnessMap={roughnessTexture}
+                normalMap={normalTexture}
+                normalScale={new Vector2(0.3, 0.3)}
+                metalnessMap={metallnessTexture}
+                roughness={1}
+                metalness={1}
+                aoMap={aoMap}
+                aoMapIntensity={0.8}
+            />
+        }
+        {
+            mainMaterialCategory !== 'ral' &&
+            <meshStandardMaterial
+                map={albedoTexture}
+                roughnessMap={roughnessTexture}
+                normalMap={normalTexture}
+                normalScale={new Vector2(0.3, 0.3)}
+                metalnessMap={metallnessTexture}
+                roughness={1}
+                metalness={1}
+                aoMap={aoMap}
+                aoMapIntensity={0.8}
+            />
+        }
+    </>
     );
 }

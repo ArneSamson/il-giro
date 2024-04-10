@@ -23,6 +23,7 @@ export default function TableTop({ props }) {
             >
                 <NewMaterial
                     type={"tableTop"}
+                    ralExclude={true}
                 />
             </mesh>
 

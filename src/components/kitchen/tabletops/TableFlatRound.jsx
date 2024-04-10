@@ -24,6 +24,7 @@ export default function TableTopRound({ props }) {
             >
                 <NewMaterial
                     type={"tableTop"}
+                    ralExclude={true}
                 />
             </mesh>
         </group>

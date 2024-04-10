@@ -20,6 +20,7 @@ export default function Tap1({ props }) {
             >
                 <NewMaterial
                     type={"accent"}
+                    ralExclude={true}
                 />
             </mesh>
         </group>

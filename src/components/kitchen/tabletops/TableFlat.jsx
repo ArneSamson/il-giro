@@ -24,6 +24,7 @@ export default function TableFlat({ props }) {
             >
                 <NewMaterial
                     type={"tableTop"}
+                    ralExclude={true}
                 />
             </mesh>
         </group>

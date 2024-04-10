@@ -42,6 +42,7 @@ export default function Reginox({ props }) {
                 >
                     <NewMaterial
                         type={"accent"}
+                        ralExclude={true}
                     />
                 </mesh>
             }
@@ -55,6 +56,7 @@ export default function Reginox({ props }) {
                 >
                     <NewMaterial
                         type={"tableTop"}
+                        ralExclude={true}
                     />
                 </mesh>
             }

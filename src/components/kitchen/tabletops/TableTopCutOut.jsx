@@ -20,6 +20,7 @@ export default function TableTopCutOut({ props }) {
             >
                 <NewMaterial
                     type={"tableTop"}
+                    ralExclude={true}
                 />
             </mesh>
         </group>
