@@ -40,7 +40,7 @@ export default function ColorPicker({ color, setColor }) {
             if (color) {
                 setRalColor(color.hex);
             } else {
-                console.log("Color not found");
+                window.alert("RAL color doesn't exist.");
             }
         }
     }
@@ -66,14 +66,30 @@ export default function ColorPicker({ color, setColor }) {
             height={300}
         /> */}
 
-        <input
-            type="text"
-            value={ralColor}
-            maxLength={4}
-            pattern="[0-9]*"
-            onBlur={e => handleInput(e.target.value)}
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                width: '100%',
+                paddingLeft: 5,
+                paddingRight: 10,
+            }}
+        >
+            <input
+                type="text"
+                value={ralColor}
+                maxLength={4}
+                pattern="[0-9]*"
+                onBlur={e => handleInput(e.target.value)}
+                style={{
+                    borderRadius: 15,
+                    height: 30,
+                }}
 
-        />
+            />
+        </div>
+
     </>
 
     );
