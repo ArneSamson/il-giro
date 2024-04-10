@@ -58,13 +58,13 @@ export default function ColorPicker({ color, setColor }) {
     }, []);
 
     return (<>
-        <SwatchesPicker
+        {/* <SwatchesPicker
             color={color}
             colors={ralColors}
             onChangeComplete={color => setRalColor(color.hex)}
             width={(windowWidth * 0.2)}
             height={300}
-        />
+        /> */}
 
         <input
             type="text"

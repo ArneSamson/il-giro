@@ -26,6 +26,13 @@ const styles = StyleSheet.create({
         gap: 40,
     },
 
+    backgroundImage: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+    },
+
     heading: {
 
     },
@@ -38,25 +45,22 @@ const styles = StyleSheet.create({
         gap: 20,
 
     },
-    model: {
+    chapter: {
         display: 'flex',
         flexDirection: 'row',
         width: '100%',
         alignContent: 'space-between'
     },
-    modelTitle: {
-        // fontSize: 11,
-    },
-    optionsTitle: {
+    chapterTitle: {
         width: 100,
     },
-    modelOptions: {
+    chapterOptions: {
         display: 'flex',
         flexDirection: 'column',
         border: '2px solid black',
         width: '100%', // Set width to 100%
     },
-    modelOption: {
+    chapterOption: {
         display: 'flex',
         flexDirection: 'row',
         borderBottom: '1px solid black',
@@ -64,26 +68,6 @@ const styles = StyleSheet.create({
         gap: 10,
     },
 
-    appliances: {
-        display: 'flex',
-        flexDirection: 'row',
-        width: '100%',
-        alignContent: 'space-around'
-    },
-
-    applianceOptions: {
-        display: 'flex',
-        flexDirection: 'column',
-        border: '2px solid black',
-        width: '100%', // Set width to 100%
-    },
-
-    applianceOption: {
-        display: 'flex',
-        flexDirection: 'row',
-        borderBottom: '1px solid black',
-        padding: 5,
-    },
 
     table: {
         display: 'flex',
@@ -116,7 +100,28 @@ const styles = StyleSheet.create({
 
 export function MyDocument({ props }) {
 
-    const currentDate = new Date().toLocaleDateString();
+    const currentDate = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    const currentTime = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+
+    const materialOptions = [
+        { name: 'module name(s)', value: props.chosenModules },
+        { name: 'module finish', value: props.bevelled },
+        { name: 'material for modules', value: props.mainMaterial.name },
+        { name: 'material for countertops', value: props.tableTopMaterial.name },
+    ];
+
+    const countertopOptions = [
+        { name: 'countertop inset', value: props.tableTopInset },
+        { name: 'countertop thickness', value: props.tableTopHeight },
+        { name: 'countertop edge', value: props.tableTopEdge },
+    ];
+
+    const applianceOptions = [
+        { name: 'type of tower appliance', value: props.applianceType },
+        { name: 'size of winestand', value: props.wineStandSize },
+        { name: 'type of cooking fire', value: props.stoveType },
+        { name: 'type of faucet', value: props.tapType },
+    ];
 
     return (
 
@@ -129,9 +134,17 @@ export function MyDocument({ props }) {
         >
             <Page size="A4" style={styles.page} wrap={true}>
 
+
+
                 <View
                     style={styles.heading}
                 >
+                    <Image
+                        src='/images/UI/bg2.png'
+                        source={'./images/UI/bg2.png'}
+                        style={styles.backgroundImage}
+                    />
+
                     <View
                         style={styles.table}
                     >
@@ -170,7 +183,7 @@ export function MyDocument({ props }) {
                                         <Text
                                             style={styles.cellContent}
                                         >
-                                            date : {currentDate}
+                                            {currentDate}   {currentTime}
                                         </Text>
                                     </View>
 
@@ -188,54 +201,10 @@ export function MyDocument({ props }) {
                                         </Text>
                                     </View>
 
-                                    <View
-                                        style={styles.cell}
-                                    >
-                                        <Text
-                                            style={styles.cellContent}
-                                        >
-
-
-                                        </Text>
-                                    </View>
 
                                 </View>
                             </View>
 
-                        </View>
-
-                        <View
-                            style={[styles.row, { width: '100%', height: 100 }]}
-                        >
-                            <View
-                                style={styles.cell}
-                            >
-                                <Text
-                                    style={styles.cellContent}
-                                >
-                                    customer :
-                                </Text>
-                            </View>
-
-                            <View
-                                style={styles.cell}
-                            >
-                                <Text
-                                    style={styles.cellContent}
-                                >
-                                    delivery adress :
-                                </Text>
-                            </View>
-
-                            <View
-                                style={styles.cell}
-                            >
-                                <Text
-                                    style={styles.cellContent}
-                                >
-                                    delivery week :
-                                </Text>
-                            </View>
                         </View>
 
                     </View>
@@ -247,126 +216,79 @@ export function MyDocument({ props }) {
                 >
 
                     <View
-                        style={styles.model}
+                        style={styles.chapter}
                     >
                         <Text
-                            style={styles.optionsTitle}
+                            style={styles.chapterTitle}
                         >
-                            model :
+                            materials :
                         </Text>
 
                         <View
-                            style={styles.modelOptions}
+                            style={styles.chapterOptions}
                         >
-                            <View
-                                style={styles.modelOption}
-                            >
-                                <Text>
-                                    model name(s) : {props.chosenModules}
-                                </Text>
-                            </View>
-
-                            <View
-                                style={styles.modelOption}
-                            >
-                                <Text>
-                                    material type : {props.mainMaterial.name}
-                                </Text>
-                            </View>
-
-                            <View
-                                style={styles.modelOption}
-                            >
-                                <Text>
-                                    finish color :
-                                </Text>
-                            </View>
-
-                            <View
-                                style={[styles.modelOption, { borderBottom: '2px solid black' }, { borderTop: '2px solid black' }]}
-                            >
-                                <Text>
-                                    type of handle :
-                                </Text>
-                            </View>
-
-                            <View
-                                style={styles.modelOption}
-                            >
-                                <Text>
-                                    ceiling panel :
-                                </Text>
-                            </View>
-
-                            <View
-                                style={styles.modelOption}
-                            >
-                                <Text>
-                                    LED lighting :
-                                </Text>
-                            </View>
-
-                            <View
-                                style={[styles.modelOption, { borderBottom: 'none' }]}
-                            >
-                                <Text>
-                                    countertop : {props.tableTopMaterial.name}
-                                </Text>
-
-                                <Text>
-                                    {props.tableTopInset}
-                                </Text>
-                            </View>
-
+                            {materialOptions.map((option, index) => (
+                                <View
+                                    key={index}
+                                    style={styles.chapterOption}
+                                >
+                                    <Text>
+                                        {option.name} : {option.value}
+                                    </Text>
+                                </View>
+                            ))}
                         </View>
 
                     </View>
 
                     <View
-                        style={styles.appliances}
+                        style={styles.chapter}
                     >
                         <Text
-                            style={styles.optionsTitle}
+                            style={styles.chapterTitle}
+                        >
+                            countertop :
+                        </Text>
+
+                        <View
+                            style={styles.chapterOptions}
+                        >
+                            {countertopOptions.map((option, index) => (
+                                <View
+                                    key={index}
+                                    style={styles.chapterOption}
+                                >
+                                    <Text>
+                                        {option.name} : {option.value}
+                                    </Text>
+                                </View>
+                            ))}
+                        </View>
+
+                    </View>
+
+                    <View
+                        style={styles.chapter}
+                    >
+                        <Text
+                            style={styles.chapterTitle}
                         >
                             appliances :
                         </Text>
 
                         <View
-                            style={styles.applianceOptions}
+                            style={styles.chapterOptions}
                         >
-                            <View
-                                style={styles.applianceOption}
-                            >
-                                <Text>
-                                    type of tower appliance : {props.applianceType}
-                                </Text>
-                            </View>
-
-                            <View
-                                style={styles.applianceOption}
-                            >
-                                <Text>
-                                    size of winestand : {props.wineStandSize}
-                                </Text>
-                            </View>
-
-                            <View
-                                style={styles.applianceOption}
-                            >
-                                <Text>
-                                    type of cooking fire : {props.stoveType}
-                                </Text>
-                            </View>
-
-                            <View
-                                style={[styles.applianceOption, { borderBottom: 'none' }]}
-                            >
-                                <Text>
-                                    type of faucet : {props.tapType}
-                                </Text>
-
-                            </View>
-
+                            {applianceOptions.map((option, index) => (
+                                <View
+                                    key={index}
+                                    style={styles.chapterOption}
+                                >
+                                    <Text>
+                                        {option.name} : {option.value}
+                                    </Text>
+                                </View>
+                            ))}
                         </View>
 
                     </View>

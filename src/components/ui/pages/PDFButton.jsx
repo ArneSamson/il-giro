@@ -27,10 +27,13 @@ export default function PDFButton() {
 
         mainMaterial,
         tableTopMaterial,
+        tableTopMaterialCategory,
         accentMaterial,
 
         allBevelled,
         tableTopInset,
+        tableTopHeight,
+        tableTopRounded,
     } = useConfigStore(
         state => ({
             edgeFinish: state.edgeFinish,
@@ -51,10 +54,13 @@ export default function PDFButton() {
 
             mainMaterial: state.mainMaterial,
             tableTopMaterial: state.tableTopMaterial,
+            tableTopMaterialCategory: state.tableTopMaterialCategory,
             accentMaterial: state.accentMaterial,
 
             allBevelled: state.allBevelled,
             tableTopInset: state.tableTopInset,
+            tableTopHeight: state.tableTopHeight,
+            tableTopRounded: state.tableTopRounded,
         })
     );
 
@@ -64,6 +70,21 @@ export default function PDFButton() {
         towerChosen ? 'Tower' : '',
         tableChosen ? 'Table' : ''
     ].filter(Boolean).join(', ');
+
+    let counterTopHeight;
+
+    if (tableTopMaterialCategory === 'dekton') {
+        if (tableTopHeight === 0.5) {
+            counterTopHeight = "20mm";
+        }
+        if (tableTopHeight === 0.3) {
+            counterTopHeight = "12mm";
+        }
+    } else if (tableTopMaterialCategory === 'natural stone') {
+        counterTopHeight = "40mm";
+    } else if (tableTopMaterialCategory === 'metal') {
+        counterTopHeight = "5mm";
+    }
 
     const [instance, updateInstance] = usePDF(
         {
@@ -81,6 +102,8 @@ export default function PDFButton() {
                     applianceType: towerChosen ? applianceType : null,
                     wineStandSize: towerChosen ? wineStandSize : null,
                     chosenModules: chosenModules,
+                    tableTopHeight: counterTopHeight,
+                    tableTopEdge: tableTopRounded ? 'rounded' : 'straight',
                 }}
             />
         });

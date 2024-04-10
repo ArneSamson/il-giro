@@ -55,7 +55,7 @@ export default function UiPage1() {
                 open={true}
             />
 
-            {mainMaterialCategory === "paint work" &&
+            {mainMaterialCategory === "ral" &&
                 <ColorPicker
 
                 />
