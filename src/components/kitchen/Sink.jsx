@@ -109,7 +109,7 @@ export default function Sink({ props }) {
                 if (tableTopInset) {
                     setTableTopScale([1, 1, 1]);
                     setTableTopPosition([0, 0.905, 0]);
-                    setBowlPosition([0, -0.005, 0]);
+                    setBowlPosition([0, -0.01, 0]);
                 }
                 else {
                     setTableTopScale([1.05, 0.125, 1.05]);

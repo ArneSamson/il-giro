@@ -16,17 +16,14 @@ export default function Reginox({ props }) {
         })
     );
 
-    const [bowlMaterialType, setBowlMaterialType] = useState("accent");
-
     useEffect(() => {
-        if (tableTopMaterial.name === 'inox') {
-            setBowlMaterialType("tableTop");
-        } else {
-            setBowlMaterialType("accent");
+        if (tableTopMaterial.name === "inox") {
+            console.log("inox")
         }
+
     }, [tableTopMaterial]);
 
-    const { nodes, materials } = useGLTF("./models/Reginox.glb");
+    const { nodes } = useGLTF(tableTopMaterial.name === "inox" ? "./models/Reginox-solid.glb" : "./models/Reginox.glb");
 
     return (
         <group
@@ -34,19 +31,36 @@ export default function Reginox({ props }) {
             {...props}
             dispose={null}
         >
-            <mesh
-                name="sink-bowl-mesh"
-                castShadow
-                receiveShadow
-                geometry={nodes.Reginox.geometry}
-                position={[0, 0.782, 0.242]}
-            >
-                <NewMaterial
-                    type={bowlMaterialType}
-                />
-            </mesh>
+            {tableTopMaterial.name !== "inox" &&
+
+                <mesh
+                    name="sink-bowl-mesh"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Reginox.geometry}
+                    position={[0, 0.782, 0.242]}
+                >
+                    <NewMaterial
+                        type={"accent"}
+                    />
+                </mesh>
+            }
+            {tableTopMaterial.name === "inox" &&
+                <mesh
+                    name="sink-bowl-solid-mesh"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Reginox002.geometry}
+                    position={[0, 0.765, 0.242]}
+                >
+                    <NewMaterial
+                        type={"tableTop"}
+                    />
+                </mesh>
+            }
         </group>
     );
 }
 
 useGLTF.preload("./models/Reginox.glb");
+useGLTF.preload("./models/Reginox-solid.glb");
