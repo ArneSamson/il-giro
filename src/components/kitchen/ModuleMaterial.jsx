@@ -4,19 +4,42 @@ import { useTexture } from "../../helper/useTexture";
 import useConfigStore from "../../store/useConfigStore";
 import { NoColorSpace, RepeatWrapping, SRGBColorSpace, Vector2 } from "three";
 
-export default function ModuleMaterial({ ambientOcclusion }) {
+export default function ModuleMaterial({ ambientOcclusion, type }) {
     const {
         mainMaterial,
+        accentMaterial,
+        tableTopMaterial,
     } = useConfigStore((state) => ({
-        mainMaterial: state.mainMaterial
+        mainMaterial: state.mainMaterial,
+        accentMaterial: state.accentMaterial,
+        tableTopMaterial: state.tableTopMaterial,
     }));
+
+    let materialObject = null;
+
+    switch (type) {
+        case "main":
+            console.log("main");
+            materialObject = mainMaterial;
+            break;
+        case "accent":
+            console.log("accent");
+            materialObject = accentMaterial;
+            break;
+        case "tableTop":
+            console.log("tableTop");
+            materialObject = tableTopMaterial;
+            break;
+        default:
+            break;
+    }
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] =
         useTexture([
-            mainMaterial.url + "albedo.jpg",
-            mainMaterial.url + "normal.jpg",
-            mainMaterial.url + "roughness.jpg",
-            mainMaterial.url + "metallic.jpg",
+            materialObject.url + "albedo.jpg",
+            materialObject.url + "normal.jpg",
+            materialObject.url + "roughness.jpg",
+            materialObject.url + "metallic.jpg",
         ]);
 
 

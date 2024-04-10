@@ -56,14 +56,18 @@ export default function BaseIsland({ props, needsDrawers }) {
                 rotation={[0, Math.PI / 2, 0]}
                 {...props}
             >
-                <ModuleMaterial />
+                <ModuleMaterial
+                    type={"main"}
+                />
                 <mesh
                     visible={allBevelled}
                     castShadow
                     receiveShadow
                     geometry={nodes.bevel.geometry}
                 >
-                    <ModuleMaterial />
+                    <ModuleMaterial
+                        type={"main"}
+                    />
                 </mesh>
                 <mesh
                     visible={!allBevelled}
@@ -71,7 +75,9 @@ export default function BaseIsland({ props, needsDrawers }) {
                     receiveShadow
                     geometry={nodes.straight.geometry}
                 >
-                    <ModuleMaterial />
+                    <ModuleMaterial
+                        type={"main"}
+                    />
                 </mesh>
             </mesh>
         </>}
@@ -86,7 +92,9 @@ export default function BaseIsland({ props, needsDrawers }) {
                 {...props}
                 rotation={[0, Math.PI / 2, 0]}
             >
-                <ModuleMaterial />
+                <ModuleMaterial
+                    type={"main"}
+                />
 
                 <mesh
                     visible={allBevelled}
@@ -94,7 +102,9 @@ export default function BaseIsland({ props, needsDrawers }) {
                     receiveShadow
                     geometry={nodes.bevel.geometry}
                 >
-                    <ModuleMaterial />
+                    <ModuleMaterial
+                        type={"main"}
+                    />
                 </mesh>
                 <mesh
                     visible={!allBevelled}
@@ -102,7 +112,9 @@ export default function BaseIsland({ props, needsDrawers }) {
                     receiveShadow
                     geometry={nodes.straight.geometry}
                 >
-                    <ModuleMaterial />
+                    <ModuleMaterial
+                        type={"main"}
+                    />
                 </mesh>
             </mesh>
         </>}

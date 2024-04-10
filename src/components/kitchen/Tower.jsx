@@ -17,9 +17,6 @@ import useConfig from "../../store/useConfigStore.jsx";
 
 export default function Tower({ props }) {
     const {
-        mainMaterial,
-        mainMaterialCategory,
-
         towerPosition,
         towerRotation,
 
@@ -27,8 +24,6 @@ export default function Tower({ props }) {
         doorOpeningRotation,
 
         allBevelled,
-
-        ralColor,
     } = useConfig((state) => ({
         mainMaterial: state.mainMaterial,
         mainMaterialCategory: state.mainMaterialCategory,
@@ -44,70 +39,9 @@ export default function Tower({ props }) {
         ralColor: state.ralColor,
     }));
 
-    const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] =
-        useTexture(
-            [
-                mainMaterial.url + "albedo.jpg",
-                mainMaterial.url + "normal.jpg",
-                mainMaterial.url + "roughness.jpg",
-                mainMaterial.url + "metallic.jpg",
-            ],
-            (textures) => {
-                for (const texture of textures) {
-                    if (texture.wrapS !== RepeatWrapping) {
-                        texture.wrapS = texture.wrapT = RepeatWrapping;
-                        texture.needsUpdate = true;
-                    }
-                }
-            }
-        );
-
-    if (albedoTexture.anisotropy !== 16) {
-        albedoTexture.anisotropy = 16;
-        albedoTexture.colorSpace = SRGBColorSpace;
-        albedoTexture.needsUpdate = true;
-
-        metallnessTexture.anisotropy = 16;
-        metallnessTexture.colorSpace = NoColorSpace;
-        metallnessTexture.needsUpdate = true;
-
-        roughnessTexture.anisotropy = 16;
-        roughnessTexture.colorSpace = NoColorSpace;
-        roughnessTexture.needsUpdate = true;
-
-        normalTexture.anisotropy = 16;
-        normalTexture.colorSpace = NoColorSpace;
-        normalTexture.needsUpdate = true;
-    }
-
-    const normalScale = new Vector2(0.5, 0.5);
-    const material = new MeshStandardMaterial({
-        color: mainMaterialCategory === 'paint work' ? ralColor : '#ffffff',
-        map: albedoTexture,
-        normalMap: normalTexture,
-        normalScale: normalScale,
-        roughnessMap: roughnessTexture,
-        metalnessMap: metallnessTexture,
-        metalness: 1,
-        roughness: 1,
-    });
-
     const towerAOMap = "/images/bakes/tower-ao.jpg";
 
     const towerAOMapBevelled = "/images/bakes/tower-ao2.jpg"
-
-    // const materialWithAo = new MeshStandardMaterial({
-    //     color: mainMaterialCategory === 'paint work' ? ralColor : '#ffffff',
-    //     map: albedoTexture,
-    //     normalMap: normalTexture,
-    //     normalScale: normalScale,
-    //     roughnessMap: roughnessTexture,
-    //     metalnessMap: metallnessTexture,
-    //     metalness: 1,
-    //     roughness: 1,
-    //     aoMap: towerAOMap,
-    //     aoMapIntensity: 0.8,
-    // });
 
     const fridgeMaterial = new MeshBasicMaterial({
         color: 0x000000,
@@ -269,8 +203,8 @@ export default function Tower({ props }) {
                                 allBevelled
                                     ? towerAOMapBevelled
                                     : towerAOMap
-                                // towerAOMap
                             }
+                            type={"main"}
                         />
                         <mesh
                             name="tower-bevel"
@@ -280,6 +214,7 @@ export default function Tower({ props }) {
                             geometry={nodes["tower-bevel"].geometry}
                         >
                             <ModuleMaterial
+                                type={"main"}
                             />
                         </mesh>
                         <mesh
@@ -290,6 +225,7 @@ export default function Tower({ props }) {
                             geometry={nodes["tower-sraight"].geometry}
                         >
                             <ModuleMaterial
+                                type={"main"}
                             />
                         </mesh>
 
@@ -301,7 +237,9 @@ export default function Tower({ props }) {
                             geometry={nodes.door.geometry}
                             position={[0.425, 1.185, 0.339]}
                         >
-                            <ModuleMaterial />
+                            <ModuleMaterial
+                                type={"main"}
+                            />
                             <mesh
                                 name="door-bevel"
                                 visible={allBevelled}
@@ -311,6 +249,7 @@ export default function Tower({ props }) {
                                 rotation={[Math.PI, -0.646, Math.PI]}
                             >
                                 <ModuleMaterial
+                                    type={"main"}
                                 />
                             </mesh>
                             <mesh
@@ -322,6 +261,7 @@ export default function Tower({ props }) {
                                 rotation={[Math.PI, -0.646, Math.PI]}
                             >
                                 <ModuleMaterial
+                                    type={"main"}
                                 />
                             </mesh>
                         </mesh>
@@ -334,7 +274,9 @@ export default function Tower({ props }) {
                                     receiveShadow
                                     geometry={nodes["inside-cooler"].geometry}
                                 >
-                                    <ModuleMaterial />
+                                    <ModuleMaterial
+                                        type={"main"}
+                                    />
                                     <mesh
                                         name="cooler-bevel"
                                         visible={allBevelled}
@@ -345,6 +287,7 @@ export default function Tower({ props }) {
                                         }
                                     >
                                         <ModuleMaterial
+                                            type={"main"}
                                         />
                                     </mesh>
                                     <mesh
@@ -357,6 +300,7 @@ export default function Tower({ props }) {
                                         }
                                     >
                                         <ModuleMaterial
+                                            type={"main"}
                                         />
                                     </mesh>
 
@@ -495,7 +439,9 @@ export default function Tower({ props }) {
                                     geometry={nodes["inside-shelf"].geometry}
                                     position={[0, -0.048, 0]}
                                 >
-                                    <ModuleMaterial />
+                                    <ModuleMaterial
+                                        type={"main"}
+                                    />
                                     <mesh
                                         name="shelf-bevel"
                                         visible={allBevelled}
@@ -504,6 +450,7 @@ export default function Tower({ props }) {
                                         geometry={nodes["shelf-bevel"].geometry}
                                     >
                                         <ModuleMaterial
+                                            type={"main"}
                                         />
                                     </mesh>
                                     <mesh
@@ -516,6 +463,7 @@ export default function Tower({ props }) {
                                         }
                                     >
                                         <ModuleMaterial
+                                            type={"main"}
                                         />
                                     </mesh>
                                     <group
