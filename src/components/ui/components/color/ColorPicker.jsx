@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { SwatchesPicker } from 'react-color';
 import { ralData } from './dataColors.js';
 
@@ -31,6 +31,8 @@ export default function ColorPicker({ color, setColor }) {
         setRalColor: state.setRalColor,
     }));
 
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
     const handleInput = (value) => {
         if (value.length === 4) {
             //compare the value with the ralData
@@ -43,12 +45,24 @@ export default function ColorPicker({ color, setColor }) {
         }
     }
 
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        }
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        }
+    }, []);
+
     return (<>
         <SwatchesPicker
             color={color}
             colors={ralColors}
             onChangeComplete={color => setRalColor(color.hex)}
-            width={(window.innerWidth * 0.2)}
+            width={(windowWidth * 0.2)}
             height={300}
         />
 
