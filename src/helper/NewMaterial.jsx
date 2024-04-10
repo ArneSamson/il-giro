@@ -19,15 +19,12 @@ export default function NewMaterial({ ambientOcclusion, type }) {
 
     switch (type) {
         case "main":
-            console.log("main");
             materialObject = mainMaterial;
             break;
         case "accent":
-            console.log("accent");
             materialObject = accentMaterial;
             break;
         case "tableTop":
-            console.log("tableTop");
             materialObject = tableTopMaterial;
             break;
         default:
