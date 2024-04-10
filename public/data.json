@@ -27,6 +27,9 @@
         "natural stone": [
             "white granite",
             "red granite"
+        ],
+        "paint work": [
+            "paint work"
         ]
     },
     "materials": {
@@ -77,6 +80,9 @@
         },
         "red granite": {
             "url": "/materials/redgranite/"
+        },
+        "paint work": {
+            "url": "/materials/paintwork/"
         }
     }
 }

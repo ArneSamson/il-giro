@@ -11,8 +11,11 @@ export default function Tap1({ props }) {
 
     const {
         accentMaterial,
-
-    } = useConfig();
+    } = useConfig(
+        state => ({
+            accentMaterial: state.accentMaterial,
+        })
+    );
 
     const [albedoTexture, metallnessTexture] = useTexture([
         accentMaterial.url + "albedo.jpg",

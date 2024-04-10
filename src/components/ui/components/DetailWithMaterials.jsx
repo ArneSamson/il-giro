@@ -22,7 +22,7 @@ export default function DetailWithMaterials({
                 {materials.map((material, index) => (
                     <div
                         key={index}
-                        className={`config-ui__material-options__option ${selectedMaterial === material.url ? "selected-material-n-category" : ""}`}
+                        className={`config-ui__material-options__option ${selectedMaterial === material.name ? "selected-material-n-category" : ""}`}
                         onClick={() => setMaterial(material)}
                         style={{ backgroundImage: `url(${material.url}preview.jpg)` }}
                     ></div>

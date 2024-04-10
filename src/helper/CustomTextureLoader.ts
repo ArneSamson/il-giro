@@ -108,7 +108,7 @@ class CustomTextureLoader extends Loader {
 
     abort() {
         if (this.controller) {
-            this.controller.abort("Loading texture aborted.");
+            //this.controller.abort("Loading texture aborted.");
         }
     }
 }

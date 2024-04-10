@@ -606,7 +606,7 @@ summary span {
 .config-ui__button-category-title {
     font-family: var(--subheading-family);
     font-size: var(--heading4-size);
-    font-weight: 500;
+    font-weight: 300;
     color: var(--dark-grey);
 }
 
