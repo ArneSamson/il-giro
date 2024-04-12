@@ -47,7 +47,7 @@ export default function AccentMaterialSelection() {
                                 setTableTopMaterialCategory('dekton')
                             }}
                             style={{
-                                backgroundImage: `url(${material.url}preview.jpg)`,
+                                backgroundImage: `url(${material.url}preview.webp)`,
                             }}
                         ></div>
                     ))}
@@ -65,7 +65,7 @@ export default function AccentMaterialSelection() {
                                 setTableTopMaterialCategory('natural stone')
                             }}
                             style={{
-                                backgroundImage: `url(${material.url}preview.jpg)`,
+                                backgroundImage: `url(${material.url}preview.webp)`,
                             }}
                         ></div>
                     ))}
@@ -85,7 +85,7 @@ export default function AccentMaterialSelection() {
                                 setTableTopMaterialCategory('metal')
                             }}
                             style={{
-                                backgroundImage: `url(${material.url}preview.jpg)`,
+                                backgroundImage: `url(${material.url}preview.webp)`,
                             }}
                         ></div>
                     ))}
