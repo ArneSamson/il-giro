@@ -1,9 +1,8 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 
-import { RepeatWrapping, SRGBColorSpace, NoColorSpace, BufferAttribute, Vector2, MeshStandardMaterial } from 'three';
+import { BufferAttribute } from 'three';
 
 import { useGLTF } from '@react-three/drei'
-import { useTexture } from "../../helper/useTexture";
 
 import { BakePlaneSmall } from '../lighting&shadows/ShadowPlanes.jsx'
 
@@ -14,11 +13,9 @@ import useConfig from '../../store/useConfigStore.jsx';
 export default function BaseIsland({ props, needsDrawers }) {
 
     const {
-        mainMaterial,
         allBevelled,
     } = useConfig(
         state => ({
-            mainMaterial: state.mainMaterial,
             allBevelled: state.allBevelled,
         })
     );
