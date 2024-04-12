@@ -53,7 +53,7 @@ export default function BaseIsland({ props, needsDrawers }) {
                 castShadow
                 receiveShadow
                 geometry={nodes['island-low-drawers'].geometry}
-                rotation={[0, Math.PI / 2, 0]}
+                rotation={[0, Math.PI, 0]}
                 {...props}
             >
                 <NewMaterial
