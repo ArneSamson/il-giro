@@ -9,6 +9,7 @@ export default function CameraHandler() {
     const camera = useRef();
 
     const [maxDistance, setMaxDistance] = useState(4);
+    const [minDistance, setMinDistance] = useState(2);
 
     const {
         cameraFocus,
@@ -33,13 +34,19 @@ export default function CameraHandler() {
     const updateViewOffset = () => {
         if (window.innerWidth > 1000) {
             const widthOffset = window.innerWidth * 0.25 * devicePixelRatio;
+            let heightOffset;
+            if (cameraFocus[0] === 0 && cameraFocus[1] === 1 && cameraFocus[2] === 0) {
+                heightOffset = 0;
+            } else {
+                heightOffset = 125;
+            }
             camera.current.camera.setViewOffset(
                 window.innerWidth,
                 window.innerHeight,
                 widthOffset / 2,
-                0,
+                heightOffset,
                 window.innerWidth,
-                window.innerHeight
+                window.innerHeight,
             );
             camera.current.camera.updateProjectionMatrix();
         } else {
@@ -56,9 +63,11 @@ export default function CameraHandler() {
         }
 
         if (window.innerWidth < 1200) {
-            setMaxDistance(4 + (1200 - window.innerWidth) / 200);
+            setMaxDistance(4 + (1200 - window.innerWidth) / 150);
+            setMinDistance(3.5)
         } else {
             setMaxDistance(4);
+            setMinDistance(2);
         }
 
     };
@@ -76,7 +85,7 @@ export default function CameraHandler() {
             maxPolarAngle={Math.PI / 2}
             maxZoom={4}
             maxDistance={maxDistance}
-            minDistance={2}
+            minDistance={minDistance}
         />
     )
 }
