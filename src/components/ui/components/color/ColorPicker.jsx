@@ -21,7 +21,7 @@ function organizeRalColors(ralData) {
 const ralColors = organizeRalColors(ralData);
 
 
-export default function ColorPicker() {
+export default function ColorPicker({ color }) {
 
     const {
         ralColor,
@@ -58,13 +58,13 @@ export default function ColorPicker() {
     }, []);
 
     return (<>
-        {/* <SwatchesPicker
+        <SwatchesPicker
             color={color}
             colors={ralColors}
-            onChangeComplete={color => setRalColor(color.hex)}
+            onChangeComplete={color => setRalColor(color)}
             width={(windowWidth * 0.2)}
             height={300}
-        /> */}
+        />
 
         <div
             style={{
@@ -85,6 +85,7 @@ export default function ColorPicker() {
                 style={{
                     borderRadius: 15,
                     height: 30,
+                    padding: 10,
                 }}
 
             />
