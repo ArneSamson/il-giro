@@ -231,6 +231,7 @@ export default function Tower({ props }) {
                             receiveShadow
                             geometry={nodes.door.geometry}
                             position={[0.425, 1.185, 0.339]}
+                            rotation={[0, 1, 0]}
                         >
                             <NewMaterial
                                 type={"main"}
