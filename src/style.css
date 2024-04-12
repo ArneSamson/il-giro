@@ -53,6 +53,8 @@ body,
     --heading5-line-height: 24px;
     --heading5-weight: 700;
 
+    --subheading-size: 22px;
+
     --mini-title-size: 18px;
 
     --body-size: 16px;
@@ -517,7 +519,7 @@ input[type=range]::-ms-track {
 
 .config-ui__details {
     width: 100%;
-    padding: 15px 0px 15px 5px;
+    padding: 15px 0px 15px 0px;
     margin-bottom: 15px;
     transition: opacity 0.5s ease-in-out;
 }
@@ -620,8 +622,8 @@ summary span {
 }
 
 .config-ui__button-category-title {
-    font-family: var(--subheading-family);
-    font-size: var(--heading4-size);
+    font-family: var(--heading-family);
+    font-size: var(--subheading-size);
     font-weight: 300;
     color: var(--dark-grey);
 }

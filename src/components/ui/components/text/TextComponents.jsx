@@ -7,21 +7,21 @@ export const ButtonCategoryTitle = ({ children, title }) => {
                 marginBottom: "25px",
             }}
         >
-            <h4
-                className="config-ui__button-category-title"
-            >
-                {title}
-            </h4>
             <hr
                 style={{
                     height: "1px",
                     borderWidth: 0,
-                    borderColor: "#272727",
+                    borderColor: "#9b9b9b",
                     borderStyle: "solid",
                     borderBottomWidth: "1px",
                     margin: 0,
                 }}
             />
+            <h4
+                className="config-ui__button-category-title"
+            >
+                {title}
+            </h4>
             {children}
         </div>
     );

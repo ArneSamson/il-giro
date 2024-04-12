@@ -149,7 +149,7 @@ export default function UiPage2() {
                     title="Countertop"
                 >
                     <DetailWithButtons
-                        summary="Countertop: "
+                        summary="Countertop type: "
                         options={tableTopInsetOptions}
                         selectedOption={tableTopInsetOptions.find(option => option.value === tableTopInset).label}
                         setOption={setTableTopInset}
