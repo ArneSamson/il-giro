@@ -5,6 +5,8 @@ import useConfig from '../../../store/useConfigStore.jsx';
 
 import NewMaterial from '../../../helper/NewMaterial.jsx';
 
+import { GlassBottleWhiskey, WineBottle } from './extras/Alcohol.jsx';
+
 
 export default function WineStand({ props }) {
 
@@ -62,6 +64,17 @@ export default function WineStand({ props }) {
                     />
                 </mesh>
             }
+
+            <GlassBottleWhiskey
+                position={[-0.05, 1.85, -0.05]}
+                scale={[0.8, 0.8, 0.8]}
+            />
+
+            <WineBottle
+                position={[0.05, 1.85, -0.05]}
+                scale={[0.8, 0.8, 0.8]}
+            />
+
         </group>
     );
 }
