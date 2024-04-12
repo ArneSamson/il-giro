@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import * as THREE from "three";
-import { SRGBColorSpace, NoColorSpace, Vector2, MeshStandardMaterial, MeshBasicMaterial, RepeatWrapping, BufferAttribute } from "three";
+import { MeshBasicMaterial, BufferAttribute } from "three";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
@@ -9,8 +8,6 @@ import WineStand from "./accessoires/WineStand.jsx";
 import { BakePlane } from "../lighting&shadows/ShadowPlanes.jsx";
 
 import NewMaterial from '../../helper/NewMaterial.jsx';
-
-import { useTexture } from "../../helper/useTexture.tsx";
 
 import useScene from "../../store/useScene.jsx";
 import useConfig from "../../store/useConfigStore.jsx";
