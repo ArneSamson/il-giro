@@ -64,7 +64,7 @@ export default function OrderOverview() {
         </div>
 
         <div
-            className='config-ui__options'
+            className='config-ui__overview'
         >
             <div
                 className='config-ui__options__overview'
@@ -132,6 +132,28 @@ export default function OrderOverview() {
                         stoveType === 1 ? "Gas" : stoveType === 2 ? "Electric" : ""
                     }</span></h4>
                 }
+
+                {towerChosen && <>
+                    <h4
+                        className="config-ui__options__overview__title"
+                    >Appliance Type: <span>{applianceType}</span></h4>
+
+                    <h4
+                        className="config-ui__options__overview__title"
+                    >Wine Stand Size: <span>{wineStandSize}</span>
+                    </h4>
+                </>}
+
+                {towerChosen && <>
+                    <h4
+                        className="config-ui__options__overview__title"
+                    >Appliance Type: <span>{applianceType}</span></h4>
+
+                    <h4
+                        className="config-ui__options__overview__title"
+                    >Wine Stand Size: <span>{wineStandSize}</span>
+                    </h4>
+                </>}
 
                 {towerChosen && <>
                     <h4

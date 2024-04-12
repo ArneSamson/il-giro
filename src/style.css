@@ -397,7 +397,7 @@ input[type=range]::-ms-track {
 .config-ui__nav__button--disabled {
 
     &:hover {
-        cursor: not-allowed;
+        cursor: auto;
     }
 }
 
@@ -412,6 +412,50 @@ input[type=range]::-ms-track {
     display: block;
 }
 
+.config-ui__overview {
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    padding-top: 0;
+}
+
+.config-ui__overview::before {
+    content: "";
+    position: absolute;
+    top: 200px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    pointer-events: none;
+}
+
+.config-ui__overview::after {
+    content: "";
+    position: absolute;
+    bottom: 75px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+    pointer-events: none;
+}
+
+.config-ui__overview::-webkit-scrollbar {
+    display: none;
+}
+
+.config-ui__overview::-webkit-scrollbar-thumb {
+    display: none;
+}
+
+.config-ui__overview::-webkit-scrollbar-track {
+    display: none;
+}
+
+.config-ui__overview::-webkit-scrollbar-thumb {
+    display: none;
+}
 
 .config-ui__options {
     height: 100%;
@@ -483,6 +527,7 @@ input[type=range]::-ms-track {
 
     padding: 10px 20px;
     margin-top: 20px;
+    margin-bottom: 20px;
 
     border: 1px solid var(--off-black);
     border-radius: 30px;
@@ -521,7 +566,8 @@ input[type=range]::-ms-track {
 
 .config-ui__selection-buttons button:hover,
 .config-ui__selection-buttons button.active-selection-button,
-.config-ui__options__overview__PDF-link button:hover {
+.config-ui__options__overview__PDF-link button:hover,
+.config-ui__nav button:hover {
     background-color: var(--off-black);
     color: var(--off-white);
 }
