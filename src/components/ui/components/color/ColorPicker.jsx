@@ -21,7 +21,7 @@ function organizeRalColors(ralData) {
 const ralColors = organizeRalColors(ralData);
 
 
-export default function ColorPicker({ color, setColor }) {
+export default function ColorPicker() {
 
     const {
         ralColor,
