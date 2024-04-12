@@ -78,22 +78,12 @@ export default function NewMaterial({ ambientOcclusion, type, ralExclude }) {
         aoMap.flipY = false;
     }
 
-    const [ral, setRal] = useState(undefined);
-
-    useEffect(() => {
-        if (ralExclude) {
-            return;
-        }
-        setRal(ralColor);
-        console.log(ral);
-    }, [ralColor, mainMaterial]);
-
 
     return (<>
 
         {!ralExclude && mainMaterialCategory === 'ral' &&
             <meshStandardMaterial
-                color={ral.hex}
+                color={ralColor.hex}
                 map={albedoTexture}
                 roughnessMap={roughnessTexture}
                 normalMap={normalTexture}
