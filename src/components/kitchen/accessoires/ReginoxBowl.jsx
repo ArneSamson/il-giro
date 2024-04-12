@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import * as THREE from 'three'
 import { useGLTF } from "@react-three/drei";
 
 import useConfig from '../../../store/useConfigStore.jsx';
@@ -15,13 +14,6 @@ export default function Reginox({ props }) {
             tableTopMaterial: state.tableTopMaterial,
         })
     );
-
-    useEffect(() => {
-        if (tableTopMaterial.name === "inox") {
-            console.log("inox")
-        }
-
-    }, [tableTopMaterial]);
 
     const { nodes } = useGLTF(tableTopMaterial.name === "inox" ? "./models/Reginox-solid.glb" : "./models/Reginox.glb");
 
