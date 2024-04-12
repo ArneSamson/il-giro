@@ -46,6 +46,7 @@ export default function WineStand({ props }) {
                     <NewMaterial
                         type={"accent"}
                         ralExclude={true}
+                        envIntensity={0.45}
                     />
                 </mesh>
             }

@@ -4,7 +4,7 @@ import { useTexture } from "./useTexture";
 import useConfigStore from "../store/useConfigStore";
 import { NoColorSpace, RepeatWrapping, SRGBColorSpace, Vector2 } from "three";
 
-export default function NewMaterial({ ambientOcclusion, type, ralExclude }) {
+export default function NewMaterial({ ambientOcclusion, type, ralExclude, envIntensity = 1 }) {
 
     const {
         mainMaterial,
@@ -93,6 +93,7 @@ export default function NewMaterial({ ambientOcclusion, type, ralExclude }) {
                 metalness={1}
                 aoMap={aoMap}
                 aoMapIntensity={0.8}
+                envIntensity={envIntensity}
             />
         }
         {(ralExclude || mainMaterialCategory !== 'ral') &&
@@ -106,6 +107,7 @@ export default function NewMaterial({ ambientOcclusion, type, ralExclude }) {
                 metalness={1}
                 aoMap={aoMap}
                 aoMapIntensity={0.8}
+                envMapIntensity={envIntensity}
             />
         }
     </>
