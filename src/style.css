@@ -420,6 +420,28 @@ input[type=range]::-ms-track {
     padding-top: 0;
 }
 
+.config-ui__options::before {
+    content: "";
+    position: absolute;
+    top: 155px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    pointer-events: none;
+}
+
+.config-ui__options::after {
+    content: "";
+    position: absolute;
+    bottom: 82px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+    pointer-events: none;
+}
+
 .config-ui__options::-webkit-scrollbar {
     display: none;
 }
