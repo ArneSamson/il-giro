@@ -95,10 +95,9 @@ export function Wodka(props) {
             <mesh
                 castShadow
                 receiveShadow
-                geometry={nodes.inside.geometry}
-                material={nodes.inside.material}
+                geometry={nodes.top.geometry}
+                material={materials.Material}
             />
-            <mesh castShadow receiveShadow geometry={nodes.top.geometry} material={materials.Material} />
             <mesh
                 castShadow
                 receiveShadow
