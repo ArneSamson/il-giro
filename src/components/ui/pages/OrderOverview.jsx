@@ -64,7 +64,7 @@ export default function OrderOverview() {
         </div>
 
         <div
-            className='config-ui__overview'
+            className='config-ui__options'
         >
             <div
                 className='config-ui__options__overview'
