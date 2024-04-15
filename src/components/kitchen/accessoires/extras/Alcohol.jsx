@@ -16,6 +16,13 @@ const whiskeyMaterial = new MeshStandardMaterial({
     envMapIntensity: 0.5,
 })
 
+const wodkaMaterial = new MeshStandardMaterial({
+    color: new Color("#ffffff"),
+    roughness: 0.9,
+    metalness: 1,
+    envMapIntensity: 0.5,
+})
+
 
 export function GlassBottleWhiskey(props) {
     const { nodes, materials } = useGLTF('./models/glass-bottle-whiskey.glb')
@@ -35,7 +42,7 @@ export function GlassBottleWhiskey(props) {
             >
                 <MeshTransmissionMaterial
                     isMeshPhysicalMaterial={false}
-                    transmission={0.8}
+                    transmission={0.9}
                     background={new Color(0x000000)}
                     backside={false}
                     samples={1}
@@ -66,26 +73,28 @@ export function WineBottle(props) {
             <mesh
                 castShadow
                 receiveShadow
-                geometry={nodes['Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1007'].geometry}
+                geometry={nodes['Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1008'].geometry}
                 material={wineBottleMaterial}
             ></mesh>
             <mesh
                 castShadow
                 receiveShadow
-                geometry={nodes['Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1007_1'].geometry}
-                material={materials['Red Wine | Advanced Glass .006']}
-            />
-            <mesh
-                castShadow
-                receiveShadow
-                geometry={nodes['Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1007_2'].geometry}
+                geometry={nodes['Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1010'].geometry}
                 material={materials['Metal_Steel_Dirty_4k.001']}
+                position={[0, 0.289, 0]}
+                scale={1.04}
             />
             <mesh
                 castShadow
                 receiveShadow
-                geometry={nodes['Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1007_3'].geometry}
+                geometry={nodes['Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1011'].geometry}
                 material={materials['MULLED-WINE_back']}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes['Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1012'].geometry}
+                material={materials['MULLED-WINE']}
             />
         </group>
     )
@@ -117,7 +126,9 @@ export function Wodka(props) {
                 castShadow
                 receiveShadow
                 geometry={nodes.wodka001.geometry}
-                material={nodes.wodka001.material}
+                // material={nodes.wodka001.material}
+                material={wodkaMaterial}
+
             ></mesh>
         </group>
     )
