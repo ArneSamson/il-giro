@@ -66,12 +66,12 @@ export default function WineStand({ props }) {
             }
 
             <GlassBottleWhiskey
-                position={[-0.05, 1.85, -0.05]}
+                position={[-0.05, 1.855, -0.05]}
                 scale={[0.8, 0.8, 0.8]}
             />
 
             <WineBottle
-                position={[0.05, 1.85, -0.05]}
+                position={[0.05, 1.855, -0.05]}
                 scale={[0.8, 0.8, 0.8]}
             />
 

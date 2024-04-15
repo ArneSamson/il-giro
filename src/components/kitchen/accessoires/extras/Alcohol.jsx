@@ -1,6 +1,12 @@
 import React, { useRef } from 'react';
-import * as THREE from 'three'
+import { Color, MeshStandardMaterial } from 'three'
 import { useTexture, useGLTF, MeshTransmissionMaterial } from '@react-three/drei'
+
+const bottleMaterial = new MeshStandardMaterial({
+    color: new Color("#19191B"),
+    roughness: 0.0,
+    metalness: 0.5,
+})
 
 
 export function GlassBottleWhiskey(props) {
@@ -19,8 +25,17 @@ export function GlassBottleWhiskey(props) {
                 geometry={nodes['Food-Drink_Alcohol_Glasses-Whisky_01_Flask002'].geometry}
             >
                 <MeshTransmissionMaterial
+                    isMeshPhysicalMaterial={false}
                     transmission={0.8}
-                    background={new THREE.Color(0x000000)}
+                    background={new Color(0x000000)}
+                    backside={false}
+                    samples={1}
+                    roughness={0.0}
+                    thickness={0.2}
+                    chromaticAberration={0.06}
+                    anisotropy={0.1}
+                    distortion={0.0}
+                    distortionScale={0.3}
                 />
             </mesh>
             <mesh
@@ -41,15 +56,8 @@ export function WineBottle(props) {
                 castShadow
                 receiveShadow
                 geometry={nodes['Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1007'].geometry}
-            // material={materials['Red Bottle | Advanced Glass .006']}
-            >
-                <MeshTransmissionMaterial
-                    transmission={0.8}
-                    background={new THREE.Color(0x00ff00)}
-                // color={0x00ff00}
-                />
-
-            </mesh>
+                material={bottleMaterial}
+            ></mesh>
             <mesh
                 castShadow
                 receiveShadow
