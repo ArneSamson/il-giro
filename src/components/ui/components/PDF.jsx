@@ -68,6 +68,9 @@ const styles = StyleSheet.create({
         padding: 5,
         gap: 10,
     },
+    optionValue: {
+        textAlign: 'right',
+    },
 
 
     table: {
@@ -239,7 +242,9 @@ export function MyDocument({ props }) {
                                     <Text>
                                         {option.name} :
                                     </Text>
-                                    <Text>
+                                    <Text
+                                        style={styles.optionValue}
+                                    >
                                         {option.value}
                                     </Text>
                                 </View>
@@ -268,7 +273,9 @@ export function MyDocument({ props }) {
                                     <Text>
                                         {option.name} :
                                     </Text>
-                                    <Text>
+                                    <Text
+                                        style={styles.optionValue}
+                                    >
                                         {option.value}
                                     </Text>
                                 </View>
@@ -297,7 +304,9 @@ export function MyDocument({ props }) {
                                     <Text>
                                         {option.name} :
                                     </Text>
-                                    <Text>
+                                    <Text
+                                        style={styles.optionValue}
+                                    >
                                         {option.value}
                                     </Text>
                                 </View>
@@ -326,7 +335,9 @@ export function MyDocument({ props }) {
                                     <Text>
                                         {option.name} :
                                     </Text>
-                                    <Text>
+                                    <Text
+                                        style={styles.optionValue}
+                                    >
                                         {option.value}
                                     </Text>
                                 </View>
