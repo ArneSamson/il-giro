@@ -9,6 +9,13 @@ const wineBottleMaterial = new MeshStandardMaterial({
     envMapIntensity: 0.5,
 })
 
+const whiskeyMaterial = new MeshStandardMaterial({
+    color: new Color("#D14E30"),
+    roughness: 0.0,
+    metalness: 0,
+    envMapIntensity: 0.5,
+})
+
 
 export function GlassBottleWhiskey(props) {
     const { nodes, materials } = useGLTF('./models/glass-bottle-whiskey.glb')
@@ -18,7 +25,8 @@ export function GlassBottleWhiskey(props) {
                 castShadow
                 receiveShadow
                 geometry={nodes['Food-Drink_Alcohol_Glasses-Whisky_01_Flask001'].geometry}
-                material={materials['Whisky.001']}
+                // material={materials['Whisky.001']}
+                material={whiskeyMaterial}
             />
             <mesh
                 castShadow
@@ -44,7 +52,8 @@ export function GlassBottleWhiskey(props) {
                 castShadow
                 receiveShadow
                 geometry={nodes['Food-Drink_Alcohol_Glasses-Whisky_01_Flask003'].geometry}
-                material={materials.Whisky}
+                // material={materials.Whisky}
+                material={whiskeyMaterial}
             />
         </group>
     )
