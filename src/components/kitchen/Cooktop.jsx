@@ -8,6 +8,8 @@ import TableTopRound from "./tabletops/TableTopRound.jsx";
 import GasStove from "./accessoires/GasStove.jsx";
 import ElectricStove from "./accessoires/ElectricStove.jsx";
 
+import Drawers from "./accessoires/Drawers.jsx";
+
 import useScene from "../../store/useScene.jsx";
 import useConfig from "../../store/useConfigStore.jsx";
 
@@ -24,6 +26,8 @@ export default function Cooktop() {
 
         tableTopMaterialCategory,
         tableTopHeight,
+
+        mainDrawers,
     } = useConfig(
         (state) => ({
 
@@ -38,6 +42,8 @@ export default function Cooktop() {
 
             tableTopMaterialCategory: state.tableTopMaterialCategory,
             tableTopHeight: state.tableTopHeight,
+
+            mainDrawers: state.mainDrawers,
         })
     );
 
@@ -138,7 +144,14 @@ export default function Cooktop() {
                         e.stopPropagation();
                     }}
                 >
-                    <BaseIsland />
+
+                    {mainDrawers &&
+                        <Drawers />
+                    }
+
+                    <BaseIsland
+                        needsDrawers={mainDrawers}
+                    />
 
                     {tableTopRounded &&
                         <group>
