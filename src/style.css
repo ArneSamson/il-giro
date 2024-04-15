@@ -594,6 +594,10 @@ summary span {
     transform: scale(1.5);
 }
 
+.config-ui__details__extra-message {
+    margin-top: 20px;
+}
+
 
 
 .config-ui__material-options {

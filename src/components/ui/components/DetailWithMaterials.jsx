@@ -31,8 +31,10 @@ export default function DetailWithMaterials({
                         }}
                     ></div>
                 ))}
-                <p>{extraMessage}</p>
             </div>
+            <p
+                className="config-ui__details__extra-message"
+            >{extraMessage}</p>
         </details>
     );
 }
