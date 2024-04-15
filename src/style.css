@@ -458,15 +458,25 @@ input[type=range]::-ms-track {
     margin-top: 20px;
 }
 
+
+.config-ui__options__overview__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .config-ui__options__overview__title {
     font-size: var(--body-size);
     color: var(--off-black);
 }
 
-.config-ui__options__overview__title span {
+.config-ui__options__overview__value {
+    text-align: right;
     color: var(--dark-grey);
     font-family: var(--subheading-family);
     font-weight: var(--mini-title-size);
+    transform: translateY(3px);
 }
 
 .config-ui__options__overview__PDF-link {

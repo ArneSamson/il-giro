@@ -25,4 +25,25 @@ export const ButtonCategoryTitle = ({ children, title }) => {
             {children}
         </div>
     );
-} 
+}
+
+export const OverViewItem = ({ topic, value }) => {
+    return (<>
+
+        <div
+            className="config-ui__options__overview__item"
+        >
+            <h4
+                className="config-ui__options__overview__title"
+            >
+                {topic}:
+            </h4>
+            <p
+                className="config-ui__options__overview__value"
+            >
+                {value}
+            </p>
+
+        </div>
+    </>);
+}

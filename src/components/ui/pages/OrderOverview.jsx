@@ -3,6 +3,7 @@ import React from "react";
 import useConfigStore from "../../../store/useConfigStore";
 
 import PDFButton from "./PDFButton.jsx";
+import { OverViewItem } from "../components/text/TextComponents.jsx";
 
 export default function OrderOverview() {
 
@@ -69,107 +70,107 @@ export default function OrderOverview() {
             <div
                 className='config-ui__options__overview'
             >
+                <OverViewItem
+                    topic="Chosen Modules"
+                    value={
+                        (sinkChosen ? 'Sink, ' : '') +
+                        (cooktopChosen ? 'Cooktop, ' : '') +
+                        (towerChosen ? 'Tower, ' : '') +
+                        (tableChosen ? 'Table' : '')
+                    }
+                />
 
-                <h4
-                    className="config-ui__options__overview__title"
-                >
-                    Chosen Modules: <span> {
-                        sinkChosen ? 'Sink, ' : ''
-                    }{
-                            cooktopChosen ? 'Cooktop, ' : ''
-                        }{
-                            towerChosen ? 'Tower, ' : ''
-                        }{
-                            tableChosen ? 'Table' : ''
-                        }
-                    </span>
-                </h4>
+                <OverViewItem
+                    topic="Curved"
+                    value={allBevelled ? "yes" : "no"}
+                />
 
-                <h4
-                    className="config-ui__options__overview__title"
-                >Curved: <span>{allBevelled ? "yes" : "no"}</span></h4>
+                <OverViewItem
+                    topic="Main Material"
+                    value={mainMaterial.name}
+                />
 
-                <h4
-                    className="config-ui__options__overview__title"
-                >Main Material: <span>{mainMaterial.name} </span> </h4>
 
-                <h4
-                    className="config-ui__options__overview__title"
-                >Table Top Material: <span>{tableTopMaterial.name}</span></h4>
+                <OverViewItem
+                    topic="Table Top Material"
+                    value={tableTopMaterial.name}
+                />
 
                 {(towerChosen || sinkChosen) && (
-                    <h4
-                        className="config-ui__options__overview__title"
-                    >Accent Material: <span>{accentMaterial.name}</span>
-                    </h4>
+
+                    <OverViewItem
+                        topic="Accent Material"
+                        value={accentMaterial.name}
+                    />
                 )}
 
-                <h4
-                    className="config-ui__options__overview__title"
-                >Edge Finish: <span>{edgeFinish}</span></h4>
+                <OverViewItem
+                    topic="Edge Finish"
+                    value={edgeFinish}
+                />
 
-                <h4
-                    className="config-ui__options__overview__title"
-                >Table Top Inset: <span>{tableTopInset ? 'inset' : 'overlay'}</span></h4>
+                <OverViewItem
+                    topic="Table Top Inset"
+                    value={tableTopInset ? 'inset' : 'overlay'}
+                />
 
                 {sinkChosen && <>
-                    <h4
-                        className="config-ui__options__overview__title"
-                    >Tap Type: <span>{
-                        tapType === 1 ? "Brandwood 3" : tapType === 2 ? "Bridge" : ""
-                    }</span></h4>
+                    <OverViewItem
+                        topic="Tap Type"
+                        value={tapType === 1 ? "Brandwood 3" : tapType === 2 ? "Bridge" : ""}
+                    />
 
-                    <h4
-                        className="config-ui__options__overview__title"
-                    >Extra Drawers: <span>{mainDrawers ? "Yes" : "No"
-                    }</span></h4>
+                    <OverViewItem
+                        topic="Extra Drawers"
+                        value={mainDrawers ? "Yes" : "No"}
+                    />
                 </>}
 
-                {cooktopChosen &&
-                    <h4
-                        className="config-ui__options__overview__title"
-                    >Stove Type: <span>{
-                        stoveType === 1 ? "Gas" : stoveType === 2 ? "Electric" : ""
-                    }</span></h4>
-                }
-
-                {towerChosen && <>
-                    <h4
-                        className="config-ui__options__overview__title"
-                    >Appliance Type: <span>{applianceType}</span></h4>
-
-                    <h4
-                        className="config-ui__options__overview__title"
-                    >Wine Stand Size: <span>{wineStandSize}</span>
-                    </h4>
+                {cooktopChosen && <>
+                    <OverViewItem
+                        topic="Stove Type"
+                        value={stoveType === 1 ? "Gas" : stoveType === 2 ? "Electric" : ""}
+                    />
                 </>}
 
                 {towerChosen && <>
-                    <h4
-                        className="config-ui__options__overview__title"
-                    >Appliance Type: <span>{applianceType}</span></h4>
 
-                    <h4
-                        className="config-ui__options__overview__title"
-                    >Wine Stand Size: <span>{wineStandSize}</span>
-                    </h4>
+                    <OverViewItem
+                        topic="Appliance Type"
+                        value={applianceType}
+                    />
+
+                    <OverViewItem
+                        topic="Wine Stand Size"
+                        value={wineStandSize}
+                    />
                 </>}
 
                 {towerChosen && <>
-                    <h4
-                        className="config-ui__options__overview__title"
-                    >Appliance Type: <span>{applianceType}</span></h4>
+                    <OverViewItem
+                        topic="Appliance Type"
+                        value={applianceType}
+                    />
 
-                    <h4
-                        className="config-ui__options__overview__title"
-                    >Wine Stand Size: <span>{wineStandSize}</span>
-                    </h4>
+                    <OverViewItem
+                        topic="Wine Stand Size"
+                        value={wineStandSize}
+                    />
                 </>}
 
+                {towerChosen && <>
+                    <OverViewItem
+                        topic="Appliance Type"
+                        value={applianceType}
+                    />
+
+                    <OverViewItem
+                        topic="Wine Stand Size"
+                        value={wineStandSize}
+                    />
+                </>}
 
                 <PDFButton />
-
-
 
             </div>
 
