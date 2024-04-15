@@ -720,3 +720,9 @@ summary span {
         display: none;
     }
 }
+
+@media(min-height: 2000px) {
+    .config-ui__options {
+        padding-top: 50px;
+    }
+}
