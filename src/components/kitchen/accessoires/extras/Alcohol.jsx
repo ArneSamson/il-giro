@@ -2,10 +2,11 @@ import React, { useRef } from 'react';
 import { Color, MeshStandardMaterial } from 'three'
 import { useTexture, useGLTF, MeshTransmissionMaterial } from '@react-three/drei'
 
-const bottleMaterial = new MeshStandardMaterial({
+const wineBottleMaterial = new MeshStandardMaterial({
     color: new Color("#19191B"),
     roughness: 0.0,
     metalness: 0.5,
+    envMapIntensity: 0.5,
 })
 
 
@@ -36,6 +37,7 @@ export function GlassBottleWhiskey(props) {
                     anisotropy={0.1}
                     distortion={0.0}
                     distortionScale={0.3}
+                    envMapIntensity={0.5}
                 />
             </mesh>
             <mesh
@@ -56,7 +58,7 @@ export function WineBottle(props) {
                 castShadow
                 receiveShadow
                 geometry={nodes['Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1007'].geometry}
-                material={bottleMaterial}
+                material={wineBottleMaterial}
             ></mesh>
             <mesh
                 castShadow
@@ -80,5 +82,39 @@ export function WineBottle(props) {
     )
 }
 
+export function Wodka(props) {
+    const { nodes, materials } = useGLTF('./models/wodka.glb')
+    return (
+        <group {...props} dispose={null}>
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes['back-label'].geometry}
+                material={materials['vodka_face_back.001']}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.inside.geometry}
+                material={nodes.inside.material}
+            />
+            <mesh castShadow receiveShadow geometry={nodes.top.geometry} material={materials.Material} />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes['front-label'].geometry}
+                material={materials.vodka_face}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.wodka001.geometry}
+                material={nodes.wodka001.material}
+            ></mesh>
+        </group>
+    )
+}
+
 useGLTF.preload('./models/glass-bottle-whiskey.glb')
 useGLTF.preload('./models/wine-bottle.glb')
+useGLTF.preload('./models/wodka.glb')

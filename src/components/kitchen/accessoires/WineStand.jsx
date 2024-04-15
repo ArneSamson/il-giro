@@ -5,7 +5,7 @@ import useConfig from '../../../store/useConfigStore.jsx';
 
 import NewMaterial from '../../../helper/NewMaterial.jsx';
 
-import { GlassBottleWhiskey, WineBottle } from './extras/Alcohol.jsx';
+import { GlassBottleWhiskey, WineBottle, Wodka } from './extras/Alcohol.jsx';
 
 
 export default function WineStand({ props }) {
@@ -75,6 +75,12 @@ export default function WineStand({ props }) {
                 position={[0.05, 1.855, -0.05]}
                 scale={[0.8, 0.8, 0.8]}
                 rotation={[0, Math.PI, 0]}
+            />
+
+            <Wodka
+                position={[0.1, 1.55, 0]}
+                scale={[0.8, 0.8, 0.8]}
+                rotation={[0, 0, 0]}
             />
 
         </group>
