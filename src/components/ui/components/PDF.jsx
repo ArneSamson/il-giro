@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
     chapterOption: {
         display: 'flex',
         flexDirection: 'row',
+        justifyContent: 'space-between',
         borderBottom: '1px solid black',
         padding: 5,
         gap: 10,
@@ -236,7 +237,10 @@ export function MyDocument({ props }) {
                                     style={styles.chapterOption}
                                 >
                                     <Text>
-                                        {option.name} : {option.value}
+                                        {option.name} :
+                                    </Text>
+                                    <Text>
+                                        {option.value}
                                     </Text>
                                 </View>
                             ))}
@@ -262,7 +266,10 @@ export function MyDocument({ props }) {
                                     style={styles.chapterOption}
                                 >
                                     <Text>
-                                        {option.name} : {option.value}
+                                        {option.name} :
+                                    </Text>
+                                    <Text>
+                                        {option.value}
                                     </Text>
                                 </View>
                             ))}
@@ -288,7 +295,10 @@ export function MyDocument({ props }) {
                                     style={styles.chapterOption}
                                 >
                                     <Text>
-                                        {option.name} : {option.value}
+                                        {option.name} :
+                                    </Text>
+                                    <Text>
+                                        {option.value}
                                     </Text>
                                 </View>
                             ))}
@@ -314,7 +324,10 @@ export function MyDocument({ props }) {
                                     style={styles.chapterOption}
                                 >
                                     <Text>
-                                        {option.name} : {option.value}
+                                        {option.name} :
+                                    </Text>
+                                    <Text>
+                                        {option.value}
                                     </Text>
                                 </View>
                             ))}
