@@ -33,7 +33,7 @@ export default function CameraHandler() {
 
     const updateViewOffset = () => {
         if (window.innerWidth > 1000) {
-            const widthOffset = window.innerWidth * 0.25 * devicePixelRatio;
+            const widthOffset = window.innerWidth * 0.25;
             let heightOffset;
             if (cameraFocus[0] === 0 && cameraFocus[1] === 1 && cameraFocus[2] === 0) {
                 heightOffset = 0;
@@ -50,7 +50,7 @@ export default function CameraHandler() {
             );
             camera.current.camera.updateProjectionMatrix();
         } else {
-            const heightOffset = window.innerHeight * 0.45 * devicePixelRatio;
+            const heightOffset = window.innerHeight * 0.45;
             camera.current.camera.setViewOffset(
                 window.innerWidth,
                 window.innerHeight,
