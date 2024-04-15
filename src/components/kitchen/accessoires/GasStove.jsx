@@ -2,13 +2,13 @@ import React, { useRef } from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF } from '@react-three/drei'
 
-export default function GasStove({props}){
+export default function GasStove({ props }) {
     const { nodes, materials } = useGLTF("./models/gas-stove.glb");
-    
+
     return (
-        <group 
+        <group
             name='gas-stove-group'
-            {...props} 
+            {...props}
             dispose={null}
         >
             <mesh

@@ -82,16 +82,16 @@ export default function Cooktop() {
                 if (tableTopInset) {
                     setTableTopScale([1, 1, 1]);
                     setTableTopPosition([0, 0.905, 0]);
-                    setStovePosition([0, -0.005, 0]);
+                    setStovePosition([0, -0.005, -0.05]);
                 } else {
                     if (tableTopHeight === 0.5) {
                         setTableTopScale([1.05, 0.5, 1.05]);
                         setTableTopPosition([0, 0.96, 0]);
-                        setStovePosition([0, 0.03, 0]);
+                        setStovePosition([0, 0.03, -0.05]);
                     } else if (tableTopHeight === 0.3) {
                         setTableTopScale([1.05, 0.3, 1.05]);
                         setTableTopPosition([0, 0.96, 0]);
-                        setStovePosition([0, 0.02, 0]);
+                        setStovePosition([0, 0.02, -0.05]);
                     }
                 }
                 break;
@@ -99,24 +99,24 @@ export default function Cooktop() {
                 if (tableTopInset) {
                     setTableTopScale([1, 1, 1]);
                     setTableTopPosition([0, 0.905, 0]);
-                    setStovePosition([0, -0.005, 0]);
+                    setStovePosition([0, -0.005, -0.05]);
                 }
                 else {
                     setTableTopScale([1.05, 1, 1.05]);
                     setTableTopPosition([0, 0.96, 0]);
-                    setStovePosition([0, 0.048, 0]);
+                    setStovePosition([0, 0.048, -0.05]);
                 }
                 break;
             case "metal":
                 if (tableTopInset) {
                     setTableTopScale([1, 1, 1]);
                     setTableTopPosition([0, 0.905, 0]);
-                    setStovePosition([0, -0.005, 0]);
+                    setStovePosition([0, -0.005, -0.05]);
                 }
                 else {
                     setTableTopScale([1.05, 0.125, 1.05]);
                     setTableTopPosition([0, 0.96, 0]);
-                    setStovePosition([0, 0.01, 0]);
+                    setStovePosition([0, 0.01, -0.05]);
                 }
                 break;
         }
