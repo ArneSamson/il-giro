@@ -44,7 +44,7 @@ export default function Drawers(props) {
                     );
                 }
             } else if (doorOpeningRotation === 1.5) {
-                if (drawersRef.current.children[0].position.z > 0.034) {
+                if (drawersRef.current.children[0].position.z > 0.1) {
                     return;
                 } else {
                     const bottomShelfZ = doorOpeningRotation / 8;
@@ -53,17 +53,17 @@ export default function Drawers(props) {
 
                     drawersRef.current.children[2].position.z = lerp(
                         drawersRef.current.children[2].position.z,
-                        bottomShelfZ,
+                        topShelfZ,
                         delta * 2
                     );
                     drawersRef.current.children[1].position.z = lerp(
                         drawersRef.current.children[1].position.z,
-                        middleShelfZ,
+                        bottomShelfZ,
                         delta * 2
                     );
                     drawersRef.current.children[0].position.z = lerp(
                         drawersRef.current.children[0].position.z,
-                        topShelfZ,
+                        middleShelfZ,
                         delta * 2
                     );
                 }
@@ -77,27 +77,25 @@ export default function Drawers(props) {
             ref={drawersRef}
             {...props}
             dispose={null}
-            rotation={[0, Math.PI, 0]}
+            rotation={[0, 0, 0]}
         >
             <mesh
                 castShadow
                 receiveShadow
-                geometry={nodes.drawer008.geometry}
-                material={nodes.drawer008.material}
+                geometry={nodes.drawer_3002.geometry}
+                material={nodes.drawer_3002.material}
             />
             <mesh
                 castShadow
                 receiveShadow
-                geometry={nodes.drawer007.geometry}
-                material={nodes.drawer007.material}
-                position={[0, -0.252, 0]}
+                geometry={nodes.drawer_3003.geometry}
+                material={nodes.drawer_3003.material}
             />
             <mesh
                 castShadow
                 receiveShadow
-                geometry={nodes.drawer006.geometry}
-                material={nodes.drawer006.material}
-                position={[0, -0.504, 0]}
+                geometry={nodes.drawer_3001.geometry}
+                material={nodes.drawer_3001.material}
             />
         </group>
     )

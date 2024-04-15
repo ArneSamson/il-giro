@@ -49,8 +49,7 @@ export default function BaseIsland({ props, needsDrawers }) {
                 ref={meshRef}
                 castShadow
                 receiveShadow
-                geometry={nodes['island-low-drawers'].geometry}
-                rotation={[0, Math.PI, 0]}
+                geometry={nodes['island-low001'].geometry}
                 {...props}
             >
                 <NewMaterial
@@ -60,7 +59,8 @@ export default function BaseIsland({ props, needsDrawers }) {
                     visible={allBevelled}
                     castShadow
                     receiveShadow
-                    geometry={nodes.bevel.geometry}
+                    geometry={nodes.bevel003.geometry}
+                    rotation={[Math.PI, -1.561, Math.PI]}
                 >
                     <NewMaterial
                         type={"main"}
@@ -70,7 +70,8 @@ export default function BaseIsland({ props, needsDrawers }) {
                     visible={!allBevelled}
                     castShadow
                     receiveShadow
-                    geometry={nodes.straight.geometry}
+                    geometry={nodes.straight003.geometry}
+                    rotation={[Math.PI, -1.561, Math.PI]}
                 >
                     <NewMaterial
                         type={"main"}
