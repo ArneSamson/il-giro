@@ -557,17 +557,45 @@ input[type=range]::-ms-track {
 
 .swatches-picker {
     margin-bottom: 15px;
+    margin-left: 5px;
 }
 
-.swatches-picker div div div {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    gap: 5px;
+.swatches-picker div {
+    margin: 0;
+    width: 100%;
 }
+
+.swatches-picker div div:first-child {
+    box-shadow: none !important;
+    /* background: fixed !important; */
+}
+
+.swatches-picker div div:last-child {
+    width: 100%;
+}
+
+.swatches-picker div div:last-child div {}
 
 .swatches-picker div div div div {
+    padding: 0 !important;
+    gap: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.swatches-picker div div:last-child div {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.swatches-picker div div div::-webkit-scrollbar {
+    display: none;
+}
+
+.swatches-picker div div div div div {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 summary span {
