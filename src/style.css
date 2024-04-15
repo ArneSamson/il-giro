@@ -565,20 +565,17 @@ input[type=range]::-ms-track {
     width: 100%;
 }
 
-.swatches-picker div div:first-child {
+.swatches-picker div div {
     box-shadow: none !important;
-    /* background: fixed !important; */
 }
 
-.swatches-picker div div:last-child {
-    width: 100%;
+#root>div>div.config-wrapper>div>div.config-ui__options>div.swatches-picker>div>div:nth-child(1) {
+    background: none !important;
 }
-
-.swatches-picker div div:last-child div {}
 
 .swatches-picker div div div div {
     padding: 0 !important;
-    gap: 5px;
+    gap: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
@@ -588,7 +585,18 @@ input[type=range]::-ms-track {
     margin-right: auto;
 }
 
+#root>div>div.config-wrapper>div>div.config-ui__options>div.swatches-picker>div>div:nth-child(2)>div>div>div {
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 5px !important;
+}
+
 .swatches-picker div div div::-webkit-scrollbar {
+    display: none;
+}
+
+.swatches-picker div div div::-webkit-scrollbar-thumb {
     display: none;
 }
 
