@@ -425,7 +425,7 @@ input[type=range]::-ms-track {
 .config-ui__options {
     height: 100%;
     width: 100%;
-    padding: 10px 0;
+    padding: 40px 0 10px 0;
     overflow-y: scroll;
     position: relative;
     mask-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 5%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1) 95%, rgba(0, 0, 0, 0) 100%);
@@ -452,10 +452,10 @@ input[type=range]::-ms-track {
 .config-ui__options__overview {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
     padding-left: 5px;
     padding-right: 5px;
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 
@@ -467,8 +467,11 @@ input[type=range]::-ms-track {
 }
 
 .config-ui__options__overview__title {
+    font-family: var(--subheading-family);
+    font-weight: var(--heading5-weight);
     font-size: var(--body-size);
     color: var(--off-black);
+    line-height: 1em;
 }
 
 .config-ui__options__overview__value {
@@ -476,7 +479,8 @@ input[type=range]::-ms-track {
     color: var(--dark-grey);
     font-family: var(--subheading-family);
     font-weight: var(--mini-title-size);
-    transform: translateY(3px);
+    /* transform: translateY(3px); */
+    line-height: 1em;
 }
 
 .config-ui__options__overview__PDF-link {
@@ -491,7 +495,7 @@ input[type=range]::-ms-track {
     cursor: pointer;
     background-color: var(--off-white);
     color: var(--off-black);
-    font-weight: var(--button-weight);
+    font-weight: var(--body-weight);
     transition: background-color 0.5s ease;
 }
 
@@ -544,7 +548,6 @@ input[type=range]::-ms-track {
 .config-ui__details {
     width: 100%;
     padding: 15px 0px 15px 5px;
-    margin-bottom: 15px;
     transition: opacity 0.5s ease-in-out;
 }
 
