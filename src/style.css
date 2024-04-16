@@ -586,7 +586,18 @@ input[type=range]::-ms-track {
     background: none !important;
 }
 
-.swatches-picker div div div div {
+#root>div>div.config-wrapper>div>div.config-ui__options>div.swatches-picker>div>div:nth-child(2)>div>div {
+    /* border: 1px solid var(--dark-grey);
+    border-radius: 30px; */
+    margin: 10px 0;
+}
+
+#root>div>div.config-wrapper>div>div.config-ui__options>div.swatches-picker>div>div:nth-child(2)>div {
+    border: 1px solid var(--dark-grey);
+    border-radius: 30px;
+}
+
+#root>div>div.config-wrapper>div>div.config-ui__options>div.swatches-picker>div>div:nth-child(2)>div>div {
     padding: 0 !important;
     gap: 20px;
     display: grid;
