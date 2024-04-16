@@ -595,8 +595,8 @@ input[type=range]::-ms-track {
     border: 1px solid var(--dark-grey);
     border-top: none;
     border-radius: 0px 0px 30px 30px;
-    /* padding-top: 60px;
-    transform: translateY(-50px); */
+    padding-top: 20px;
+    transform: translateY(-35px);
 }
 
 #root>div>div.config-wrapper>div>div.config-ui__options>div.swatches-picker>div>div:nth-child(2)>div>div {

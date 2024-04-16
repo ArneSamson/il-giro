@@ -83,6 +83,7 @@ export default function ColorPicker({ color }) {
     return (<>
         <div
             style={{
+                position: 'relative',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
@@ -90,6 +91,7 @@ export default function ColorPicker({ color }) {
                 paddingLeft: 5,
                 paddingRight: 10,
                 marginBottom: 10,
+                zIndex: 100,
             }}
         >
             <input
