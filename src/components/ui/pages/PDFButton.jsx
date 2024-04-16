@@ -152,9 +152,10 @@ export default function PDFButton() {
             <PDFDownloadLink
                 document={pdf}
                 fileName="overview.pdf"
+                className="config-ui__options__overview__PDF-link-container"
             >
                 {({ blob, url, loading, error }) =>
-                    loading ? 'Loading document...' : <a href={url} target="_blank" className="config-ui__options__overview__PDF-link">Download</a>
+                    loading ? 'Loading document...' : <a href={url} target="_blank" className="config-ui__options__overview__PDF-link">Download PDF quote</a>
                 }
             </PDFDownloadLink>
         </>}

@@ -483,8 +483,20 @@ input[type=range]::-ms-track {
     line-height: 1em;
 }
 
+.config-ui__options__overview__PDF-link-container {
+    width: 100%;
+    height: auto;
+}
+
+.config-ui__options__overview__PDF-link-container:hover {
+    text-decoration: none;
+}
+
 .config-ui__options__overview__PDF-link {
-    width: fit-content;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: center;
 
     padding: 10px 20px;
     margin-top: 20px;
