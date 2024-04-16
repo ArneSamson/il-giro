@@ -130,6 +130,9 @@ export function MyDocument({ props }) {
         { name: 'type of faucet', value: props.tapType },
     ];
 
+
+    console.log('props', props.imageRender);
+
     return (
 
         <Document
@@ -151,6 +154,12 @@ export function MyDocument({ props }) {
                         source={'./images/UI/bg2.png'}
                         style={styles.backgroundImage}
                     />
+
+                    <Image
+                        src={props.imageRender[0]}
+                        style={{ width: '100%', height: 'auto' }}
+                    />
+
 
                     <View
                         style={styles.table}

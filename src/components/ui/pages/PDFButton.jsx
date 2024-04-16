@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from 'react-dom';
 import { PDFViewer, usePDF, PDFDownloadLink, BlobProvider } from '@react-pdf/renderer';
+import ReactPDF from '@react-pdf/renderer';
 
 import { MyDocument } from "../components/PDF.jsx";
 
 import useConfigStore from "../../../store/useConfigStore.jsx";
 
+import { Vector3 } from 'three';
+
+import { useCapture } from '../../../helper/useCapture.tsx';
+import { useThreeGlobal } from "../../../helper/useThreeGlobal.tsx";
+
 export default function PDFButton() {
+
+    // console.log(ReactPDF)
+
+    const { capture } = useCapture();
+
+    const { three } = useThreeGlobal();
 
     const {
         edgeFinish,
@@ -92,10 +104,21 @@ export default function PDFButton() {
         counterTopHeight = "5mm";
     }
 
+    const options = {
+        position: new Vector3(0, 5, 5),
+        lookAt: new Vector3(0, 0, 0),
+    };
 
-    const [instance, updateInstance] = usePDF(
-        {
-            document: <MyDocument
+    const [pdf, setPdf] = useState(null);
+
+
+    useEffect(() => {
+        async function captureImage() {
+            const newCapture = await capture(three.scene, options);
+
+            console.log(newCapture);
+
+            const document = <MyDocument
                 props={{
                     mainMaterial: mainMaterial,
                     ralColor: mainMaterialCategory === 'ral' ? ralColor : null,
@@ -112,13 +135,43 @@ export default function PDFButton() {
                     chosenModules: chosenModules,
                     tableTopHeight: counterTopHeight,
                     tableTopEdge: tableTopRounded ? 'rounded' : 'straight',
+                    imageRender: newCapture,
                 }}
             />
-        });
+
+            setPdf(document);
+        }
+
+        captureImage();
+
+    }, [])
+
+    // const [instance, updateInstance] = usePDF(
+    //     {
+    //         document: <MyDocument
+    //             props={{
+    //                 mainMaterial: mainMaterial,
+    //                 ralColor: mainMaterialCategory === 'ral' ? ralColor : null,
+    //                 tableTopMaterial: tableTopMaterial,
+    //                 tableTopInset: tableTopInset ? 'inset' : 'overlay',
+    //                 accentMaterial: towerChosen || sinkChosen ? accentMaterial : null,
+    //                 bevelled: allBevelled ? 'curved' : 'straight',
+    //                 edgeFinish: edgeFinish,
+    //                 tapType: sinkChosen ? tapType === 1 ? 'Brandwood 3' : 'Bridge' : null,
+    //                 mainDrawers: sinkChosen ? mainDrawers ? "yes" : "no" : null,
+    //                 stoveType: cooktopChosen ? stoveType === 1 ? 'gas' : 'electric' : null,
+    //                 applianceType: towerChosen ? applianceType : null,
+    //                 wineStandSize: towerChosen ? wineStandSize : null,
+    //                 chosenModules: chosenModules,
+    //                 tableTopHeight: counterTopHeight,
+    //                 tableTopEdge: tableTopRounded ? 'rounded' : 'straight',
+    //             }}
+    //         />
+    //     });
 
     return (<>
-        <a
-            href={instance.url}
+        {/* <a
+            // href={instance.url}
             rel="noopener noreferrer"
             target="_blank"
             className="config-ui__options__overview__PDF-link"
@@ -126,6 +179,23 @@ export default function PDFButton() {
 
             Download PDF overview
 
-        </a>
+        </a> */}
+
+
+        {!pdf &&
+            <p>loading...</p>
+        }
+
+        {pdf && <>
+            <PDFDownloadLink
+                document={pdf}
+                fileName="overview.pdf"
+            >
+                {({ blob, url, loading, error }) =>
+                    loading ? 'Loading document...' : 'Download now!'
+                }
+            </PDFDownloadLink>
+        </>}
+
     </>);
 }
