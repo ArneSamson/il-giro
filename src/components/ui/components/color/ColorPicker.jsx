@@ -108,7 +108,6 @@ export default function ColorPicker({ color }) {
             color={color}
             colors={ralColors}
             onChangeComplete={(color) => handleColorChange(color)}
-            width={(windowWidth * 0.25 - 65)}
             height={300}
         />
 

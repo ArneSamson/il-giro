@@ -571,6 +571,7 @@ input[type=range]::-ms-track {
 .swatches-picker {
     margin-bottom: 15px;
     margin-left: 5px;
+    width: calc(100% - 15px) !important;
 }
 
 .swatches-picker div {
@@ -715,6 +716,12 @@ summary span {
     color: var(--dark-grey);
 }
 
+@media (max-width: 1300px) {
+    #root>div>div.config-wrapper>div>div.config-ui__options>div.swatches-picker>div>div:nth-child(2)>div>div {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+}
 
 @media(max-width: 1000px) {
     .config-wrapper {
@@ -778,6 +785,11 @@ summary span {
 
     .tooltip.active {
         display: none;
+    }
+
+    #root>div>div.config-wrapper>div>div.config-ui__options>div.swatches-picker>div>div:nth-child(2)>div>div {
+        /* max amount of columns */
+        grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
     }
 }
 
