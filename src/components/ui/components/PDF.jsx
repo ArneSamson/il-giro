@@ -16,10 +16,23 @@ Font.register(
     },
 );
 
+const colors = {
+    offWhite: '#fafafa',
+    offBlack: '#272727',
+
+    extraLightGrey: '#e0e0e0',
+    lightGrey: '#9b9b9b',
+    mediumGrey: '#6b6b6b',
+    darkGrey: '#4d4d4d',
+
+    transGrey: '#eaeaeacc',
+    transWhite: '#ffffff89',
+};
+
 const styles = StyleSheet.create({
     page: {
         flexDirection: 'column',
-        backgroundColor: '#fafafa',
+        backgroundColor: colors.offWhite,
         fontSize: 11,
         padding: 50,
         width: '100%',
@@ -67,17 +80,52 @@ const styles = StyleSheet.create({
         fontFamily: 'Roboto',
         fontSize: 26,
         fontWeight: 700,
-        color: 'white',
+        color: colors.offWhite,
+    },
+
+    orderInfo: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        width: '100%',
+        height: 'auto',
+        padding: 10,
+        marginTop: 100,
+    },
+    configurationInfo: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        width: '100%',
+        height: 'auto',
+        padding: 10,
     },
 
     customerInfo: {
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: 'flex-start',
         width: '100%',
         height: 'auto',
+        marginTop: 10,
+    },
+    customerInfoTitle: {
+        fontFamily: 'Roboto',
+        fontSize: 16,
+        fontWeight: 700,
+        color: 'black',
+        backgroundColor: colors.extraLightGrey,
         padding: 10,
+        borderRadius: 7.5,
+    },
+    customerInfoValues: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        gap: 5,
+        width: '100%',
+        height: 'auto',
+        marginTop: 10,
     },
 
     modulesSelection: {
@@ -87,8 +135,7 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         width: '100%',
         height: 'auto',
-        padding: 10,
-        marginTop: 100,
+        marginTop: 10,
     },
 
 });
@@ -125,6 +172,10 @@ export function MyDocument({ props }) {
         'order number': Math.floor(Math.random() * 1000000),
         'order date': currentDate,
         'order time': currentTime,
+        'customer name': 'John Doe',
+        'customer email': 'placeholder@somewhere.com',
+        'customer phone': '+1234567890',
+        'customer address': '1234 Somewhere St, 2800 Mechelen, Belgium',
     }
 
 
@@ -174,18 +225,54 @@ export function MyDocument({ props }) {
                 </View>
 
                 <View
-                    style={styles.modulesSelection}
+                    style={styles.orderInfo}
                 >
+                    <View
+                    >
+                        <Text>{customerOptions['order date']}   {customerOptions['order time']}</Text>
+                    </View>
+                    <View
+                        style={styles.customerInfo}
+                    >
+                        <Text
+                            style={styles.customerInfoTitle}
+                        >Your information:</Text>
+                        <View
+                            style={styles.customerInfoValues}
+                        >
+                            <Text>{customerOptions['customer name']}</Text>
+                            <Text>{customerOptions['customer email']}</Text>
+                            <Text>{customerOptions['customer phone']}</Text>
+                            <Text>{customerOptions['customer address']}</Text>
+                        </View>
+                    </View>
 
-                    <Image
-                        src={renderedImage}
-                        style={{ width: 'auto', height: '150', border: '1px solid #757575' }}
-                    />
-                    <View>
-                        <Text>Modules:</Text>
-                        {moduleOptions.map((option, index) => (
-                            <Text key={index}>{option.name}: {option.value}</Text>
-                        ))}
+                </View>
+
+                <View
+                    style={styles.configurationInfo}
+                >
+                    <Text
+                        style={styles.customerInfoTitle}
+                    >
+                        Your configuration:
+                    </Text>
+
+                    <View
+                        style={styles.modulesSelection}
+                    >
+
+                        <Image
+                            src={renderedImage}
+                            style={{ width: 'auto', height: '150', border: '1px solid #757575' }}
+                        />
+                        <View>
+                            <Text>Modules:</Text>
+                            {moduleOptions.map((option, index) => (
+                                <Text key={index}>{option.name}: {option.value}</Text>
+                            ))}
+                        </View>
+
                     </View>
 
                 </View>
