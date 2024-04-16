@@ -18,7 +18,6 @@ function organizeRalColors(ralData) {
     return Object.values(ralColors);
 }
 
-//function that organizes the ral colors by hex code
 function organizeRalColorsByHex(ralData) {
     const ralColorsByHex = {};
 
@@ -33,7 +32,6 @@ function organizeRalColorsByHex(ralData) {
 const ralColors = organizeRalColors(ralData);
 
 const ralColorsByHex = organizeRalColorsByHex(ralData);
-// console.log('ralColorsByHex', ralColorsByHex);
 
 
 export default function ColorPicker({ color }) {
