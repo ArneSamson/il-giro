@@ -583,15 +583,15 @@ input[type=range]::-ms-track {
     box-shadow: none !important;
 }
 
-#root>div>div.config-wrapper>div>div.config-ui__options>div.swatches-picker>div>div:nth-child(1) {
+#root>div>div.config-wrapper>div>div.config-ui__options>div>div.swatches-picker>div>div:nth-child(1) {
     background: none !important;
 }
 
-#root>div>div.config-wrapper>div>div.config-ui__options>div.swatches-picker>div>div:nth-child(2)>div>div {
+#root>div>div.config-wrapper>div>div.config-ui__options>div>div.swatches-picker>div>div:nth-child(2)>div>div {
     margin: 10px 0;
 }
 
-#root>div>div.config-wrapper>div>div.config-ui__options>div.swatches-picker>div>div:nth-child(2)>div {
+#root>div>div.config-wrapper>div>div.config-ui__options>div>div.swatches-picker>div>div:nth-child(2)>div {
     border: 1px solid var(--dark-grey);
     border-top: none;
     border-radius: 0px 0px 30px 30px;
@@ -599,7 +599,7 @@ input[type=range]::-ms-track {
     transform: translateY(-35px);
 }
 
-#root>div>div.config-wrapper>div>div.config-ui__options>div.swatches-picker>div>div:nth-child(2)>div>div {
+#root>div>div.config-wrapper>div>div.config-ui__options>div>div.swatches-picker>div>div:nth-child(2)>div>div {
     padding: 0 !important;
     gap: 20px;
     display: grid;
@@ -612,7 +612,7 @@ input[type=range]::-ms-track {
     margin-right: auto;
 }
 
-#root>div>div.config-wrapper>div>div.config-ui__options>div.swatches-picker>div>div:nth-child(2)>div>div>div {
+#root>div>div.config-wrapper>div>div.config-ui__options>div>div.swatches-picker>div>div:nth-child(2)>div>div>div {
     width: auto !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -718,7 +718,7 @@ summary span {
 }
 
 @media (max-width: 1300px) {
-    #root>div>div.config-wrapper>div>div.config-ui__options>div.swatches-picker>div>div:nth-child(2)>div>div {
+    #root>div>div.config-wrapper>div>div.config-ui__options>div>div.swatches-picker>div>div:nth-child(2)>div>div {
         grid-template-columns: 1fr 1fr 1fr;
     }
 
@@ -788,7 +788,7 @@ summary span {
         display: none;
     }
 
-    #root>div>div.config-wrapper>div>div.config-ui__options>div.swatches-picker>div>div:nth-child(2)>div>div {
+    #root>div>div.config-wrapper>div>div.config-ui__options>div>div.swatches-picker>div>div:nth-child(2)>div>div {
         grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
     }
 }
@@ -798,7 +798,7 @@ summary span {
         padding-top: 50px;
     }
 
-    #root>div>div.config-wrapper>div>div.config-ui__options>div.swatches-picker>div>div:nth-child(2)>div>div {
+    #root>div>div.config-wrapper>div>div.config-ui__options>div>div.swatches-picker>div>div:nth-child(2)>div>div {
         /* max amount of columns */
         grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
     }

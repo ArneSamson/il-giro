@@ -47,13 +47,18 @@ export default function UiPage1() {
 
             />
 
-            <DetailWithMaterials
-                header={"Choices in " + mainMaterialCategory + ": "}
-                materials={allCategories[mainMaterialCategory]}
-                selectedMaterial={mainMaterial.name}
-                setMaterial={setMainMaterial}
-                open={true}
-            />
+            {!mainMaterialCategory === "ral" && <>
+
+                <DetailWithMaterials
+                    header={"Choices in " + mainMaterialCategory + ": "}
+                    materials={allCategories[mainMaterialCategory]}
+                    selectedMaterial={mainMaterial.name}
+                    setMaterial={setMainMaterial}
+                    open={true}
+                />
+
+            </>}
+
 
             {mainMaterialCategory === "ral" &&
                 <ColorPicker
