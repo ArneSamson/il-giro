@@ -117,7 +117,7 @@ export function useCapture() {
                 const captureLookAt = lookAts[i] || lookAts.at(-1);
                 captureCamera.position.copy(capturePosition);
                 captureCamera.lookAt(captureLookAt);
-                console.log(renderObject);
+                // console.log(renderObject);
                 gl.render(renderObject, captureCamera);
 
                 const base64Image = gl.domElement.toDataURL("image/png", 1);

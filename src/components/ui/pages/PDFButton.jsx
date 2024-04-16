@@ -110,13 +110,11 @@ export default function PDFButton() {
     };
 
     const [pdf, setPdf] = useState(null);
-
+    const [pdfUrl, setPdfUrl] = useState(null);
 
     useEffect(() => {
         async function captureImage() {
             const newCapture = await capture(three.scene, options);
-
-            console.log(newCapture);
 
             const document = <MyDocument
                 props={{
@@ -140,51 +138,15 @@ export default function PDFButton() {
             />
 
             setPdf(document);
+
         }
 
         captureImage();
 
     }, [])
 
-    // const [instance, updateInstance] = usePDF(
-    //     {
-    //         document: <MyDocument
-    //             props={{
-    //                 mainMaterial: mainMaterial,
-    //                 ralColor: mainMaterialCategory === 'ral' ? ralColor : null,
-    //                 tableTopMaterial: tableTopMaterial,
-    //                 tableTopInset: tableTopInset ? 'inset' : 'overlay',
-    //                 accentMaterial: towerChosen || sinkChosen ? accentMaterial : null,
-    //                 bevelled: allBevelled ? 'curved' : 'straight',
-    //                 edgeFinish: edgeFinish,
-    //                 tapType: sinkChosen ? tapType === 1 ? 'Brandwood 3' : 'Bridge' : null,
-    //                 mainDrawers: sinkChosen ? mainDrawers ? "yes" : "no" : null,
-    //                 stoveType: cooktopChosen ? stoveType === 1 ? 'gas' : 'electric' : null,
-    //                 applianceType: towerChosen ? applianceType : null,
-    //                 wineStandSize: towerChosen ? wineStandSize : null,
-    //                 chosenModules: chosenModules,
-    //                 tableTopHeight: counterTopHeight,
-    //                 tableTopEdge: tableTopRounded ? 'rounded' : 'straight',
-    //             }}
-    //         />
-    //     });
 
     return (<>
-        {/* <a
-            // href={instance.url}
-            rel="noopener noreferrer"
-            target="_blank"
-            className="config-ui__options__overview__PDF-link"
-        >
-
-            Download PDF overview
-
-        </a> */}
-
-
-        {!pdf &&
-            <p>loading...</p>
-        }
 
         {pdf && <>
             <PDFDownloadLink
@@ -192,7 +154,7 @@ export default function PDFButton() {
                 fileName="overview.pdf"
             >
                 {({ blob, url, loading, error }) =>
-                    loading ? 'Loading document...' : 'Download now!'
+                    loading ? 'Loading document...' : <a href={url} target="_blank" className="config-ui__options__overview__PDF-link">Download</a>
                 }
             </PDFDownloadLink>
         </>}

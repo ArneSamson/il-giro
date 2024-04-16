@@ -131,7 +131,9 @@ export function MyDocument({ props }) {
     ];
 
 
-    console.log('props', props.imageRender);
+    // console.log('props', props.imageRender);
+
+    const renderedImage = props.imageRender[0] ? props.imageRender[0] : '';
 
     return (
 
@@ -156,7 +158,7 @@ export function MyDocument({ props }) {
                     />
 
                     <Image
-                        src={props.imageRender[0]}
+                        src={renderedImage}
                         style={{ width: '100%', height: 'auto' }}
                     />
 
