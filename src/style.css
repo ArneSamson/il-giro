@@ -588,14 +588,15 @@ input[type=range]::-ms-track {
 }
 
 #root>div>div.config-wrapper>div>div.config-ui__options>div.swatches-picker>div>div:nth-child(2)>div>div {
-    /* border: 1px solid var(--dark-grey);
-    border-radius: 30px; */
     margin: 10px 0;
 }
 
 #root>div>div.config-wrapper>div>div.config-ui__options>div.swatches-picker>div>div:nth-child(2)>div {
     border: 1px solid var(--dark-grey);
-    border-radius: 30px;
+    border-top: none;
+    border-radius: 0px 0px 30px 30px;
+    /* padding-top: 60px;
+    transform: translateY(-50px); */
 }
 
 #root>div>div.config-wrapper>div>div.config-ui__options>div.swatches-picker>div>div:nth-child(2)>div>div {
@@ -788,7 +789,6 @@ summary span {
     }
 
     #root>div>div.config-wrapper>div>div.config-ui__options>div.swatches-picker>div>div:nth-child(2)>div>div {
-        /* max amount of columns */
         grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
     }
 }

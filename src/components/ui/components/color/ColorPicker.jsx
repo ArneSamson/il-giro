@@ -100,7 +100,7 @@ export default function ColorPicker({ color }) {
                 pattern="[0-9]*"
                 onBlur={e => handleInput(e.target.value)}
             />
-        </div>
+        </div >
 
         <SwatchesPicker
             color={color}
