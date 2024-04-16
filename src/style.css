@@ -797,4 +797,9 @@ summary span {
     .config-ui__options {
         padding-top: 50px;
     }
+
+    #root>div>div.config-wrapper>div>div.config-ui__options>div.swatches-picker>div>div:nth-child(2)>div>div {
+        /* max amount of columns */
+        grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    }
 }
