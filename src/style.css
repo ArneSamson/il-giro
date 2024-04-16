@@ -485,7 +485,7 @@ input[type=range]::-ms-track {
 
 .config-ui__options__overview__PDF-link-container {
     width: 100%;
-    height: auto;
+    height: 46px;
 }
 
 .config-ui__options__overview__PDF-link-container:hover {
