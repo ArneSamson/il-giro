@@ -105,8 +105,8 @@ export default function PDFButton() {
     }
 
     const options = {
-        position: new Vector3(0, 5, 5),
-        lookAt: new Vector3(0, 0, 0),
+        position: new Vector3(0, 3, 4),
+        lookAt: new Vector3(0, 0.75, 0),
     };
 
     const [pdf, setPdf] = useState(null);
