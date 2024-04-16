@@ -34,71 +34,62 @@ const styles = StyleSheet.create({
     },
 
     heading: {
-
-    },
-
-    options: {
-        display: 'flex',
-        flexDirection: 'column',
-        width: '100%',
-        alignContent: 'space-between',
-        gap: 20,
-
-    },
-    chapter: {
-        display: 'flex',
-        flexDirection: 'row',
-        width: '100%',
-        alignContent: 'space-between'
-    },
-    chapterTitle: {
-        width: 100,
-    },
-    chapterOptions: {
-        display: 'flex',
-        flexDirection: 'column',
-        border: '2px solid black',
-        width: '100%', // Set width to 100%
-    },
-    chapterOption: {
+        position: 'absolute',
+        top: 50,
+        left: 50,
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        borderBottom: '1px solid black',
-        padding: 5,
-        gap: 10,
-    },
-    optionValue: {
-        textAlign: 'right',
+        width: '100%',
     },
 
+    logoImage: {
+        padding: 10,
+        width: 'auto',
+        height: 75,
+    },
 
-    table: {
+    orderNumber: {
+        height: 75,
+        width: 'auto',
         display: 'flex',
-        flexDirection: 'column',
-        width: '100%',
-    },
-    row: {
-        width: '100%',
-        height: '100%',
         flexDirection: 'row',
-    },
-    cell: {
-        width: '100%',
-        height: '100%',
-        border: '1px solid black',
-    },
-    cellContent: {
-        paddingLeft: 8,
-        paddingTop: 6,
-        textAlign: 'left',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        backgroundColor: 'black',
+        padding: 20,
+        borderRadius: 15,
+        borderTopRightRadius: 0,
+        borderBottomRightRadius: 0,
     },
 
     orderTitle: {
-        // fontFamily: 'Helvetica',
         fontFamily: 'Roboto',
+        fontSize: 26,
         fontWeight: 700,
-    }
+        color: 'white',
+    },
+
+    customerInfo: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: 'auto',
+        padding: 10,
+    },
+
+    modulesSelection: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+        width: '100%',
+        height: 'auto',
+        padding: 10,
+        marginTop: 100,
+    },
 
 });
 
@@ -108,7 +99,7 @@ export function MyDocument({ props }) {
     const currentTime = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
 
     const moduleOptions = [
-        { name: 'module name(s)', value: props.chosenModules },
+        { name: 'module(s)', value: props.chosenModules },
         { name: 'module finish', value: props.bevelled },
     ];
 
@@ -130,6 +121,12 @@ export function MyDocument({ props }) {
         { name: 'type of faucet', value: props.tapType },
     ];
 
+    const customerOptions = {
+        'order number': Math.floor(Math.random() * 1000000),
+        'order date': currentDate,
+        'order time': currentTime,
+    }
+
 
     // console.log('props', props.imageRender);
 
@@ -146,10 +143,7 @@ export function MyDocument({ props }) {
         >
             <Page size="A4" style={styles.page} wrap={true}>
 
-
-
-                <View
-                    style={styles.heading}
+                {/* <View
                 >
                     <Image
                         src='/images/UI/bg2.png'
@@ -157,207 +151,46 @@ export function MyDocument({ props }) {
                         style={styles.backgroundImage}
                     />
 
+                </View> */}
+
+                <View
+                    style={styles.heading}
+                >
                     <Image
-                        src={renderedImage}
-                        style={{ width: '100%', height: 'auto' }}
+                        style={styles.logoImage}
+                        src='/images/UI/Logo_SR_Black.png'
+                        source={'./images/UI/Logo_SR_Black.png'}
                     />
 
-
                     <View
-                        style={styles.table}
+                        style={styles.orderNumber}
                     >
-                        <View
-                            style={[styles.row, { width: '100%', height: 75 }]}
+                        <Text
+                            style={styles.orderTitle}
                         >
-                            <View
-                                style={[styles.cell, { width: 200, height: 'auto' }]}
-                            >
-                                <Image
-                                    style={{ padding: 10 }}
-                                    src='/images/UI/Logo_SR_Black.png'
-                                    source={'./images/UI/Logo_SR_Black.png'}
-                                />
-                            </View>
-
-                            <View
-                                style={styles.cell}
-                            >
-                                <View
-                                    style={styles.row}
-                                >
-                                    <View
-                                        style={styles.cell}
-                                    >
-                                        <Text
-                                            style={[styles.cellContent, styles.orderTitle]}
-                                        >
-                                            PURCHASE ORDER IL GIRO
-                                        </Text>
-                                    </View>
-
-                                    <View
-                                        style={styles.cell}
-                                    >
-                                        <Text
-                                            style={styles.cellContent}
-                                        >
-                                            {currentDate}   {currentTime}
-                                        </Text>
-                                    </View>
-
-                                </View>
-                                <View
-                                    style={styles.row}
-                                >
-                                    <View
-                                        style={styles.cell}
-                                    >
-                                        <Text
-                                            style={styles.cellContent}
-                                        >
-                                            reference :
-                                        </Text>
-                                    </View>
-
-
-                                </View>
-                            </View>
-
-                        </View>
-
+                            Order #{customerOptions['order number']}
+                        </Text>
                     </View>
-
                 </View>
 
                 <View
-                    style={styles.options}
+                    style={styles.modulesSelection}
                 >
 
-                    <View
-                        style={styles.chapter}
-                    >
-                        <Text
-                            style={styles.chapterTitle}
-                        >
-                            materials :
-                        </Text>
-
-                        <View
-                            style={styles.chapterOptions}
-                        >
-                            {materialOptions.map((option, index) => (
-                                <View
-                                    key={index}
-                                    style={styles.chapterOption}
-                                >
-                                    <Text>
-                                        {option.name} :
-                                    </Text>
-                                    <Text
-                                        style={styles.optionValue}
-                                    >
-                                        {option.value}
-                                    </Text>
-                                </View>
-                            ))}
-                        </View>
-
-                    </View>
-
-                    <View
-                        style={styles.chapter}
-                    >
-                        <Text
-                            style={styles.chapterTitle}
-                        >
-                            modules :
-                        </Text>
-
-                        <View
-                            style={styles.chapterOptions}
-                        >
-                            {moduleOptions.map((option, index) => (
-                                <View
-                                    key={index}
-                                    style={styles.chapterOption}
-                                >
-                                    <Text>
-                                        {option.name} :
-                                    </Text>
-                                    <Text
-                                        style={styles.optionValue}
-                                    >
-                                        {option.value}
-                                    </Text>
-                                </View>
-                            ))}
-                        </View>
-
-                    </View>
-
-                    <View
-                        style={styles.chapter}
-                    >
-                        <Text
-                            style={styles.chapterTitle}
-                        >
-                            countertop :
-                        </Text>
-
-                        <View
-                            style={styles.chapterOptions}
-                        >
-                            {countertopOptions.map((option, index) => (
-                                <View
-                                    key={index}
-                                    style={styles.chapterOption}
-                                >
-                                    <Text>
-                                        {option.name} :
-                                    </Text>
-                                    <Text
-                                        style={styles.optionValue}
-                                    >
-                                        {option.value}
-                                    </Text>
-                                </View>
-                            ))}
-                        </View>
-
-                    </View>
-
-                    <View
-                        style={styles.chapter}
-                    >
-                        <Text
-                            style={styles.chapterTitle}
-                        >
-                            appliances :
-                        </Text>
-
-                        <View
-                            style={styles.chapterOptions}
-                        >
-                            {applianceOptions.map((option, index) => (
-                                <View
-                                    key={index}
-                                    style={styles.chapterOption}
-                                >
-                                    <Text>
-                                        {option.name} :
-                                    </Text>
-                                    <Text
-                                        style={styles.optionValue}
-                                    >
-                                        {option.value}
-                                    </Text>
-                                </View>
-                            ))}
-                        </View>
-
+                    <Image
+                        src={renderedImage}
+                        style={{ width: 'auto', height: '150', border: '1px solid #757575' }}
+                    />
+                    <View>
+                        <Text>Modules:</Text>
+                        {moduleOptions.map((option, index) => (
+                            <Text key={index}>{option.name}: {option.value}</Text>
+                        ))}
                     </View>
 
                 </View>
+
+
             </Page>
         </Document >
     );
