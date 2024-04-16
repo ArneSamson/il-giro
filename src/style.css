@@ -224,7 +224,7 @@ select {
 }
 
 
-input[type="range"] {
+/* input[type="range"] {
     appearance: none;
     -webkit-appearance: none;
     width: 100%;
@@ -251,7 +251,7 @@ input[type=range]::-ms-track {
     background: transparent;
     border-color: transparent;
     color: transparent;
-}
+} */
 
 
 .extra-buttons {
@@ -587,7 +587,8 @@ input[type=range]::-ms-track {
     padding: 0 !important;
     gap: 20px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    /* grid-auto-flow: row dense; */
 }
 
 .swatches-picker div div:last-child div {
@@ -614,6 +615,15 @@ input[type=range]::-ms-track {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.colorpicker__color-input {
+    display: block;
+    height: auto;
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--dark-grey);
+    border-radius: 30px;
 }
 
 summary span {
