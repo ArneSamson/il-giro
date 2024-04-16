@@ -18,7 +18,22 @@ function organizeRalColors(ralData) {
     return Object.values(ralColors);
 }
 
+//function that organizes the ral colors by hex code
+function organizeRalColorsByHex(ralData) {
+    const ralColorsByHex = {};
+
+    Object.values(ralData).forEach(color => {
+        ralColorsByHex[color.hex] = color;
+    });
+
+    return ralColorsByHex;
+}
+
+
 const ralColors = organizeRalColors(ralData);
+
+const ralColorsByHex = organizeRalColorsByHex(ralData);
+// console.log('ralColorsByHex', ralColorsByHex);
 
 
 export default function ColorPicker({ color }) {
@@ -27,7 +42,7 @@ export default function ColorPicker({ color }) {
         ralColor,
         setRalColor,
     } = useConfigStore(state => ({
-        ralColor: state.ralColors,
+        ralColor: state.ralColor,
         setRalColor: state.setRalColor,
     }));
 
@@ -45,6 +60,16 @@ export default function ColorPicker({ color }) {
         }
     }
 
+    const handleColorChange = (color) => {
+        const selectedColorHex = color.hex.toUpperCase();
+
+        const newColor = ralColorsByHex[selectedColorHex];
+
+        if (newColor) {
+            setRalColor(newColor);
+        }
+    }
+
     useEffect(() => {
         const handleResize = () => {
             setWindowWidth(window.innerWidth);
@@ -58,14 +83,6 @@ export default function ColorPicker({ color }) {
     }, []);
 
     return (<>
-        <SwatchesPicker
-            color={color}
-            colors={ralColors}
-            onChangeComplete={color => setRalColor(color)}
-            width={(windowWidth * 0.2)}
-            height={300}
-        />
-
         <div
             style={{
                 display: 'flex',
@@ -74,22 +91,27 @@ export default function ColorPicker({ color }) {
                 width: '100%',
                 paddingLeft: 5,
                 paddingRight: 10,
+                marginBottom: 10,
             }}
         >
             <input
+                className='colorpicker__color-input'
                 type="text"
-                value={ralColor}
+                placeholder='Enter RAL code'
                 maxLength={4}
                 pattern="[0-9]*"
                 onBlur={e => handleInput(e.target.value)}
-                style={{
-                    borderRadius: 15,
-                    height: 30,
-                    padding: 10,
-                }}
-
             />
         </div>
+
+        <SwatchesPicker
+            color={color}
+            colors={ralColors}
+            onChangeComplete={(color) => handleColorChange(color)}
+            width={(windowWidth * 0.2)}
+            height={300}
+        />
+
 
     </>
 
