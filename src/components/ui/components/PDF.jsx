@@ -47,13 +47,11 @@ const styles = StyleSheet.create({
     },
 
     heading: {
-        position: 'absolute',
-        top: 50,
-        left: 50,
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '100%',
+        // backgroundColor: colors.extraLightGrey,
     },
 
     logoImage: {
@@ -90,7 +88,6 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 'auto',
         padding: 10,
-        marginTop: 100,
     },
     configurationInfo: {
         display: 'flex',
@@ -103,32 +100,34 @@ const styles = StyleSheet.create({
 
     customerInfo: {
         display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         width: '100%',
         height: 'auto',
         marginTop: 10,
+        gap: 10,
     },
     customerInfoTitle: {
         fontFamily: 'Roboto',
         fontSize: 16,
         fontWeight: 700,
-        color: 'black',
-        backgroundColor: colors.extraLightGrey,
+        color: colors.offWhite,
+        backgroundColor: colors.offBlack,
         padding: 10,
         borderRadius: 7.5,
+        width: '100%',
     },
     customerInfoValues: {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-start',
-        gap: 5,
+        gap: 10,
         width: '100%',
         height: 'auto',
         marginTop: 10,
     },
 
-    modulesSelection: {
+    configurationChoices: {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -136,6 +135,42 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 'auto',
         marginTop: 10,
+    },
+    configurationChoice: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        gap: 10,
+    },
+    configurationChoiceValues: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        gap: 5,
+    },
+    configurationChoiceValueName: {
+        fontFamily: 'Roboto',
+        fontSize: 10,
+        fontWeight: 700,
+        color: colors.offBlack,
+    },
+    configurationChoiceValueValue: {
+        fontSize: 8,
+        color: colors.lightGrey,
+    },
+    configurationChoiceValueImage: {
+        width: 40,
+        height: 40,
+        borderRadius: 5,
+    },
+    configurationChoiceTitle: {
+        fontFamily: 'Roboto',
+        fontSize: 10,
+        fontWeight: 700,
+        color: colors.lightGrey,
+        paddingTop: 10,
+        borderRadius: 7.5,
+        height: 'auto',
     },
 
 });
@@ -147,25 +182,25 @@ export function MyDocument({ props }) {
 
     const moduleOptions = [
         { name: 'module(s)', value: props.chosenModules },
-        { name: 'module finish', value: props.bevelled },
+        { name: 'finish', value: props.bevelled },
+        { name: 'material', value: props.ralColor ? 'ral color ' + props.ralColor.code : props.mainMaterial.name }
     ];
 
-    const materialOptions = [
-        { name: 'material for modules', value: props.ralColor ? 'ral color ' + props.ralColor.code : props.mainMaterial.name },
-        { name: 'material for countertops', value: props.tableTopMaterial.name },
-    ];
 
     const countertopOptions = [
-        { name: 'countertop inset', value: props.tableTopInset },
-        { name: 'countertop thickness', value: props.tableTopHeight },
-        { name: 'countertop edge', value: props.tableTopEdge },
+        { name: 'inset', value: props.tableTopInset },
+        { name: 'thickness', value: props.tableTopHeight },
+        { name: 'edge', value: props.tableTopEdge },
+        { name: 'material', value: props.tableTopMaterial.name }
     ];
 
-    const applianceOptions = [
-        { name: 'type of tower appliance', value: props.applianceType },
-        { name: 'size of winestand', value: props.wineStandSize },
-        { name: 'type of cooking fire', value: props.stoveType },
-        { name: 'type of faucet', value: props.tapType },
+    const extraOptions = [
+        { name: 'tower appliance', value: props.applianceType },
+        { name: 'winestand', value: props.wineStandSize },
+        { name: 'cooking fire', value: props.stoveType },
+        { name: 'faucet', value: props.tapType },
+        { name: 'drawers', value: props.mainDrawers },
+        { name: 'accent material', value: props.accentMaterial.name },
     ];
 
     const customerOptions = {
@@ -175,13 +210,16 @@ export function MyDocument({ props }) {
         'customer name': 'John Doe',
         'customer email': 'placeholder@somewhere.com',
         'customer phone': '+1234567890',
-        'customer address': '1234 Somewhere St, 2800 Mechelen, Belgium',
+        'customer address': '1234 Somewhere St, 2800 Mechelen',
     }
 
 
-    // console.log('props', props.imageRender);
+    console.log('props', props.imageRender);
+    console.log(props.ralColor)
 
     const renderedImage = props.imageRender[0] ? props.imageRender[0] : '';
+
+    const renderedImage2 = props.imageRender[1] ? props.imageRender[1] : '';
 
     return (
 
@@ -234,16 +272,24 @@ export function MyDocument({ props }) {
                     <View
                         style={styles.customerInfo}
                     >
-                        <Text
-                            style={styles.customerInfoTitle}
-                        >Your information:</Text>
-                        <View
-                            style={styles.customerInfoValues}
-                        >
-                            <Text>{customerOptions['customer name']}</Text>
-                            <Text>{customerOptions['customer email']}</Text>
-                            <Text>{customerOptions['customer phone']}</Text>
-                            <Text>{customerOptions['customer address']}</Text>
+                        <View>
+                            <Image
+                                src={renderedImage}
+                                style={{ width: 'auto', height: '150' }}
+                            />
+                        </View>
+                        <View>
+                            <Text
+                                style={styles.customerInfoTitle}
+                            >Your information:</Text>
+                            <View
+                                style={styles.customerInfoValues}
+                            >
+                                <Text>{customerOptions['customer name']}</Text>
+                                <Text>{customerOptions['customer email']}</Text>
+                                <Text>{customerOptions['customer phone']}</Text>
+                                <Text>{customerOptions['customer address']}</Text>
+                            </View>
                         </View>
                     </View>
 
@@ -259,18 +305,97 @@ export function MyDocument({ props }) {
                     </Text>
 
                     <View
-                        style={styles.modulesSelection}
+                        style={styles.configurationChoices}
                     >
 
-                        <Image
-                            src={renderedImage}
+                        {/* <Image
+                            src={renderedImage2}
                             style={{ width: 'auto', height: '150', border: '1px solid #757575' }}
-                        />
-                        <View>
-                            <Text>Modules:</Text>
+                        /> */}
+                        <View
+                            style={styles.configurationChoice}
+                        >
+                            <Text
+                                style={styles.configurationChoiceTitle}
+                            >Modules</Text>
                             {moduleOptions.map((option, index) => (
-                                <Text key={index}>{option.name}: {option.value}</Text>
+                                <View
+                                    key={index}
+                                    style={styles.configurationChoiceValues}
+                                >
+                                    <Text
+                                        key={index}
+                                        style={styles.configurationChoiceValueName}
+                                    >{option.name}</Text>
+                                    <Text
+                                        key={index}
+                                        style={styles.configurationChoiceValueValue}
+                                    >{option.value}</Text>
+                                </View>
                             ))}
+                            {props.ralColor &&
+                                <View
+                                    style={{ backgroundColor: props.ralColor.hex, width: 40, height: 40, borderRadius: 5 }}
+                                />
+                            }
+                            {!props.ralColor &&
+                                <Image
+                                    style={styles.configurationChoiceValueImage}
+                                    src={props.mainMaterial.url + 'preview.jpg'}
+                                />
+                            }
+                        </View>
+                        <View
+                            style={styles.configurationChoice}
+                        >
+                            <Text
+                                style={styles.configurationChoiceTitle}
+                            >Countertop</Text>
+                            {countertopOptions.map((option, index) => (
+                                <View
+                                    key={index}
+                                    style={styles.configurationChoiceValues}
+                                >
+                                    <Text
+                                        key={index}
+                                        style={styles.configurationChoiceValueName}
+                                    >{option.name}</Text>
+                                    <Text
+                                        key={index}
+                                        style={styles.configurationChoiceValueValue}
+                                    >{option.value}</Text>
+                                </View>
+                            ))}
+                            <Image
+                                style={styles.configurationChoiceValueImage}
+                                src={props.tableTopMaterial.url + 'preview.jpg'}
+                            />
+                        </View>
+                        <View
+                            style={styles.configurationChoice}
+                        >
+                            <Text
+                                style={styles.configurationChoiceTitle}
+                            >Extras</Text>
+                            {extraOptions.map((option, index) => (
+                                <View
+                                    key={index}
+                                    style={styles.configurationChoiceValues}
+                                >
+                                    <Text
+                                        key={index}
+                                        style={styles.configurationChoiceValueName}
+                                    >{option.name}</Text>
+                                    <Text
+                                        key={index}
+                                        style={styles.configurationChoiceValueValue}
+                                    >{option.value}</Text>
+                                </View>
+                            ))}
+                            <Image
+                                style={styles.configurationChoiceValueImage}
+                                src={props.accentMaterial.url + 'preview.jpg'}
+                            />
                         </View>
 
                     </View>

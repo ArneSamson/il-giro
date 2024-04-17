@@ -105,7 +105,7 @@ export default function PDFButton() {
     }
 
     const options = {
-        position: new Vector3(0, 3, 4),
+        position: [new Vector3(0, 3, 4), new Vector3(2, 0.75, 4)],
         lookAt: new Vector3(0, 0.75, 0),
     };
 
@@ -155,7 +155,7 @@ export default function PDFButton() {
                 className="config-ui__options__overview__PDF-link-container"
             >
                 {({ blob, url, loading, error }) =>
-                    loading ? 'Loading document...' : <a href={url} target="_blank" className="config-ui__options__overview__PDF-link">Download PDF quote</a>
+                    loading ? <a aria-disabled className="config-ui__options__overview__PDF-link">Loading document...</a> : <a href={url} target="_blank" className="config-ui__options__overview__PDF-link">Download PDF quote</a>
                 }
             </PDFDownloadLink>
         </>}
