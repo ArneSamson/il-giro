@@ -222,8 +222,13 @@ export default function UiPage2() {
 
             {tableChosen && !sinkChosen && !cooktopChosen && !towerChosen && <>
                 <h4>
-                    These are not the options you're looking for...
+                    These are not the options you are looking for...
                 </h4>
+                <p
+                    style={{
+                        marginTop: '1rem'
+                    }}
+                >continue on the next page</p>
             </>}
 
 
