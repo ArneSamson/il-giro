@@ -104,9 +104,70 @@ export default function PDFButton() {
         counterTopHeight = "5mm";
     }
 
+    let lookAtXOffset;
+    let lookAtZOffset;
+    let lookAtYOffset;
+
+    //a switch case that sets the offset of the camera based on the chosen modules
+
+    switch (true) {
+        case sinkChosen && cooktopChosen && towerChosen && tableChosen:
+            lookAtZOffset = 3.6;
+            lookAtYOffset = 2;
+            break;
+        case sinkChosen && cooktopChosen && towerChosen && !tableChosen:
+            lookAtZOffset = 3.6;
+            lookAtYOffset = 3;
+            break;
+        case sinkChosen && cooktopChosen && !towerChosen && tableChosen:
+            lookAtZOffset = 2.5;
+            lookAtYOffset = 3;
+            break;
+        case sinkChosen && !cooktopChosen && !towerChosen && tableChosen:
+            lookAtZOffset = 3.5;
+            lookAtYOffset = 3;
+            lookAtXOffset = 0.5;
+            break;
+        case !sinkChosen && cooktopChosen && !towerChosen && tableChosen:
+            lookAtZOffset = 3.5;
+            lookAtYOffset = 3;
+            lookAtXOffset = 0.5;
+            break;
+        case sinkChosen && cooktopChosen && !towerChosen && !tableChosen:
+            lookAtZOffset = 2;
+            lookAtYOffset = 2;
+            break;
+        case sinkChosen && !cooktopChosen && !towerChosen && !tableChosen:
+            lookAtZOffset = 1.5;
+            lookAtYOffset = 2;
+            lookAtXOffset = 0;
+            break;
+        case !sinkChosen && cooktopChosen && !towerChosen && !tableChosen:
+            lookAtZOffset = 1.5;
+            lookAtYOffset = 2;
+            lookAtXOffset = 0;
+            break;
+        case !sinkChosen && !cooktopChosen && towerChosen && !tableChosen:
+            lookAtZOffset = 3.5;
+            lookAtYOffset = 2;
+            lookAtXOffset = 0;
+            break;
+        case !sinkChosen && !cooktopChosen && !towerChosen && tableChosen:
+            lookAtZOffset = 2;
+            lookAtYOffset = 2;
+            lookAtXOffset = 0;
+            break;
+        default:
+            lookAtZOffset = 3.5;
+            lookAtYOffset = 3;
+            lookAtXOffset = 0;
+            break;
+    }
+
+
     const options = {
-        position: [new Vector3(0, 3, tableChosen ? 4.5 : 3.5), new Vector3(2, 0.75, 3.5)],
-        lookAt: new Vector3(0, 0.75, 0),
+        position: [new Vector3(lookAtXOffset, lookAtYOffset, lookAtZOffset), new Vector3(2, 0.75, 3.5)],
+        lookAt: new Vector3(lookAtXOffset, 0.65, 0),
     };
 
     const [pdf, setPdf] = useState(null);
