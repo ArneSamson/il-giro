@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         backgroundColor: colors.offWhite,
         fontSize: 11,
-        padding: 50,
+        // padding: 50,
         width: '100%',
         gap: 40,
     },
@@ -47,15 +47,15 @@ const styles = StyleSheet.create({
     },
 
     heading: {
+        marginTop: 50,
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '100%',
-        // backgroundColor: colors.extraLightGrey,
     },
 
     logoImage: {
-        padding: 10,
+        marginLeft: 50,
         width: 'auto',
         height: 75,
     },
@@ -82,20 +82,22 @@ const styles = StyleSheet.create({
     },
 
     orderInfo: {
+        paddingLeft: 50,
+        paddingRight: 50,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-start',
         width: '100%',
         height: 'auto',
-        padding: 10,
     },
     configurationInfo: {
+        paddingLeft: 50,
+        paddingRight: 50,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-start',
         width: '100%',
         height: 'auto',
-        padding: 10,
     },
 
     customerInfo: {
