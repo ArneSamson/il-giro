@@ -178,45 +178,53 @@ export default function UiPage2() {
 
             </>}
 
-            <ButtonCategoryTitle
-                title="Appliances"
-            >
+            {((sinkChosen || cooktopChosen || towerChosen) && tableChosen) && <>
+                <ButtonCategoryTitle
+                    title="Appliances"
+                >
 
 
-                {sinkChosen && <>
-                    <DetailWithButtons
-                        summary="Faucet type: "
-                        options={faucetOptions}
-                        selectedOption={faucetOptions.find(option => option.value === tapType).label}
-                        setOption={setTapType}
-                    />
-                </>}
+                    {sinkChosen && <>
+                        <DetailWithButtons
+                            summary="Faucet type: "
+                            options={faucetOptions}
+                            selectedOption={faucetOptions.find(option => option.value === tapType).label}
+                            setOption={setTapType}
+                        />
+                    </>}
 
-                {cooktopChosen && <>
-                    <DetailWithButtons
-                        summary="Stove type: "
-                        options={stoveOptions}
-                        selectedOption={stoveOptions.find(option => option.value === stoveType).label}
-                        setOption={setStoveType}
-                    />
-                </>}
+                    {cooktopChosen && <>
+                        <DetailWithButtons
+                            summary="Stove type: "
+                            options={stoveOptions}
+                            selectedOption={stoveOptions.find(option => option.value === stoveType).label}
+                            setOption={setStoveType}
+                        />
+                    </>}
 
-                {towerChosen && <>
-                    <DetailWithButtons
-                        summary="Winestand size: "
-                        options={winestandOptions}
-                        selectedOption={winestandOptions.find(option => option.value === wineStandSize).label}
-                        setOption={setWineStandSize}
-                    />
+                    {towerChosen && <>
+                        <DetailWithButtons
+                            summary="Winestand size: "
+                            options={winestandOptions}
+                            selectedOption={winestandOptions.find(option => option.value === wineStandSize).label}
+                            setOption={setWineStandSize}
+                        />
 
-                    <DetailWithButtons
-                        summary="Tower appliance: "
-                        options={applianceOptions}
-                        selectedOption={applianceOptions.find(option => option.value === applianceType).label}
-                        setOption={setApplianceType}
-                    />
-                </>}
-            </ButtonCategoryTitle>
+                        <DetailWithButtons
+                            summary="Tower appliance: "
+                            options={applianceOptions}
+                            selectedOption={applianceOptions.find(option => option.value === applianceType).label}
+                            setOption={setApplianceType}
+                        />
+                    </>}
+                </ButtonCategoryTitle>
+            </>}
+
+            {tableChosen && !sinkChosen && !cooktopChosen && !towerChosen && <>
+                <h4>
+                    These are not the options you're looking for...
+                </h4>
+            </>}
 
 
             {sinkChosen && <>
