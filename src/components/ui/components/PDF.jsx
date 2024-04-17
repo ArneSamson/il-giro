@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
         backgroundColor: colors.offWhite,
         fontSize: 11,
         width: '100%',
-        gap: 40,
     },
 
     backgroundImage: {
@@ -80,6 +79,7 @@ const styles = StyleSheet.create({
     orderInfo: {
         paddingLeft: 50,
         paddingRight: 50,
+        marginTop: 50,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-start',
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 0,
         left: 0,
-        height: 50,
+        height: 75,
         paddingLeft: 50,
         paddingRight: 50,
         display: 'flex',
