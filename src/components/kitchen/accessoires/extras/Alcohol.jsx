@@ -32,7 +32,6 @@ export function GlassBottleWhiskey(props) {
                 castShadow
                 receiveShadow
                 geometry={nodes['Food-Drink_Alcohol_Glasses-Whisky_01_Flask001'].geometry}
-                // material={materials['Whisky.001']}
                 material={whiskeyMaterial}
             />
             <mesh
@@ -55,13 +54,6 @@ export function GlassBottleWhiskey(props) {
                     envMapIntensity={0.5}
                 />
             </mesh>
-            <mesh
-                castShadow
-                receiveShadow
-                geometry={nodes['Food-Drink_Alcohol_Glasses-Whisky_01_Flask003'].geometry}
-                // material={materials.Whisky}
-                material={whiskeyMaterial}
-            />
         </group>
     )
 }
