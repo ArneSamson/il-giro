@@ -1,19 +1,19 @@
 import React from 'react';
 import { Page, Text, View, Document, StyleSheet, BlobProvider, Image, Font } from '@react-pdf/renderer';
 
-// Font.register({ family: 'Kaisei Decol', src: '/fonts/KaiseiDecol-Regular.ttf' });
-// Font.register({ family: 'calibri', src: '/fonts/calibri.ttf' });
+Font.register(
+    {
+        family: 'Kaisei Decol', src: '/fonts/KaiseiDecol-Regular.ttf'
+    }
+);
 
 Font.register(
     {
         family: 'Roboto', fonts: [
-            { src: '/fonts/Roboto-regular.ttf' },
+            { src: '/fonts/Roboto-regular.ttf', fontWeight: 400 },
             { src: '/fonts/Roboto-Bold.ttf', fontWeight: 700 },
         ]
-    },
-    {
-        family: 'Kaisei Decol', src: '/fonts/KaiseiDecol-Regular.ttf'
-    },
+    }
 );
 
 const colors = {
@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         backgroundColor: colors.offWhite,
         fontSize: 11,
-        // padding: 50,
         width: '100%',
         gap: 40,
     },
@@ -60,25 +59,22 @@ const styles = StyleSheet.create({
         height: 75,
     },
 
-    orderNumber: {
-        height: 75,
-        width: 'auto',
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        backgroundColor: 'black',
-        padding: 20,
-        borderRadius: 15,
-        borderTopRightRadius: 0,
-        borderBottomRightRadius: 0,
-    },
-
     orderTitle: {
-        fontFamily: 'Roboto',
-        fontSize: 26,
-        fontWeight: 700,
+        fontFamily: 'Kaisei Decol',
+        fontSize: 24,
         color: colors.offWhite,
+        backgroundColor: colors.offBlack,
+        padding: 10,
+        paddingRight: 50,
+        paddingLeft: 30,
+        borderRadius: 60,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        // textAlign: 'right',
+        borderBottomRightRadius: 0,
+        borderTopRightRadius: 0,
+        width: 'auto',
     },
 
     orderInfo: {
@@ -107,17 +103,18 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 'auto',
         marginTop: 10,
-        gap: 10,
     },
     customerInfoTitle: {
-        fontFamily: 'Roboto',
-        fontSize: 16,
-        fontWeight: 700,
-        color: colors.offWhite,
-        backgroundColor: colors.offBlack,
+        fontFamily: 'Kaisei Decol',
+        fontSize: 18,
+        color: colors.offBlack,
+        // backgroundColor: colors.offWhite,
+        // borderColor: colors.offBlack,
+        // borderWidth: 1,
+        // borderStyle: 'solid',
         padding: 10,
-        borderRadius: 7.5,
-        width: '100%',
+        // borderRadius: 40,
+        width: 'auto',
     },
     customerInfoValues: {
         display: 'flex',
@@ -127,6 +124,8 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 'auto',
         marginTop: 10,
+        paddingLeft: 10,
+        paddingRight: 10,
     },
 
     configurationChoices: {
@@ -136,7 +135,10 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         width: '100%',
         height: 'auto',
-        marginTop: 10,
+        marginTop: 0,
+        paddingLeft: 10,
+        paddingRight: 10,
+
     },
     configurationChoice: {
         display: 'flex',
@@ -150,6 +152,13 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         gap: 5,
     },
+    materialChoiceValues: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        gap: 5,
+    },
     configurationChoiceValueName: {
         fontFamily: 'Roboto',
         fontSize: 10,
@@ -157,18 +166,17 @@ const styles = StyleSheet.create({
         color: colors.offBlack,
     },
     configurationChoiceValueValue: {
-        fontSize: 8,
+        fontSize: 10,
         color: colors.lightGrey,
     },
     configurationChoiceValueImage: {
-        width: 40,
-        height: 40,
+        width: 50,
+        height: 50,
         borderRadius: 5,
     },
     configurationChoiceTitle: {
-        fontFamily: 'Roboto',
-        fontSize: 10,
-        fontWeight: 700,
+        fontFamily: 'Kaisei Decol',
+        fontSize: 12,
         color: colors.lightGrey,
         paddingTop: 10,
         borderRadius: 7.5,
@@ -182,10 +190,36 @@ export function MyDocument({ props }) {
     const currentDate = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
     const currentTime = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
 
+    console.log('props', props);
+
+    // const materialOptions = [
+    //     { name: 'module', value: props.ralColor ? 'ral color ' + props.ralColor.code : props.mainMaterial.name, url: props.mainMaterial.url },
+    //     { name: 'countertop', value: props.tableTopMaterial.name, url: props.tableTopMaterial.url },
+    //     { name: 'accent', value: props.accentMaterial ? props.accentMaterial.name : '/', url: props.accentMaterial.url },
+    // ];
+
+    const materialOptions = {
+        module: {
+            name: 'module',
+            value: props.ralColor ? 'RAL ' + props.ralColor.code : props.mainMaterial.name,
+            url: props.mainMaterial.url
+        },
+        countertop: {
+            name: 'countertop',
+            value: props.tableTopMaterial.name,
+            url: props.tableTopMaterial.url
+        },
+        accent: {
+            name: 'accent',
+            value: props.accentMaterial ? props.accentMaterial.name : '/',
+            url: props.accentMaterial ? props.accentMaterial.url : ''
+        }
+    }
+
     const moduleOptions = [
         { name: 'module(s)', value: props.chosenModules },
         { name: 'finish', value: props.bevelled },
-        { name: 'material', value: props.ralColor ? 'ral color ' + props.ralColor.code : props.mainMaterial.name }
+        // { name: 'material', value: props.ralColor ? 'ral color ' + props.ralColor.code : props.mainMaterial.name }
     ];
 
 
@@ -193,16 +227,16 @@ export function MyDocument({ props }) {
         { name: 'inset', value: props.tableTopInset },
         { name: 'thickness', value: props.tableTopHeight },
         { name: 'edge', value: props.tableTopEdge },
-        { name: 'material', value: props.tableTopMaterial.name }
+        // { name: 'material', value: props.tableTopMaterial.name }
     ];
 
     const extraOptions = [
-        { name: 'tower appliance', value: props.applianceType },
-        { name: 'winestand', value: props.wineStandSize },
-        { name: 'cooking fire', value: props.stoveType },
-        { name: 'faucet', value: props.tapType },
-        { name: 'drawers', value: props.mainDrawers },
-        { name: 'accent material', value: props.accentMaterial.name },
+        { name: 'tower appliance', value: props.applianceType ? props.applianceType : '/' },
+        { name: 'winestand', value: props.wineStandSize ? props.wineStandSize : '/' },
+        { name: 'cooking fire', value: props.stoveType ? props.stoveType : '/' },
+        { name: 'faucet', value: props.tapType ? props.tapType : '/' },
+        { name: 'drawers', value: props.mainDrawers ? props.mainDrawers : '/' },
+        // { name: 'accent material', value: props.accentMaterial ? props.accentMaterial.name : '/' },
     ];
 
     const customerOptions = {
@@ -217,7 +251,6 @@ export function MyDocument({ props }) {
 
 
     console.log('props', props.imageRender);
-    console.log(props.ralColor)
 
     const renderedImage = props.imageRender[0] ? props.imageRender[0] : '';
 
@@ -252,15 +285,14 @@ export function MyDocument({ props }) {
                         src='/images/UI/Logo_SR_Black.png'
                         source={'./images/UI/Logo_SR_Black.png'}
                     />
-
                     <View
-                        style={styles.orderNumber}
+                        style={styles.orderTitle}
                     >
                         <Text
-                            style={styles.orderTitle}
                         >
                             Order #{customerOptions['order number']}
                         </Text>
+
                     </View>
                 </View>
 
@@ -269,7 +301,9 @@ export function MyDocument({ props }) {
                 >
                     <View
                     >
-                        <Text>{customerOptions['order date']}   {customerOptions['order time']}</Text>
+                        <Text
+                            style={styles.configurationChoiceValueName}
+                        >{customerOptions['order date']}   {customerOptions['order time']}</Text>
                     </View>
                     <View
                         style={styles.customerInfo}
@@ -277,13 +311,15 @@ export function MyDocument({ props }) {
                         <View>
                             <Image
                                 src={renderedImage}
-                                style={{ width: 'auto', height: '150' }}
+                                style={{ width: '300', height: 'auto' }}
                             />
                         </View>
                         <View>
                             <Text
                                 style={styles.customerInfoTitle}
-                            >Your information:</Text>
+                            >
+                                Your information:
+                            </Text>
                             <View
                                 style={styles.customerInfoValues}
                             >
@@ -309,11 +345,76 @@ export function MyDocument({ props }) {
                     <View
                         style={styles.configurationChoices}
                     >
+                        <View
+                            style={styles.configurationChoice}
+                        >
+                            <Text
+                                style={styles.configurationChoiceTitle}
+                            >Materials</Text>
 
-                        {/* <Image
-                            src={renderedImage2}
-                            style={{ width: 'auto', height: '150', border: '1px solid #757575' }}
-                        /> */}
+                            <View
+                                style={styles.materialChoiceValues}
+                            >
+                                {props.ralColor &&
+                                    <View
+                                        style={styles.configurationChoiceValueImage}
+                                    />
+                                }
+                                {!props.ralColor &&
+                                    <Image
+                                        style={styles.configurationChoiceValueImage}
+                                        src={materialOptions.module.url + 'preview.jpg'}
+                                    />
+                                }
+                                <View>
+
+                                    <Text
+                                        style={styles.configurationChoiceValueName}
+                                    >{materialOptions.module.name}</Text>
+                                    <Text
+                                        style={styles.configurationChoiceValueValue}
+                                    >{materialOptions.module.value}</Text>
+                                </View>
+                            </View>
+
+                            <View
+                                style={styles.materialChoiceValues}
+                            >
+                                <Image
+                                    style={styles.configurationChoiceValueImage}
+                                    src={materialOptions.countertop.url + 'preview.jpg'}
+                                />
+                                <View>
+
+                                    <Text
+                                        style={styles.configurationChoiceValueName}
+                                    >{materialOptions.countertop.name}</Text>
+                                    <Text
+                                        style={styles.configurationChoiceValueValue}
+                                    >{materialOptions.countertop.value}</Text>
+                                </View>
+                            </View>
+
+                            {props.accentMaterial &&
+                                <View
+                                    style={styles.materialChoiceValues}
+                                >
+                                    <Image
+                                        style={styles.configurationChoiceValueImage}
+                                        src={materialOptions.accent.url + 'preview.jpg'}
+                                    />
+                                    <View>
+
+                                        <Text
+                                            style={styles.configurationChoiceValueName}
+                                        >{materialOptions.accent.name}</Text>
+                                        <Text
+                                            style={styles.configurationChoiceValueValue}
+                                        >{materialOptions.accent.value}</Text>
+                                    </View>
+                                </View>
+                            }
+                        </View>
                         <View
                             style={styles.configurationChoice}
                         >
@@ -335,17 +436,6 @@ export function MyDocument({ props }) {
                                     >{option.value}</Text>
                                 </View>
                             ))}
-                            {props.ralColor &&
-                                <View
-                                    style={{ backgroundColor: props.ralColor.hex, width: 40, height: 40, borderRadius: 5 }}
-                                />
-                            }
-                            {!props.ralColor &&
-                                <Image
-                                    style={styles.configurationChoiceValueImage}
-                                    src={props.mainMaterial.url + 'preview.jpg'}
-                                />
-                            }
                         </View>
                         <View
                             style={styles.configurationChoice}
@@ -368,10 +458,6 @@ export function MyDocument({ props }) {
                                     >{option.value}</Text>
                                 </View>
                             ))}
-                            <Image
-                                style={styles.configurationChoiceValueImage}
-                                src={props.tableTopMaterial.url + 'preview.jpg'}
-                            />
                         </View>
                         <View
                             style={styles.configurationChoice}
@@ -394,10 +480,6 @@ export function MyDocument({ props }) {
                                     >{option.value}</Text>
                                 </View>
                             ))}
-                            <Image
-                                style={styles.configurationChoiceValueImage}
-                                src={props.accentMaterial.url + 'preview.jpg'}
-                            />
                         </View>
 
                     </View>

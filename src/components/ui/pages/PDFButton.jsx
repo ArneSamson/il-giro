@@ -105,7 +105,7 @@ export default function PDFButton() {
     }
 
     const options = {
-        position: [new Vector3(0, 3, 4), new Vector3(2, 0.75, 4)],
+        position: [new Vector3(0, 3, tableChosen ? 4.5 : 3.5), new Vector3(2, 0.75, 3.5)],
         lookAt: new Vector3(0, 0.75, 0),
     };
 
