@@ -70,29 +70,14 @@ export default function OrderOverview() {
             <div
                 className='config-ui__options__overview'
             >
-                <OverViewItem
-                    topic="Chosen Modules"
-                    value={
-                        (sinkChosen ? 'Sink, ' : '') +
-                        (cooktopChosen ? 'Cooktop, ' : '') +
-                        (towerChosen ? 'Tower, ' : '') +
-                        (tableChosen ? 'Table' : '')
-                    }
-                />
-
-                <OverViewItem
-                    topic="Curved"
-                    value={allBevelled ? "yes" : "no"}
-                />
 
                 <OverViewItem
                     topic="Main Material"
                     value={mainMaterial.name}
                 />
 
-
                 <OverViewItem
-                    topic="Table Top Material"
+                    topic="Countertop Material"
                     value={tableTopMaterial.name}
                 />
 
@@ -105,70 +90,57 @@ export default function OrderOverview() {
                 )}
 
                 <OverViewItem
-                    topic="Edge Finish"
-                    value={edgeFinish}
+                    topic="Module(s)"
+                    value={
+                        (sinkChosen ? 'Sink, ' : '') +
+                        (cooktopChosen ? 'Cooktop, ' : '') +
+                        (towerChosen ? 'Tower, ' : '') +
+                        (tableChosen ? 'Table' : '')
+                    }
                 />
 
                 <OverViewItem
-                    topic="Table Top Inset"
+                    topic="Module finish"
+                    value={allBevelled ? "yes" : "no"}
+                />
+
+                <OverViewItem
+                    topic="Countertop Inset"
                     value={tableTopInset ? 'inset' : 'overlay'}
                 />
 
-                {sinkChosen && <>
+                {towerChosen && <>
+
                     <OverViewItem
-                        topic="Tap Type"
-                        value={tapType === 1 ? "Brandwood 3" : tapType === 2 ? "Bridge" : ""}
+                        topic="Tower Appliance"
+                        value={applianceType}
                     />
 
                     <OverViewItem
-                        topic="Extra Drawers"
-                        value={mainDrawers ? "Yes" : "No"}
+                        topic="Winestand Size"
+                        value={wineStandSize}
                     />
                 </>}
 
                 {cooktopChosen && <>
                     <OverViewItem
-                        topic="Stove Type"
+                        topic="Cooking fire"
                         value={stoveType === 1 ? "Gas" : stoveType === 2 ? "Electric" : ""}
                     />
                 </>}
 
-                {towerChosen && <>
-
+                {sinkChosen && <>
                     <OverViewItem
-                        topic="Appliance Type"
-                        value={applianceType}
+                        topic="Faucet"
+                        value={tapType === 1 ? "Brandwood 3" : tapType === 2 ? "Bridge" : ""}
                     />
 
-                    <OverViewItem
-                        topic="Wine Stand Size"
-                        value={wineStandSize}
-                    />
                 </>}
 
-                {towerChosen && <>
-                    <OverViewItem
-                        topic="Appliance Type"
-                        value={applianceType}
-                    />
-
-                    <OverViewItem
-                        topic="Wine Stand Size"
-                        value={wineStandSize}
-                    />
-                </>}
-
-                {towerChosen && <>
-                    <OverViewItem
-                        topic="Appliance Type"
-                        value={applianceType}
-                    />
-
-                    <OverViewItem
-                        topic="Wine Stand Size"
-                        value={wineStandSize}
-                    />
-                </>}
+                <OverViewItem
+                    topic="Extra Drawers"
+                    value={mainDrawers ? "Yes" : "No"}
+                />
 
                 <PDFButton />
 
