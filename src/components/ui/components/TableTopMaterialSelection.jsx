@@ -30,7 +30,7 @@ export default function AccentMaterialSelection() {
             className='config-ui__details'
             onClick={(e) => e.preventDefault()}
         >
-            <summary>Tabletop material:
+            <summary>Countertop material:
                 <span>
                     {' ' + tableTopMaterial.name}
                 </span>
