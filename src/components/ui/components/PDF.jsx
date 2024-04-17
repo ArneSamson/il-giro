@@ -87,13 +87,16 @@ const styles = StyleSheet.create({
         height: 'auto',
     },
     configurationInfo: {
-        paddingLeft: 50,
-        paddingRight: 50,
+        marginLeft: 50,
+        marginRight: 50,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-start',
-        width: '100%',
+        width: 'auto',
         height: 'auto',
+        borderTop: '1px',
+        borderTopColor: colors.lightGrey,
+        borderTopStyle: 'solid',
     },
 
     customerInfo: {
@@ -102,18 +105,17 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         width: '100%',
         height: 'auto',
+        paddingTop: 10,
         marginTop: 10,
+        borderTop: '1px',
+        borderTopColor: colors.lightGrey,
+        borderTopStyle: 'solid',
     },
     customerInfoTitle: {
         fontFamily: 'Kaisei Decol',
         fontSize: 18,
         color: colors.offBlack,
-        // backgroundColor: colors.offWhite,
-        // borderColor: colors.offBlack,
-        // borderWidth: 1,
-        // borderStyle: 'solid',
-        padding: 10,
-        // borderRadius: 40,
+        padding: 0,
         width: 'auto',
     },
     customerInfoValues: {
@@ -124,8 +126,6 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 'auto',
         marginTop: 10,
-        paddingLeft: 10,
-        paddingRight: 10,
     },
 
     configurationChoices: {
@@ -136,8 +136,6 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 'auto',
         marginTop: 0,
-        paddingLeft: 10,
-        paddingRight: 10,
 
     },
     configurationChoice: {
