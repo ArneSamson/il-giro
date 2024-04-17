@@ -8,7 +8,6 @@ export function useThreeGlobal(): { three: RootState | undefined; ThreeGlobal: t
     useEffect(() => {
         const threeValue = getThreeValue();
         setThree(threeValue);
-        console.log(threeValue);
         const unsubscribe = subscribe(() => {
             const threeValue = getThreeValue();
             setThree(threeValue);
@@ -23,7 +22,6 @@ const ThreeGlobal: React.FC = () => {
     const three = useThree();
     useEffect(() => {
         setThreeValue(three);
-        console.log(three);
     }, []);
 
     return null;
