@@ -117,6 +117,7 @@ const styles = StyleSheet.create({
         color: colors.offBlack,
         padding: 0,
         width: 'auto',
+        paddingTop: 10,
     },
     customerInfoValues: {
         display: 'flex',
@@ -162,6 +163,7 @@ const styles = StyleSheet.create({
         fontSize: 10,
         fontWeight: 700,
         color: colors.offBlack,
+        textTransform: 'capitalize',
     },
     configurationChoiceValueValue: {
         fontSize: 10,
@@ -179,6 +181,27 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         borderRadius: 7.5,
         height: 'auto',
+    },
+
+    footer: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        height: 50,
+        paddingLeft: 50,
+        paddingRight: 50,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '100%',
+        backgroundColor: colors.offBlack,
+        color: colors.offWhite,
+    },
+    footerText: {
+        fontFamily: 'Roboto',
+        fontWeight: 700,
+        fontSize: 10,
     },
 
 });
@@ -314,7 +337,7 @@ export function MyDocument({ props }) {
                         </View>
                         <View>
                             <Text
-                                style={styles.customerInfoTitle}
+                                style={{ ...styles.customerInfoTitle, marginTop: -15 }}
                             >
                                 Your information:
                             </Text>
@@ -484,6 +507,25 @@ export function MyDocument({ props }) {
 
                 </View>
 
+                <View
+                    style={styles.footer}
+                >
+                    <Text
+                        style={styles.footerText}
+                    >
+                        Il Giro 2024
+                    </Text>
+                    <Text
+                        style={styles.footerText}
+                    >
+                        info@studiorombauts.be
+                    </Text>
+                    <Text
+                        style={styles.footerText}
+                    >
+                        +32 497 35 48 39
+                    </Text>
+                </View>
 
             </Page>
         </Document >
