@@ -8,33 +8,28 @@ import Env from "./components/lighting&shadows/Env.jsx";
 
 import { useThreeGlobal } from "./helper/useThreeGlobal.tsx";
 
-
 import { Perf } from "r3f-perf";
 
 export default function Experience() {
+  console.log("Experience");
 
-    console.log("Experience");
+  const [a, set] = useState(0);
 
-    const [a, set] = useState(0);
+  const { ThreeGlobal } = useThreeGlobal();
 
-    const { ThreeGlobal } = useThreeGlobal();
+  return (
+    <>
+      <Perf position='top-left' style={{ transform: "translateX(15vw)" }} />
 
+      <CameraHandler />
 
-    return <>
+      <Lights />
 
-        <Perf
-            position="top-left"
-            style={{ transform: 'translateX(15vw)' }}
-        />
+      <Scene />
 
-        <CameraHandler />
+      <Env />
 
-        <Lights />
-
-        <Scene />
-
-        <Env />
-
-        <ThreeGlobal />
+      <ThreeGlobal />
     </>
+  );
 }
