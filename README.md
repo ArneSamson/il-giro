@@ -64,9 +64,11 @@ Outdoor kitchen configurator for Studio Rombauts
             <li><a href="#usetexture">useTexture</a></li>
             <li><a href="#usecapture">useCapture</a></li>
         </ul>
-        <li><a href="#controls">Store</a></li>
+        <li><a href="#stores">Store</a></li>
         <ul>
             <li><a href="#useconfigstore">useConfigStore</a></li>
+            <li><a href="#usescene">useScene</a></li>
+            <li><a href="#useuistore">useUIStore</a></li>
         </ul>
       </ul>
     </td>
@@ -265,6 +267,24 @@ A custom texture loader written by Aaron. It is used instead of the useTexture f
 A custom hook written by Aaron that captures an image of the 3D scene.
 
 It is used in the `PDFBUtton.jsx` file. When the page with the button is loaded, it will take a capture of the current configuration and store it as a base64 string. This string is then passed as a prop to the PDF component which builds the PDF with this image.
+
+# Stores
+
+Stores are called in each file that needs values from given store. This is to avoid rerenders.
+
+## useConfigStore
+
+This store includes all the states that are used for the visualisation and configuring of the kitchen modules.
+
+## useScene
+
+This store includes all the states that are used for the 3D scene, like: the camera position, the camera focus, if there's being hovered over a kitchen module, etc.
+
+Currently only `cameraFocus` is actively used.
+
+## useUIStore
+
+This store includes all the states that are used for the UI, like: which page is currently active, if a details in the UI is open or closed, the content of the tooltip, etc.
 
 # Extras
 
