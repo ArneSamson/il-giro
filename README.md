@@ -84,6 +84,8 @@ Scene.jsx is where the 4 possible kitchen modules are conditionally loaded, base
 
 The modules are the actual kitchen modules that are loaded in the Scene component. There are 4 modules: `sink`, `cooktop`, `tower` and `table`.
 
+For the shadows of the modules, a shadow plane with a baked shadow texture is used. ShadowPlanes.jsx eports a small and a large shadowplane. The small shadow plane is loaded in the `<BaseIsland/>` component, and thus reused in the `<sink/>`, `<cooktop/>` and `<table/>` components. The large shadow plane is loaded in the `<tower/>` module.
+
 #### BaseIsland
 
 Important! The `<BaseIsland/>` is a component that is reused in the `sink`, `cooktop` and `table` module. This is the textured base of the kitchen modules. Togheter with a tableTop and appliances (like a faucet or a cooking fire) the modules are made.
@@ -104,7 +106,9 @@ The `Sink` module is one of 4 the kitchen modules. It is a combination of the `<
 
 #### Cooktop
 
-The `Cooktop` module is one of 4 the kitchen modules. It is a combination of the `<BaseIsland/>` component, the `<GasStove/>` cooktop component, a `tableTop` component, and the `CooktopFire` component. It conditionally renders whether the cooktop has drawers or not, and whether the cooktop has a rounded countertop or not.
+The `Cooktop` module is one of 4 the kitchen modules. It is a combination of the `<BaseIsland/>` component, the `<GasStove/>` or `<ElectricStove/>` component, and a `tableTop` component It conditionally renders whether the cooktop has drawers or not, wheter it needs a gas or electric cooking fire, and whether the cooktop has a rounded countertop or not.
+
+#### Tower
 
 # Helpers
 
