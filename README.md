@@ -36,6 +36,7 @@ Outdoor kitchen configurator for Studio Rombauts
                 <li><a href="#table">Table</a></li>
             </ul>
             <li><a href="#tabletopscountertops">Tabletops/Countertops</a></li>
+            <li><a href="#accesoires">Accesoires</a></li>
             </ul>
         </ul>
       </ul>
@@ -127,6 +128,8 @@ and it conditionally loads the drawers.
 
 The `<Sink/>` component is one of 4 the kitchen modules. It is a combination of the `<BaseIsland/>` component, the `<Reginox/>` sink component, a `tableTop` component, and either the `<Tap1/>` or `<Tap2/>` component. It conditionally renders which faucet it has, whether the sink has drawers or not, and whether the sink has a rounded countertop or not.
 
+It also conditionally sets the thickness of the countertop with a combiantion of switch cases and if-else statement, based on which material the countertop is made of, and if the user selected a specific thickness of the countertop.
+
 #### Cooktop
 
 The `<Cooktop/>` component is one of 4 the kitchen modules. It is a combination of the `<BaseIsland/>` component, the `<GasStove/>` or `<ElectricStove/>` component, and a `tableTop` component It conditionally renders whether the cooktop has drawers or not, wheter it needs a gas or electric cooking fire, and whether the cooktop has a rounded countertop or not.
@@ -152,6 +155,22 @@ These are:
 - `TableTopCutRound.jsx`: a rounded countertop for the sink
 
 They are conditionally rendered in the `<Sink/>`, `<Cooktop/>` and `<Table/>` components based on the state of the `tableTopRounded` boolean in the Zustand store.
+
+!important notice. If the countertop material is Inox, then the sink is welded onto the countertop. This is done by condiionally rendering another variant of the Reginox sink. This code can be found in the `<Reginox/>` component inside `ReginoxBowl.jsx`.
+
+### Accesoires
+
+The modules have accessories that are conditionally rendered based on their states in the Zustand store. These accessories are:
+
+- `Drawers.jsx` : the main drawers that can be selected for the `sink` and `cooktop` modules
+- `ElectricStove.jsx` : the electric stove that can be selected for the `cooktop` module
+- `GasStove.jsx` : the gas stove that can be selected for the `cooktop` module
+- `ReginoxBowl.jsx` : the sink that can be selected for the `sink` module
+- `Stool.jsx` : the stool that can be toggled to accompany the `table` module
+- `Tap1.jsx` : the first faucet that can be selected for the `sink` module
+- `Tap2.jsx` : the second faucet that can be selected for the `sink` module
+- `WineStand.jsx` : the wine stand that accompanies the `tower` module, it has different sizes which can be selected in the UI. In code it reacts to the value of `WineStandSize` in the Zustand store.
+- `Alcohol.jsx` : a component that has a few different alcohol bottles for aesthetic purposes.
 
 # Helpers
 
