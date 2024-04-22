@@ -55,6 +55,7 @@ Outdoor kitchen configurator for Studio Rombauts
             <ul>
                 <li><a href="#ui-pages">UI pages</a></li>
                 <li><a href="#ui-components">UI components</a></li>
+                <li><a href="#pdf">PDF</a></li>
             </ul>
         </ul>
         <li><a href="#helpers">Helpers</a></li>
@@ -75,10 +76,6 @@ Outdoor kitchen configurator for Studio Rombauts
         <ul>
           <li><a href="#perf">Perf</a></li>
           <li><a href="#zustand">Zustand</a></li>
-        </ul>
-        <li><a href="#extras">PDF</a></li>
-        <ul>
-          <li><a href="#perf">Perf</a></li>
         </ul>
       </ul>
     </td>
@@ -239,6 +236,12 @@ There are various UI pages. These are:
 To be able to reuse as much as possible, the components are called in the pages and are given props to alter their content. Some components have such a specific use case that they're not reused but a variation of an existing component.
 
 On the orderOverview page `<ButtonCategoryTitle></ButtonCategoryTitle>` is used. This comes from `TextComponents.jsx` and is a simplified way to create a title for a category and apply a hr below it.
+
+### PDF
+
+THe PDF is created with [react-pdf](https://react-pdf.org/). The PDF is initialized and created in the `PDFButton.jsx` file, on the moment that it is renderd (when landing on the orderOverveiw page). It first waits on the usCapture hook to finish taking an image of the 3D scene of the current configuration. Then it creates the PDF with the image and the configuration details.
+
+The layout of the PDF and the styling, togheter with the handling of props, is done in the `PDF.jsx` file.
 
 # Helpers
 
