@@ -49,13 +49,21 @@ Outdoor kitchen configurator for Studio Rombauts
     </td>
     <td valign="top">
       <ul>
+        <li><a href="#ui">UI</a></li>
+        <ul>
+            <li><a href="#configui">ConfigUI</a></li>
+            <ul>
+                <li><a href="#ui-pages">UI pages</a></li>
+                <li><a href="#ui-components">UI components</a></li>
+            </ul>
+        </ul>
         <li><a href="#helpers">Helpers</a></li>
         <ul>
             <li><a href="#newmaterial">NewMaterial</a></li>
             <li><a href="#usetexture">useTexture</a></li>
             <li><a href="#usecapture">useCapture</a></li>
         </ul>
-                <li><a href="#controls">Store</a></li>
+        <li><a href="#controls">Store</a></li>
         <ul>
             <li><a href="#useconfigstore">useConfigStore</a></li>
         </ul>
@@ -191,6 +199,46 @@ In the `<Lights/>` component, the lights are loaded. There is one directional li
 ### ShadowPlanes
 
 The shadow planes are used to create the shadows of the modules. The shadow planes are loaded in the `<BaseIsland/>` component, and thus reused in the `<Sink/>`, `<Cooktop/>` and `<Table/>` components. The large shadow plane is loaded in the `<Tower/>` module.
+
+# UI
+
+## ConfigUI
+
+The `ConfigUI.jsx` file is where the UI is loaded. It includes various UI pages, a tooltip (with handler), a set of extra buttons, and the navigaiton of the UI.
+
+### UI pages
+
+There are various UI pages. These are:
+
+- `ModuleSelectionPage.jsx` : the page where the user can select which module they want to configure
+
+- `UiPage1.jsx` : the first page after selecting a module, where the user can choose all possible materials
+
+- `UiPage2.jsx` : the second page after selecting a module, where the user can choose various options, like:
+
+  - if the countertop is inset or overlayed
+
+  - the finish of the countertop
+
+  - the thickness of the countertop
+
+  - the color of the module
+
+  - the color of the bevels
+
+  - the color of the drawers
+
+  - the color of the handles
+
+  - the color of the faucet
+
+  - the color of the stove
+
+  - the color of the wine stand
+
+  - the size of the wine stand
+
+  - the color of the stool
 
 # Helpers
 
