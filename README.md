@@ -16,7 +16,7 @@ Outdoor kitchen configurator for Studio Rombauts
         <ul>
             <li><a href="#appjsx">App</a></li>
             <ul>
-            <li><a href="#canvas-tag">Canvas Tag</a></li>
+                <li><a href="#canvas-tag">Canvas Tag</a></li>
             </ul>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#scene">Scene</a></li>
@@ -38,7 +38,12 @@ Outdoor kitchen configurator for Studio Rombauts
             <li><a href="#tabletopscountertops">Tabletops/Countertops</a></li>
             <li><a href="#accesoires">Accesoires</a></li>
             </ul>
-            <li><a href="#kitchen-modules">Lighting Shadows & Environment</a></li>
+            <li><a href="#lighting-shadows--environment">Lighting Shadows & Environment</a></li>
+            <ul>
+                <li><a href="#env">Env</a></li>
+                <li><a href="#lights">Lights</a></li>
+                <li><a href="#shadowplanes">ShadowPlanes</a></li>
+            </ul>
         </ul>
       </ul>
     </td>
@@ -172,6 +177,12 @@ The modules have accessories that are conditionally rendered based on their stat
 - `Tap2.jsx` : the second faucet that can be selected for the `sink` module
 - `WineStand.jsx` : the wine stand that accompanies the `tower` module, it has different sizes which can be selected in the UI. In code it reacts to the value of `WineStandSize` in the Zustand store.
 - `Alcohol.jsx` : a component that has a few different alcohol bottles for aesthetic purposes.
+
+## Lighting Shadows & Environment
+
+### Env
+
+The environment map is loaded in `Env.jsx`. It uses `<Environment/>` and `<Lightformer/>` components from drei to create the environment map. The environment map is loaded in the `<Experience/>` component in `Experience.jsx`
 
 # Helpers
 
