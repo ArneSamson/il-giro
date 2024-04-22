@@ -24,13 +24,17 @@ Outdoor kitchen configurator for Studio Rombauts
             <ul>
                 <li><a href="#shadows">Shadows</a></li>
                 <li><a href="#bevels">Bevels</a></li>
+                <li><a href="#lerping">Lerping</a></li>
             </ul>
+            <ul>
+            <li><a href="#module-components">Module components</a></li>
             <ul>
                 <li><a href="#baseisland">BaseIsland</a></li>
                 <li><a href="#sink">Sink</a></li>
                 <li><a href="#cooktop">Cooktop</a></li>
                 <li><a href="#tower">Tower</a></li>
                 <li><a href="#table">Table</a></li>
+            </ul>
             </ul>
         </ul>
       </ul>
@@ -68,7 +72,7 @@ Outdoor kitchen configurator for Studio Rombauts
 
 # structure
 
-### App
+## App
 
 App.jsx is the main entry point for the application. It is where the Canvas, Loader and UI are loaded.
 
@@ -76,15 +80,15 @@ App.jsx is the main entry point for the application. It is where the Canvas, Loa
 
 Inside the Canvas tag, the postprocessing effetcs are loaded as `<Effects/>`. The full 3D experience is loaded as `<Experience/>` inside the Canvas tag.
 
-### Experience
+## Experience
 
 Experience.jsx is where the actual 3D scene is loaded, togheter with the camera, lights and environment
 
-### Scene
+## Scene
 
 Scene.jsx is where the 4 possible kitchen modules are conditionally loaded, based on the boolean state in the Zustand store.
 
-### Modules
+## Modules
 
 The modules are the actual kitchen modules that are loaded in the Scene component. There are 4 modules: `sink`, `cooktop`, `tower` and `table`.
 
@@ -94,7 +98,15 @@ For the shadows of the modules, a shadow plane with a baked shadow texture is us
 
 #### bevels
 
-For the bevelling of the modules, a beveled and a straight underside are modelled as children of the modules. These
+For the bevelling of the modules, a beveled and a straight underside are modelled as children of the modules. These are conditionally rendered based on the state of the `allBevelled` boolean in the Zustand store.
+
+#### lerping
+
+The `<Drawers/>` and `<BaseIsland/>` use lerping for the opening and closing of the drawers or doors. This is done by using the `useFrame` hook from drei.
+
+A good example can be found in the `<Drawers/>` component inside Drawers.jsx.
+
+### Module components
 
 #### BaseIsland
 
@@ -112,19 +124,19 @@ and it conditionally loads the drawers.
 
 #### Sink
 
-The `<Sink/>` module is one of 4 the kitchen modules. It is a combination of the `<BaseIsland/>` component, the `<Reginox/>` sink component, a `tableTop` component, and either the `<Tap1/>` or `<Tap2/>` component. It conditionally renders which faucet it has, whether the sink has drawers or not, and whether the sink has a rounded countertop or not.
+The `<Sink/>` component is one of 4 the kitchen modules. It is a combination of the `<BaseIsland/>` component, the `<Reginox/>` sink component, a `tableTop` component, and either the `<Tap1/>` or `<Tap2/>` component. It conditionally renders which faucet it has, whether the sink has drawers or not, and whether the sink has a rounded countertop or not.
 
 #### Cooktop
 
-The `<Cooktop/>` module is one of 4 the kitchen modules. It is a combination of the `<BaseIsland/>` component, the `<GasStove/>` or `<ElectricStove/>` component, and a `tableTop` component It conditionally renders whether the cooktop has drawers or not, wheter it needs a gas or electric cooking fire, and whether the cooktop has a rounded countertop or not.
+The `<Cooktop/>` component is one of 4 the kitchen modules. It is a combination of the `<BaseIsland/>` component, the `<GasStove/>` or `<ElectricStove/>` component, and a `tableTop` component It conditionally renders whether the cooktop has drawers or not, wheter it needs a gas or electric cooking fire, and whether the cooktop has a rounded countertop or not.
 
 #### Tower
 
-The `<Tower/>` module is one of 4 the kitchen modules.
+The `<Tower/>` component is one of 4 the kitchen modules. It is a big .glb model where certain children of the model are conditionally rendered based on the states from the Zustand store.
 
 # Helpers
 
-### NewMaterial
+## NewMaterial
 
 This is a self written component that creates a new material based on the parameters passed to it. It is used to create the materials for every kitchen module or appliance that needs to take over a kitchen module material.
 
@@ -139,7 +151,7 @@ Parameters are:
 
 A custom texture loader written by Aaron. It is used instead of the useTexture from drei because this custom textureloader allows for waiting until the textures are loaded before they're applied to the material.
 
-### useCapture
+## useCapture
 
 A custom hook written by Aaron that captures an image of the 3D scene.
 
