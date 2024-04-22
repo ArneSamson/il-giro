@@ -1,8 +1,7 @@
-# React + Vite
+# Il Giro
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Kitchen configurator for Studio Rombauts
 
-Currently, two official plugins are available:
+## important notes
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+`tableTop` in code is `counterTop` in the UI
