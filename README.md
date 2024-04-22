@@ -27,7 +27,7 @@ Outdoor kitchen configurator for Studio Rombauts
                 <li><a href="#lerping">Lerping</a></li>
             </ul>
             <ul>
-            <li><a href="#module-components">Module components</a></li>
+            <li><a href="#base-components">Base components</a></li>
             <ul>
                 <li><a href="#baseisland">BaseIsland</a></li>
                 <li><a href="#sink">Sink</a></li>
@@ -35,6 +35,7 @@ Outdoor kitchen configurator for Studio Rombauts
                 <li><a href="#tower">Tower</a></li>
                 <li><a href="#table">Table</a></li>
             </ul>
+            <li><a href="#tabletopscountertops">Tabletops/Countertops</a></li>
             </ul>
         </ul>
       </ul>
@@ -94,7 +95,7 @@ The modules are the actual kitchen modules that are loaded in the Scene componen
 
 #### shadows
 
-For the shadows of the modules, a shadow plane with a baked shadow texture is used. `ShadowPlanes.jsx` eports a small and a large shadowplane. The small shadow plane is loaded in the `<BaseIsland/>` component, and thus reused in the `<Sink/>`, `<Cooktop/>` and `<Table/>` components. The large shadow plane is loaded in the `<Tower/>` module.
+For the shadows of the modules, a shadow plane with a baked shadow texture is used. `ShadowPlanes.jsx` exports a small (`<BakePlaneSmall>`) and a large (`<BakePlane>`) shadowplane. The small shadow plane is loaded in the `<BaseIsland/>` component, and thus reused in the `<Sink/>`, `<Cooktop/>` and `<Table/>` components. The large shadow plane is loaded in the `<Tower/>` module.
 
 #### bevels
 
@@ -106,7 +107,7 @@ The `<Drawers/>` and `<BaseIsland/>` use lerping for the opening and closing of 
 
 A good example can be found in the `<Drawers/>` component inside Drawers.jsx.
 
-### Module components
+### Base components
 
 #### BaseIsland
 
@@ -132,7 +133,25 @@ The `<Cooktop/>` component is one of 4 the kitchen modules. It is a combination 
 
 #### Tower
 
-The `<Tower/>` component is one of 4 the kitchen modules. It is a big .glb model where certain children of the model are conditionally rendered based on the states from the Zustand store.
+The `<Tower/>` component is one of 4 the kitchen modules. It is a big .glb model where certain children of the model are conditionally rendered based on the states from the Zustand store. It also includes the `<WineStand/>` component.
+
+#### Table
+
+The `<Table/>` component is one of 4 the kitchen modules. It is a combination of 2 `<BaseIsland/>` components and a `tableTop` component. It conditionally renders whether the table has a rounded countertop or not.
+
+### TableTops/CounterTops
+
+Because of the complexity of the variations of the countertops, there are 6 different tableTop components.
+These are:
+
+- `TabelFlat.jsx` : a straight finished countertop for the table
+- `TableFlatRounded.jsx` : a rounded finished countertop for the table
+- `TableTop.jsx` : a straight countertop for the cooktop
+- `TableTopRound.jsx` : a rounded countertop for the cooktop
+- `TableTopCutOut.jsx`: a straight countertop for the sink
+- `TableTopCutRound.jsx`: a rounded countertop for the sink
+
+They are conditionally rendered in the `<Sink/>`, `<Cooktop/>` and `<Table/>` components based on the state of the `tableTopRounded` boolean in the Zustand store.
 
 # Helpers
 
