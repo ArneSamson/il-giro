@@ -182,7 +182,15 @@ The modules have accessories that are conditionally rendered based on their stat
 
 ### Env
 
-The environment map is loaded in `Env.jsx`. It uses `<Environment/>` and `<Lightformer/>` components from drei to create the environment map. The environment map is loaded in the `<Experience/>` component in `Experience.jsx`
+The environment map is loaded in `Env.jsx`. It uses `<Environment/>` and `<Lightformer/>` components from drei to create the environment map. The environment map is loaded in the `<Experience/>` component in `Experience.jsx`.
+
+### Lights
+
+In the `<Lights/>` component, the lights are loaded. There is one directional light in the scene. In this component are also the soft shadows loaded. The soft shadows are created by using the `<SoftShadows/>` hook from drei.
+
+### ShadowPlanes
+
+The shadow planes are used to create the shadows of the modules. The shadow planes are loaded in the `<BaseIsland/>` component, and thus reused in the `<Sink/>`, `<Cooktop/>` and `<Table/>` components. The large shadow plane is loaded in the `<Tower/>` module.
 
 # Helpers
 
