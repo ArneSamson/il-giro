@@ -22,6 +22,10 @@ Outdoor kitchen configurator for Studio Rombauts
             <li><a href="#scene">Scene</a></li>
             <li><a href="#modules">Modules</a></li>
             <ul>
+                <li><a href="#shadows">Shadows</a></li>
+                <li><a href="#bevels">Bevels</a></li>
+            </ul>
+            <ul>
                 <li><a href="#baseisland">BaseIsland</a></li>
                 <li><a href="#sink">Sink</a></li>
                 <li><a href="#cooktop">Cooktop</a></li>
@@ -84,7 +88,13 @@ Scene.jsx is where the 4 possible kitchen modules are conditionally loaded, base
 
 The modules are the actual kitchen modules that are loaded in the Scene component. There are 4 modules: `sink`, `cooktop`, `tower` and `table`.
 
-For the shadows of the modules, a shadow plane with a baked shadow texture is used. ShadowPlanes.jsx eports a small and a large shadowplane. The small shadow plane is loaded in the `<BaseIsland/>` component, and thus reused in the `<sink/>`, `<cooktop/>` and `<table/>` components. The large shadow plane is loaded in the `<tower/>` module.
+#### shadows
+
+For the shadows of the modules, a shadow plane with a baked shadow texture is used. `ShadowPlanes.jsx` eports a small and a large shadowplane. The small shadow plane is loaded in the `<BaseIsland/>` component, and thus reused in the `<Sink/>`, `<Cooktop/>` and `<Table/>` components. The large shadow plane is loaded in the `<Tower/>` module.
+
+#### bevels
+
+For the bevelling of the modules, a beveled and a straight underside are modelled as children of the modules. These
 
 #### BaseIsland
 
@@ -102,13 +112,15 @@ and it conditionally loads the drawers.
 
 #### Sink
 
-The `Sink` module is one of 4 the kitchen modules. It is a combination of the `<BaseIsland/>` component, the `<Reginox/>` sink component, a `tableTop` component, and either the `<Tap1/>` or `<Tap2/>` component. It conditionally renders which faucet it has, whether the sink has drawers or not, and whether the sink has a rounded countertop or not.
+The `<Sink/>` module is one of 4 the kitchen modules. It is a combination of the `<BaseIsland/>` component, the `<Reginox/>` sink component, a `tableTop` component, and either the `<Tap1/>` or `<Tap2/>` component. It conditionally renders which faucet it has, whether the sink has drawers or not, and whether the sink has a rounded countertop or not.
 
 #### Cooktop
 
-The `Cooktop` module is one of 4 the kitchen modules. It is a combination of the `<BaseIsland/>` component, the `<GasStove/>` or `<ElectricStove/>` component, and a `tableTop` component It conditionally renders whether the cooktop has drawers or not, wheter it needs a gas or electric cooking fire, and whether the cooktop has a rounded countertop or not.
+The `<Cooktop/>` module is one of 4 the kitchen modules. It is a combination of the `<BaseIsland/>` component, the `<GasStove/>` or `<ElectricStove/>` component, and a `tableTop` component It conditionally renders whether the cooktop has drawers or not, wheter it needs a gas or electric cooking fire, and whether the cooktop has a rounded countertop or not.
 
 #### Tower
+
+The `<Tower/>` module is one of 4 the kitchen modules.
 
 # Helpers
 
