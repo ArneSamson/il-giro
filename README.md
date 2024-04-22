@@ -234,6 +234,12 @@ There are various UI pages. These are:
 
 - `OrderOverview.jsx` : the last page of the UI. Here the user can see an overview of the configuration they made. They can also download a PDF of the configuration.
 
+### UI components
+
+To be able to reuse as much as possible, the components are called in the pages and are given props to alter their content. Some components have such a specific use case that they're not reused but a variation of an existing component.
+
+On the orderOverview page `<ButtonCategoryTitle></ButtonCategoryTitle>` is used. This comes from `TextComponents.jsx` and is a simplified way to create a title for a category and apply a hr below it.
+
 # Helpers
 
 ## NewMaterial
