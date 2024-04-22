@@ -2,7 +2,7 @@ import React from "react";
 
 import useConfigStore from "../../../store/useConfigStore";
 
-import PDFButton from "./PDFButton.jsx";
+import PDFButton from "../components/pdf/PDFButton.jsx";
 import { OverViewItem } from "../components/text/TextComponents.jsx";
 
 export default function OrderOverview() {
