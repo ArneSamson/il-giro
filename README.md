@@ -222,23 +222,17 @@ There are various UI pages. These are:
 
   - the thickness of the countertop
 
-  - the color of the module
+  - which faucet type the sink has
 
-  - the color of the bevels
+  - which stove type the cooktop has
 
-  - the color of the drawers
+  - the size of the winestand
 
-  - the color of the handles
+  - the appliance of the tower, options are a wine cooler, a fridge or an oven
 
-  - the color of the faucet
+  - whether the main drawers are in the modules or not
 
-  - the color of the stove
-
-  - the color of the wine stand
-
-  - the size of the wine stand
-
-  - the color of the stool
+- `OrderOverview.jsx` : the last page of the UI. Here the user can see an overview of the configuration they made. They can also download a PDF of the configuration.
 
 # Helpers
 
