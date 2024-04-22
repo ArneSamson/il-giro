@@ -270,7 +270,9 @@ It is used in the `PDFBUtton.jsx` file. When the page with the button is loaded,
 
 # Stores
 
-Stores are called in each file that needs values from given store. This is to avoid rerenders.
+Stores are used to manage the state of the application. [Zustand](#zustand) is used as the state management library.
+
+There are 3 stores:
 
 ## useConfigStore
 
