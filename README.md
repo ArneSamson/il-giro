@@ -20,7 +20,7 @@ Outdoor kitchen configurator for Studio Rombauts
             </ul>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#scene">Scene</a></li>
-            <li><a href="#modules">Modules</a></li>
+            <li><a href="#kitchen-modules">Kitchen modules</a></li>
             <ul>
                 <li><a href="#shadows">Shadows</a></li>
                 <li><a href="#bevels">Bevels</a></li>
@@ -38,6 +38,7 @@ Outdoor kitchen configurator for Studio Rombauts
             <li><a href="#tabletopscountertops">Tabletops/Countertops</a></li>
             <li><a href="#accesoires">Accesoires</a></li>
             </ul>
+            <li><a href="#kitchen-modules">Lighting Shadows & Environment</a></li>
         </ul>
       </ul>
     </td>
@@ -90,19 +91,19 @@ Experience.jsx is where the actual 3D scene is loaded, togheter with the camera,
 
 Scene.jsx is where the 4 possible kitchen modules are conditionally loaded, based on the boolean state in the Zustand store.
 
-## Modules
+## Kitchen Modules
 
 The modules are the actual kitchen modules that are loaded in the Scene component. There are 4 modules: `sink`, `cooktop`, `tower` and `table`.
 
-#### shadows
+#### Shadows
 
 For the shadows of the modules, a shadow plane with a baked shadow texture is used. `ShadowPlanes.jsx` exports a small (`<BakePlaneSmall>`) and a large (`<BakePlane>`) shadowplane. The small shadow plane is loaded in the `<BaseIsland/>` component, and thus reused in the `<Sink/>`, `<Cooktop/>` and `<Table/>` components. The large shadow plane is loaded in the `<Tower/>` module.
 
-#### bevels
+#### Bevels
 
 For the bevelling of the modules, a beveled and a straight underside are modelled as children of the modules. These are conditionally rendered based on the state of the `allBevelled` boolean in the Zustand store.
 
-#### lerping
+#### Lerping
 
 The `<Drawers/>` and `<BaseIsland/>` use lerping for the opening and closing of the drawers or doors. This is done by using the `useFrame` hook from drei.
 
