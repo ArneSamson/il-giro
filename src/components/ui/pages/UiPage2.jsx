@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import useConfigStore from "../../../store/useConfigStore";
 
@@ -121,6 +121,16 @@ export default function UiPage2() {
     { label: "20mm", value: 0.5 },
   ];
 
+  useEffect(() => {
+    // Check if only the table is chosen
+    const isTableChosen =
+      tableChosen && !sinkChosen && !cooktopChosen && !towerChosen;
+    // If only the table is chosen, set tableTopInset to false
+    if (isTableChosen) {
+      setTableTopInset(false);
+    }
+  }, [sinkChosen, cooktopChosen, towerChosen, tableChosen]);
+
   return (
     <>
       <div className='config-ui__title'>
@@ -137,7 +147,7 @@ export default function UiPage2() {
                 setOption={setEdgeFinish}
             /> */}
 
-        {(sinkChosen || cooktopChosen) && (
+        {(sinkChosen || cooktopChosen || tableChosen) && (
           <>
             <ButtonCategoryTitle title='Countertop'>
               <DetailWithButtons
@@ -240,7 +250,7 @@ export default function UiPage2() {
           </>
         )}
 
-        {tableChosen && !sinkChosen && !cooktopChosen && !towerChosen && (
+        {/* {tableChosen && !sinkChosen && !cooktopChosen && !towerChosen && (
           <>
             <h4>These are not the options you are looking for...</h4>
             <p
@@ -251,7 +261,7 @@ export default function UiPage2() {
               continue on the next page
             </p>
           </>
-        )}
+        )} */}
 
         {sinkChosen && (
           <>
