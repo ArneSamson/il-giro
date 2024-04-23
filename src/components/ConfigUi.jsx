@@ -1,119 +1,106 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-import useConfig from '../store/useConfigStore.jsx';
-import useUIStore from '../store/useUIStore.jsx';
+import useConfig from "../store/useConfigStore.jsx";
+import useUIStore from "../store/useUIStore.jsx";
 
-import ConfigNav from './ui/components/nav/ConfigNav.jsx';
-import ExtraButtons from './ui/components/buttons/ExtraButtons.jsx';
-import ToolTip from './ui/components/buttons/ToolTip.jsx';
+import ConfigNav from "./ui/components/nav/ConfigNav.jsx";
+import ExtraButtons from "./ui/components/buttons/ExtraButtons.jsx";
+import ToolTip from "./ui/components/buttons/ToolTip.jsx";
+import TextureIsLoading from "./ui/components/loading/TextureIsLoading.jsx";
 
-import LandingsPage from './ui/pages/LandingsPage.jsx';
-import UiPage1 from './ui/pages/UiPage1.jsx';
-import UiPage2 from './ui/pages/UiPage2.jsx';
-import OrderOverview from './ui/pages/OrderOverview.jsx';
-import ModuleSelectionPage from './ui/pages/ModuleSelectionPage.jsx';
+import LandingsPage from "./ui/pages/LandingsPage.jsx";
+import UiPage1 from "./ui/pages/UiPage1.jsx";
+import UiPage2 from "./ui/pages/UiPage2.jsx";
+import OrderOverview from "./ui/pages/OrderOverview.jsx";
+import ModuleSelectionPage from "./ui/pages/ModuleSelectionPage.jsx";
 
 export default function ConfigUi() {
+  const {
+    allMaterials,
+    allCategories,
 
-    const {
-        allMaterials,
-        allCategories,
+    setMainMaterial,
 
-        setMainMaterial,
+    setAccentMaterial,
 
-        setAccentMaterial,
+    setTableTopMaterial,
+  } = useConfig((state) => ({
+    allMaterials: state.allMaterials,
+    allCategories: state.allCategories,
 
-        setTableTopMaterial,
-    } = useConfig(
-        state => ({
-            allMaterials: state.allMaterials,
-            allCategories: state.allCategories,
+    setMainMaterial: state.setMainMaterial,
 
-            setMainMaterial: state.setMainMaterial,
+    setAccentMaterial: state.setAccentMaterial,
 
-            setAccentMaterial: state.setAccentMaterial,
+    setTableTopMaterial: state.setTableTopMaterial,
+  }));
 
-            setTableTopMaterial: state.setTableTopMaterial,
-        })
-    );
+  const { currentPage, landingPageVisible } = useUIStore((state) => ({
+    currentPage: state.currentPage,
+    landingPageVisible: state.landingPageVisible,
+  }));
 
-    const {
-        currentPage,
-        landingPageVisible,
-    } = useUIStore(
-        state => ({
-            currentPage: state.currentPage,
-            landingPageVisible: state.landingPageVisible,
-        })
-    );
+  const [loaded, setLoaded] = useState(false);
 
-    const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    const lastMaterial = allMaterials[allMaterials.length - 1];
 
-    useEffect(() => {
-        const lastMaterial = allMaterials[allMaterials.length - 1];
+    if (lastMaterial) {
+      setLoaded(true);
 
-        if (lastMaterial) {
-            setLoaded(true);
+      if (loaded) return;
 
-            if (loaded) return;
+      setMainMaterial(allCategories["wood"][0]);
+      setAccentMaterial(allCategories["metal"][0]);
+      setTableTopMaterial(allCategories["dekton"][1]);
+    }
+  }, [allMaterials, setMainMaterial, setAccentMaterial]);
 
-            setMainMaterial(allCategories['wood'][0]);
-            setAccentMaterial(allCategories['metal'][0]);
-            setTableTopMaterial(allCategories['dekton'][1]);
-
-        }
-    }, [
-        allMaterials,
-
-        setMainMaterial,
-
-        setAccentMaterial
-    ]);
-
-
-
-    return (
-        <>
-            {/* {landingPageVisible &&
+  return (
+    <>
+      {/* {landingPageVisible &&
                 <LandingsPage />
             } */}
 
-            <ToolTip />
+      <TextureIsLoading />
 
-            <ExtraButtons />
+      <ToolTip />
 
-            <div className='config-wrapper'>
+      <ExtraButtons />
 
-                {!loaded && <p>Loading UI...</p>}
+      <div className='config-wrapper'>
+        {!loaded && <p>Loading UI...</p>}
 
-                {loaded && <div
-                    className='config-ui'
-                >
+        {loaded && (
+          <div className='config-ui'>
+            {currentPage === 0 && (
+              <>
+                <ModuleSelectionPage />
+              </>
+            )}
 
+            {currentPage === 1 && (
+              <>
+                <UiPage1 />
+              </>
+            )}
 
-                    {currentPage === 0 && <>
-                        <ModuleSelectionPage />
-                    </>}
+            {currentPage === 2 && (
+              <>
+                <UiPage2 />
+              </>
+            )}
 
-                    {currentPage === 1 && <>
-                        <UiPage1 />
-                    </>}
+            {currentPage === 3 && (
+              <>
+                <OrderOverview />
+              </>
+            )}
 
-                    {currentPage === 2 && <>
-                        <UiPage2 />
-                    </>}
-
-                    {currentPage === 3 && <>
-                        <OrderOverview />
-                    </>}
-
-                    <ConfigNav />
-
-
-                </div>
-                }
-
-            </div>
-        </>
-    );
-};
+            <ConfigNav />
+          </div>
+        )}
+      </div>
+    </>
+  );
+}
