@@ -56,16 +56,8 @@ export default function NewMaterial({
       undefined,
       (loading) => {
         setTextureIsLoading(loading);
-        fakeLoading();
       }
     );
-
-  const fakeLoading = () => {
-    setTextureIsLoading(true);
-    setTimeout(() => {
-      setTextureIsLoading(false);
-    }, 2000);
-  };
 
   if (albedoTexture.wrapS !== RepeatWrapping) {
     albedoTexture.repeat.set(2.5, 2.5);
