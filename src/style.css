@@ -753,7 +753,7 @@ summary span {
   outline: 1px solid transparent;
   cursor: pointer;
   border-radius: 15%;
-  transition: all 0.3s ease;
+  transition: all 0.1s ease-in;
 }
 
 .selected-material-n-category,
