@@ -13,12 +13,18 @@ export default function ExtraButtons() {
     setDoorOpeningRotation,
     showChairs,
     setShowChairs,
+    sinkChosen,
+    cooktopChosen,
+    towerChosen,
     tableChosen,
   } = useConfig((state) => ({
     doorOpeningRotation: state.doorOpeningRotation,
     setDoorOpeningRotation: state.setDoorOpeningRotation,
     showChairs: state.showChairs,
     setShowChairs: state.setShowChairs,
+    sinkChosen: state.sinkChosen,
+    cooktopChosen: state.cooktopChosen,
+    towerChosen: state.towerChosen,
     tableChosen: state.tableChosen,
   }));
 
@@ -113,109 +119,111 @@ export default function ExtraButtons() {
           </div>
         </ToolTipHandler>
 
-        <ToolTipHandler
-          content={`${
-            doorOpeningRotation === 0 ? "Open " : "Close "
-          } doors and drawers`}
-        >
-          <div className='extra-buttons__button'>
-            <button onClick={handleOpening}>
-              {doorOpeningRotation === 0 && (
-                <svg
-                  width='20'
-                  height='22'
-                  viewBox='0 0 20 22'
-                  fill='none'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    d='M16.7316 1H2.57316C1.70434 1 1 1.68879 1 2.53846V19.4615C1 20.3112 1.70434 21 2.57316 21H16.7316C17.6005 21 18.3048 20.3112 18.3048 19.4615V2.53846C18.3048 1.68879 17.6005 1 16.7316 1Z'
-                    stroke='black'
-                    strokeWidth='1'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                  />
-                  <path
-                    d='M9.65247 1V21'
-                    stroke='black'
-                    strokeWidth='1'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                  />
-                  <path
-                    d='M12.3978 10.2307V11.7692'
-                    stroke='black'
-                    strokeWidth='1'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                  />
-                  <path
-                    d='M6.90698 10.2307V11.7692'
-                    stroke='black'
-                    strokeWidth='1'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                  />
-                </svg>
-              )}
-              {doorOpeningRotation === 1.5 && (
-                <svg
-                  width='17'
-                  height='22'
-                  viewBox='0 0 17 22'
-                  fill='none'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    d='M15.9835 14.3676V2.33209C15.9835 1.5964 15.3737 1 14.6214 1H2.36214C1.60986 1 1 1.5964 1 2.33209V16.9851C1 17.7208 1.60986 18.3172 2.36214 18.3172H7.16968'
-                    stroke='black'
-                    strokeWidth='1'
-                    strokeLinecap='square'
-                    strokeLinejoin='round'
-                  />
-                  <path
-                    d='M12.311 11.2827V11.9488V13.0308'
-                    stroke='black'
-                    strokeWidth='1'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                  />
-                  <path
-                    d='M6.11462 8.99243V10.3245'
-                    stroke='black'
-                    strokeWidth='1'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                  />
-                  <path
-                    d='M10.2545 4.08496V20.9885'
-                    stroke='black'
-                    strokeWidth='1'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                  />
-                  <path
-                    d='M8.198 1.51416V18.3123'
-                    stroke='black'
-                    strokeWidth='1'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                  />
-                  <path
-                    d='M10.2545 4.08486L15.3959 1.51416'
-                    stroke='black'
-                    strokeWidth='1'
-                  />
-                  <path
-                    d='M10.2545 21.0001L13.8535 18.995L14.6248 18.4808C16.1672 17.6068 15.9821 15.396 15.9821 14.3677'
-                    stroke='black'
-                    strokeWidth='1'
-                  />
-                </svg>
-              )}
-            </button>
-          </div>
-        </ToolTipHandler>
+        {(sinkChosen || cooktopChosen || towerChosen) && (
+          <ToolTipHandler
+            content={`${
+              doorOpeningRotation === 0 ? "Open " : "Close "
+            } doors and drawers`}
+          >
+            <div className='extra-buttons__button'>
+              <button onClick={handleOpening}>
+                {doorOpeningRotation === 0 && (
+                  <svg
+                    width='20'
+                    height='22'
+                    viewBox='0 0 20 22'
+                    fill='none'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path
+                      d='M16.7316 1H2.57316C1.70434 1 1 1.68879 1 2.53846V19.4615C1 20.3112 1.70434 21 2.57316 21H16.7316C17.6005 21 18.3048 20.3112 18.3048 19.4615V2.53846C18.3048 1.68879 17.6005 1 16.7316 1Z'
+                      stroke='black'
+                      strokeWidth='1'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                    />
+                    <path
+                      d='M9.65247 1V21'
+                      stroke='black'
+                      strokeWidth='1'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                    />
+                    <path
+                      d='M12.3978 10.2307V11.7692'
+                      stroke='black'
+                      strokeWidth='1'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                    />
+                    <path
+                      d='M6.90698 10.2307V11.7692'
+                      stroke='black'
+                      strokeWidth='1'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                    />
+                  </svg>
+                )}
+                {doorOpeningRotation === 1.5 && (
+                  <svg
+                    width='17'
+                    height='22'
+                    viewBox='0 0 17 22'
+                    fill='none'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path
+                      d='M15.9835 14.3676V2.33209C15.9835 1.5964 15.3737 1 14.6214 1H2.36214C1.60986 1 1 1.5964 1 2.33209V16.9851C1 17.7208 1.60986 18.3172 2.36214 18.3172H7.16968'
+                      stroke='black'
+                      strokeWidth='1'
+                      strokeLinecap='square'
+                      strokeLinejoin='round'
+                    />
+                    <path
+                      d='M12.311 11.2827V11.9488V13.0308'
+                      stroke='black'
+                      strokeWidth='1'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                    />
+                    <path
+                      d='M6.11462 8.99243V10.3245'
+                      stroke='black'
+                      strokeWidth='1'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                    />
+                    <path
+                      d='M10.2545 4.08496V20.9885'
+                      stroke='black'
+                      strokeWidth='1'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                    />
+                    <path
+                      d='M8.198 1.51416V18.3123'
+                      stroke='black'
+                      strokeWidth='1'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                    />
+                    <path
+                      d='M10.2545 4.08486L15.3959 1.51416'
+                      stroke='black'
+                      strokeWidth='1'
+                    />
+                    <path
+                      d='M10.2545 21.0001L13.8535 18.995L14.6248 18.4808C16.1672 17.6068 15.9821 15.396 15.9821 14.3677'
+                      stroke='black'
+                      strokeWidth='1'
+                    />
+                  </svg>
+                )}
+              </button>
+            </div>
+          </ToolTipHandler>
+        )}
 
         {tableChosen && (
           <ToolTipHandler
