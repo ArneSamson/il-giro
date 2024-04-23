@@ -163,11 +163,11 @@ export default function Tower({ props }) {
   });
 
   const handleClick = () => {
-    setCameraFocus([
-      towerPosition[0],
-      towerPosition[1] + 1.5,
-      towerPosition[2],
-    ]);
+    // setCameraFocus([
+    //   towerPosition[0],
+    //   towerPosition[1] + 1.5,
+    //   towerPosition[2],
+    // ]);
   };
 
   return (
