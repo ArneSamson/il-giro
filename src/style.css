@@ -699,6 +699,7 @@ input[type=range]::-ms-track {
 
 summary span {
   color: var(--dark-grey);
+  font-weight: 700;
 }
 
 .config-ui__details summary::marker {
