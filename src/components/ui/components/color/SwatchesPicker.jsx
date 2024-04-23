@@ -3,6 +3,7 @@
 //colors should be an array of arrays, each array containing the hex values of the colors
 
 import React from "react";
+import ToolTipHandler from "../buttons/ToolTipHandler";
 
 export default function SwatchesPicker({
   colors,
