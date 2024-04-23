@@ -75,11 +75,11 @@ export default function ColorPicker() {
     borderTopRightRadius: 0,
     borderTopLeftRadius: 0,
     borderTop: "0px",
-    paddingTop: 45,
+    paddingTop: 25,
     paddingBottom: 10,
     paddingLeft: 5,
     paddingRight: 5,
-    transform: "translateY(-45px)",
+    transform: "translateY(-25px)",
   };
 
   const groupStyle = {
