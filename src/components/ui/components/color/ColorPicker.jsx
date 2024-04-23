@@ -67,6 +67,35 @@ export default function ColorPicker() {
     }
   };
 
+  const containerStyle = {
+    display: "flex",
+    flexWrap: "wrap",
+    border: "1px solid #4d4d4d",
+    borderRadius: 20,
+    borderTopRightRadius: 0,
+    borderTopLeftRadius: 0,
+    borderTop: "0px",
+    paddingTop: 45,
+    paddingBottom: 10,
+    paddingLeft: 5,
+    paddingRight: 5,
+    transform: "translateY(-45px)",
+  };
+
+  const groupStyle = {
+    display: "flex",
+    flexWrap: "wrap",
+  };
+
+  const swatchStyle = {
+    width: 30,
+    height: 30,
+    margin: 2,
+    cursor: "pointer",
+    border: "1px solid #ccc",
+    borderRadius: 5,
+  };
+
   return (
     <>
       <div
@@ -96,13 +125,15 @@ export default function ColorPicker() {
             onBlur={(e) => handleInput(e.target.value)}
             onChange={(e) => handleInput(e.target.value)}
           />
+          <SwatchesPicker
+            colors={ralColors}
+            onClick={(color) => handleColorChange(color)}
+            errorMessage={colorError}
+            containerStyle={containerStyle}
+            groupStyle={groupStyle}
+            swatchStyle={swatchStyle}
+          />
         </div>
-
-        <SwatchesPicker
-          colors={ralColors}
-          onClick={(color) => handleColorChange(color)}
-          errorMessage={colorError}
-        />
       </div>
     </>
   );

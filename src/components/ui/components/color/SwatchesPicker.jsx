@@ -4,9 +4,16 @@
 
 import React from "react";
 
-export default function SwatchesPicker({ colors, onClick, errorMessage = "" }) {
+export default function SwatchesPicker({
+  colors,
+  onClick,
+  errorMessage = "",
+  containerStyle = {},
+  groupStyle = {},
+  swatchStyle = {},
+}) {
   return (
-    <div style={{ display: "flex", flexWrap: "wrap" }}>
+    <div style={{ ...containerStyle }}>
       <p
         style={{
           color: "red",
@@ -19,18 +26,13 @@ export default function SwatchesPicker({ colors, onClick, errorMessage = "" }) {
         {errorMessage}
       </p>
       {colors.map((group, index) => (
-        <div key={index} style={{ display: "flex", flexWrap: "wrap" }}>
+        <div key={index} style={{ ...groupStyle }}>
           {group.map((color, idx) => (
             <div
               key={idx}
               style={{
                 backgroundColor: color,
-                width: 30,
-                height: 30,
-                margin: 2,
-                cursor: "pointer",
-                border: "1px solid #ccc",
-                borderRadius: 5,
+                ...swatchStyle,
               }}
               onClick={() => onClick({ hex: color })}
             />
