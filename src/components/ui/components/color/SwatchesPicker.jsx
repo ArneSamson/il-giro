@@ -1,5 +1,6 @@
 //Custom written SwatchesPicker component to replace the SwatchesPicker component from react-color
 //This is a simplified version, easily changeable to fit the needs of the project
+//colors should be an array of arrays, each array containing the hex values of the colors
 
 import React from "react";
 
