@@ -39,7 +39,7 @@ export default function WineStand({ props }) {
     <group name='liquorStand' {...props} dispose={null}>
       {wineStandSize === "tall" && (
         <mesh castShadow receiveShadow geometry={nodes["tall-stand"].geometry}>
-          <NewMaterial type={"accent"} ralExclude={true} envIntensity={0.45} />
+          <NewMaterial type={"accent"} ralExclude={true} envIntensity={0.3} />
         </mesh>
       )}
       {wineStandSize === "medium" && (
@@ -48,12 +48,12 @@ export default function WineStand({ props }) {
           receiveShadow
           geometry={nodes["medium-stand"].geometry}
         >
-          <NewMaterial type={"accent"} ralExclude={true} envIntensity={0.45} />
+          <NewMaterial type={"accent"} ralExclude={true} envIntensity={0.3} />
         </mesh>
       )}
       {wineStandSize === "small" && (
         <mesh castShadow receiveShadow geometry={nodes["small-stand"].geometry}>
-          <NewMaterial type={"accent"} ralExclude={true} envIntensity={0.45} />
+          <NewMaterial type={"accent"} ralExclude={true} envIntensity={0.3} />
         </mesh>
       )}
 
