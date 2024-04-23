@@ -21,11 +21,31 @@ export default function TextureIsLoading() {
             right: "20%",
             transform: "translateX(-50%)",
             padding: "2rem",
-            backgroundColor: "rgba(0,0,0,0.5)",
+            backgroundColor: "#ffffff89",
+            borderRadius: "1rem",
             margin: 0,
+
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            gap: "15%",
           }}
         >
-          <p>Loading Textures</p>
+          <div>
+            <p>Loading Textures</p>
+          </div>
+          <div>
+            <img
+              src='/images/GIF/spinner.gif'
+              alt='loading'
+              style={{
+                width: "50px",
+                height: "50px",
+                objectFit: "cover",
+              }}
+            />
+          </div>
         </div>
       )}
     </>
