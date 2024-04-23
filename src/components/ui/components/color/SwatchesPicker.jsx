@@ -1,7 +1,9 @@
+//Custom written SwatchesPicker component to replace the SwatchesPicker component from react-color
+//This is a simplified version, easily changeable to fit the needs of the project
+
 import React from "react";
 
-export default function SwatchesPicker({ colors, onClick, errorMessage }) {
-  console.log(errorMessage);
+export default function SwatchesPicker({ colors, onClick, errorMessage = "" }) {
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>
       <p

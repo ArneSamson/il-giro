@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import { SwatchesPicker } from "react-color";
 import { ralData } from "./dataColors.js";
 import SwatchesPicker from "./SwatchesPicker.jsx";
 
