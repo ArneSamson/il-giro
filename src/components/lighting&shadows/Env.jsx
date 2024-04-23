@@ -13,7 +13,7 @@ import * as THREE from "three";
 export default function Env() {
   return (
     <>
-      <Environment files={"/HDR/4.hdr"} background={true} blur={0}>
+      <Environment files={"/HDR/4.hdr"} background={false} blur={0}>
         <Lightformer
           visible={true}
           form='rect'
