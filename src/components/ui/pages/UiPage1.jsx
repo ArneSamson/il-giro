@@ -10,75 +10,60 @@ import ColorPicker from "../components/color/ColorPicker.jsx";
 import DetailWithMaterials from "../components/DetailWithMaterials.jsx";
 
 export default function UiPage1() {
+  const {
+    allCategories,
+    mainMaterial,
+    setMainMaterial,
+    mainMaterialCategory,
+    accentMaterial,
+    setAccentMaterial,
+  } = useConfigStore((state) => ({
+    allCategories: state.allCategories,
+    mainMaterial: state.mainMaterial,
+    setMainMaterial: state.setMainMaterial,
+    mainMaterialCategory: state.mainMaterialCategory,
+    accentMaterial: state.accentMaterial,
+    setAccentMaterial: state.setAccentMaterial,
+  }));
 
-    const {
-        allCategories,
-        mainMaterial,
-        setMainMaterial,
-        mainMaterialCategory,
-        accentMaterial,
-        setAccentMaterial,
-    } = useConfigStore(
-        state => ({
-            allCategories: state.allCategories,
-            mainMaterial: state.mainMaterial,
-            setMainMaterial: state.setMainMaterial,
-            mainMaterialCategory: state.mainMaterialCategory,
-            accentMaterial: state.accentMaterial,
-            setAccentMaterial: state.setAccentMaterial,
-        })
-    );
+  console.log(mainMaterialCategory);
 
-    // console.log(mainMaterialCategory)
+  return (
+    <>
+      <div className='config-ui__title'>
+        <span>
+          <h2>Materials</h2>
+        </span>
+      </div>
 
-    return <>
+      <div className='config-ui__options'>
+        <MaterialCategorySelection />
 
-        <div
-            className='config-ui__title'
-        >
-            <span><h2>Materials</h2></span>
-        </div>
-
-        <div
-            className='config-ui__options'
-        >
-
-            <MaterialCategorySelection
-
-            />
-
-            {!mainMaterialCategory === "ral" && <>
-
-                <DetailWithMaterials
-                    header={"Choices in " + mainMaterialCategory + ": "}
-                    materials={allCategories[mainMaterialCategory]}
-                    selectedMaterial={mainMaterial.name}
-                    setMaterial={setMainMaterial}
-                    open={true}
-                />
-
-            </>}
-
-
-            {mainMaterialCategory === "ral" &&
-                <ColorPicker
-
-                />
-            }
-
-
-            <TableTopMaterialSelection
-            />
-
+        {mainMaterialCategory !== "ral" && (
+          <>
             <DetailWithMaterials
-                header="Accent material: "
-                materials={allCategories.metal}
-                selectedMaterial={accentMaterial.name}
-                setMaterial={setAccentMaterial}
-                open={true}
-                extraMessage="*The sink will always be inox if the countertop is inox."
+              header={"Choices in " + mainMaterialCategory + ": "}
+              materials={allCategories[mainMaterialCategory]}
+              selectedMaterial={mainMaterial.name}
+              setMaterial={setMainMaterial}
+              open={true}
             />
+          </>
+        )}
 
-        </div>
+        {mainMaterialCategory === "ral" && <ColorPicker />}
+
+        <TableTopMaterialSelection />
+
+        <DetailWithMaterials
+          header='Accent material: '
+          materials={allCategories.metal}
+          selectedMaterial={accentMaterial.name}
+          setMaterial={setAccentMaterial}
+          open={true}
+          extraMessage='*The sink will always be inox if the countertop is inox.'
+        />
+      </div>
     </>
+  );
 }
