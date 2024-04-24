@@ -121,6 +121,21 @@ export default function UiPage2() {
     { label: "20mm", value: 0.5 },
   ];
 
+  let counterTopHeight;
+
+  if (tableTopMaterialCategory === "dekton") {
+    if (tableTopHeight === 0.5) {
+      counterTopHeight = "20mm";
+    }
+    if (tableTopHeight === 0.3) {
+      counterTopHeight = "12mm";
+    }
+  } else if (tableTopMaterialCategory === "natural stone") {
+    counterTopHeight = "40mm";
+  } else if (tableTopMaterialCategory === "metal") {
+    counterTopHeight = "5mm";
+  }
+
   useEffect(() => {
     // Check if only the table is chosen
     const isTableChosen =
@@ -149,7 +164,9 @@ export default function UiPage2() {
 
         {(sinkChosen || cooktopChosen || tableChosen) && (
           <>
-            <ButtonCategoryTitle title='Countertop'>
+            <ButtonCategoryTitle
+              title={`Countertop (` + counterTopHeight + `)`}
+            >
               <DetailWithButtons
                 summary='Countertop type: '
                 options={tableTopInsetOptions}
