@@ -704,6 +704,13 @@ input[type=range]::-ms-track {
   border-radius: 30px;
   z-index: 20;
 }
+.colorpicker__color-tooltip {
+  font-family: var(--subheading-family);
+  visibility: hidden;
+}
+.colorpicker__color-swatch:hover .colorpicker__color-tooltip {
+  visibility: visible;
+}
 
 summary span {
   color: var(--dark-grey);

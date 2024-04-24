@@ -1,9 +1,7 @@
 //Custom written SwatchesPicker component to replace the SwatchesPicker component from react-color
-//This is a simplified version, easily changeable to fit the needs of the project
-//colors should be an array of arrays, each array containing the hex values of the colors
+//This component is used to display the color swatches for RAL colors
 
 import React from "react";
-import ToolTipHandler from "../buttons/ToolTipHandler";
 
 export default function SwatchesPicker({
   colors,
@@ -12,6 +10,7 @@ export default function SwatchesPicker({
   containerStyle = {},
   groupStyle = {},
   swatchStyle = {},
+  tooltipStyle = {},
 }) {
   return (
     <div style={{ ...containerStyle }}>
@@ -19,6 +18,7 @@ export default function SwatchesPicker({
         style={{
           color: "red",
           fontSize: 12,
+          marginTop: 10,
           marginBottom: 10,
           width: "100%",
           textAlign: "center",
@@ -26,18 +26,26 @@ export default function SwatchesPicker({
       >
         {errorMessage}
       </p>
-      {colors.map((group, index) => (
+      {Object.keys(colors).map((key, index) => (
         <div key={index} style={{ ...groupStyle }}>
-          {group.map((color, idx) => (
-            <div
-              key={idx}
+          <div
+            key={key}
+            style={{
+              backgroundColor: colors[key].hex,
+              ...swatchStyle,
+            }}
+            className='colorpicker__color-swatch'
+            onClick={() => onClick(colors[key])}
+          >
+            <span
+              className='colorpicker__color-tooltip'
               style={{
-                backgroundColor: color,
-                ...swatchStyle,
+                ...tooltipStyle,
               }}
-              onClick={() => onClick({ hex: color })}
-            />
-          ))}
+            >
+              {colors[key].code}
+            </span>
+          </div>
         </div>
       ))}
     </div>

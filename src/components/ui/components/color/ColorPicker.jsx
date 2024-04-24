@@ -4,19 +4,19 @@ import SwatchesPicker from "./SwatchesPicker.jsx";
 
 import useConfigStore from "../../../../store/useConfigStore.jsx";
 
-function organizeRalColors(ralData) {
-  const ralColors = {};
+// function organizeRalColors(ralData) {
+//   const ralColors = {};
 
-  Object.values(ralData).forEach((color) => {
-    const group = color.code.substring(0, 1) + "000";
-    if (!ralColors[group]) {
-      ralColors[group] = [];
-    }
-    ralColors[group].push(color.hex);
-  });
+//   Object.values(ralData).forEach((color) => {
+//     const group = color.code.substring(0, 1) + "000";
+//     if (!ralColors[group]) {
+//       ralColors[group] = [];
+//     }
+//     ralColors[group].push(color.hex);
+//   });
 
-  return Object.values(ralColors);
-}
+//   return Object.values(ralColors);
+// }
 
 function organizeRalColorsByHex(ralData) {
   const ralColorsByHex = {};
@@ -28,7 +28,7 @@ function organizeRalColorsByHex(ralData) {
   return ralColorsByHex;
 }
 
-const ralColors = organizeRalColors(ralData);
+// const ralColors = organizeRalColors(ralData);
 
 const ralColorsByHex = organizeRalColorsByHex(ralData);
 
@@ -94,6 +94,18 @@ export default function ColorPicker() {
     cursor: "pointer",
     border: "1px solid #ccc",
     borderRadius: 5,
+    position: "relative",
+  };
+
+  const tooltipStyle = {
+    padding: 5,
+    color: "white",
+    backgroundColor: "black",
+    borderRadius: 5,
+    position: "absolute",
+    zIndex: 1,
+    top: 0,
+    left: "105%",
   };
 
   return (
@@ -126,12 +138,13 @@ export default function ColorPicker() {
             onChange={(e) => handleInput(e.target.value)}
           />
           <SwatchesPicker
-            colors={ralColors}
+            colors={ralData}
             onClick={(color) => handleColorChange(color)}
             errorMessage={colorError}
             containerStyle={containerStyle}
             groupStyle={groupStyle}
             swatchStyle={swatchStyle}
+            tooltipStyle={tooltipStyle}
           />
         </div>
       </div>
