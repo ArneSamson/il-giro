@@ -63,11 +63,11 @@ export default function WineStand({ props }) {
         rotation={[0, 0, 0]}
       />
 
-      <WineBottle
+      {/* <WineBottle
         position={[0.05, alcoholHeight, -0.05]}
         scale={[0.8, 0.8, 0.8]}
         rotation={[0, Math.PI, 0]}
-      />
+      /> */}
       <WineBottle
         position={[0.1, alcoholHeight + heightOffset, 0.05]}
         scale={[0.8, 0.8, 0.8]}

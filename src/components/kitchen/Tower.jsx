@@ -307,13 +307,22 @@ export default function Tower({ props }) {
               </mesh>
             </mesh>
 
+            <WineBottle
+              position={[
+                0.3,
+                applianceType === "fridge"
+                  ? 0.95
+                  : applianceType === "drawers"
+                  ? 0.915
+                  : 1,
+                -0.1,
+              ]}
+              scale={[1, 1, 1]}
+              rotation={[0, Math.PI, 0]}
+            />
+
             {applianceType === "fridge" && (
               <>
-                {/* <WineBottle
-                  position={[0, 0.43, -0.1]}
-                  scale={[1, 1, 1]}
-                  rotation={[Math.PI / 2, Math.PI, 0]}
-                /> */}
                 {wineBottles}
                 <mesh
                   name='cooler'
