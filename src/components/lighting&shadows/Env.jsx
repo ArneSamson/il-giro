@@ -46,7 +46,7 @@ export default function Env() {
         {/* <Lightformer
           visible={true}
           form='rect'
-          intensity={0.1}
+          intensity={0.2}
           position={new THREE.Vector3().setFromSphericalCoords(
             1, // distance
             Math.PI, // phi
