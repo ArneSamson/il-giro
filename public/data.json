@@ -1,6 +1,6 @@
 {
   "categories": {
-    "wood": ["dark wood", "chestnut", "cherry", "mahony"],
+    "wood": ["whitewood", "dark wood", "cherry", "mahony"],
     "metal": ["inox", "gold", "bronze", "copper"],
     "solid surface": ["solid surface"],
     "micro topping": ["micro topping", "concrete", "microtopping with ral"],
@@ -9,14 +9,14 @@
     "paint work": ["paintwork"]
   },
   "materials": {
+    "whitewood": {
+      "url": "/materials/whitewood/"
+    },
     "dark wood": {
       "url": "/materials/darkwood/"
     },
     "mahony": {
       "url": "/materials/mahony/"
-    },
-    "chestnut": {
-      "url": "/materials/chestnut/"
     },
     "cherry": {
       "url": "/materials/cherry/"
