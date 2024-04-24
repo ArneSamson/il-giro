@@ -17,6 +17,8 @@ export default function UiPage1() {
     mainMaterialCategory,
     accentMaterial,
     setAccentMaterial,
+    tableTopMaterialCategory,
+    tableTopHeight,
   } = useConfigStore((state) => ({
     allCategories: state.allCategories,
     mainMaterial: state.mainMaterial,
@@ -24,7 +26,24 @@ export default function UiPage1() {
     mainMaterialCategory: state.mainMaterialCategory,
     accentMaterial: state.accentMaterial,
     setAccentMaterial: state.setAccentMaterial,
+    tableTopMaterialCategory: state.tableTopMaterialCategory,
+    tableTopHeight: state.tableTopHeight,
   }));
+
+  let counterTopHeight;
+
+  if (tableTopMaterialCategory === "dekton") {
+    if (tableTopHeight === 0.5) {
+      counterTopHeight = "20mm";
+    }
+    if (tableTopHeight === 0.3) {
+      counterTopHeight = "12mm";
+    }
+  } else if (tableTopMaterialCategory === "natural stone") {
+    counterTopHeight = "40mm";
+  } else if (tableTopMaterialCategory === "metal") {
+    counterTopHeight = "5mm";
+  }
 
   return (
     <>
@@ -50,7 +69,11 @@ export default function UiPage1() {
         {(mainMaterial.name === "paintwork" ||
           mainMaterial.name === "microtopping with ral") && <ColorPicker />}
 
-        <TableTopMaterialSelection extraMessage='*Changing the material will also change the thickness.' />
+        <TableTopMaterialSelection
+          extraMessage={
+            "*This material has a standard thickness of " + counterTopHeight
+          }
+        />
 
         <DetailWithMaterials
           header='Accent material: '
