@@ -28,27 +28,23 @@ export default function ExtraButtons() {
     tableChosen: state.tableChosen,
   }));
 
-  const { currentPage, setCurrentPage, setLandingPageVisible } = useUIStore(
-    (state) => ({
-      currentPage: state.currentPage,
-      setCurrentPage: state.setCurrentPage,
-      setLandingPageVisible: state.setLandingPageVisible,
-    })
-  );
+  const { setLandingPageVisible } = useUIStore((state) => ({
+    setLandingPageVisible: state.setLandingPageVisible,
+  }));
 
-  const { setCameraFocus } = useScene((state) => ({
+  const { setCameraFocus, setNeedsToDolly } = useScene((state) => ({
     setCameraFocus: state.setCameraFocus,
+    setNeedsToDolly: state.setNeedsToDolly,
   }));
 
   const handleZoom = () => {
-    // if (currentPage === 0) return;
     setCameraFocus([0, 1, 0]);
-    // setCurrentPage(0);
+    setNeedsToDolly(true);
   };
 
-  const handleBackHome = () => {
-    setLandingPageVisible(true);
-  };
+  //   const handleBackHome = () => {
+  //     setLandingPageVisible(true);
+  //   };
 
   const handleOpening = () => {
     setDoorOpeningRotation(doorOpeningRotation === 1.5 ? 0 : 1.5);

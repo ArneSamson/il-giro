@@ -10,13 +10,21 @@ export default function CameraHandler() {
   const [maxDistance, setMaxDistance] = useState(4);
   const [minDistance, setMinDistance] = useState(2);
 
-  const { cameraFocus, setCameraFocus } = useScene((state) => ({
-    cameraFocus: state.cameraFocus,
-    setCameraFocus: state.setCameraFocus,
-  }));
+  const { cameraFocus, setCameraFocus, needsToDolly, setNeedsToDolly } =
+    useScene((state) => ({
+      cameraFocus: state.cameraFocus,
+      setCameraFocus: state.setCameraFocus,
+      needsToDolly: state.needsToDolly,
+      setNeedsToDolly: state.setNeedsToDolly,
+    }));
 
   useEffect(() => {
     camera.current.moveTo(...cameraFocus, true);
+
+    if (needsToDolly) {
+      camera.current.dollyTo(maxDistance, true);
+      setNeedsToDolly(false);
+    }
 
     updateViewOffset();
 
