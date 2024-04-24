@@ -26,8 +26,6 @@ export default function UiPage1() {
     setAccentMaterial: state.setAccentMaterial,
   }));
 
-  console.log(mainMaterialCategory);
-
   return (
     <>
       <div className='config-ui__title'>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import useUIStore from "../../../../store/useUIStore";
 
@@ -6,10 +6,6 @@ export default function TextureIsLoading() {
   const { textureIsLoading } = useUIStore((state) => ({
     textureIsLoading: state.textureIsLoading,
   }));
-
-  useEffect(() => {
-    console.log(textureIsLoading);
-  }, [textureIsLoading]);
 
   return (
     <>
