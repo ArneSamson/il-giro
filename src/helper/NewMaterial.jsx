@@ -90,11 +90,29 @@ export default function NewMaterial({
     aoMap.flipY = false;
   }
 
+  console.log(mainMaterial);
+
   return (
     <>
-      {!ralExclude && mainMaterialCategory === "ral" && (
+      {!ralExclude &&
+        (mainMaterial.name === "paintwork" ||
+          mainMaterial.name === "microtopping with ral") && (
+          <meshStandardMaterial
+            color={ralColor.hex}
+            map={albedoTexture}
+            roughnessMap={roughnessTexture}
+            normalMap={normalTexture}
+            normalScale={new Vector2(0.3, 0.3)}
+            metalnessMap={metallnessTexture}
+            roughness={1}
+            metalness={1}
+            aoMap={aoMap}
+            aoMapIntensity={0.8}
+            envIntensity={envIntensity}
+          />
+        )}
+      {!ralExclude && (
         <meshStandardMaterial
-          color={ralColor.hex}
           map={albedoTexture}
           roughnessMap={roughnessTexture}
           normalMap={normalTexture}
@@ -107,20 +125,22 @@ export default function NewMaterial({
           envIntensity={envIntensity}
         />
       )}
-      {(ralExclude || mainMaterialCategory !== "ral") && (
-        <meshStandardMaterial
-          map={albedoTexture}
-          roughnessMap={roughnessTexture}
-          normalMap={normalTexture}
-          normalScale={new Vector2(0.3, 0.3)}
-          metalnessMap={metallnessTexture}
-          roughness={1}
-          metalness={1}
-          aoMap={aoMap}
-          aoMapIntensity={0.8}
-          envMapIntensity={envIntensity}
-        />
-      )}
+      {ralExclude &&
+        (mainMaterial.name !== "paintwork" ||
+          mainMaterial.name !== "microptopping with ral") && (
+          <meshStandardMaterial
+            map={albedoTexture}
+            roughnessMap={roughnessTexture}
+            normalMap={normalTexture}
+            normalScale={new Vector2(0.3, 0.3)}
+            metalnessMap={metallnessTexture}
+            roughness={1}
+            metalness={1}
+            aoMap={aoMap}
+            aoMapIntensity={0.8}
+            envMapIntensity={envIntensity}
+          />
+        )}
     </>
   );
 }
