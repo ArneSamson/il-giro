@@ -1,9 +1,16 @@
 import React, { useRef, useEffect } from "react";
-import { MeshBasicMaterial, BufferAttribute } from "three";
-import { useGLTF } from "@react-three/drei";
+import {
+  MeshBasicMaterial,
+  MeshStandardMaterial,
+  BufferAttribute,
+  Color,
+  MeshPhysicalMaterial,
+} from "three";
+import { useGLTF, MeshTransmissionMaterial } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
 import WineStand from "./accessoires/WineStand.jsx";
+import { WineBottle } from "./accessoires/extras/Alcohol.jsx";
 
 import { BakePlane } from "../lighting&shadows/ShadowPlanes.jsx";
 
@@ -38,9 +45,60 @@ export default function Tower({ props }) {
 
   const towerAOMapBevelled = "/images/bakes/tower-ao2.jpg";
 
-  const fridgeMaterial = new MeshBasicMaterial({
-    color: 0x000000,
+  const fridgeBlackMaterial = new MeshStandardMaterial({
+    color: 0x9a9b9c,
+    roughness: 0,
+    metalness: 1,
+    envMapIntensity: 0.2,
   });
+
+  const blackMaterial = new MeshStandardMaterial({
+    color: 0x000000,
+    roughness: 0,
+    metalness: 1,
+    envMapIntensity: 0.1,
+  });
+
+  const fridgeGreyMaterial = new MeshStandardMaterial({
+    color: 0xf5f5f5,
+    roughness: 0.5,
+    metalness: 0.5,
+    envMapIntensity: 1,
+  });
+
+  const fridgeGlassMaterial = new MeshStandardMaterial({
+    color: 0xffffff,
+    roughness: 0.05,
+    transparent: true,
+    opacity: 0.4,
+    metalness: 0.6,
+    envMapIntensity: 0.2,
+  });
+
+  const wineBottles = [];
+
+  for (let i = 0; i < 12; i++) {
+    if (i <= 6) {
+      wineBottles.push(
+        <WineBottle
+          key={i}
+          position={[-0.3 + i / 10, 0.43, -0.1]}
+          scale={[1, 1, 1]}
+          rotation={[Math.PI / 2, Math.PI, 0]}
+        />
+      );
+    }
+    if (i > 6) {
+      wineBottles.push(
+        <WineBottle
+          key={i}
+          position={[-0.9 + i / 10, 0.68, -0.1]}
+          scale={[1, 1, 1]}
+          rotation={[Math.PI / 2, Math.PI, 0]}
+        />
+      );
+    }
+  }
 
   const { nodes, materials } = useGLTF("./models/base-island-high.glb");
 
@@ -251,6 +309,12 @@ export default function Tower({ props }) {
 
             {applianceType === "fridge" && (
               <>
+                {/* <WineBottle
+                  position={[0, 0.43, -0.1]}
+                  scale={[1, 1, 1]}
+                  rotation={[Math.PI / 2, Math.PI, 0]}
+                /> */}
+                {wineBottles}
                 <mesh
                   name='cooler'
                   castShadow
@@ -276,7 +340,6 @@ export default function Tower({ props }) {
                   >
                     <NewMaterial type={"main"} />
                   </mesh>
-
                   <mesh
                     name='grill'
                     castShadow
@@ -286,48 +349,25 @@ export default function Tower({ props }) {
                     position={[-0.304, 0.055, 0.291]}
                   />
                   <group
-                    name='cooler-door'
+                    name='cooler'
                     position={[-0.053, 0.01, -0.026]}
                     rotation={[0, -1.571, 0]}
                     scale={[1, 1.008, 1]}
                   >
-                    <mesh
-                      castShadow
-                      receiveShadow
-                      geometry={nodes["C-865mm_1-Door-cabinet"].geometry}
-                      material={materials.Steel_med}
-                    />
-                    <mesh
+                    <mesh //the inside metal of the fridge
                       castShadow
                       receiveShadow
                       geometry={nodes["C-865mm_1-Door-cabinet_1"].geometry}
-                      material={materials[" Steel_light"]}
+                      material={blackMaterial}
                     />
-                    <mesh
-                      castShadow
-                      receiveShadow
-                      geometry={nodes["C-865mm_1-Door-cabinet_2"].geometry}
-                      material={materials["[0136_Charcoal]"]}
-                    />
-                    <mesh
-                      castShadow
-                      receiveShadow
-                      geometry={nodes["C-865mm_1-Door-cabinet_3"].geometry}
-                      material={materials.Material}
-                    />
-                    <mesh
-                      castShadow
-                      receiveShadow
-                      geometry={nodes["C-865mm_1-Door-cabinet_4"].geometry}
-                      material={materials["[0133_Gray]"]}
-                    />
-                    <mesh
+                    <mesh //the racks inside the fridge
                       castShadow
                       receiveShadow
                       geometry={nodes["C-865mm_1-Door-cabinet_5"].geometry}
-                      material={materials["[0129_WhiteSmoke]"]}
+                      //   material={materials["[0129_WhiteSmoke]"]}
+                      material={fridgeGreyMaterial}
                     />
-                    <group
+                    <group //door of the fridge
                       ref={coolerRef}
                       position={[0.313, 0.894, 0.233]}
                       scale={[1, 0.992, 1]}
@@ -337,13 +377,14 @@ export default function Tower({ props }) {
                         castShadow
                         receiveShadow
                         geometry={nodes["G-Object070"].geometry}
-                        material={fridgeMaterial}
+                        material={fridgeBlackMaterial}
                       />
                       <mesh
                         castShadow
                         receiveShadow
                         geometry={nodes["G-Object070_1"].geometry}
-                        material={materials["[Translucent_Glass_Gray]"]}
+                        // material={materials["[Translucent_Glass_Gray]"]}
+                        material={fridgeGlassMaterial}
                       />
                       <mesh
                         castShadow
