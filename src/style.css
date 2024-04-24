@@ -269,6 +269,14 @@ input[type=range]::-ms-track {
   padding: 0;
 }
 
+.loading-spinner {
+  position: absolute;
+  top: 50px;
+  right: 25%;
+  transform: translateX(-50%);
+  margin: 0;
+}
+
 .tooltip {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.8);
@@ -849,6 +857,11 @@ summary span {
   h2 {
     font-size: 30px;
     line-height: 60px;
+  }
+
+  .loading-spinner {
+    top: 50px;
+    right: 50px;
   }
 
   .tooltip.active {

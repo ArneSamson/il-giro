@@ -13,16 +13,8 @@ export default function TextureIsLoading() {
 
   return (
     <>
-      {!textureIsLoading && (
-        <div
-          style={{
-            position: "absolute",
-            top: 50,
-            right: "25%",
-            transform: "translateX(-50%)",
-            margin: 0,
-          }}
-        >
+      {textureIsLoading && (
+        <div className='loading-spinner'>
           <img
             src='/images/GIF/spinner.gif'
             alt='loading'
