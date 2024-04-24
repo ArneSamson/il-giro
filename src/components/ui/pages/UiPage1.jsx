@@ -37,19 +37,18 @@ export default function UiPage1() {
       <div className='config-ui__options'>
         <MaterialCategorySelection />
 
-        {mainMaterialCategory !== "ral" && (
-          <>
-            <DetailWithMaterials
-              header={"Choices in " + mainMaterialCategory + ": "}
-              materials={allCategories[mainMaterialCategory]}
-              selectedMaterial={mainMaterial.name}
-              setMaterial={setMainMaterial}
-              open={true}
-            />
-          </>
-        )}
+        <>
+          <DetailWithMaterials
+            header={"Choices in " + mainMaterialCategory + ": "}
+            materials={allCategories[mainMaterialCategory]}
+            selectedMaterial={mainMaterial.name}
+            setMaterial={setMainMaterial}
+            open={true}
+          />
+        </>
 
-        {mainMaterialCategory === "ral" && <ColorPicker />}
+        {(mainMaterial.name === "paintwork" ||
+          mainMaterial.name === "microtopping with ral") && <ColorPicker />}
 
         <TableTopMaterialSelection />
 
