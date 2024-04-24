@@ -233,9 +233,7 @@ export function MyDocument({ props }) {
   const materialOptions = {
     module: {
       name: "module",
-      value: props.ralColor
-        ? "RAL " + props.ralColor.code
-        : props.mainMaterial.name,
+      value: props.ralColorText ? props.ralColorText : props.mainMaterial.name,
       url: props.mainMaterial.url,
     },
     countertop: {
@@ -359,7 +357,7 @@ export function MyDocument({ props }) {
               <Text style={styles.configurationChoiceTitle}>Materials</Text>
 
               <View style={styles.materialChoiceValues}>
-                {props.ralColor && (
+                {props.ralColorText && (
                   <View
                     style={{
                       backgroundColor: props.ralColor.hex,
@@ -369,7 +367,7 @@ export function MyDocument({ props }) {
                     }}
                   />
                 )}
-                {!props.ralColor && (
+                {!props.ralColorText && (
                   <Image
                     style={styles.configurationChoiceValueImage}
                     src={materialOptions.module.url + "preview.jpg"}

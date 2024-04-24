@@ -93,6 +93,13 @@ export default function PDFButton() {
     .filter(Boolean)
     .join(", ");
 
+  const ralColorForPDF =
+    mainMaterial.name === "microtopping with ral"
+      ? "microtopping with RAL " + ralColor.code
+      : mainMaterial.name === "paintwork"
+      ? "painwork with RAL " + ralColor.code
+      : null;
+
   let counterTopHeight;
 
   if (tableTopMaterialCategory === "dekton") {
@@ -187,7 +194,8 @@ export default function PDFButton() {
         <MyDocument
           props={{
             mainMaterial: mainMaterial,
-            ralColor: mainMaterialCategory === "ral" ? ralColor : null,
+            ralColorText: ralColorForPDF,
+            ralColor: ralColor,
             tableTopMaterial: tableTopMaterial,
             tableTopInset: tableTopInset ? "inset" : "overlay",
             accentMaterial: towerChosen || sinkChosen ? accentMaterial : null,
