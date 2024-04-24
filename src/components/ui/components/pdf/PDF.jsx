@@ -286,7 +286,7 @@ export function MyDocument({ props }) {
     "customer address": "1234 Somewhere St, 2800 Mechelen",
   };
 
-  console.log("props", props.imageRender);
+  //   console.log("props", props.imageRender);
 
   const renderedImage = props.imageRender[0] ? props.imageRender[0] : "";
 

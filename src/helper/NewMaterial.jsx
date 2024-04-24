@@ -90,8 +90,6 @@ export default function NewMaterial({
     aoMap.flipY = false;
   }
 
-  console.log(mainMaterial);
-
   return (
     <>
       {!ralExclude &&

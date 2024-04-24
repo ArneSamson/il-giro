@@ -55,7 +55,7 @@ export default function ColorPicker() {
   };
 
   const handleColorChange = (color) => {
-    console.log("color", color);
+    // console.log("color", color);
 
     const selectedColorHex = color.hex.toUpperCase();
 
