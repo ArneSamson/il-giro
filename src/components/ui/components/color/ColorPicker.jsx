@@ -138,6 +138,7 @@ export default function ColorPicker() {
             onChange={(e) => handleInput(e.target.value)}
           />
           <SwatchesPicker
+            selectedColor={ralColor}
             colors={ralData}
             onClick={(color) => handleColorChange(color)}
             errorMessage={colorError}

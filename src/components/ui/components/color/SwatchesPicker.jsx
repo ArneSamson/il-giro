@@ -4,6 +4,7 @@
 import React from "react";
 
 export default function SwatchesPicker({
+  selectedColor,
   colors,
   onClick,
   errorMessage = "",
@@ -33,6 +34,9 @@ export default function SwatchesPicker({
             style={{
               backgroundColor: colors[key].hex,
               ...swatchStyle,
+              outline:
+                selectedColor.hex === colors[key].hex ? "1px solid #000" : "",
+              outlineOffset: "1px",
             }}
             className='colorpicker__color-swatch'
             onClick={() => onClick(colors[key])}
