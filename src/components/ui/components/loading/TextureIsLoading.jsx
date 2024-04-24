@@ -13,39 +13,25 @@ export default function TextureIsLoading() {
 
   return (
     <>
-      {textureIsLoading && (
+      {!textureIsLoading && (
         <div
           style={{
             position: "absolute",
-            top: 0,
-            right: "20%",
+            top: 50,
+            right: "25%",
             transform: "translateX(-50%)",
-            padding: "2rem",
-            backgroundColor: "#ffffff89",
-            borderRadius: "1rem",
             margin: 0,
-
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            gap: "15%",
           }}
         >
-          <div>
-            <p>Loading Textures</p>
-          </div>
-          <div>
-            <img
-              src='/images/GIF/spinner.gif'
-              alt='loading'
-              style={{
-                width: "50px",
-                height: "50px",
-                objectFit: "cover",
-              }}
-            />
-          </div>
+          <img
+            src='/images/GIF/spinner.gif'
+            alt='loading'
+            style={{
+              width: "50px",
+              height: "50px",
+              objectFit: "cover",
+            }}
+          />
         </div>
       )}
     </>
