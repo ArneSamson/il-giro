@@ -50,7 +50,7 @@ export default function UiPage1() {
         {(mainMaterial.name === "paintwork" ||
           mainMaterial.name === "microtopping with ral") && <ColorPicker />}
 
-        <TableTopMaterialSelection />
+        <TableTopMaterialSelection extraMessage='*Changing the material will also change the thickness.' />
 
         <DetailWithMaterials
           header='Accent material: '
