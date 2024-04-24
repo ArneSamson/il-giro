@@ -61,7 +61,7 @@ export default function ExtraButtons() {
   return (
     <>
       <div className='extra-buttons'>
-        <ToolTipHandler content='Back to selection'>
+        {/* <ToolTipHandler content='Back to selection'>
           <div className='extra-buttons__button'>
             <button onClick={handleBackHome}>
               <svg
@@ -81,7 +81,7 @@ export default function ExtraButtons() {
               </svg>
             </button>
           </div>
-        </ToolTipHandler>
+        </ToolTipHandler> */}
 
         <ToolTipHandler content='Zoom out'>
           <div className='extra-buttons__button'>
