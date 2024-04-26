@@ -741,6 +741,10 @@ summary span {
   margin-top: 20px;
 }
 
+.config-ui__details__extra-message span {
+  font-weight: 700;
+}
+
 .config-ui__material-options {
   display: flex;
   flex-direction: row;

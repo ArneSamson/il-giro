@@ -71,7 +71,10 @@ export default function UiPage1() {
 
         <TableTopMaterialSelection
           extraMessage={
-            "*This material has a standard thickness of " + counterTopHeight
+            <>
+              *This material has a standard thickness of
+              <span> {counterTopHeight}.</span>
+            </>
           }
         />
 
