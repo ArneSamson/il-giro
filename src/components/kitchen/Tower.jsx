@@ -42,8 +42,9 @@ export default function Tower({ props }) {
   }));
 
   const towerAOMap = "/images/bakes/tower-ao.jpg";
-
   const towerAOMapBevelled = "/images/bakes/tower-ao2.jpg";
+  const towerCoolerShadow = "/images/bakes/tower-cooler-shadow.jpg";
+  const towerCoolerAo = "/images/bakes/tower-cooler-ao.jpg";
 
   const fridgeBlackMaterial = new MeshStandardMaterial({
     color: 0x9a9b9c,
@@ -330,7 +331,12 @@ export default function Tower({ props }) {
                   receiveShadow
                   geometry={nodes["inside-cooler"].geometry}
                 >
-                  <NewMaterial type={"main"} />
+                  <NewMaterial
+                    ambientOcclusion={towerCoolerShadow}
+                    type={"main"}
+                    // shadowTexture={towerCoolerShadow}
+                    envMapIntensity={1}
+                  />
                   <mesh
                     name='cooler-bevel'
                     visible={allBevelled}
