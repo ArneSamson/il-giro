@@ -53,6 +53,9 @@ export default function PDFButton() {
     tableTopRounded,
 
     ralColor,
+
+    visibleForPDF,
+    setVisibleForPDF,
   } = useConfigStore((state) => ({
     edgeFinish: state.edgeFinish,
 
@@ -82,6 +85,9 @@ export default function PDFButton() {
     tableTopRounded: state.tableTopRounded,
 
     ralColor: state.ralColor,
+
+    visibleForPDF: state.visibleForPDF,
+    setVisibleForPDF: state.setVisibleForPDF,
   }));
 
   const chosenModules = [
@@ -223,6 +229,7 @@ export default function PDFButton() {
       );
 
       setPdf(document);
+      //   setVisibleForPDF(true);
     }
 
     captureImage();

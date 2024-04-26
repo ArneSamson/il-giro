@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import useConfigStore from "../../../store/useConfigStore";
 
@@ -29,6 +29,9 @@ export default function OrderOverview() {
 
     allBevelled,
     tableTopInset,
+
+    visibleForPDF,
+    setVisibleForPDF,
   } = useConfigStore((state) => ({
     edgeFinish: state.edgeFinish,
 
@@ -52,7 +55,14 @@ export default function OrderOverview() {
 
     allBevelled: state.allBevelled,
     tableTopInset: state.tableTopInset,
+
+    visibleForPDF: state.visibleForPDF,
+    setVisibleForPDF: state.setVisibleForPDF,
   }));
+
+  useEffect(() => {
+    // setVisibleForPDF(false);
+  }, []);
 
   return (
     <>

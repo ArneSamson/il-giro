@@ -28,6 +28,7 @@ export default function Tower({ props }) {
     doorOpeningRotation,
 
     allBevelled,
+    visibleForPDF,
   } = useConfig((state) => ({
     mainMaterial: state.mainMaterial,
     mainMaterialCategory: state.mainMaterialCategory,
@@ -39,6 +40,7 @@ export default function Tower({ props }) {
     doorOpeningRotation: state.doorOpeningRotation,
 
     allBevelled: state.allBevelled,
+    visibleForPDF: state.visibleForPDF,
   }));
 
   const towerAOMap = "/images/bakes/tower-ao.jpg";
@@ -308,23 +310,27 @@ export default function Tower({ props }) {
               </mesh>
             </mesh>
 
-            <WineBottle
-              position={[
-                0.3,
-                applianceType === "fridge"
-                  ? 0.95
-                  : applianceType === "drawers"
-                  ? 0.915
-                  : 1,
-                -0.1,
-              ]}
-              scale={[1, 1, 1]}
-              rotation={[0, Math.PI, 0]}
-            />
+            {visibleForPDF && (
+              <>
+                <WineBottle
+                  position={[
+                    0.3,
+                    applianceType === "fridge"
+                      ? 0.95
+                      : applianceType === "drawers"
+                      ? 0.915
+                      : 1,
+                    -0.1,
+                  ]}
+                  scale={[1, 1, 1]}
+                  rotation={[0, Math.PI, 0]}
+                />
+              </>
+            )}
 
             {applianceType === "fridge" && (
               <>
-                {wineBottles}
+                {visibleForPDF && <>{wineBottles}</>}
                 <mesh
                   name='cooler'
                   castShadow
@@ -335,7 +341,6 @@ export default function Tower({ props }) {
                     ambientOcclusion={towerCoolerShadow}
                     type={"main"}
                     // shadowTexture={towerCoolerShadow}
-                    envMapIntensity={1}
                   />
                   <mesh
                     name='cooler-bevel'
