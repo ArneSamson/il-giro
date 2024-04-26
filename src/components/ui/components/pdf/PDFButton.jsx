@@ -155,13 +155,13 @@ export default function PDFButton() {
       lookAtYOffset = 2;
       break;
     case sinkChosen && !cooktopChosen && !towerChosen && !tableChosen:
-      lookAtZOffset = 1.5;
-      lookAtYOffset = 2;
+      lookAtZOffset = 2;
+      lookAtYOffset = 1.5;
       lookAtXOffset = 0;
       break;
     case !sinkChosen && cooktopChosen && !towerChosen && !tableChosen:
-      lookAtZOffset = 1.5;
-      lookAtYOffset = 2;
+      lookAtZOffset = 2;
+      lookAtYOffset = 1.5;
       lookAtXOffset = 0;
       break;
     case !sinkChosen && !cooktopChosen && towerChosen && !tableChosen:
