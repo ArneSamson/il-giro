@@ -93,6 +93,7 @@ export default function CameraHandler() {
       maxZoom={4}
       maxDistance={maxDistance}
       minDistance={minDistance}
+      //   colliderMeshes={[]}
     />
   );
 }
