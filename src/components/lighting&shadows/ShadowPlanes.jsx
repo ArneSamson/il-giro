@@ -36,7 +36,7 @@ export function BakePlane({ props }) {
         <meshBasicMaterial
           attach='material'
           alphaMap={alphaMap1}
-          color='#262828'
+          color='#464a4a'
           metalness={0}
           roughness={1}
           transparent
@@ -76,7 +76,7 @@ export function BakePlaneSmall({ props }) {
         <meshBasicMaterial
           attach='material'
           alphaMap={alphaMap1}
-          color='#262828'
+          color='#464a4a'
           metalness={0}
           roughness={1}
           transparent
