@@ -7,6 +7,7 @@ import { NoColorSpace, RepeatWrapping, SRGBColorSpace, Vector2 } from "three";
 
 export default function NewMaterial({
   ambientOcclusion,
+  shadowTexture = null,
   type,
   ralExclude,
   envIntensity = 1,
@@ -90,6 +91,12 @@ export default function NewMaterial({
     aoMap.flipY = false;
   }
 
+  let lightMap = null;
+  if (shadowTexture) {
+    lightMap = useTexture(shadowTexture);
+    lightMap.flipY = false;
+  }
+
   return (
     <>
       {!ralExclude &&
@@ -107,6 +114,7 @@ export default function NewMaterial({
             aoMap={aoMap}
             aoMapIntensity={0.8}
             envIntensity={envIntensity}
+            lightMap={lightMap}
           />
         )}
       {!ralExclude && (
@@ -121,6 +129,7 @@ export default function NewMaterial({
           aoMap={aoMap}
           aoMapIntensity={0.8}
           envIntensity={envIntensity}
+          lightMap={lightMap}
         />
       )}
       {ralExclude &&
@@ -137,6 +146,7 @@ export default function NewMaterial({
             aoMap={aoMap}
             aoMapIntensity={0.8}
             envMapIntensity={envIntensity}
+            lightMap={lightMap}
           />
         )}
     </>
