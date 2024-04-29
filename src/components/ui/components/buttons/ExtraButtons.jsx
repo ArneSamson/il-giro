@@ -258,7 +258,7 @@ export default function ExtraButtons() {
                     strokeLinejoin='round'
                   />
                   <path
-                    d='M4 1V4C7.75 4 5.93629 4 9.25 4C12.5637 4 12.25 4 16 4V1H10H4Z'
+                    d='M5.5 1C4.67157 1 4 1.67157 4 2.5V2.5C4 3.32843 4.67428 4 5.50271 4C7.27573 4 6.50989 4 9.25 4C12.0415 4 12.2588 4 14.4997 4C15.3281 4 16 3.32843 16 2.5V2.5C16 1.67157 15.3284 1 14.5 1H10H5.5Z'
                     stroke='black'
                     strokeLinecap='round'
                     strokeLinejoin='round'
