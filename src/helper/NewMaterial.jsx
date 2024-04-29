@@ -97,58 +97,62 @@ export default function NewMaterial({
     lightMap.flipY = false;
   }
 
-  return (
-    <>
-      {!ralExclude &&
-        (mainMaterial.name === "paintwork" ||
-          mainMaterial.name === "microtopping with ral") && (
-          <meshStandardMaterial
-            color={ralColor.hex}
-            map={albedoTexture}
-            roughnessMap={roughnessTexture}
-            normalMap={normalTexture}
-            normalScale={new Vector2(0.3, 0.3)}
-            metalnessMap={metallnessTexture}
-            roughness={1}
-            metalness={1}
-            aoMap={aoMap}
-            aoMapIntensity={0.8}
-            envIntensity={envIntensity}
-            lightMap={lightMap}
-          />
-        )}
-      {!ralExclude && (
-        <meshStandardMaterial
-          map={albedoTexture}
-          roughnessMap={roughnessTexture}
-          normalMap={normalTexture}
-          normalScale={new Vector2(0.3, 0.3)}
-          metalnessMap={metallnessTexture}
-          roughness={1}
-          metalness={1}
-          aoMap={aoMap}
-          aoMapIntensity={0.8}
-          envIntensity={envIntensity}
-          lightMap={lightMap}
-        />
-      )}
-      {ralExclude &&
-        (mainMaterial.name !== "paintwork" ||
-          mainMaterial.name !== "microptopping with ral") && (
-          <meshStandardMaterial
-            map={albedoTexture}
-            roughnessMap={roughnessTexture}
-            normalMap={normalTexture}
-            normalScale={new Vector2(0.3, 0.3)}
-            metalnessMap={metallnessTexture}
-            roughness={1}
-            metalness={1}
-            aoMap={aoMap}
-            aoMapIntensity={0.8}
-            envMapIntensity={envIntensity}
-            lightMap={lightMap}
-          />
-        )}
-    </>
-  );
+  if (
+    !ralExclude &&
+    (mainMaterial.name === "paintwork" ||
+      mainMaterial.name === "microtopping with ral")
+  ) {
+    return (
+      <meshStandardMaterial
+        color={ralColor.hex}
+        map={albedoTexture}
+        roughnessMap={roughnessTexture}
+        normalMap={normalTexture}
+        normalScale={new Vector2(0.3, 0.3)}
+        metalnessMap={metallnessTexture}
+        roughness={1}
+        metalness={1}
+        aoMap={aoMap}
+        aoMapIntensity={0.8}
+        envIntensity={envIntensity}
+        lightMap={lightMap}
+      />
+    );
+  } else if (
+    ralExclude &&
+    (mainMaterial.name !== "paintwork" ||
+      mainMaterial.name !== "microtopping with ral")
+  ) {
+    return (
+      <meshStandardMaterial
+        map={albedoTexture}
+        roughnessMap={roughnessTexture}
+        normalMap={normalTexture}
+        normalScale={new Vector2(0.3, 0.3)}
+        metalnessMap={metallnessTexture}
+        roughness={1}
+        metalness={1}
+        aoMap={aoMap}
+        aoMapIntensity={0.8}
+        envMapIntensity={envIntensity}
+        lightMap={lightMap}
+      />
+    );
+  } else {
+    return (
+      <meshStandardMaterial
+        map={albedoTexture}
+        roughnessMap={roughnessTexture}
+        normalMap={normalTexture}
+        normalScale={new Vector2(0.3, 0.3)}
+        metalnessMap={metallnessTexture}
+        roughness={1}
+        metalness={1}
+        aoMap={aoMap}
+        aoMapIntensity={0.8}
+        envIntensity={envIntensity}
+        lightMap={lightMap}
+      />
+    );
+  }
 }
