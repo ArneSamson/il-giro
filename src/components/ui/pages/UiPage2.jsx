@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useShallow } from "zustand/react/shallow";
 
 import useConfigStore from "../../../store/useConfigStore";
@@ -139,6 +139,8 @@ export default function UiPage2() {
     counterTopHeight = "5mm";
   }
 
+  const [showInsetOption, setShowInsetOption] = useState(true);
+
   useEffect(() => {
     // Check if only the table is chosen
     const isTableChosen =
@@ -146,6 +148,7 @@ export default function UiPage2() {
     // If only the table is chosen, set tableTopInset to false
     if (isTableChosen) {
       setTableTopInset(false);
+      setShowInsetOption(false);
     }
   }, [sinkChosen, cooktopChosen, towerChosen, tableChosen]);
 
@@ -170,16 +173,18 @@ export default function UiPage2() {
             <ButtonCategoryTitle
               title={`Countertop (` + counterTopHeight + `)`}
             >
-              <DetailWithButtons
-                summary='Countertop type: '
-                options={tableTopInsetOptions}
-                selectedOption={
-                  tableTopInsetOptions.find(
-                    (option) => option.value === tableTopInset
-                  ).label
-                }
-                setOption={setTableTopInset}
-              />
+              {showInsetOption && (
+                <DetailWithButtons
+                  summary='Countertop type: '
+                  options={tableTopInsetOptions}
+                  selectedOption={
+                    tableTopInsetOptions.find(
+                      (option) => option.value === tableTopInset
+                    ).label
+                  }
+                  setOption={setTableTopInset}
+                />
+              )}
 
               {!tableTopInset && (
                 <DetailWithButtons
