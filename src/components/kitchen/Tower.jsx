@@ -8,6 +8,7 @@ import {
 } from "three";
 import { useGLTF, MeshTransmissionMaterial } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
+import { useShallow } from "zustand/react/shallow";
 
 import WineStand from "./accessoires/WineStand.jsx";
 import { WineBottle } from "./accessoires/extras/Alcohol.jsx";
@@ -17,7 +18,7 @@ import { BakePlane } from "../lighting&shadows/ShadowPlanes.jsx";
 import NewMaterial from "../../helper/NewMaterial.jsx";
 
 import useScene from "../../store/useScene.jsx";
-import useConfig from "../../store/useConfigStore.jsx";
+import useConfigStore from "../../store/useConfigStore.jsx";
 
 export default function Tower({ props }) {
   const {
@@ -29,19 +30,21 @@ export default function Tower({ props }) {
 
     allBevelled,
     visibleForPDF,
-  } = useConfig((state) => ({
-    mainMaterial: state.mainMaterial,
-    mainMaterialCategory: state.mainMaterialCategory,
+  } = useConfigStore(
+    useShallow((state) => ({
+      mainMaterial: state.mainMaterial,
+      mainMaterialCategory: state.mainMaterialCategory,
 
-    towerPosition: state.towerPosition,
-    towerRotation: state.towerRotation,
+      towerPosition: state.towerPosition,
+      towerRotation: state.towerRotation,
 
-    applianceType: state.applianceType,
-    doorOpeningRotation: state.doorOpeningRotation,
+      applianceType: state.applianceType,
+      doorOpeningRotation: state.doorOpeningRotation,
 
-    allBevelled: state.allBevelled,
-    visibleForPDF: state.visibleForPDF,
-  }));
+      allBevelled: state.allBevelled,
+      visibleForPDF: state.visibleForPDF,
+    }))
+  );
 
   const towerAOMap = "/images/bakes/tower-ao.jpg";
   const towerAOMapBevelled = "/images/bakes/tower-ao2.jpg";

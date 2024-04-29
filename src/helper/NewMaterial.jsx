@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useShallow } from "zustand/react/shallow";
 
 import { useTexture } from "./useTexture";
 import useConfigStore from "../store/useConfigStore";
@@ -18,13 +19,15 @@ export default function NewMaterial({
     accentMaterial,
     tableTopMaterial,
     ralColor,
-  } = useConfigStore((state) => ({
-    mainMaterial: state.mainMaterial,
-    mainMaterialCategory: state.mainMaterialCategory,
-    accentMaterial: state.accentMaterial,
-    tableTopMaterial: state.tableTopMaterial,
-    ralColor: state.ralColor,
-  }));
+  } = useConfigStore(
+    useShallow((state) => ({
+      mainMaterial: state.mainMaterial,
+      mainMaterialCategory: state.mainMaterialCategory,
+      accentMaterial: state.accentMaterial,
+      tableTopMaterial: state.tableTopMaterial,
+      ralColor: state.ralColor,
+    }))
+  );
 
   const { setTextureIsLoading } = useUIStore((state) => ({
     setTextureIsLoading: state.setTextureIsLoading,

@@ -2,12 +2,12 @@ import React, { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useTexture, useGLTF } from "@react-three/drei";
 
-import useConfig from "../../../store/useConfigStore.jsx";
+import useConfigStore from "../../../store/useConfigStore.jsx";
 
 import NewMaterial from "../../../helper/NewMaterial.jsx";
 
 export default function Drawers(props) {
-  const { doorOpeningRotation } = useConfig((state) => ({
+  const { doorOpeningRotation } = useConfigStore((state) => ({
     doorOpeningRotation: state.doorOpeningRotation,
   }));
 

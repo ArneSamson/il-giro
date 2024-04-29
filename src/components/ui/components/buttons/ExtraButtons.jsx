@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { useShallow } from "zustand/react/shallow";
 
 import useConfig from "../../../../store/useConfigStore.jsx";
 import useScene from "../../../../store/useScene.jsx";
@@ -17,25 +18,29 @@ export default function ExtraButtons() {
     cooktopChosen,
     towerChosen,
     tableChosen,
-  } = useConfig((state) => ({
-    doorOpeningRotation: state.doorOpeningRotation,
-    setDoorOpeningRotation: state.setDoorOpeningRotation,
-    showChairs: state.showChairs,
-    setShowChairs: state.setShowChairs,
-    sinkChosen: state.sinkChosen,
-    cooktopChosen: state.cooktopChosen,
-    towerChosen: state.towerChosen,
-    tableChosen: state.tableChosen,
-  }));
+  } = useConfig(
+    useShallow((state) => ({
+      doorOpeningRotation: state.doorOpeningRotation,
+      setDoorOpeningRotation: state.setDoorOpeningRotation,
+      showChairs: state.showChairs,
+      setShowChairs: state.setShowChairs,
+      sinkChosen: state.sinkChosen,
+      cooktopChosen: state.cooktopChosen,
+      towerChosen: state.towerChosen,
+      tableChosen: state.tableChosen,
+    }))
+  );
 
   const { setLandingPageVisible } = useUIStore((state) => ({
     setLandingPageVisible: state.setLandingPageVisible,
   }));
 
-  const { setCameraFocus, setNeedsToDolly } = useScene((state) => ({
-    setCameraFocus: state.setCameraFocus,
-    setNeedsToDolly: state.setNeedsToDolly,
-  }));
+  const { setCameraFocus, setNeedsToDolly } = useScene(
+    useShallow((state) => ({
+      setCameraFocus: state.setCameraFocus,
+      setNeedsToDolly: state.setNeedsToDolly,
+    }))
+  );
 
   const handleZoom = () => {
     setCameraFocus([0, 1, 0]);

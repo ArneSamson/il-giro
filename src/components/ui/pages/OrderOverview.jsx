@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useShallow } from "zustand/react/shallow";
 
 import useConfigStore from "../../../store/useConfigStore";
 
@@ -32,33 +33,35 @@ export default function OrderOverview() {
 
     visibleForPDF,
     setVisibleForPDF,
-  } = useConfigStore((state) => ({
-    edgeFinish: state.edgeFinish,
+  } = useConfigStore(
+    useShallow((state) => ({
+      edgeFinish: state.edgeFinish,
 
-    tapType: state.tapType,
-    mainDrawers: state.mainDrawers,
+      tapType: state.tapType,
+      mainDrawers: state.mainDrawers,
 
-    stoveType: state.stoveType,
+      stoveType: state.stoveType,
 
-    applianceType: state.applianceType,
+      applianceType: state.applianceType,
 
-    wineStandSize: state.wineStandSize,
+      wineStandSize: state.wineStandSize,
 
-    sinkChosen: state.sinkChosen,
-    cooktopChosen: state.cooktopChosen,
-    towerChosen: state.towerChosen,
-    tableChosen: state.tableChosen,
+      sinkChosen: state.sinkChosen,
+      cooktopChosen: state.cooktopChosen,
+      towerChosen: state.towerChosen,
+      tableChosen: state.tableChosen,
 
-    mainMaterial: state.mainMaterial,
-    tableTopMaterial: state.tableTopMaterial,
-    accentMaterial: state.accentMaterial,
+      mainMaterial: state.mainMaterial,
+      tableTopMaterial: state.tableTopMaterial,
+      accentMaterial: state.accentMaterial,
 
-    allBevelled: state.allBevelled,
-    tableTopInset: state.tableTopInset,
+      allBevelled: state.allBevelled,
+      tableTopInset: state.tableTopInset,
 
-    visibleForPDF: state.visibleForPDF,
-    setVisibleForPDF: state.setVisibleForPDF,
-  }));
+      visibleForPDF: state.visibleForPDF,
+      setVisibleForPDF: state.setVisibleForPDF,
+    }))
+  );
 
   useEffect(() => {
     // setVisibleForPDF(false);

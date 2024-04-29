@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
+import { useShallow } from "zustand/react/shallow";
 
 import BaseIsland from "./BaseIsland.jsx";
 
@@ -12,7 +13,7 @@ import TableTopCutOut from "./tabletops/TableTopCutOut.jsx";
 import TableTopCutRound from "./tabletops/TableTopCutRound.jsx";
 
 import useScene from "../../store/useScene.jsx";
-import useConfig from "../../store/useConfigStore.jsx";
+import useConfigStore from "../../store/useConfigStore.jsx";
 
 export default function Sink({ props }) {
   const {
@@ -29,21 +30,23 @@ export default function Sink({ props }) {
 
     tableTopMaterialCategory,
     tableTopHeight,
-  } = useConfig((state) => ({
-    sinkPosition: state.sinkPosition,
-    sinkRotation: state.sinkRotation,
+  } = useConfigStore(
+    useShallow((state) => ({
+      sinkPosition: state.sinkPosition,
+      sinkRotation: state.sinkRotation,
 
-    tapType: state.tapType,
+      tapType: state.tapType,
 
-    mainDrawers: state.mainDrawers,
+      mainDrawers: state.mainDrawers,
 
-    tableTopInset: state.tableTopInset,
-    tableTopRounded: state.tableTopRounded,
-    setTableTopRounded: state.setTableTopRounded,
+      tableTopInset: state.tableTopInset,
+      tableTopRounded: state.tableTopRounded,
+      setTableTopRounded: state.setTableTopRounded,
 
-    tableTopMaterialCategory: state.tableTopMaterialCategory,
-    tableTopHeight: state.tableTopHeight,
-  }));
+      tableTopMaterialCategory: state.tableTopMaterialCategory,
+      tableTopHeight: state.tableTopHeight,
+    }))
+  );
 
   const { setCameraFocus } = useScene((state) => ({
     setCameraFocus: state.setCameraFocus,

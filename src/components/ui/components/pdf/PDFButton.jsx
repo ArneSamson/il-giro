@@ -7,6 +7,7 @@ import {
   BlobProvider,
 } from "@react-pdf/renderer";
 import ReactPDF from "@react-pdf/renderer";
+import { useShallow } from "zustand/react/shallow";
 
 import { MyDocument } from "./PDF.jsx";
 
@@ -56,39 +57,41 @@ export default function PDFButton() {
 
     visibleForPDF,
     setVisibleForPDF,
-  } = useConfigStore((state) => ({
-    edgeFinish: state.edgeFinish,
+  } = useConfigStore(
+    useShallow((state) => ({
+      edgeFinish: state.edgeFinish,
 
-    tapType: state.tapType,
-    mainDrawers: state.mainDrawers,
+      tapType: state.tapType,
+      mainDrawers: state.mainDrawers,
 
-    stoveType: state.stoveType,
+      stoveType: state.stoveType,
 
-    applianceType: state.applianceType,
+      applianceType: state.applianceType,
 
-    wineStandSize: state.wineStandSize,
+      wineStandSize: state.wineStandSize,
 
-    sinkChosen: state.sinkChosen,
-    cooktopChosen: state.cooktopChosen,
-    towerChosen: state.towerChosen,
-    tableChosen: state.tableChosen,
+      sinkChosen: state.sinkChosen,
+      cooktopChosen: state.cooktopChosen,
+      towerChosen: state.towerChosen,
+      tableChosen: state.tableChosen,
 
-    mainMaterial: state.mainMaterial,
-    mainMaterialCategory: state.mainMaterialCategory,
-    tableTopMaterial: state.tableTopMaterial,
-    tableTopMaterialCategory: state.tableTopMaterialCategory,
-    accentMaterial: state.accentMaterial,
+      mainMaterial: state.mainMaterial,
+      mainMaterialCategory: state.mainMaterialCategory,
+      tableTopMaterial: state.tableTopMaterial,
+      tableTopMaterialCategory: state.tableTopMaterialCategory,
+      accentMaterial: state.accentMaterial,
 
-    allBevelled: state.allBevelled,
-    tableTopInset: state.tableTopInset,
-    tableTopHeight: state.tableTopHeight,
-    tableTopRounded: state.tableTopRounded,
+      allBevelled: state.allBevelled,
+      tableTopInset: state.tableTopInset,
+      tableTopHeight: state.tableTopHeight,
+      tableTopRounded: state.tableTopRounded,
 
-    ralColor: state.ralColor,
+      ralColor: state.ralColor,
 
-    visibleForPDF: state.visibleForPDF,
-    setVisibleForPDF: state.setVisibleForPDF,
-  }));
+      visibleForPDF: state.visibleForPDF,
+      setVisibleForPDF: state.setVisibleForPDF,
+    }))
+  );
 
   const chosenModules = [
     sinkChosen ? "Sink" : "",

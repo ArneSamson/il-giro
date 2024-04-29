@@ -1,14 +1,14 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 
-import useConfig from "../../../store/useConfigStore.jsx";
+import useConfigStore from "../../../store/useConfigStore.jsx";
 
 import NewMaterial from "../../../helper/NewMaterial.jsx";
 
 import { GlassBottleWhiskey, WineBottle, Wodka } from "./extras/Alcohol.jsx";
 
 export default function WineStand({ props }) {
-  const { wineStandSize } = useConfig((state) => ({
+  const { wineStandSize } = useConfigStore((state) => ({
     wineStandSize: state.wineStandSize,
   }));
 
