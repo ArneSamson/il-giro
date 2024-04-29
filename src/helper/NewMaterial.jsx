@@ -61,7 +61,7 @@ export default function NewMaterial({
     );
 
   if (albedoTexture.wrapS !== RepeatWrapping) {
-    albedoTexture.repeat.set(2.5, 2.5);
+    albedoTexture.repeat.set(5, 5);
     albedoTexture.wrapS = RepeatWrapping;
     albedoTexture.wrapT = RepeatWrapping;
     albedoTexture.needsUpdate = true;
