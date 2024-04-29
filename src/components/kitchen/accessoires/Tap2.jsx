@@ -1,36 +1,9 @@
 import React, { useRef } from 'react';
-import * as THREE from 'three'
 import { useGLTF } from '@react-three/drei'
 
-import useConfig from '../../../store/useConfigStore.jsx';
-
-import { useTexture } from '../../../helper/useTexture.tsx';
-
+import NewMaterial from '../../../helper/NewMaterial.jsx';
 
 export default function Tap1({ props }) {
-
-    const {
-        accentMaterial,
-    } = useConfig(
-        state => ({
-            accentMaterial: state.accentMaterial,
-        })
-    );
-
-    const [albedoTexture, metallnessTexture] = useTexture([
-        accentMaterial.url + "albedo.jpg",
-        accentMaterial.url + "metallic.jpg"
-    ]);
-
-    albedoTexture.colorSpace = THREE.SRGBColorSpace;
-
-    const material = new THREE.MeshStandardMaterial({
-        map: albedoTexture,
-        metalnessMap: metallnessTexture,
-        metalness: 1,
-        roughness: 0
-
-    });
 
     const { nodes, materials } = useGLTF("/models/tap2.glb");
 
@@ -44,8 +17,12 @@ export default function Tap1({ props }) {
                 castShadow
                 receiveShadow
                 geometry={nodes.Bridge.geometry}
-                material={material}
-            />
+            >
+                <NewMaterial
+                    type={"accent"}
+                    ralExclude={true}
+                />
+            </mesh>
         </group>
     );
 }

@@ -6,7 +6,7 @@ export default function DetailWithMaterials({
     selectedMaterial,
     setMaterial,
     open,
-    extraMessage
+    extraMessage,
 }) {
     return (
         <details
@@ -25,14 +25,16 @@ export default function DetailWithMaterials({
                         className={`config-ui__material-options__option ${selectedMaterial === material.name ? "selected-material-n-category" : ""}`}
                         onClick={() => setMaterial(material)}
                         style={{
-                            backgroundImage: `url(${material.url}preview.jpg)`,
+                            backgroundImage: `url(${material.url}preview.webp)`,
                             backgroundSize: "cover",
                             backgroundPosition: "center"
                         }}
                     ></div>
                 ))}
-                <p>{extraMessage}</p>
             </div>
+            <p
+                className="config-ui__details__extra-message"
+            >{extraMessage}</p>
         </details>
     );
 }

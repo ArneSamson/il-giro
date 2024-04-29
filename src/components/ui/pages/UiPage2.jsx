@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import useConfigStore from "../../../store/useConfigStore";
 
@@ -6,232 +6,297 @@ import DetailWithButtons from "../components/DetailWithButtons";
 import { ButtonCategoryTitle } from "../components/text/TextComponents";
 
 export default function UiPage2() {
+  const {
+    edgeFinish,
+    setEdgeFinish,
 
-    const {
-        edgeFinish,
-        setEdgeFinish,
+    tapType,
+    setTapType,
 
-        tapType,
-        setTapType,
+    stoveType,
+    setStoveType,
 
-        stoveType,
-        setStoveType,
+    applianceType,
+    setApplianceType,
+    wineStandSize,
+    setWineStandSize,
 
-        applianceType,
-        setApplianceType,
-        wineStandSize,
-        setWineStandSize,
+    mainDrawers,
+    setMainDrawers,
 
-        mainDrawers,
-        setMainDrawers,
+    sinkChosen,
+    cooktopChosen,
+    towerChosen,
+    tableChosen,
 
-        sinkChosen,
-        cooktopChosen,
-        towerChosen,
-        tableChosen,
+    tableTopInset,
+    setTableTopInset,
 
-        tableTopInset,
-        setTableTopInset,
+    tableTopRounded,
+    setTableTopRounded,
 
-        tableTopRounded,
-        setTableTopRounded,
+    tableTopHeight,
+    setTableTopHeight,
 
-        tableTopHeight,
-        setTableTopHeight,
+    tableTopMaterialCategory,
+  } = useConfigStore((state) => ({
+    edgeFinish: state.edgeFinish,
+    setEdgeFinish: state.setEdgeFinish,
 
-        tableTopMaterialCategory,
-    } = useConfigStore(
-        state => ({
-            edgeFinish: state.edgeFinish,
-            setEdgeFinish: state.setEdgeFinish,
+    tapType: state.tapType,
+    setTapType: state.setTapType,
 
-            tapType: state.tapType,
-            setTapType: state.setTapType,
+    stoveType: state.stoveType,
+    setStoveType: state.setStoveType,
 
-            stoveType: state.stoveType,
-            setStoveType: state.setStoveType,
+    applianceType: state.applianceType,
+    setApplianceType: state.setApplianceType,
+    wineStandSize: state.wineStandSize,
+    setWineStandSize: state.setWineStandSize,
 
-            applianceType: state.applianceType,
-            setApplianceType: state.setApplianceType,
-            wineStandSize: state.wineStandSize,
-            setWineStandSize: state.setWineStandSize,
+    mainDrawers: state.mainDrawers,
+    setMainDrawers: state.setMainDrawers,
 
-            mainDrawers: state.mainDrawers,
-            setMainDrawers: state.setMainDrawers,
+    sinkChosen: state.sinkChosen,
+    cooktopChosen: state.cooktopChosen,
+    towerChosen: state.towerChosen,
+    tableChosen: state.tableChosen,
 
-            sinkChosen: state.sinkChosen,
-            cooktopChosen: state.cooktopChosen,
-            towerChosen: state.towerChosen,
-            tableChosen: state.tableChosen,
+    tableTopInset: state.tableTopInset,
+    setTableTopInset: state.setTableTopInset,
 
-            tableTopInset: state.tableTopInset,
-            setTableTopInset: state.setTableTopInset,
+    tableTopRounded: state.tableTopRounded,
+    setTableTopRounded: state.setTableTopRounded,
 
-            tableTopRounded: state.tableTopRounded,
-            setTableTopRounded: state.setTableTopRounded,
+    tableTopHeight: state.tableTopHeight,
+    setTableTopHeight: state.setTableTopHeight,
 
-            tableTopHeight: state.tableTopHeight,
-            setTableTopHeight: state.setTableTopHeight,
+    tableTopMaterialCategory: state.tableTopMaterialCategory,
+  }));
 
-            tableTopMaterialCategory: state.tableTopMaterialCategory,
-        })
-    );
+  const edgeFinishOptions = [
+    { label: "Square", value: "square" },
+    { label: "Curved", value: "curved" },
+  ];
 
-    const edgeFinishOptions = [
-        { label: "Square", value: "square" },
-        { label: "Curved", value: "curved" }
-    ];
+  const faucetOptions = [
+    { label: "Brandwood 3", value: 1 },
+    { label: "Bridge", value: 2 },
+  ];
 
-    const faucetOptions = [
-        { label: "Brandwood 3", value: 1 },
-        { label: "Bridge", value: 2 }
-    ];
+  const stoveOptions = [
+    { label: "Gas", value: 1 },
+    { label: "Electric", value: 2 },
+  ];
 
-    const stoveOptions = [
-        { label: "Gas", value: 1 },
-        { label: "Electric", value: 2 }
-    ];
+  const applianceOptions = [
+    { label: "Oven", value: "oven" },
+    { label: "Fridge", value: "fridge" },
+    { label: "Drawers", value: "drawers" },
+  ];
 
-    const applianceOptions = [
-        { label: "Oven", value: "oven" },
-        { label: "Fridge", value: "fridge" },
-        { label: "Drawers", value: "drawers" },
-    ];
+  const winestandOptions = [
+    { label: "Small", value: "small" },
+    { label: "Medium", value: "medium" },
+    { label: "Large", value: "tall" },
+  ];
 
-    const winestandOptions = [
-        { label: "Small", value: "small" },
-        { label: "Medium", value: "medium" },
-        { label: "Large", value: "tall" },
-    ];
+  const mainDrawerOptions = [
+    { label: "Yes", value: true },
+    { label: "No", value: false },
+  ];
 
-    const mainDrawerOptions = [
-        { label: "Yes", value: true },
-        { label: "No", value: false }
-    ];
+  const tableTopInsetOptions = [
+    { label: "Inset", value: true },
+    { label: "Overlay", value: false },
+  ];
 
-    const tableTopInsetOptions = [
-        { label: "Inset", value: true },
-        { label: "Overlay", value: false }
-    ];
+  const tableTopRoundedOptions = [
+    { label: "Rounded", value: true },
+    { label: "Straight", value: false },
+  ];
 
-    const tableTopRoundedOptions = [
-        { label: "Rounded", value: true },
-        { label: "Straight", value: false }
-    ];
+  const tableTopHeightOptions = [
+    { label: "12mm", value: 0.3 },
+    { label: "20mm", value: 0.5 },
+  ];
 
-    const tableTopHeightOptions = [
-        { label: "12mm", value: 0.3 },
-        { label: "20mm", value: 0.5 },
-    ];
+  let counterTopHeight;
 
-    return <>
+  if (tableTopMaterialCategory === "dekton") {
+    if (tableTopHeight === 0.5) {
+      counterTopHeight = "20mm";
+    }
+    if (tableTopHeight === 0.3) {
+      counterTopHeight = "12mm";
+    }
+  } else if (tableTopMaterialCategory === "natural stone") {
+    counterTopHeight = "40mm";
+  } else if (tableTopMaterialCategory === "metal") {
+    counterTopHeight = "5mm";
+  }
 
-        <div
-            className='config-ui__title'
-        >
-            <span><h2>Options</h2></span>
-        </div>
+  useEffect(() => {
+    // Check if only the table is chosen
+    const isTableChosen =
+      tableChosen && !sinkChosen && !cooktopChosen && !towerChosen;
+    // If only the table is chosen, set tableTopInset to false
+    if (isTableChosen) {
+      setTableTopInset(false);
+    }
+  }, [sinkChosen, cooktopChosen, towerChosen, tableChosen]);
 
-        <div
-            className='config-ui__options'
-        >
+  return (
+    <>
+      <div className='config-ui__title'>
+        <span>
+          <h2>Options</h2>
+        </span>
+      </div>
 
-            {/* <DetailWithButtons
+      <div className='config-ui__options'>
+        {/* <DetailWithButtons
                 summary="Edge finish: "
                 options={edgeFinishOptions}
                 selectedOption={edgeFinishOptions.find(option => option.value === edgeFinish).label}
                 setOption={setEdgeFinish}
             /> */}
 
-            {(sinkChosen || cooktopChosen) && <>
-
-                <ButtonCategoryTitle
-                    title="Countertop"
-                >
-                    <DetailWithButtons
-                        summary="Countertop: "
-                        options={tableTopInsetOptions}
-                        selectedOption={tableTopInsetOptions.find(option => option.value === tableTopInset).label}
-                        setOption={setTableTopInset}
-                    />
-
-                    {!tableTopInset &&
-                        <DetailWithButtons
-                            summary="Countertop edge: "
-                            options={tableTopRoundedOptions}
-                            selectedOption={tableTopRoundedOptions.find(option => option.value === tableTopRounded).label}
-                            setOption={setTableTopRounded}
-                        />
-                    }
-
-                    {tableTopMaterialCategory === 'dekton' &&
-                        <DetailWithButtons
-                            summary="Countertop height: "
-                            options={tableTopHeightOptions}
-                            selectedOption={tableTopHeightOptions.find(option => option.value === tableTopHeight).label}
-                            setOption={setTableTopHeight}
-                        />
-                    }
-                </ButtonCategoryTitle>
-
-
-
-            </>}
-
+        {(sinkChosen || cooktopChosen || tableChosen) && (
+          <>
             <ButtonCategoryTitle
-                title="Appliances"
+              title={`Countertop (` + counterTopHeight + `)`}
             >
+              <DetailWithButtons
+                summary='Countertop type: '
+                options={tableTopInsetOptions}
+                selectedOption={
+                  tableTopInsetOptions.find(
+                    (option) => option.value === tableTopInset
+                  ).label
+                }
+                setOption={setTableTopInset}
+              />
 
+              {!tableTopInset && (
+                <DetailWithButtons
+                  summary='Countertop edge: '
+                  options={tableTopRoundedOptions}
+                  selectedOption={
+                    tableTopRoundedOptions.find(
+                      (option) => option.value === tableTopRounded
+                    ).label
+                  }
+                  setOption={setTableTopRounded}
+                />
+              )}
 
-                {sinkChosen && <>
-                    <DetailWithButtons
-                        summary="Faucet type: "
-                        options={faucetOptions}
-                        selectedOption={faucetOptions.find(option => option.value === tapType).label}
-                        setOption={setTapType}
-                    />
-                </>}
-
-                {cooktopChosen && <>
-                    <DetailWithButtons
-                        summary="Stove type: "
-                        options={stoveOptions}
-                        selectedOption={stoveOptions.find(option => option.value === stoveType).label}
-                        setOption={setStoveType}
-                    />
-                </>}
-
-                {towerChosen && <>
-                    <DetailWithButtons
-                        summary="Winestand size: "
-                        options={winestandOptions}
-                        selectedOption={winestandOptions.find(option => option.value === wineStandSize).label}
-                        setOption={setWineStandSize}
-                    />
-
-                    <DetailWithButtons
-                        summary="Tower appliance: "
-                        options={applianceOptions}
-                        selectedOption={applianceOptions.find(option => option.value === applianceType).label}
-                        setOption={setApplianceType}
-                    />
-                </>}
+              {tableTopMaterialCategory === "dekton" && (
+                <DetailWithButtons
+                  summary='Countertop height: '
+                  options={tableTopHeightOptions}
+                  selectedOption={
+                    tableTopHeightOptions.find(
+                      (option) => option.value === tableTopHeight
+                    ).label
+                  }
+                  setOption={setTableTopHeight}
+                />
+              )}
             </ButtonCategoryTitle>
+          </>
+        )}
 
+        {(sinkChosen || cooktopChosen || towerChosen) && (
+          <>
+            <ButtonCategoryTitle title='Appliances'>
+              {sinkChosen && (
+                <>
+                  <DetailWithButtons
+                    summary='Faucet type: '
+                    options={faucetOptions}
+                    selectedOption={
+                      faucetOptions.find((option) => option.value === tapType)
+                        .label
+                    }
+                    setOption={setTapType}
+                  />
+                </>
+              )}
 
-            {sinkChosen && <>
-                <ButtonCategoryTitle
-                    title="Extras"
-                >
-                    <DetailWithButtons
-                        summary="Exta drawers: "
-                        options={mainDrawerOptions}
-                        selectedOption={mainDrawerOptions.find(option => option.value === mainDrawers).label}
-                        setOption={setMainDrawers}
-                    />
-                </ButtonCategoryTitle>
-            </>}
+              {cooktopChosen && (
+                <>
+                  <DetailWithButtons
+                    summary='Stove type: '
+                    options={stoveOptions}
+                    selectedOption={
+                      stoveOptions.find((option) => option.value === stoveType)
+                        .label
+                    }
+                    setOption={setStoveType}
+                  />
+                </>
+              )}
 
-        </div>
+              {towerChosen && (
+                <>
+                  <DetailWithButtons
+                    summary='Winestand size: '
+                    options={winestandOptions}
+                    selectedOption={
+                      winestandOptions.find(
+                        (option) => option.value === wineStandSize
+                      ).label
+                    }
+                    setOption={setWineStandSize}
+                  />
+
+                  <DetailWithButtons
+                    summary='Tower appliance: '
+                    options={applianceOptions}
+                    selectedOption={
+                      applianceOptions.find(
+                        (option) => option.value === applianceType
+                      ).label
+                    }
+                    setOption={setApplianceType}
+                  />
+                </>
+              )}
+            </ButtonCategoryTitle>
+          </>
+        )}
+
+        {/* {tableChosen && !sinkChosen && !cooktopChosen && !towerChosen && (
+          <>
+            <h4>These are not the options you are looking for...</h4>
+            <p
+              style={{
+                marginTop: "1rem",
+              }}
+            >
+              continue on the next page
+            </p>
+          </>
+        )} */}
+
+        {sinkChosen && (
+          <>
+            <ButtonCategoryTitle title='Extras'>
+              <DetailWithButtons
+                summary='Exta drawers: '
+                options={mainDrawerOptions}
+                selectedOption={
+                  mainDrawerOptions.find(
+                    (option) => option.value === mainDrawers
+                  ).label
+                }
+                setOption={setMainDrawers}
+              />
+            </ButtonCategoryTitle>
+          </>
+        )}
+      </div>
     </>
+  );
 }

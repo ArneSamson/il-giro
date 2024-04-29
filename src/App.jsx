@@ -6,6 +6,8 @@ import * as THREE from 'three'
 import { Canvas } from '@react-three/fiber'
 import { Loader } from '@react-three/drei'
 
+import { useThreeGlobal } from './helper/useThreeGlobal.tsx'
+
 import { Leva } from 'leva'
 
 import Experience from './Experience.jsx'
@@ -13,6 +15,8 @@ import Effects from './Effects/Effects.jsx'
 import ConfigUi from './components/ConfigUi.jsx'
 
 const root = ReactDOM.createRoot(document.querySelector('#root'))
+
+// const { ThreeGlobal } = useThreeGlobal();
 
 const camSettings = {
     fov: 55,
@@ -65,6 +69,9 @@ root.render(
                 <Effects />
 
                 <Experience />
+
+                {/* <ThreeGlobal /> */}
+
             </Canvas>
 
             <Loader

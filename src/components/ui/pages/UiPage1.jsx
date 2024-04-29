@@ -10,70 +10,83 @@ import ColorPicker from "../components/color/ColorPicker.jsx";
 import DetailWithMaterials from "../components/DetailWithMaterials.jsx";
 
 export default function UiPage1() {
+  const {
+    allCategories,
+    mainMaterial,
+    setMainMaterial,
+    mainMaterialCategory,
+    accentMaterial,
+    setAccentMaterial,
+    tableTopMaterialCategory,
+    tableTopHeight,
+  } = useConfigStore((state) => ({
+    allCategories: state.allCategories,
+    mainMaterial: state.mainMaterial,
+    setMainMaterial: state.setMainMaterial,
+    mainMaterialCategory: state.mainMaterialCategory,
+    accentMaterial: state.accentMaterial,
+    setAccentMaterial: state.setAccentMaterial,
+    tableTopMaterialCategory: state.tableTopMaterialCategory,
+    tableTopHeight: state.tableTopHeight,
+  }));
 
-    const {
-        allCategories,
-        mainMaterial,
-        setMainMaterial,
-        mainMaterialCategory,
-        accentMaterial,
-        setAccentMaterial,
-    } = useConfigStore(
-        state => ({
-            allCategories: state.allCategories,
-            mainMaterial: state.mainMaterial,
-            setMainMaterial: state.setMainMaterial,
-            mainMaterialCategory: state.mainMaterialCategory,
-            accentMaterial: state.accentMaterial,
-            setAccentMaterial: state.setAccentMaterial,
-        })
-    );
+  let counterTopHeight;
 
-    // console.log(mainMaterialCategory)
+  if (tableTopMaterialCategory === "dekton") {
+    if (tableTopHeight === 0.5) {
+      counterTopHeight = "20mm";
+    }
+    if (tableTopHeight === 0.3) {
+      counterTopHeight = "12mm";
+    }
+  } else if (tableTopMaterialCategory === "natural stone") {
+    counterTopHeight = "40mm";
+  } else if (tableTopMaterialCategory === "metal") {
+    counterTopHeight = "5mm";
+  }
 
-    return <>
+  return (
+    <>
+      <div className='config-ui__title'>
+        <span>
+          <h2>Materials</h2>
+        </span>
+      </div>
 
-        <div
-            className='config-ui__title'
-        >
-            <span><h2>Materials</h2></span>
-        </div>
+      <div className='config-ui__options'>
+        <MaterialCategorySelection />
 
-        <div
-            className='config-ui__options'
-        >
+        <>
+          <DetailWithMaterials
+            header={"Choices in " + mainMaterialCategory + ": "}
+            materials={allCategories[mainMaterialCategory]}
+            selectedMaterial={mainMaterial.name}
+            setMaterial={setMainMaterial}
+            open={true}
+          />
+        </>
 
-            <MaterialCategorySelection
+        {(mainMaterial.name === "paintwork" ||
+          mainMaterial.name === "microtopping with ral") && <ColorPicker />}
 
-            />
+        <TableTopMaterialSelection
+          extraMessage={
+            <>
+              *This material has a standard thickness of
+              <span> {counterTopHeight}.</span>
+            </>
+          }
+        />
 
-            <DetailWithMaterials
-                header="Choices in "
-                materials={allCategories[mainMaterialCategory]}
-                selectedMaterial={mainMaterialCategory + ": " + mainMaterial.name}
-                setMaterial={setMainMaterial}
-                open={true}
-            />
-
-            {mainMaterialCategory === "paint work" &&
-                <ColorPicker
-
-                />
-            }
-
-
-            <TableTopMaterialSelection
-            />
-
-            <DetailWithMaterials
-                header="Accent material: "
-                materials={allCategories.metal}
-                selectedMaterial={accentMaterial.name}
-                setMaterial={setAccentMaterial}
-                open={true}
-                extraMessage="*The sink will always be inox if the tabletop is inox."
-            />
-
-        </div>
+        <DetailWithMaterials
+          header='Accent material: '
+          materials={allCategories.metal}
+          selectedMaterial={accentMaterial.name}
+          setMaterial={setAccentMaterial}
+          open={true}
+          extraMessage='*The sink will always be inox if the countertop is inox.'
+        />
+      </div>
     </>
+  );
 }

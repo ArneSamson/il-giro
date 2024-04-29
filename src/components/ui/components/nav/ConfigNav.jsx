@@ -67,7 +67,7 @@ export default function ConfigNav() {
         >
 
             <button
-                style={currentPage === 0 ? { opacity: 0.1 } : { opacity: 1 }}
+                style={currentPage === 0 ? { opacity: 0 } : { opacity: 1 }}
                 className={currentPage === 0 ? 'config-ui__nav__button--disabled' : ''}
                 onClick={handleBack}
             >
@@ -79,7 +79,7 @@ export default function ConfigNav() {
             </button>
 
             <button
-                style={currentPage === pagesAmount ? { opacity: 0.1 } : { opacity: 1 }}
+                style={currentPage === pagesAmount ? { opacity: 0 } : { opacity: 1 }}
                 className={currentPage === pagesAmount ? 'config-ui__nav__button--disabled' : ''}
                 onClick={handleNext}
             >
