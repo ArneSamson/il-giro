@@ -185,9 +185,7 @@ export default function Tower({ props }) {
       }
     } else if (doorOpeningRotation === 1.5) {
       if (doorRef.current) {
-        if (doorRef.current.rotation.y > 1.49) {
-          return;
-        } else {
+        if (doorRef.current.rotation.y <= 1.49) {
           doorRef.current.rotation.y = lerp(
             doorRef.current.rotation.y,
             doorOpeningRotation,
@@ -418,81 +416,82 @@ export default function Tower({ props }) {
               </>
             )}
 
-            {applianceType === "drawers" && (
-              <>
+            {/* {applianceType === "drawers" && ( */}
+            <>
+              <mesh
+                name='drawers'
+                castShadow
+                receiveShadow
+                geometry={nodes["inside-shelf"].geometry}
+                position={[0, -0.048, 0]}
+                visible={applianceType === "drawers"}
+              >
+                <NewMaterial type={"main"} />
                 <mesh
-                  name='drawers'
+                  name='shelf-bevel'
+                  visible={allBevelled}
                   castShadow
                   receiveShadow
-                  geometry={nodes["inside-shelf"].geometry}
-                  position={[0, -0.048, 0]}
+                  geometry={nodes["shelf-bevel"].geometry}
                 >
                   <NewMaterial type={"main"} />
-                  <mesh
-                    name='shelf-bevel'
-                    visible={allBevelled}
-                    castShadow
-                    receiveShadow
-                    geometry={nodes["shelf-bevel"].geometry}
-                  >
-                    <NewMaterial type={"main"} />
-                  </mesh>
-                  <mesh
-                    name='shelf-straight'
-                    visible={!allBevelled}
-                    castShadow
-                    receiveShadow
-                    geometry={nodes["shelf-straight"].geometry}
-                  >
-                    <NewMaterial type={"main"} />
-                  </mesh>
-                  <group name='drawers-group' ref={drawersRef}>
-                    <mesh
-                      castShadow
-                      receiveShadow
-                      geometry={nodes["shelf-bottom"].geometry}
-                      material={nodes["inside-shelf"].material}
-                      position={[0, 0.301, 0.059]}
-                      rotation={[0, -1.571, 0]}
-                    >
-                      <NewMaterial type={"main"} />
-                    </mesh>
-                    <mesh
-                      castShadow
-                      receiveShadow
-                      geometry={nodes["shelf-middle"].geometry}
-                      material={nodes["inside-shelf"].material}
-                      position={[
-                        0,
-                        0.544,
-                        drawersRef.current
-                          ? drawersRef.current.position.z
-                          : 0.059,
-                      ]}
-                      rotation={[0, -1.571, 0]}
-                    >
-                      <NewMaterial type={"main"} />
-                    </mesh>
-                    <mesh
-                      castShadow
-                      receiveShadow
-                      geometry={nodes["shelf-top"].geometry}
-                      material={nodes["inside-shelf"].material}
-                      position={[
-                        0,
-                        0.788,
-                        drawersRef.current
-                          ? drawersRef.current.position.z
-                          : 0.059,
-                      ]}
-                      rotation={[0, -1.571, 0]}
-                    >
-                      <NewMaterial type={"main"} />
-                    </mesh>
-                  </group>
                 </mesh>
-              </>
-            )}
+                <mesh
+                  name='shelf-straight'
+                  visible={!allBevelled}
+                  castShadow
+                  receiveShadow
+                  geometry={nodes["shelf-straight"].geometry}
+                >
+                  <NewMaterial type={"main"} />
+                </mesh>
+                <group name='drawers-group' ref={drawersRef}>
+                  <mesh
+                    castShadow
+                    receiveShadow
+                    geometry={nodes["shelf-bottom"].geometry}
+                    material={nodes["inside-shelf"].material}
+                    position={[0, 0.301, 0.059]}
+                    rotation={[0, -1.571, 0]}
+                  >
+                    <NewMaterial type={"main"} />
+                  </mesh>
+                  <mesh
+                    castShadow
+                    receiveShadow
+                    geometry={nodes["shelf-middle"].geometry}
+                    material={nodes["inside-shelf"].material}
+                    position={[
+                      0,
+                      0.544,
+                      drawersRef.current
+                        ? drawersRef.current.position.z
+                        : 0.059,
+                    ]}
+                    rotation={[0, -1.571, 0]}
+                  >
+                    <NewMaterial type={"main"} />
+                  </mesh>
+                  <mesh
+                    castShadow
+                    receiveShadow
+                    geometry={nodes["shelf-top"].geometry}
+                    material={nodes["inside-shelf"].material}
+                    position={[
+                      0,
+                      0.788,
+                      drawersRef.current
+                        ? drawersRef.current.position.z
+                        : 0.059,
+                    ]}
+                    rotation={[0, -1.571, 0]}
+                  >
+                    <NewMaterial type={"main"} />
+                  </mesh>
+                </group>
+              </mesh>
+            </>
+            {/* )} */}
           </mesh>
 
           <WineStand
