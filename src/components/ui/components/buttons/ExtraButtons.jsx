@@ -232,76 +232,6 @@ export default function ExtraButtons() {
           >
             <div className='extra-buttons__button'>
               <button onClick={handleChairs}>
-                {/* <svg
-                  width='22'
-                  height='22'
-                  viewBox='0 0 20 21'
-                  fill='none'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    d='M5 6V4H10H13V2.5V1H15V4V6H9.375H5Z'
-                    stroke='black'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                  />
-                  <path
-                    d='M6.99707 13.0205L6 20L7 13L8 6'
-                    stroke='black'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                  />
-                  <path
-                    d='M14.0029 13.0205L15 20L14 13L13 6'
-                    stroke='black'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                  />
-                  <path
-                    d='M7 16C9.1875 16 8.1295 16 10.0625 16C11.9955 16 11.8125 16 14 16'
-                    stroke='black'
-                    stroke-linecap='round'
-                    strokeLinejoin='round'
-                  />
-                </svg> */}
-                {/* <svg
-                  width='20'
-                  height='21'
-                  viewBox='0 0 20 21'
-                  fill='none'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    d='M5 6V4H10H13V2.5V1H15V4V6H9.375H5Z'
-                    stroke='black'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                  />
-                  <path
-                    d='M10 13.0205L10 20L10 13L10 6'
-                    stroke='black'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                  />
-                  <path
-                    d='M5.99413 13.0205L4 20L6 13L8 6'
-                    stroke='black'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                  />
-                  <path
-                    d='M14.0059 13.0205L16 20L14 13L12 6'
-                    stroke='black'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                  />
-                  <path
-                    d='M5 16C8.125 16 6.61357 16 9.375 16C12.1364 16 11.875 16 15 16'
-                    stroke='black'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                  />
-                </svg> */}
                 <svg
                   width='20'
                   height='20'
@@ -310,25 +240,25 @@ export default function ExtraButtons() {
                   xmlns='http://www.w3.org/2000/svg'
                 >
                   <path
-                    d='M10 11.0235L10 19L10 11L10 3'
+                    d='M10 11.522L10 19L10 11.5L10 4'
                     stroke='black'
                     strokeLinecap='round'
                     strokeLinejoin='round'
                   />
                   <path
-                    d='M5.99413 11.0235L4 19L6 11L8 3'
+                    d='M5.99413 11.522L4 19L6 11.5L8 4'
                     stroke='black'
                     strokeLinecap='round'
                     strokeLinejoin='round'
                   />
                   <path
-                    d='M14.0059 11.0235L16 19L14 11L12 3'
+                    d='M14.0059 11.522L16 19L14 11.5L12 4'
                     stroke='black'
                     strokeLinecap='round'
                     strokeLinejoin='round'
                   />
                   <path
-                    d='M4 1V3C7.75 3 5.93629 3 9.25 3C12.5637 3 12.25 3 16 3V1H10H4Z'
+                    d='M4 1V4C7.75 4 5.93629 4 9.25 4C12.5637 4 12.25 4 16 4V1H10H4Z'
                     stroke='black'
                     strokeLinecap='round'
                     strokeLinejoin='round'
