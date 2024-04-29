@@ -24,7 +24,11 @@ export default function DetailWithMaterials({
                         key={index}
                         className={`config-ui__material-options__option ${selectedMaterial === material.name ? "selected-material-n-category" : ""}`}
                         onClick={() => setMaterial(material)}
-                        style={{ backgroundImage: `url(${material.url}preview.jpg)` }}
+                        style={{
+                            backgroundImage: `url(${material.url}preview.jpg)`,
+                            backgroundSize: "cover",
+                            backgroundPosition: "center"
+                        }}
                     ></div>
                 ))}
                 <p>{extraMessage}</p>

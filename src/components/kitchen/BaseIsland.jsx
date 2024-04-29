@@ -11,12 +11,18 @@ export default function BaseIsland({ props, needsDrawers }) {
 
     const {
         mainMaterial,
+        mainMaterialCategory,
 
         allBevelled,
+
+        ralColor,
     } = useConfig(
         state => ({
             mainMaterial: state.mainMaterial,
+            mainMaterialCategory: state.mainMaterialCategory,
+
             allBevelled: state.allBevelled,
+            ralColor: state.ralColor,
         })
     );
 
@@ -40,6 +46,7 @@ export default function BaseIsland({ props, needsDrawers }) {
     albedoTexture.colorSpace = THREE.SRGBColorSpace;
 
     const material = new THREE.MeshStandardMaterial({
+        color: mainMaterialCategory === 'paint work' ? ralColor : undefined,
         map: albedoTexture,
         normalMap: normalTexture,
         normalScale: new THREE.Vector2(0.5, 0.5),

@@ -67,6 +67,7 @@ export default function MaterialCategorySelection() {
                         }}
                         style={{
                             backgroundImage: `url(${materials[0].url}preview.jpg)`,
+                            backgroundSize: 'cover',
                         }}
                     ></div>
                 ))}
