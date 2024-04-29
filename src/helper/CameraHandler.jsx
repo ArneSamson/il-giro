@@ -1,4 +1,5 @@
 import React from "react";
+import { useFrame } from "@react-three/fiber";
 import { CameraControls } from "@react-three/drei";
 import { useRef, useEffect, useState } from "react";
 
@@ -84,6 +85,12 @@ export default function CameraHandler() {
       camera.current.dollyTo(maxDistance, false);
     }
   }, [camera.current]);
+
+  useFrame(() => {
+    if (camera.current.camera.position.y < 0) {
+      camera.current.camera.position.y = 0;
+    }
+  });
 
   return (
     <CameraControls
