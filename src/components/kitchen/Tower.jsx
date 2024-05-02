@@ -52,17 +52,17 @@ export default function Tower({ props }) {
   const towerCoolerAo = "/images/bakes/tower-cooler-ao.jpg";
 
   const fridgeBlackMaterial = new MeshStandardMaterial({
-    color: 0x9a9b9c,
-    roughness: 0,
+    color: 0x555555,
+    roughness: 0.25,
     metalness: 1,
-    envMapIntensity: 0.2,
+    envMapIntensity: 0.5,
   });
 
   const blackMaterial = new MeshStandardMaterial({
-    color: 0x000000,
+    color: 0x333333,
     roughness: 0,
     metalness: 1,
-    envMapIntensity: 0.1,
+    envMapIntensity: 0.5,
   });
 
   const fridgeGreyMaterial = new MeshStandardMaterial({
@@ -73,32 +73,32 @@ export default function Tower({ props }) {
   });
 
   const fridgeGlassMaterial = new MeshStandardMaterial({
-    color: 0xffffff,
-    roughness: 0.05,
+    color: 0x999999,
+    roughness: 0.25,
     transparent: true,
-    opacity: 0.4,
-    metalness: 0.6,
-    envMapIntensity: 0.2,
+    opacity: 0.3,
+    metalness: 1,
+    envMapIntensity: 0.5,
   });
 
   const wineBottles = [];
 
-  for (let i = 0; i < 12; i++) {
-    if (i <= 6) {
+  for (let i = 0; i < 10; i++) {
+    if (i < 5) {
       wineBottles.push(
         <WineBottle
           key={i}
-          position={[-0.3 + i / 10, 0.43, -0.1]}
+          position={[-0.2 + i / 10, 0.43, -0.1]}
           scale={[1, 1, 1]}
           rotation={[Math.PI / 2, Math.PI, 0]}
         />
       );
     }
-    if (i > 6) {
+    if (i >= 5) {
       wineBottles.push(
         <WineBottle
           key={i}
-          position={[-0.9 + i / 10, 0.68, -0.1]}
+          position={[-0.2 + (i - 5) / 10, 0.68, -0.1]}
           scale={[1, 1, 1]}
           rotation={[Math.PI / 2, Math.PI, 0]}
         />
@@ -270,7 +270,7 @@ export default function Tower({ props }) {
               <NewMaterial type={"main"} />
             </mesh>
             <mesh
-              name='tower-sraight'
+              name='tower-straight'
               visible={!allBevelled}
               castShadow
               receiveShadow
@@ -337,10 +337,12 @@ export default function Tower({ props }) {
                   castShadow
                   receiveShadow
                   geometry={nodes["inside-cooler"].geometry}
+                  rotation-x={0}
                 >
                   <NewMaterial
                     ambientOcclusion={towerCoolerShadow}
                     type={"main"}
+                    roughness={1.3}
                     // shadowTexture={towerCoolerShadow}
                   />
                   <mesh
@@ -366,7 +368,7 @@ export default function Tower({ props }) {
                     castShadow
                     receiveShadow
                     geometry={nodes.grill002.geometry}
-                    material={materials["[Metal_Aluminum_Anodized]"]}
+                    material={fridgeBlackMaterial}
                     position={[-0.304, 0.055, 0.291]}
                   />
                   <group
