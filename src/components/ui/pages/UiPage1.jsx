@@ -1,4 +1,5 @@
 import React from "react";
+import { useShallow } from "zustand/react/shallow";
 
 import useConfigStore from "../../../store/useConfigStore.jsx";
 
@@ -19,16 +20,18 @@ export default function UiPage1() {
     setAccentMaterial,
     tableTopMaterialCategory,
     tableTopHeight,
-  } = useConfigStore((state) => ({
-    allCategories: state.allCategories,
-    mainMaterial: state.mainMaterial,
-    setMainMaterial: state.setMainMaterial,
-    mainMaterialCategory: state.mainMaterialCategory,
-    accentMaterial: state.accentMaterial,
-    setAccentMaterial: state.setAccentMaterial,
-    tableTopMaterialCategory: state.tableTopMaterialCategory,
-    tableTopHeight: state.tableTopHeight,
-  }));
+  } = useConfigStore(
+    useShallow((state) => ({
+      allCategories: state.allCategories,
+      mainMaterial: state.mainMaterial,
+      setMainMaterial: state.setMainMaterial,
+      mainMaterialCategory: state.mainMaterialCategory,
+      accentMaterial: state.accentMaterial,
+      setAccentMaterial: state.setAccentMaterial,
+      tableTopMaterialCategory: state.tableTopMaterialCategory,
+      tableTopHeight: state.tableTopHeight,
+    }))
+  );
 
   let counterTopHeight;
 

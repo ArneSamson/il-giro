@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useShallow } from "zustand/react/shallow";
+
 import { ralData } from "./dataColors.js";
 import SwatchesPicker from "./SwatchesPicker.jsx";
 
@@ -33,10 +35,12 @@ function organizeRalColorsByHex(ralData) {
 const ralColorsByHex = organizeRalColorsByHex(ralData);
 
 export default function ColorPicker() {
-  const { ralColor, setRalColor } = useConfigStore((state) => ({
-    ralColor: state.ralColor,
-    setRalColor: state.setRalColor,
-  }));
+  const { ralColor, setRalColor } = useConfigStore(
+    useShallow((state) => ({
+      ralColor: state.ralColor,
+      setRalColor: state.setRalColor,
+    }))
+  );
 
   const [colorError, setColorError] = useState("");
 

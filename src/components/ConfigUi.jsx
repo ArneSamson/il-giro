@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useShallow } from "zustand/react/shallow";
 
-import useConfig from "../store/useConfigStore.jsx";
+import useConfigStore from "../store/useConfigStore.jsx";
 import useUIStore from "../store/useUIStore.jsx";
 
 import ConfigNav from "./ui/components/nav/ConfigNav.jsx";
@@ -24,16 +25,18 @@ export default function ConfigUi() {
     setAccentMaterial,
 
     setTableTopMaterial,
-  } = useConfig((state) => ({
-    allMaterials: state.allMaterials,
-    allCategories: state.allCategories,
+  } = useConfigStore(
+    useShallow((state) => ({
+      allMaterials: state.allMaterials,
+      allCategories: state.allCategories,
 
-    setMainMaterial: state.setMainMaterial,
+      setMainMaterial: state.setMainMaterial,
 
-    setAccentMaterial: state.setAccentMaterial,
+      setAccentMaterial: state.setAccentMaterial,
 
-    setTableTopMaterial: state.setTableTopMaterial,
-  }));
+      setTableTopMaterial: state.setTableTopMaterial,
+    }))
+  );
 
   const { currentPage, landingPageVisible } = useUIStore((state) => ({
     currentPage: state.currentPage,

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useShallow } from "zustand/react/shallow";
 
 import { useTexture } from "./useTexture";
 import useConfigStore from "../store/useConfigStore";
@@ -18,13 +19,15 @@ export default function NewMaterial({
     accentMaterial,
     tableTopMaterial,
     ralColor,
-  } = useConfigStore((state) => ({
-    mainMaterial: state.mainMaterial,
-    mainMaterialCategory: state.mainMaterialCategory,
-    accentMaterial: state.accentMaterial,
-    tableTopMaterial: state.tableTopMaterial,
-    ralColor: state.ralColor,
-  }));
+  } = useConfigStore(
+    useShallow((state) => ({
+      mainMaterial: state.mainMaterial,
+      mainMaterialCategory: state.mainMaterialCategory,
+      accentMaterial: state.accentMaterial,
+      tableTopMaterial: state.tableTopMaterial,
+      ralColor: state.ralColor,
+    }))
+  );
 
   const { setTextureIsLoading } = useUIStore((state) => ({
     setTextureIsLoading: state.setTextureIsLoading,
@@ -97,58 +100,62 @@ export default function NewMaterial({
     lightMap.flipY = false;
   }
 
-  return (
-    <>
-      {!ralExclude &&
-        (mainMaterial.name === "paintwork" ||
-          mainMaterial.name === "microtopping with ral") && (
-          <meshStandardMaterial
-            color={ralColor.hex}
-            map={albedoTexture}
-            roughnessMap={roughnessTexture}
-            normalMap={normalTexture}
-            normalScale={new Vector2(0.3, 0.3)}
-            metalnessMap={metallnessTexture}
-            roughness={1}
-            metalness={1}
-            aoMap={aoMap}
-            aoMapIntensity={0.8}
-            envIntensity={envIntensity}
-            lightMap={lightMap}
-          />
-        )}
-      {!ralExclude && (
-        <meshStandardMaterial
-          map={albedoTexture}
-          roughnessMap={roughnessTexture}
-          normalMap={normalTexture}
-          normalScale={new Vector2(0.3, 0.3)}
-          metalnessMap={metallnessTexture}
-          roughness={1}
-          metalness={1}
-          aoMap={aoMap}
-          aoMapIntensity={0.8}
-          envIntensity={envIntensity}
-          lightMap={lightMap}
-        />
-      )}
-      {ralExclude &&
-        (mainMaterial.name !== "paintwork" ||
-          mainMaterial.name !== "microptopping with ral") && (
-          <meshStandardMaterial
-            map={albedoTexture}
-            roughnessMap={roughnessTexture}
-            normalMap={normalTexture}
-            normalScale={new Vector2(0.3, 0.3)}
-            metalnessMap={metallnessTexture}
-            roughness={1}
-            metalness={1}
-            aoMap={aoMap}
-            aoMapIntensity={0.8}
-            envMapIntensity={envIntensity}
-            lightMap={lightMap}
-          />
-        )}
-    </>
-  );
+  if (
+    !ralExclude &&
+    (mainMaterial.name === "paintwork" ||
+      mainMaterial.name === "microtopping with ral")
+  ) {
+    return (
+      <meshStandardMaterial
+        color={ralColor.hex}
+        map={albedoTexture}
+        roughnessMap={roughnessTexture}
+        normalMap={normalTexture}
+        normalScale={new Vector2(0.3, 0.3)}
+        metalnessMap={metallnessTexture}
+        roughness={1}
+        metalness={1}
+        aoMap={aoMap}
+        aoMapIntensity={0.8}
+        envIntensity={envIntensity}
+        lightMap={lightMap}
+      />
+    );
+  } else if (
+    ralExclude &&
+    (mainMaterial.name !== "paintwork" ||
+      mainMaterial.name !== "microtopping with ral")
+  ) {
+    return (
+      <meshStandardMaterial
+        map={albedoTexture}
+        roughnessMap={roughnessTexture}
+        normalMap={normalTexture}
+        normalScale={new Vector2(0.3, 0.3)}
+        metalnessMap={metallnessTexture}
+        roughness={1}
+        metalness={1}
+        aoMap={aoMap}
+        aoMapIntensity={0.8}
+        envMapIntensity={envIntensity}
+        lightMap={lightMap}
+      />
+    );
+  } else {
+    return (
+      <meshStandardMaterial
+        map={albedoTexture}
+        roughnessMap={roughnessTexture}
+        normalMap={normalTexture}
+        normalScale={new Vector2(0.3, 0.3)}
+        metalnessMap={metallnessTexture}
+        roughness={1}
+        metalness={1}
+        aoMap={aoMap}
+        aoMapIntensity={0.8}
+        envIntensity={envIntensity}
+        lightMap={lightMap}
+      />
+    );
+  }
 }

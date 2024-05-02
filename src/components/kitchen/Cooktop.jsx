@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
+import { useShallow } from "zustand/react/shallow";
 
 import BaseIsland from "./BaseIsland.jsx";
 
@@ -11,7 +12,7 @@ import ElectricStove from "./accessoires/ElectricStove.jsx";
 import Drawers from "./accessoires/Drawers.jsx";
 
 import useScene from "../../store/useScene.jsx";
-import useConfig from "../../store/useConfigStore.jsx";
+import useConfigStore from "../../store/useConfigStore.jsx";
 
 export default function Cooktop() {
   const {
@@ -28,21 +29,23 @@ export default function Cooktop() {
     tableTopHeight,
 
     mainDrawers,
-  } = useConfig((state) => ({
-    cooktopPosition: state.cooktopPosition,
-    cooktopRotation: state.cooktopRotation,
+  } = useConfigStore(
+    useShallow((state) => ({
+      cooktopPosition: state.cooktopPosition,
+      cooktopRotation: state.cooktopRotation,
 
-    stoveType: state.stoveType,
+      stoveType: state.stoveType,
 
-    tableTopInset: state.tableTopInset,
-    tableTopRounded: state.tableTopRounded,
-    setTableTopRounded: state.setTableTopRounded,
+      tableTopInset: state.tableTopInset,
+      tableTopRounded: state.tableTopRounded,
+      setTableTopRounded: state.setTableTopRounded,
 
-    tableTopMaterialCategory: state.tableTopMaterialCategory,
-    tableTopHeight: state.tableTopHeight,
+      tableTopMaterialCategory: state.tableTopMaterialCategory,
+      tableTopHeight: state.tableTopHeight,
 
-    mainDrawers: state.mainDrawers,
-  }));
+      mainDrawers: state.mainDrawers,
+    }))
+  );
 
   const { setCameraFocus } = useScene((state) => ({
     setCameraFocus: state.setCameraFocus,

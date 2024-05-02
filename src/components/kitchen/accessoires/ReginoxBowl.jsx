@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 
-import useConfig from "../../../store/useConfigStore.jsx";
+import useConfigStore from "../../../store/useConfigStore.jsx";
 
 import NewMaterial from "../../../helper/NewMaterial.jsx";
 
 export default function Reginox({ props }) {
-  const { tableTopMaterial } = useConfig((state) => ({
+  const { tableTopMaterial } = useConfigStore((state) => ({
     tableTopMaterial: state.tableTopMaterial,
   }));
 

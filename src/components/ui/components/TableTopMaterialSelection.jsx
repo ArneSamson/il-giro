@@ -1,7 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { useShallow } from "zustand/react/shallow";
 
-import useConfig from "../../../store/useConfigStore.jsx";
+import useConfigStore from "../../../store/useConfigStore.jsx";
 
 export default function AccentMaterialSelection({ extraMessage }) {
   const {
@@ -11,14 +12,16 @@ export default function AccentMaterialSelection({ extraMessage }) {
     tableTopMaterialCategory,
     setTableTopMaterialCategory,
     mainMaterialCategory,
-  } = useConfig((state) => ({
-    allCategories: state.allCategories,
-    tableTopMaterial: state.tableTopMaterial,
-    setTableTopMaterial: state.setTableTopMaterial,
-    tableTopMaterialCategory: state.tableTopMaterialCategory,
-    setTableTopMaterialCategory: state.setTableTopMaterialCategory,
-    mainMaterialCategory: state.mainMaterialCategory,
-  }));
+  } = useConfigStore(
+    useShallow((state) => ({
+      allCategories: state.allCategories,
+      tableTopMaterial: state.tableTopMaterial,
+      setTableTopMaterial: state.setTableTopMaterial,
+      tableTopMaterialCategory: state.tableTopMaterialCategory,
+      setTableTopMaterialCategory: state.setTableTopMaterialCategory,
+      mainMaterialCategory: state.mainMaterialCategory,
+    }))
+  );
 
   return (
     <>

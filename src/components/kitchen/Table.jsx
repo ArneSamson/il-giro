@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import { useShallow } from "zustand/react/shallow";
 
 import BaseIsland from "./BaseIsland.jsx";
 import TableFlat from "./tabletops/TableFlat.jsx";
@@ -6,7 +7,7 @@ import TableFlatRound from "./tabletops/TableFlatRound.jsx";
 import Stool from "./accessoires/Stool.jsx";
 
 import useScene from "../../store/useScene.jsx";
-import useConfig from "../../store/useConfigStore.jsx";
+import useConfigStore from "../../store/useConfigStore.jsx";
 
 export default function Table({ props }) {
   const {
@@ -17,15 +18,17 @@ export default function Table({ props }) {
     tableTopInset,
     tableTopRounded,
     tableTopHeight,
-  } = useConfig((state) => ({
-    tablePosition: state.tablePosition,
-    tableRotation: state.tableRotation,
+  } = useConfigStore(
+    useShallow((state) => ({
+      tablePosition: state.tablePosition,
+      tableRotation: state.tableRotation,
 
-    tableTopMaterialCategory: state.tableTopMaterialCategory,
-    tableTopInset: state.tableTopInset,
-    tableTopRounded: state.tableTopRounded,
-    tableTopHeight: state.tableTopHeight,
-  }));
+      tableTopMaterialCategory: state.tableTopMaterialCategory,
+      tableTopInset: state.tableTopInset,
+      tableTopRounded: state.tableTopRounded,
+      tableTopHeight: state.tableTopHeight,
+    }))
+  );
 
   const { setCameraFocus } = useScene((state) => ({
     setCameraFocus: state.setCameraFocus,

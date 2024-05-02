@@ -271,10 +271,14 @@ input[type=range]::-ms-track {
 
 .loading-spinner {
   position: absolute;
-  top: 50px;
-  right: 25%;
-  transform: translateX(-50%);
-  margin: 0;
+  top: 0;
+  left: 0;
+  width: 75%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--trans-white);
 }
 
 .tooltip {
@@ -868,11 +872,6 @@ summary span {
   h2 {
     font-size: 30px;
     line-height: 60px;
-  }
-
-  .loading-spinner {
-    top: 50px;
-    right: 50px;
   }
 
   .tooltip.active {

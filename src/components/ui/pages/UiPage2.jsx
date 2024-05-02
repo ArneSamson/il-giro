@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useShallow } from "zustand/react/shallow";
 
 import useConfigStore from "../../../store/useConfigStore";
 
@@ -39,40 +40,42 @@ export default function UiPage2() {
     setTableTopHeight,
 
     tableTopMaterialCategory,
-  } = useConfigStore((state) => ({
-    edgeFinish: state.edgeFinish,
-    setEdgeFinish: state.setEdgeFinish,
+  } = useConfigStore(
+    useShallow((state) => ({
+      edgeFinish: state.edgeFinish,
+      setEdgeFinish: state.setEdgeFinish,
 
-    tapType: state.tapType,
-    setTapType: state.setTapType,
+      tapType: state.tapType,
+      setTapType: state.setTapType,
 
-    stoveType: state.stoveType,
-    setStoveType: state.setStoveType,
+      stoveType: state.stoveType,
+      setStoveType: state.setStoveType,
 
-    applianceType: state.applianceType,
-    setApplianceType: state.setApplianceType,
-    wineStandSize: state.wineStandSize,
-    setWineStandSize: state.setWineStandSize,
+      applianceType: state.applianceType,
+      setApplianceType: state.setApplianceType,
+      wineStandSize: state.wineStandSize,
+      setWineStandSize: state.setWineStandSize,
 
-    mainDrawers: state.mainDrawers,
-    setMainDrawers: state.setMainDrawers,
+      mainDrawers: state.mainDrawers,
+      setMainDrawers: state.setMainDrawers,
 
-    sinkChosen: state.sinkChosen,
-    cooktopChosen: state.cooktopChosen,
-    towerChosen: state.towerChosen,
-    tableChosen: state.tableChosen,
+      sinkChosen: state.sinkChosen,
+      cooktopChosen: state.cooktopChosen,
+      towerChosen: state.towerChosen,
+      tableChosen: state.tableChosen,
 
-    tableTopInset: state.tableTopInset,
-    setTableTopInset: state.setTableTopInset,
+      tableTopInset: state.tableTopInset,
+      setTableTopInset: state.setTableTopInset,
 
-    tableTopRounded: state.tableTopRounded,
-    setTableTopRounded: state.setTableTopRounded,
+      tableTopRounded: state.tableTopRounded,
+      setTableTopRounded: state.setTableTopRounded,
 
-    tableTopHeight: state.tableTopHeight,
-    setTableTopHeight: state.setTableTopHeight,
+      tableTopHeight: state.tableTopHeight,
+      setTableTopHeight: state.setTableTopHeight,
 
-    tableTopMaterialCategory: state.tableTopMaterialCategory,
-  }));
+      tableTopMaterialCategory: state.tableTopMaterialCategory,
+    }))
+  );
 
   const edgeFinishOptions = [
     { label: "Square", value: "square" },
@@ -136,6 +139,8 @@ export default function UiPage2() {
     counterTopHeight = "5mm";
   }
 
+  const [showInsetOption, setShowInsetOption] = useState(true);
+
   useEffect(() => {
     // Check if only the table is chosen
     const isTableChosen =
@@ -143,6 +148,7 @@ export default function UiPage2() {
     // If only the table is chosen, set tableTopInset to false
     if (isTableChosen) {
       setTableTopInset(false);
+      setShowInsetOption(false);
     }
   }, [sinkChosen, cooktopChosen, towerChosen, tableChosen]);
 
@@ -167,16 +173,18 @@ export default function UiPage2() {
             <ButtonCategoryTitle
               title={`Countertop (` + counterTopHeight + `)`}
             >
-              <DetailWithButtons
-                summary='Countertop type: '
-                options={tableTopInsetOptions}
-                selectedOption={
-                  tableTopInsetOptions.find(
-                    (option) => option.value === tableTopInset
-                  ).label
-                }
-                setOption={setTableTopInset}
-              />
+              {showInsetOption && (
+                <DetailWithButtons
+                  summary='Countertop type: '
+                  options={tableTopInsetOptions}
+                  selectedOption={
+                    tableTopInsetOptions.find(
+                      (option) => option.value === tableTopInset
+                    ).label
+                  }
+                  setOption={setTableTopInset}
+                />
+              )}
 
               {!tableTopInset && (
                 <DetailWithButtons
