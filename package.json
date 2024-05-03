@@ -20,7 +20,6 @@
     "@use-gesture/react": "^10.3.0",
     "browser-image-compression": "^2.0.2",
     "file-saver": "^2.0.5",
-    "filesaver.js": "^1.3.4",
     "gsap": "^3.12.5",
     "leva": "^0.9.35",
     "postprocessing": "^6.34.3",
