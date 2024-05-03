@@ -31,17 +31,29 @@ const wodkaMaterial = new MeshStandardMaterial({
   envMapIntensity: 0.5,
 });
 
-let bottles = [];
+const wineBottles = [];
 
 for (let i = 0; i < 10; i++) {
-  bottles.push(
-    <WineBottle
-      key={i}
-      position={[-0.2 + i / 10, 0.43, -0.1]}
-      scale={[1, 1, 1]}
-      rotation={[Math.PI / 2, Math.PI, 0]}
-    />
-  );
+  if (i < 5) {
+    wineBottles.push(
+      <WineBottle
+        key={i}
+        position={[-0.2 + i / 10, 0.43, -0.1]}
+        scale={[1, 1, 1]}
+        rotation={[Math.PI / 2, Math.PI, 0]}
+      />
+    );
+  }
+  if (i >= 5) {
+    wineBottles.push(
+      <WineBottle
+        key={i}
+        position={[-0.2 + (i - 5) / 10, 0.68, -0.1]}
+        scale={[1, 1, 1]}
+        rotation={[Math.PI / 2, Math.PI, 0]}
+      />
+    );
+  }
 }
 
 export function GlassBottleWhiskey(props) {
@@ -90,7 +102,21 @@ export function WineBottle(props) {
   );
   const { nodes, materials } = useGLTF("./models/wine-bottle.glb");
   return (
-    <Instances limit={props.limit}>
+    <Instances
+      limit={props.limit}
+      geometry={
+        nodes["Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1008"].geometry
+      }
+      material={wineBottleMaterial}
+    >
+      {wineBottles.map((bottle, index) => (
+        <Instance
+          key={index}
+          position={bottle.props.position}
+          scale={bottle.props.scale}
+          rotation={bottle.props.rotation}
+        />
+      ))}
       {/* <group {...props} dispose={null} visible={visibleForPDF}>
         <mesh
           castShadow
@@ -127,16 +153,6 @@ export function WineBottle(props) {
           material={materials["MULLED-WINE"]}
         />
       </group> */}
-      <boxGeometry args={[0.05, 0.05, 0.05]} />
-      <meshStandardMaterial color='red' />
-      {bottles.map((bottle, index) => (
-        <Instance
-          key={index}
-          position={bottle.props.position}
-          scale={bottle.props.scale}
-          rotation={bottle.props.rotation}
-        />
-      ))}
     </Instances>
   );
 }
