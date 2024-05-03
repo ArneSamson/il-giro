@@ -40,6 +40,9 @@ export default function UiPage2() {
     setTableTopHeight,
 
     tableTopMaterialCategory,
+
+    visibleForPDF,
+    setVisibleForPDF,
   } = useConfigStore(
     useShallow((state) => ({
       edgeFinish: state.edgeFinish,
@@ -74,6 +77,9 @@ export default function UiPage2() {
       setTableTopHeight: state.setTableTopHeight,
 
       tableTopMaterialCategory: state.tableTopMaterialCategory,
+
+      visibleForPDF: state.visibleForPDF,
+      setVisibleForPDF: state.setVisibleForPDF,
     }))
   );
 
@@ -151,6 +157,12 @@ export default function UiPage2() {
       setShowInsetOption(false);
     }
   }, [sinkChosen, cooktopChosen, towerChosen, tableChosen]);
+
+  useEffect(() => {
+    // if (!visibleForPDF) {
+    //   setVisibleForPDF(true);
+    // }
+  }, []);
 
   return (
     <>

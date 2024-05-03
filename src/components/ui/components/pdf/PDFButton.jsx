@@ -196,6 +196,7 @@ export default function PDFButton() {
   const [pdfUrl, setPdfUrl] = useState(null);
 
   useEffect(() => {
+    // if (visibleForPDF) return;
     async function captureImage() {
       const newCapture = await capture(three.scene, options);
 

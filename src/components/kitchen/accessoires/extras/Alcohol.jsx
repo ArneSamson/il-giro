@@ -5,6 +5,8 @@ import {
   useGLTF,
   MeshTransmissionMaterial,
 } from "@react-three/drei";
+import { useShallow } from "zustand/react/shallow";
+import useConfigStore from "../../../../store/useConfigStore";
 
 const wineBottleMaterial = new MeshStandardMaterial({
   color: new Color("#19191B"),
@@ -66,9 +68,14 @@ export function GlassBottleWhiskey(props) {
 }
 
 export function WineBottle(props) {
+  const { visibleForPDF } = useConfigStore(
+    useShallow((state) => ({
+      visibleForPDF: state.visibleForPDF,
+    }))
+  );
   const { nodes, materials } = useGLTF("./models/wine-bottle.glb");
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} visible={visibleForPDF}>
       <mesh
         castShadow
         receiveShadow

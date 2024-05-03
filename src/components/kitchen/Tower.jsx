@@ -331,7 +331,8 @@ export default function Tower({ props }) {
 
             {applianceType === "fridge" && (
               <>
-                {visibleForPDF && <>{wineBottles}</>}
+                {/* {visibleForPDF && <>{wineBottles}</>} */}
+                {wineBottles}
                 <mesh
                   name='cooler'
                   castShadow
