@@ -6,7 +6,12 @@ import {
   Color,
   MeshPhysicalMaterial,
 } from "three";
-import { useGLTF, MeshTransmissionMaterial } from "@react-three/drei";
+import {
+  useGLTF,
+  MeshTransmissionMaterial,
+  Instances,
+  Instance,
+} from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useShallow } from "zustand/react/shallow";
 
@@ -81,30 +86,30 @@ export default function Tower({ props }) {
     envMapIntensity: 0.5,
   });
 
-  const wineBottles = [];
+  //   const wineBottles = [];
 
-  for (let i = 0; i < 10; i++) {
-    if (i < 5) {
-      wineBottles.push(
-        <WineBottle
-          key={i}
-          position={[-0.2 + i / 10, 0.43, -0.1]}
-          scale={[1, 1, 1]}
-          rotation={[Math.PI / 2, Math.PI, 0]}
-        />
-      );
-    }
-    if (i >= 5) {
-      wineBottles.push(
-        <WineBottle
-          key={i}
-          position={[-0.2 + (i - 5) / 10, 0.68, -0.1]}
-          scale={[1, 1, 1]}
-          rotation={[Math.PI / 2, Math.PI, 0]}
-        />
-      );
-    }
-  }
+  //   for (let i = 0; i < 10; i++) {
+  //     if (i < 5) {
+  //       wineBottles.push(
+  //         <WineBottle
+  //           key={i}
+  //           position={[-0.2 + i / 10, 0.43, -0.1]}
+  //           scale={[1, 1, 1]}
+  //           rotation={[Math.PI / 2, Math.PI, 0]}
+  //         />
+  //       );
+  //     }
+  //     if (i >= 5) {
+  //       wineBottles.push(
+  //         <WineBottle
+  //           key={i}
+  //           position={[-0.2 + (i - 5) / 10, 0.68, -0.1]}
+  //           scale={[1, 1, 1]}
+  //           rotation={[Math.PI / 2, Math.PI, 0]}
+  //         />
+  //       );
+  //     }
+  //   }
 
   const { nodes, materials } = useGLTF("./models/base-island-high.glb");
 
@@ -331,8 +336,8 @@ export default function Tower({ props }) {
 
             {applianceType === "fridge" && (
               <>
-                {/* {visibleForPDF && <>{wineBottles}</>} */}
-                {wineBottles}
+                {/* {wineBottles} */}
+                <WineBottle amount={10} />
                 <mesh
                   name='cooler'
                   castShadow
