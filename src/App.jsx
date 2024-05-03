@@ -81,8 +81,8 @@ root.render(
       <ConfigUi />
 
       <Leva
-      // collapsed
-      // hidden
+        // collapsed
+        hidden
       />
     </div>
   </>
