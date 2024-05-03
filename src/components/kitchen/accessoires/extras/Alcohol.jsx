@@ -102,21 +102,23 @@ export function WineBottle(props) {
   );
   const { nodes, materials } = useGLTF("./models/wine-bottle.glb");
   return (
-    <Instances
-      limit={props.limit}
-      geometry={
-        nodes["Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1008"].geometry
-      }
-      material={wineBottleMaterial}
-    >
-      {wineBottles.map((bottle, index) => (
-        <Instance
-          key={index}
-          position={bottle.props.position}
-          scale={bottle.props.scale}
-          rotation={bottle.props.rotation}
-        />
-      ))}
+    <>
+      <Instances
+        limit={props.limit}
+        geometry={
+          nodes["Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1008"].geometry
+        }
+        material={wineBottleMaterial}
+      >
+        {wineBottles.map((bottle, index) => (
+          <Instance
+            key={index}
+            position={bottle.props.position}
+            scale={bottle.props.scale}
+            rotation={bottle.props.rotation}
+          />
+        ))}
+      </Instances>
       {/* <group {...props} dispose={null} visible={visibleForPDF}>
         <mesh
           castShadow
@@ -153,7 +155,7 @@ export function WineBottle(props) {
           material={materials["MULLED-WINE"]}
         />
       </group> */}
-    </Instances>
+    </>
   );
 }
 

@@ -14,8 +14,8 @@ import useConfigStore from "../store/useConfigStore.jsx";
 import { useShallow } from "zustand/react/shallow";
 
 export default function Scene() {
-  const { levaToggle } = useControls("Download", {
-    levaToggle: false,
+  const { downloadScene } = useControls("Download", {
+    downloadScene: false,
   });
 
   console.log("Scene.jsx");
@@ -44,7 +44,7 @@ export default function Scene() {
 
   useEffect(() => {
     if (three && three.scene) {
-      if (levaToggle) {
+      if (downloadScene) {
         exporter.parse(
           three.scene,
           (gltf) => {
@@ -60,7 +60,7 @@ export default function Scene() {
         );
       }
     }
-  }, [three, levaToggle]);
+  }, [three, downloadScene]);
 
   return (
     <>
