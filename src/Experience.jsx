@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { GLTFExporter } from "three/addons/exporters/GLTFExporter.js";
 
 import CameraHandler from "./helper/CameraHandler.jsx";
 
@@ -17,6 +18,29 @@ export default function Experience() {
 
   const { ThreeGlobal } = useThreeGlobal();
 
+  const gltfExporter = new GLTFExporter();
+
+  const sceneRef = useRef();
+
+  const options = {
+    onlyVisible: true,
+    binary: false,
+    maxTextureSize: 2048,
+  };
+
+  useEffect(() => {
+    console.log("useEffect");
+
+    gltfExporter.parse(
+      sceneRef.current,
+      function (gltf) {
+        console.log(gltf);
+        downloadJSON(gltf);
+      },
+      options
+    );
+  }, [a]);
+
   return (
     <>
       <Perf position='top-left' style={{ transform: "translateX(15vw)" }} />
@@ -25,7 +49,7 @@ export default function Experience() {
 
       <Lights />
 
-      <Scene />
+      <Scene sceneRef={sceneRef} />
 
       <Env />
 
