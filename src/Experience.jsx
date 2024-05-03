@@ -8,7 +8,6 @@ import Lights from "./components/lighting&shadows/Lights.jsx";
 import Env from "./components/lighting&shadows/Env.jsx";
 
 import { useThreeGlobal } from "./helper/useThreeGlobal.tsx";
-
 import { Perf } from "r3f-perf";
 
 export default function Experience() {
@@ -18,8 +17,6 @@ export default function Experience() {
 
   const { ThreeGlobal } = useThreeGlobal();
 
-  const gltfExporter = new GLTFExporter();
-
   const sceneRef = useRef();
 
   const options = {
@@ -27,19 +24,6 @@ export default function Experience() {
     binary: false,
     maxTextureSize: 2048,
   };
-
-  useEffect(() => {
-    console.log("useEffect");
-
-    gltfExporter.parse(
-      sceneRef.current,
-      function (gltf) {
-        console.log(gltf);
-        downloadJSON(gltf);
-      },
-      options
-    );
-  }, [a]);
 
   return (
     <>
