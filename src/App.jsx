@@ -4,7 +4,6 @@ import ReactDOM from "react-dom/client";
 
 import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
-import { useProgress } from "@react-three/drei";
 import { Loader } from "./helper/useLoader";
 
 import { useThreeGlobal } from "./helper/useThreeGlobal.tsx";
@@ -14,8 +13,6 @@ import { Leva } from "leva";
 import Experience from "./Experience.jsx";
 import Effects from "./Effects/Effects.jsx";
 import ConfigUi from "./components/ConfigUi.jsx";
-
-import TextureIsLoading from "./components/ui/components/loading/TextureIsLoading.jsx";
 
 const root = ReactDOM.createRoot(document.querySelector("#root"));
 
@@ -51,8 +48,6 @@ const innerStyles = {
 };
 
 function App() {
-  const { active, progress, errors, item, loaded, total } = useProgress();
-
   return (
     <>
       <div className='root-container'>
@@ -72,8 +67,6 @@ function App() {
 
           <Experience />
         </Canvas>
-
-        {!loaded && <TextureIsLoading />}
 
         <Loader
           containerStyles={containerStyles}
