@@ -80,8 +80,8 @@ function App() {
         <ConfigUi />
 
         <Leva
-          // collapsed
-          hidden
+        // collapsed
+        //   hidden
         />
       </div>
     </>
