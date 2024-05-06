@@ -1,9 +1,9 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { saveAs } from "file-saver";
 import { useThreeGlobal } from "../helper/useThreeGlobal.tsx";
 // import { GLTFExporter } from "three/examples/jsm/exporters/GLTFExporter.js";
 import { GLTFExporter } from "../helper/useGLTFExporter.js";
-import { useControls } from "leva";
+import { useControls, button } from "leva";
 
 import Cooktop from "./kitchen/Cooktop.jsx";
 import Sink from "./kitchen/Sink.jsx";
@@ -15,8 +15,12 @@ import { useShallow } from "zustand/react/shallow";
 
 export default function Scene() {
   const { downloadScene } = useControls("Download", {
-    downloadScene: false,
+    downloadScene: button(() => {
+      setDownloadScene(true);
+    }),
   });
+
+  const [isDownloadScene, setDownloadScene] = useState(false);
 
   console.log("Scene.jsx");
 
@@ -44,7 +48,7 @@ export default function Scene() {
 
   useEffect(() => {
     if (three && three.scene) {
-      if (downloadScene) {
+      if (isDownloadScene) {
         exporter.parse(
           three.scene,
           (gltf) => {
@@ -52,6 +56,7 @@ export default function Scene() {
             const blob = new Blob([gltf], { type: "model/gltf+json" });
             console.log(blob);
             saveAs(blob, "scene.glb");
+            setDownloadScene(false);
           },
           (error) => {
             console.error(error);
@@ -60,7 +65,7 @@ export default function Scene() {
         );
       }
     }
-  }, [three, downloadScene]);
+  }, [three, isDownloadScene]);
 
   return (
     <>
