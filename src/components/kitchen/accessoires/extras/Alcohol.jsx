@@ -31,31 +31,6 @@ const wodkaMaterial = new MeshStandardMaterial({
   envMapIntensity: 0.5,
 });
 
-const wineBottles = [];
-
-for (let i = 0; i < 10; i++) {
-  if (i < 5) {
-    wineBottles.push(
-      <WineBottle
-        key={i}
-        position={[-0.2 + i / 10, 0.43, -0.1]}
-        scale={[1, 1, 1]}
-        rotation={[Math.PI / 2, Math.PI, 0]}
-      />
-    );
-  }
-  if (i >= 5) {
-    wineBottles.push(
-      <WineBottle
-        key={i}
-        position={[-0.2 + (i - 5) / 10, 0.68, -0.1]}
-        scale={[1, 1, 1]}
-        rotation={[Math.PI / 2, Math.PI, 0]}
-      />
-    );
-  }
-}
-
 export function GlassBottleWhiskey(props) {
   const { nodes, materials } = useGLTF("./models/glass-bottle-whiskey.glb");
   return (
@@ -101,24 +76,82 @@ export function WineBottle(props) {
     }))
   );
   const { nodes, materials } = useGLTF("./models/wine-bottle.glb");
+  const bottlePositions = [];
+
+  for (let i = 0; i < props.range; i++) {
+    if (i < 5) {
+      bottlePositions.push([-0.2 + i / 10, 0.43, -0.1]);
+    } else {
+      bottlePositions.push([-0.2 + (i - 5) / 10, 0.68, -0.1]);
+    }
+  }
   return (
     <>
       <Instances
-        limit={props.limit}
+        range={props.range}
         geometry={
           nodes["Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1008"].geometry
         }
         material={wineBottleMaterial}
       >
-        {wineBottles.map((bottle, index) => (
+        {bottlePositions.map((position, index) => (
           <Instance
             key={index}
-            position={bottle.props.position}
-            scale={bottle.props.scale}
-            rotation={bottle.props.rotation}
+            position={position}
+            scale={[1, 1, 1]}
+            rotation={[Math.PI / 2, Math.PI, 0]}
           />
         ))}
       </Instances>
+      <Instances
+        range={props.range}
+        geometry={
+          nodes["Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1010"].geometry
+        }
+        material={materials["Metal_Steel_Dirty_4k.001"]}
+      >
+        {bottlePositions.map((position, index) => (
+          <Instance
+            key={index}
+            position={[position[0], position[1], position[2] + 0.289]}
+            scale={[1.04, 1.04, 1.04]}
+            rotation={[Math.PI / 2, Math.PI, 0]}
+          />
+        ))}
+      </Instances>
+      <Instances
+        range={props.range}
+        geometry={
+          nodes["Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1011"].geometry
+        }
+        material={materials["MULLED-WINE_back"]}
+      >
+        {bottlePositions.map((position, index) => (
+          <Instance
+            key={index}
+            position={position}
+            scale={[1, 1, 1]}
+            rotation={[Math.PI / 2, Math.PI, 0]}
+          />
+        ))}
+      </Instances>
+      <Instances
+        range={props.range}
+        geometry={
+          nodes["Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1012"].geometry
+        }
+        material={materials["MULLED-WINE"]}
+      >
+        {bottlePositions.map((position, index) => (
+          <Instance
+            key={index}
+            position={position}
+            scale={[1, 1, 1]}
+            rotation={[Math.PI / 2, Math.PI, 0]}
+          />
+        ))}
+      </Instances>
+
       {/* <group {...props} dispose={null} visible={visibleForPDF}>
         <mesh
           castShadow

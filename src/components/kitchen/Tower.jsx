@@ -86,31 +86,6 @@ export default function Tower({ props }) {
     envMapIntensity: 0.5,
   });
 
-  // const wineBottles = [];
-
-  // for (let i = 0; i < 10; i++) {
-  //   if (i < 5) {
-  //     wineBottles.push(
-  //       <WineBottle
-  //         key={i}
-  //         position={[-0.2 + i / 10, 0.43, -0.1]}
-  //         scale={[1, 1, 1]}
-  //         rotation={[Math.PI / 2, Math.PI, 0]}
-  //       />
-  //     );
-  //   }
-  //   if (i >= 5) {
-  //     wineBottles.push(
-  //       <WineBottle
-  //         key={i}
-  //         position={[-0.2 + (i - 5) / 10, 0.68, -0.1]}
-  //         scale={[1, 1, 1]}
-  //         rotation={[Math.PI / 2, Math.PI, 0]}
-  //       />
-  //     );
-  //   }
-  // }
-
   const { nodes, materials } = useGLTF("./models/base-island-high.glb");
 
   const { setCameraFocus } = useScene((state) => ({
@@ -330,14 +305,14 @@ export default function Tower({ props }) {
                   ]}
                   scale={[1, 1, 1]}
                   rotation={[0, Math.PI, 0]}
+                  amount={1}
                 />
               </>
             )}
 
             {applianceType === "fridge" && (
               <>
-                {/* {wineBottles} */}
-                <WineBottle amount={10} />
+                <WineBottle range={10} />
                 <mesh
                   name='cooler'
                   castShadow
