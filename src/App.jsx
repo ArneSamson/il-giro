@@ -1,10 +1,11 @@
 import "./style.css";
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 
 import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
-import { Loader } from "@react-three/drei";
+import { useProgress } from "@react-three/drei";
+import { Loader } from "./helper/useLoader";
 
 import { useThreeGlobal } from "./helper/useThreeGlobal.tsx";
 
@@ -13,6 +14,8 @@ import { Leva } from "leva";
 import Experience from "./Experience.jsx";
 import Effects from "./Effects/Effects.jsx";
 import ConfigUi from "./components/ConfigUi.jsx";
+
+import TextureIsLoading from "./components/ui/components/loading/TextureIsLoading.jsx";
 
 const root = ReactDOM.createRoot(document.querySelector("#root"));
 
@@ -47,43 +50,49 @@ const innerStyles = {
   gap: "20px",
 };
 
-root.render(
-  <>
-    <div className='root-container'>
-      <Canvas
-        className='canvas'
-        camera={camSettings}
-        gl={{
-          antialias: true,
-          outputColorSpace: THREE.SRGBColorSpace,
-          toneMappingExposure: 1,
-          alpha: true,
-        }}
-        shadows={true}
-        dpr={window.devicePixelRatio}
-        // frameloop='demand'
-      >
-        <Effects />
+function App() {
+  const { active, progress, errors, item, loaded, total } = useProgress();
 
-        <Experience />
+  return (
+    <>
+      <div className='root-container'>
+        <Canvas
+          className='canvas'
+          camera={camSettings}
+          gl={{
+            antialias: true,
+            outputColorSpace: THREE.SRGBColorSpace,
+            toneMappingExposure: 1,
+            alpha: true,
+          }}
+          shadows={true}
+          dpr={window.devicePixelRatio}
+        >
+          <Effects />
 
-        {/* <ThreeGlobal /> */}
-      </Canvas>
+          <Experience />
+        </Canvas>
 
-      <Loader
-        containerStyles={containerStyles}
-        barStyles={barStyles}
-        dataStyles={dataStyles}
-        innerStyles={innerStyles}
-        dataInterpolation={(p) => `Loading kitchen: ${p.toFixed(2)}%`}
-      />
+        {!loaded && <TextureIsLoading />}
 
-      <ConfigUi />
+        <Loader
+          containerStyles={containerStyles}
+          barStyles={barStyles}
+          dataStyles={dataStyles}
+          innerStyles={innerStyles}
+          dataInterpolation={(p) => `Loading kitchen: ${p.toFixed(2)}%`}
+          gifSrc={"/images/GIF/ilGiroLoading.gif"}
+        />
 
-      <Leva
-        // collapsed
-        hidden
-      />
-    </div>
-  </>
-);
+        <ConfigUi />
+
+        <Leva
+          // collapsed
+          hidden
+        />
+      </div>
+    </>
+  );
+}
+
+root.render(<App />);
