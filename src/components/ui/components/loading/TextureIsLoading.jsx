@@ -12,7 +12,7 @@ export default function TextureIsLoading() {
       {textureIsLoading && (
         <div className='loading-spinner'>
           <img
-            src='/images/GIF/spinner.gif'
+            src='/images/GIF/ilGiroLoading.gif'
             alt='loading'
             style={{
               width: "50px",
