@@ -77,12 +77,18 @@ export function WineBottle(props) {
   );
   const { nodes, materials } = useGLTF("./models/wine-bottle.glb");
   const bottlePositions = [];
+  const bottleRotation =
+    props.range === 1 ? [0, 0, 0] : [Math.PI / 2, Math.PI, 0];
 
   for (let i = 0; i < props.range; i++) {
-    if (i < 5) {
-      bottlePositions.push([-0.2 + i / 10, 0.43, -0.1]);
+    if (props.range === 1) {
+      bottlePositions.push([0.3, 0.97 - props.yOffset, -0.1]);
     } else {
-      bottlePositions.push([-0.2 + (i - 5) / 10, 0.68, -0.1]);
+      if (i < 5) {
+        bottlePositions.push([-0.2 + i / 10, 0.43, -0.1]);
+      } else if (i < 10) {
+        bottlePositions.push([-0.2 + (i - 5) / 10, 0.68, -0.1]);
+      }
     }
   }
   return (
@@ -99,7 +105,7 @@ export function WineBottle(props) {
             key={index}
             position={position}
             scale={[1, 1, 1]}
-            rotation={[Math.PI / 2, Math.PI, 0]}
+            rotation={bottleRotation}
           />
         ))}
       </Instances>
@@ -113,9 +119,13 @@ export function WineBottle(props) {
         {bottlePositions.map((position, index) => (
           <Instance
             key={index}
-            position={[position[0], position[1], position[2] + 0.289]}
+            position={[
+              position[0],
+              props.range === 1 ? 1.26 - props.yOffset : position[1],
+              props.range === 1 ? position[2] : position[2] + 0.289,
+            ]}
             scale={[1.04, 1.04, 1.04]}
-            rotation={[Math.PI / 2, Math.PI, 0]}
+            rotation={bottleRotation}
           />
         ))}
       </Instances>
@@ -131,7 +141,7 @@ export function WineBottle(props) {
             key={index}
             position={position}
             scale={[1, 1, 1]}
-            rotation={[Math.PI / 2, Math.PI, 0]}
+            rotation={bottleRotation}
           />
         ))}
       </Instances>
@@ -147,47 +157,10 @@ export function WineBottle(props) {
             key={index}
             position={position}
             scale={[1, 1, 1]}
-            rotation={[Math.PI / 2, Math.PI, 0]}
+            rotation={bottleRotation}
           />
         ))}
       </Instances>
-
-      {/* <group {...props} dispose={null} visible={visibleForPDF}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={
-            nodes["Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1008"].geometry
-          }
-          material={wineBottleMaterial}
-        ></mesh>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={
-            nodes["Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1010"].geometry
-          }
-          material={materials["Metal_Steel_Dirty_4k.001"]}
-          position={[0, 0.289, 0]}
-          scale={1.04}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={
-            nodes["Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1011"].geometry
-          }
-          material={materials["MULLED-WINE_back"]}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={
-            nodes["Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1012"].geometry
-          }
-          material={materials["MULLED-WINE"]}
-        />
-      </group> */}
     </>
   );
 }

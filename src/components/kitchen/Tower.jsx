@@ -291,24 +291,10 @@ export default function Tower({ props }) {
               </mesh>
             </mesh>
 
-            {visibleForPDF && (
-              <>
-                <WineBottle
-                  position={[
-                    0.3,
-                    applianceType === "fridge"
-                      ? 0.95
-                      : applianceType === "drawers"
-                      ? 0.915
-                      : 1,
-                    -0.1,
-                  ]}
-                  scale={[1, 1, 1]}
-                  rotation={[0, Math.PI, 0]}
-                  amount={1}
-                />
-              </>
-            )}
+            <WineBottle
+              range={1}
+              yOffset={applianceType === "fridge" ? 0 : 0.05}
+            />
 
             {applianceType === "fridge" && (
               <>
