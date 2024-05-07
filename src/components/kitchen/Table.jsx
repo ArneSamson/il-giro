@@ -5,6 +5,7 @@ import BaseIsland from "./BaseIsland.jsx";
 import TableFlat from "./tabletops/TableFlat.jsx";
 import TableFlatRound from "./tabletops/TableFlatRound.jsx";
 import Stool from "./accessoires/Stool.jsx";
+import Drawers from "./accessoires/Drawers.jsx";
 
 import useScene from "../../store/useScene.jsx";
 import useConfigStore from "../../store/useConfigStore.jsx";
@@ -18,6 +19,8 @@ export default function Table({ props }) {
     tableTopInset,
     tableTopRounded,
     tableTopHeight,
+
+    mainDrawers,
   } = useConfigStore(
     useShallow((state) => ({
       tablePosition: state.tablePosition,
@@ -27,6 +30,8 @@ export default function Table({ props }) {
       tableTopInset: state.tableTopInset,
       tableTopRounded: state.tableTopRounded,
       tableTopHeight: state.tableTopHeight,
+
+      mainDrawers: state.mainDrawers,
     }))
   );
 
@@ -103,12 +108,13 @@ export default function Table({ props }) {
             props={{
               position: [1, 0, 0],
             }}
+            needsDrawers={mainDrawers}
           />
-
           <BaseIsland
             props={{
               position: [-1, 0, 0],
             }}
+            needsDrawers={mainDrawers}
           />
           <>
             <Stool

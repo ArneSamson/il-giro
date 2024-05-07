@@ -72,7 +72,12 @@ export default function Drawers(props) {
 
   const { nodes, materials } = useGLTF("./models/drawers.glb");
   return (
-    <group ref={drawersRef} {...props} dispose={null} rotation={[0, 0, 0]}>
+    <group
+      ref={drawersRef}
+      position={props.position}
+      dispose={null}
+      rotation={[0, 0, 0]}
+    >
       <mesh
         castShadow
         receiveShadow

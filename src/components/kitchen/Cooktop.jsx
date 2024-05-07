@@ -156,8 +156,6 @@ export default function Cooktop() {
             e.stopPropagation();
           }}
         >
-          {mainDrawers && <Drawers />}
-
           <BaseIsland needsDrawers={mainDrawers} />
 
           {tableTopRounded && (

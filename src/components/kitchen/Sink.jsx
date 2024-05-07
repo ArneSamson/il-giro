@@ -154,8 +154,6 @@ export default function Sink({ props }) {
         >
           <BaseIsland needsDrawers={mainDrawers} />
 
-          {mainDrawers && <Drawers />}
-
           {tableTopRounded && (
             <group>
               <TableTopCutRound

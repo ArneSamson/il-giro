@@ -1,14 +1,13 @@
 import React, { useRef, useEffect } from "react";
-
 import { BufferAttribute } from "three";
-
 import { useGLTF } from "@react-three/drei";
 
 import { BakePlaneSmall } from "../lighting&shadows/ShadowPlanes.jsx";
-
 import NewMaterial from "../../helper/NewMaterial.jsx";
 
 import useConfigStore from "../../store/useConfigStore.jsx";
+
+import Drawers from "./accessoires/Drawers.jsx";
 
 export default function BaseIsland({ props, needsDrawers }) {
   const { allBevelled } = useConfigStore((state) => ({
@@ -72,6 +71,7 @@ export default function BaseIsland({ props, needsDrawers }) {
             >
               <NewMaterial type={"main"} />
             </mesh>
+            <Drawers />
           </mesh>
         </>
       )}
