@@ -99,6 +99,8 @@ export function WineBottle(props) {
           nodes["Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1008"].geometry
         }
         material={wineBottleMaterial}
+        name='wine'
+        castShadow={true}
       >
         {bottlePositions.map((position, index) => (
           <Instance
@@ -115,6 +117,8 @@ export function WineBottle(props) {
           nodes["Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1010"].geometry
         }
         material={materials["Metal_Steel_Dirty_4k.001"]}
+        name='wine'
+        castShadow={true}
       >
         {bottlePositions.map((position, index) => (
           <Instance
@@ -135,6 +139,7 @@ export function WineBottle(props) {
           nodes["Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1011"].geometry
         }
         material={materials["MULLED-WINE_back"]}
+        name='wine'
       >
         {bottlePositions.map((position, index) => (
           <Instance
@@ -151,6 +156,7 @@ export function WineBottle(props) {
           nodes["Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1012"].geometry
         }
         material={materials["MULLED-WINE"]}
+        name='wine'
       >
         {bottlePositions.map((position, index) => (
           <Instance
