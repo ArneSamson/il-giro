@@ -22,7 +22,7 @@ export default function Scene() {
 
   const [isDownloadScene, setDownloadScene] = useState(false);
 
-  console.log("Scene.jsx");
+  //   console.log("Scene.jsx");
 
   const { sinkChosen, cooktopChosen, towerChosen, tableChosen } =
     useConfigStore(
@@ -38,7 +38,7 @@ export default function Scene() {
   const exporter = new GLTFExporter();
 
   const { three } = useThreeGlobal();
-  console.log(three);
+  //   console.log(three);
 
   const options = {
     onlyVisible: true,

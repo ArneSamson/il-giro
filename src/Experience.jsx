@@ -11,7 +11,7 @@ import { useThreeGlobal } from "./helper/useThreeGlobal.tsx";
 import { Perf } from "r3f-perf";
 
 export default function Experience() {
-  console.log("Experience");
+  //   console.log("Experience");
 
   const [a, set] = useState(0);
 
