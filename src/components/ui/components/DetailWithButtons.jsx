@@ -25,7 +25,6 @@ export default function DetailWithButtons({
     }))
   );
 
-  console.log("selectedOption", selectedOption);
   return (
     <details
       open={true}
