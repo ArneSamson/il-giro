@@ -24,6 +24,8 @@ export default function DetailWithButtons({
       allCategories: state.allCategories,
     }))
   );
+
+  console.log("selectedOption", selectedOption);
   return (
     <details
       open={true}

@@ -119,7 +119,20 @@ export default function PDFButton() {
       counterTopHeight = "12mm";
     }
   } else if (tableTopMaterialCategory === "natural stone") {
-    counterTopHeight = "40mm";
+    switch (tableTopHeight) {
+      case 1:
+        counterTopHeight = "40mm";
+        break;
+      case 0.75:
+        counterTopHeight = "30mm";
+        break;
+      case 0.5:
+        counterTopHeight = "20mm";
+        break;
+      default:
+        counterTopHeight = "40mm";
+        break;
+    }
   } else if (tableTopMaterialCategory === "metallook") {
     counterTopHeight = "4mm";
   }

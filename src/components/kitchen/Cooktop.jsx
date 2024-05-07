@@ -103,9 +103,22 @@ export default function Cooktop() {
           setTableTopPosition([0, 0.905, 0]);
           setStovePosition([0, -0.005, -0.05]);
         } else {
-          setTableTopScale([1.05, 1, 1.05]);
-          setTableTopPosition([0, 0.96, 0]);
-          setStovePosition([0, 0.048, -0.05]);
+          if (tableTopHeight === 1) {
+            setTableTopScale([1.05, 1, 1.05]);
+            setTableTopPosition([0, 0.96, 0]);
+            setStovePosition([0, 0.048, -0.05]);
+          }
+          if (tableTopHeight === 0.75) {
+            setTableTopScale([1.05, 0.75, 1.05]);
+            setTableTopPosition([0, 0.96, 0]);
+            setStovePosition([0, 0.035, -0.05]);
+          }
+
+          if (tableTopHeight === 0.5) {
+            setTableTopScale([1.05, 0.5, 1.05]);
+            setTableTopPosition([0, 0.96, 0]);
+            setStovePosition([0, 0.03, -0.05]);
+          }
         }
         break;
       case "metallook":

@@ -125,9 +125,15 @@ export default function UiPage2() {
     { label: "Straight", value: false },
   ];
 
-  const tableTopHeightOptions = [
+  const dektonTableTopHeightOptions = [
     { label: "12mm", value: 0.3 },
     { label: "20mm", value: 0.5 },
+  ];
+
+  const naturalStoneTableTopHeightOptions = [
+    { label: "20mm", value: 0.5 },
+    { label: "30mm", value: 0.75 },
+    { label: "40mm", value: 1 },
   ];
 
   let counterTopHeight;
@@ -214,9 +220,21 @@ export default function UiPage2() {
               {tableTopMaterialCategory === "dekton" && (
                 <DetailWithButtons
                   summary='Countertop height: '
-                  options={tableTopHeightOptions}
+                  options={dektonTableTopHeightOptions}
                   selectedOption={
-                    tableTopHeightOptions.find(
+                    dektonTableTopHeightOptions.find(
+                      (option) => option.value === tableTopHeight
+                    ).label
+                  }
+                  setOption={setTableTopHeight}
+                />
+              )}
+              {tableTopMaterialCategory === "natural stone" && (
+                <DetailWithButtons
+                  summary='Countertop height: '
+                  options={naturalStoneTableTopHeightOptions}
+                  selectedOption={
+                    naturalStoneTableTopHeightOptions.find(
                       (option) => option.value === tableTopHeight
                     ).label
                   }

@@ -51,7 +51,7 @@ export default function Table({ props }) {
 
         break;
       case "natural stone":
-        setTableTopScale([1, 1, 1]);
+        setTableTopScale([1, tableTopHeight, 1]);
         // setTableTopPosition([0, 0.96, 0]);
         break;
       case "metallook":

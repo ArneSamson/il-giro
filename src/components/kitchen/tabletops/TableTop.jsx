@@ -1,34 +1,26 @@
-import React, { useRef } from 'react';
-import { useGLTF } from '@react-three/drei'
+import React, { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
 
-import NewMaterial from '../../../helper/NewMaterial.jsx';;
+import NewMaterial from "../../../helper/NewMaterial.jsx";
 
 export default function TableTop({ props }) {
+  //is 40mm high in model
 
-    //is 40mm high in model
-
-    const { nodes, materials } = useGLTF("./models/table-top.glb");
-    return (
-        <group
-            name='tabletop'
-            dispose={null}
-        >
-            <mesh
-                name='tabletopMesh'
-                castShadow
-                receiveShadow
-                geometry={nodes['table-top003'].geometry}
-                position={[0, 0.913, 0]}
-                {...props}
-            >
-                <NewMaterial
-                    type={"tableTop"}
-                    ralExclude={true}
-                />
-            </mesh>
-
-        </group>
-    );
+  const { nodes, materials } = useGLTF("./models/table-top.glb");
+  return (
+    <group name='tabletop' dispose={null}>
+      <mesh
+        name='tabletopMesh'
+        castShadow
+        receiveShadow
+        geometry={nodes["table-top003"].geometry}
+        position={[0, 0.913, 0]}
+        {...props}
+      >
+        <NewMaterial type={"tableTop"} ralExclude={true} />
+      </mesh>
+    </group>
+  );
 }
 
-useGLTF.preload('./models/table-top.glb')
+useGLTF.preload("./models/table-top.glb");

@@ -12,6 +12,8 @@ export default function AccentMaterialSelection({ extraMessage }) {
     tableTopMaterialCategory,
     setTableTopMaterialCategory,
     mainMaterialCategory,
+    tableTopHeight,
+    setTableTopHeight,
   } = useConfigStore(
     useShallow((state) => ({
       allCategories: state.allCategories,
@@ -20,6 +22,8 @@ export default function AccentMaterialSelection({ extraMessage }) {
       tableTopMaterialCategory: state.tableTopMaterialCategory,
       setTableTopMaterialCategory: state.setTableTopMaterialCategory,
       mainMaterialCategory: state.mainMaterialCategory,
+      tableTopHeight: state.tableTopHeight,
+      setTableTopHeight: state.setTableTopHeight,
     }))
   );
 
@@ -49,6 +53,7 @@ export default function AccentMaterialSelection({ extraMessage }) {
                   onClick={() => {
                     setTableTopMaterial(material);
                     setTableTopMaterialCategory("dekton");
+                    setTableTopHeight(0.5);
                   }}
                   style={{
                     backgroundImage: `url(${material.url}preview.webp)`,
