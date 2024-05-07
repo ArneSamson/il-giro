@@ -121,7 +121,7 @@ export default function PDFButton() {
   } else if (tableTopMaterialCategory === "natural stone") {
     counterTopHeight = "40mm";
   } else if (tableTopMaterialCategory === "metallook") {
-    counterTopHeight = "5mm";
+    counterTopHeight = "4mm";
   }
 
   let lookAtXOffset;
