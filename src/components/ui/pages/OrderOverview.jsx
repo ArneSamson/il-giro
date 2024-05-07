@@ -121,7 +121,7 @@ export default function OrderOverview() {
               <OverViewItem
                 topic='Cooking fire'
                 value={
-                  stoveType === 1 ? "Gas" : stoveType === 2 ? "Electric" : ""
+                  stoveType === 1 ? "Gas" : stoveType === 2 ? "Induction" : ""
                 }
               />
             </>

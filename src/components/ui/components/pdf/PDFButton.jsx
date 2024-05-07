@@ -233,7 +233,7 @@ export default function PDFButton() {
             stoveType: cooktopChosen
               ? stoveType === 1
                 ? "gas"
-                : "electric"
+                : "induction"
               : null,
             applianceType: towerChosen ? applianceType : null,
             wineStandSize: towerChosen ? wineStandSize : null,

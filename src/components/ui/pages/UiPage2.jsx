@@ -95,7 +95,7 @@ export default function UiPage2() {
 
   const stoveOptions = [
     { label: "Gas", value: 1 },
-    { label: "Electric", value: 2 },
+    { label: "Induction", value: 2 },
   ];
 
   const applianceOptions = [
