@@ -44,7 +44,7 @@ export default function UiPage1() {
     }
   } else if (tableTopMaterialCategory === "natural stone") {
     counterTopHeight = "40mm";
-  } else if (tableTopMaterialCategory === "metal") {
+  } else if (tableTopMaterialCategory === "metallook") {
     counterTopHeight = "5mm";
   }
 
@@ -69,7 +69,7 @@ export default function UiPage1() {
           />
         </>
 
-        {(mainMaterial.name === "paintwork" ||
+        {(mainMaterial.name === "lacque" ||
           mainMaterial.name === "microtopping with ral") && <ColorPicker />}
 
         <TableTopMaterialSelection
@@ -83,7 +83,7 @@ export default function UiPage1() {
 
         <DetailWithMaterials
           header='Accent material: '
-          materials={allCategories.metal}
+          materials={allCategories.metallook}
           selectedMaterial={accentMaterial.name}
           setMaterial={setAccentMaterial}
           open={true}

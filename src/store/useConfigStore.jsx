@@ -61,7 +61,7 @@ export default create((set) => {
     accentMaterial: "./placeholder/",
     tableTopMaterial: "./placeholder/",
     tableTopMaterialCategory: "dekton",
-    mainMaterialCategory: "wood",
+    mainMaterialCategory: "oak veneer",
 
     ralColor: {
       code: "1001",

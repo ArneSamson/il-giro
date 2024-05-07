@@ -46,7 +46,7 @@ export default function ModuleSelectionPage() {
       setChosen: setSinkChosen,
     },
     {
-      label: "Cooktop",
+      label: "Cook",
       value: "cooktop",
       chosen: cooktopChosen,
       setChosen: setCooktopChosen,
@@ -58,7 +58,7 @@ export default function ModuleSelectionPage() {
       setChosen: setTowerChosen,
     },
     {
-      label: "Table",
+      label: "Bridge",
       value: "table",
       chosen: tableChosen,
       setChosen: setTableChosen,
@@ -73,7 +73,7 @@ export default function ModuleSelectionPage() {
       setChosen: setAllBevelled,
     },
     {
-      label: "Straight",
+      label: "Linear",
       value: false,
       chosen: !allBevelled,
       setChosen: setAllBevelled,

@@ -108,7 +108,7 @@ export default function Cooktop() {
           setStovePosition([0, 0.048, -0.05]);
         }
         break;
-      case "metal":
+      case "metallook":
         if (tableTopInset) {
           setTableTopScale([1, 1, 1]);
           setTableTopPosition([0, 0.905, 0]);

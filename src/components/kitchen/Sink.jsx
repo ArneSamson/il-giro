@@ -104,7 +104,7 @@ export default function Sink({ props }) {
           setBowlPosition([0, 0.048, 0]);
         }
         break;
-      case "metal":
+      case "metallook":
         if (tableTopInset) {
           setTableTopScale([1, 1, 1]);
           setTableTopPosition([0, 0.905, 0]);

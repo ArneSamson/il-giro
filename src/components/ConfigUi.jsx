@@ -53,8 +53,8 @@ export default function ConfigUi() {
 
       if (loaded) return;
 
-      setMainMaterial(allCategories["wood"][0]);
-      setAccentMaterial(allCategories["metal"][0]);
+      setMainMaterial(allCategories["oak veneer"][0]);
+      setAccentMaterial(allCategories["metallook"][0]);
       setTableTopMaterial(allCategories["dekton"][1]);
     }
   }, [allMaterials, setMainMaterial, setAccentMaterial]);

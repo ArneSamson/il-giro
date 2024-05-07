@@ -95,9 +95,9 @@ export default function PDFButton() {
 
   const chosenModules = [
     sinkChosen ? "Sink" : "",
-    cooktopChosen ? "Cooktop" : "",
+    cooktopChosen ? "Cook" : "",
     towerChosen ? "Tower" : "",
-    tableChosen ? "Table" : "",
+    tableChosen ? "Bridge" : "",
   ]
     .filter(Boolean)
     .join(", ");
@@ -105,7 +105,7 @@ export default function PDFButton() {
   const ralColorForPDF =
     mainMaterial.name === "microtopping with ral"
       ? "microtopping with RAL " + ralColor.code
-      : mainMaterial.name === "paintwork"
+      : mainMaterial.name === "lacque"
       ? "painwork with RAL " + ralColor.code
       : null;
 
@@ -120,7 +120,7 @@ export default function PDFButton() {
     }
   } else if (tableTopMaterialCategory === "natural stone") {
     counterTopHeight = "40mm";
-  } else if (tableTopMaterialCategory === "metal") {
+  } else if (tableTopMaterialCategory === "metallook") {
     counterTopHeight = "5mm";
   }
 

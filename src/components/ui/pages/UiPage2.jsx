@@ -141,7 +141,7 @@ export default function UiPage2() {
     }
   } else if (tableTopMaterialCategory === "natural stone") {
     counterTopHeight = "40mm";
-  } else if (tableTopMaterialCategory === "metal") {
+  } else if (tableTopMaterialCategory === "metallook") {
     counterTopHeight = "5mm";
   }
 

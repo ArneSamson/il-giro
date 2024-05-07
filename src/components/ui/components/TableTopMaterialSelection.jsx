@@ -83,10 +83,10 @@ export default function AccentMaterialSelection({ extraMessage }) {
           </>
         )}
 
-        {mainMaterialCategory !== "metal" && (
+        {mainMaterialCategory !== "metallook" && (
           <>
             <div className='config-ui__material-options '>
-              {allCategories["metal"].map(
+              {allCategories["metallook"].map(
                 (material, index) =>
                   material.url.includes("inox") && (
                     <div
@@ -98,7 +98,7 @@ export default function AccentMaterialSelection({ extraMessage }) {
                       }`}
                       onClick={() => {
                         setTableTopMaterial(material);
-                        setTableTopMaterialCategory("metal");
+                        setTableTopMaterialCategory("metallook");
                       }}
                       style={{
                         backgroundImage: `url(${material.url}preview.webp)`,

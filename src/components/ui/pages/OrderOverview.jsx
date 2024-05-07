@@ -92,9 +92,9 @@ export default function OrderOverview() {
             topic='Module(s)'
             value={
               (sinkChosen ? "Sink, " : "") +
-              (cooktopChosen ? "Cooktop, " : "") +
+              (cooktopChosen ? "Cook, " : "") +
               (towerChosen ? "Tower, " : "") +
-              (tableChosen ? "Table" : "")
+              (tableChosen ? "Bridge" : "")
             }
           />
 

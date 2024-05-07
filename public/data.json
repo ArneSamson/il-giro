@@ -1,12 +1,12 @@
 {
   "categories": {
-    "wood": ["whitewood", "dark wood", "cherry", "mahony"],
-    "metal": ["inox", "gold", "bronze", "copper"],
+    "oak veneer": ["whitewood", "dark wood", "cherry", "mahony"],
+    "metallook": ["inox", "gold", "bronze", "copper"],
     "solid surface": ["solid surface"],
-    "micro topping": ["micro topping", "concrete", "microtopping with ral"],
+    "stonelook": ["micro topping", "concrete", "microtopping with ral"],
     "dekton": ["radium dekton", "bedrock dekton", "fossil dekton"],
     "natural stone": ["white granite", "red granite"],
-    "paint work": ["paintwork"]
+    "lacquer": ["lacque"]
   },
   "materials": {
     "whitewood": {
@@ -57,7 +57,7 @@
     "red granite": {
       "url": "/materials/redgranite/"
     },
-    "paintwork": {
+    "lacque": {
       "url": "/materials/paintwork/"
     },
     "microtopping with ral": {

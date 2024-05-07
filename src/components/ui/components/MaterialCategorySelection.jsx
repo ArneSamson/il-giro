@@ -52,14 +52,14 @@ export default function MaterialCategorySelection() {
                 setMainMaterial(materials[0]);
 
                 switch (category) {
-                  case "metal":
+                  case "metallook":
                     setTableTopMaterial(allCategories["dekton"][0]);
                     break;
                   case "dekton":
                     setTableTopMaterial(allCategories["natural stone"][0]);
                     break;
                   case "natural stone":
-                    setTableTopMaterial(allCategories["metal"][0]);
+                    setTableTopMaterial(allCategories["metallook"][0]);
                     break;
                 }
               }}

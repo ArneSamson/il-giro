@@ -54,7 +54,7 @@ export default function Table({ props }) {
         setTableTopScale([1, 1, 1]);
         // setTableTopPosition([0, 0.96, 0]);
         break;
-      case "metal":
+      case "metallook":
         setTableTopScale([1, 0.125, 1]);
         // setTableTopPosition([0, 0.96, 0]);
         break;
