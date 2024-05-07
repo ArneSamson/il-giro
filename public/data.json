@@ -2,7 +2,7 @@
   "categories": {
     "oak veneer": ["whitewood", "dark wood", "cherry", "mahony"],
     "metallook": ["inox", "gold", "bronze", "copper"],
-    "solid surface": ["solid surface"],
+    "solid surface": ["white solid surface"],
     "stonelook": ["micro topping", "concrete", "microtopping with ral"],
     "dekton": ["radium dekton", "bedrock dekton", "fossil dekton"],
     "natural stone": ["white granite", "red granite"],
@@ -21,7 +21,7 @@
     "cherry": {
       "url": "/materials/cherry/"
     },
-    "solid surface": {
+    "white solid surface": {
       "url": "/materials/solidsurface/"
     },
     "concrete": {
