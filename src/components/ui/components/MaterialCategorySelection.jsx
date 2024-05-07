@@ -11,6 +11,7 @@ export default function MaterialCategorySelection() {
     setTableTopMaterial,
     mainMaterialCategory,
     setMainMaterialCategory,
+    allBevelled,
   } = useConfigStore(
     useShallow((state) => ({
       allCategories: state.allCategories,
@@ -18,6 +19,7 @@ export default function MaterialCategorySelection() {
       setTableTopMaterial: state.setTableTopMaterial,
       mainMaterialCategory: state.mainMaterialCategory,
       setMainMaterialCategory: state.setMainMaterialCategory,
+      allBevelled: state.allBevelled,
     }))
   );
 
@@ -26,6 +28,7 @@ export default function MaterialCategorySelection() {
   }));
 
   const excludedCategories = ["dekton", "natural stone"];
+  if (allBevelled) excludedCategories.push("oak veneer");
 
   const filteredCategories = Object.entries(allCategories).filter(
     ([category]) => !excludedCategories.includes(category)
