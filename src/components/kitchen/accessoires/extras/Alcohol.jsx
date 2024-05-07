@@ -34,7 +34,7 @@ const wodkaMaterial = new MeshStandardMaterial({
 export function GlassBottleWhiskey(props) {
   const { nodes, materials } = useGLTF("./models/glass-bottle-whiskey.glb");
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} name='whiskey'>
       <mesh
         castShadow
         receiveShadow
@@ -174,7 +174,7 @@ export function WineBottle(props) {
 export function Wodka(props) {
   const { nodes, materials } = useGLTF("./models/wodka.glb");
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} name='wodka'>
       <mesh
         castShadow
         receiveShadow

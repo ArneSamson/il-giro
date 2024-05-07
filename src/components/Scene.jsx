@@ -48,9 +48,19 @@ export default function Scene() {
 
   useEffect(() => {
     if (three && three.scene) {
+      console.log(three.scene);
       if (isDownloadScene) {
+        const sceneCopy = three.scene.clone();
+        excludeChildrenFromScene(sceneCopy, [
+          "bakePlane-group",
+          "bakePlaneSmall-group",
+          "wine",
+          "whiskey",
+          "wodka",
+        ]);
+
         exporter.parse(
-          three.scene,
+          sceneCopy,
           (gltf) => {
             console.log(gltf);
             const blob = new Blob([gltf], { type: "model/gltf+json" });
@@ -66,6 +76,26 @@ export default function Scene() {
       }
     }
   }, [three, isDownloadScene]);
+
+  const excludeChildrenFromScene = (scene, namesToExclude) => {
+    const objectsToRemove = [];
+
+    scene.traverse((child) => {
+      if (child.name === "sink-hovers-group") {
+        console.log("found sink-hovers-group");
+      }
+      if (namesToExclude.includes(child.name)) {
+        console.log(`Excluding child: ${child.name}`);
+        objectsToRemove.push(child);
+      }
+    });
+
+    objectsToRemove.forEach((object) => {
+      console.log(`Removing object: ${object.name}`);
+      //   scene.remove(object);
+      object.removeFromParent();
+    });
+  };
 
   return (
     <>
