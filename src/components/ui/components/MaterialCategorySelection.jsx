@@ -25,6 +25,12 @@ export default function MaterialCategorySelection() {
     setIsSecondDetailsOpen: state.setIsSecondDetailsOpen,
   }));
 
+  const excludedCategories = ["dekton", "natural stone"];
+
+  const filteredCategories = Object.entries(allCategories).filter(
+    ([category]) => !excludedCategories.includes(category)
+  );
+
   return (
     <>
       <details
@@ -38,7 +44,7 @@ export default function MaterialCategorySelection() {
         </summary>
 
         <div className='config-ui__material-options'>
-          {Object.entries(allCategories).map(([category, materials]) => (
+          {filteredCategories.map(([category, materials]) => (
             <div
               key={category}
               className={`config-ui__material-options__option ${
