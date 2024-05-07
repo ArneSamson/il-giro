@@ -12,12 +12,14 @@ export default function DetailWithButtons({
   const {
     allBevelled,
 
+    setMainMaterialCategory,
     setMainMaterial,
     allCategories,
   } = useConfigStore(
     useShallow((state) => ({
       allBevelled: state.allBevelled,
 
+      setMainMaterialCategory: state.setMainMaterialCategory,
       setMainMaterial: state.setMainMaterial,
       allCategories: state.allCategories,
     }))
@@ -44,6 +46,7 @@ export default function DetailWithButtons({
               if (option.label === "Curved") {
                 if (!allBevelled) {
                   setMainMaterial(allCategories["metallook"][0]);
+                  setMainMaterialCategory("metallook");
                 } else {
                   return;
                 }
