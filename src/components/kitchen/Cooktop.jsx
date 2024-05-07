@@ -29,6 +29,7 @@ export default function Cooktop() {
     tableTopHeight,
 
     mainDrawers,
+    cooktopDrawers,
   } = useConfigStore(
     useShallow((state) => ({
       cooktopPosition: state.cooktopPosition,
@@ -44,6 +45,7 @@ export default function Cooktop() {
       tableTopHeight: state.tableTopHeight,
 
       mainDrawers: state.mainDrawers,
+      cooktopDrawers: state.cooktopDrawers,
     }))
   );
 
@@ -156,7 +158,7 @@ export default function Cooktop() {
             e.stopPropagation();
           }}
         >
-          <BaseIsland needsDrawers={mainDrawers} />
+          <BaseIsland needsDrawers={cooktopDrawers} />
 
           {tableTopRounded && (
             <group>

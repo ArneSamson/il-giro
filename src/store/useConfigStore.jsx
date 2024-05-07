@@ -80,6 +80,8 @@ export default create((set) => {
     wineStandSize: "medium",
 
     mainDrawers: false,
+    cooktopDrawers: false,
+    sinkDrawers: false,
 
     showChairs: false,
 
@@ -144,6 +146,8 @@ export default create((set) => {
 
     //main drawers
     setMainDrawers: (drawers) => set({ mainDrawers: drawers }),
+    setCooktopDrawers: (drawers) => set({ cooktopDrawers: drawers }),
+    setSinkDrawers: (drawers) => set({ sinkDrawers: drawers }),
 
     //chairs
     setShowChairs: (show) => set({ showChairs: show }),

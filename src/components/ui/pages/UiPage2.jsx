@@ -24,6 +24,10 @@ export default function UiPage2() {
 
     mainDrawers,
     setMainDrawers,
+    sinkDrawers,
+    setSinkDrawers,
+    cooktopDrawers,
+    setCooktopDrawers,
 
     sinkChosen,
     cooktopChosen,
@@ -61,6 +65,10 @@ export default function UiPage2() {
 
       mainDrawers: state.mainDrawers,
       setMainDrawers: state.setMainDrawers,
+      sinkDrawers: state.sinkDrawers,
+      setSinkDrawers: state.setSinkDrawers,
+      cooktopDrawers: state.cooktopDrawers,
+      setCooktopDrawers: state.setCooktopDrawers,
 
       sinkChosen: state.sinkChosen,
       cooktopChosen: state.cooktopChosen,
@@ -111,6 +119,16 @@ export default function UiPage2() {
   ];
 
   const mainDrawerOptions = [
+    { label: "Yes", value: true },
+    { label: "No", value: false },
+  ];
+
+  const sinkDrawerOptions = [
+    { label: "Yes", value: true },
+    { label: "No", value: false },
+  ];
+
+  const cooktopDrawerOptions = [
     { label: "Yes", value: true },
     { label: "No", value: false },
   ];
@@ -321,15 +339,37 @@ export default function UiPage2() {
         {sinkChosen && (
           <>
             <ButtonCategoryTitle title='Extras'>
+              {tableChosen && (
+                <DetailWithButtons
+                  summary='Exta drawers: '
+                  options={mainDrawerOptions}
+                  selectedOption={
+                    mainDrawerOptions.find(
+                      (option) => option.value === mainDrawers
+                    ).label
+                  }
+                  setOption={setMainDrawers}
+                />
+              )}
               <DetailWithButtons
-                summary='Exta drawers: '
-                options={mainDrawerOptions}
+                summary='Sink drawers: '
+                options={sinkDrawerOptions}
                 selectedOption={
-                  mainDrawerOptions.find(
-                    (option) => option.value === mainDrawers
+                  sinkDrawerOptions.find(
+                    (option) => option.value === sinkDrawers
                   ).label
                 }
-                setOption={setMainDrawers}
+                setOption={setSinkDrawers}
+              />
+              <DetailWithButtons
+                summary='Cooktop drawers: '
+                options={cooktopDrawerOptions}
+                selectedOption={
+                  cooktopDrawerOptions.find(
+                    (option) => option.value === cooktopDrawers
+                  ).label
+                }
+                setOption={setCooktopDrawers}
               />
             </ButtonCategoryTitle>
           </>

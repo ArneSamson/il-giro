@@ -23,6 +23,7 @@ export default function Sink({ props }) {
     tapType,
 
     mainDrawers,
+    sinkDrawers,
 
     tableTopInset,
     tableTopRounded,
@@ -38,6 +39,7 @@ export default function Sink({ props }) {
       tapType: state.tapType,
 
       mainDrawers: state.mainDrawers,
+      sinkDrawers: state.sinkDrawers,
 
       tableTopInset: state.tableTopInset,
       tableTopRounded: state.tableTopRounded,
@@ -152,7 +154,7 @@ export default function Sink({ props }) {
             e.stopPropagation();
           }}
         >
-          <BaseIsland needsDrawers={mainDrawers} />
+          <BaseIsland needsDrawers={sinkDrawers} />
 
           {tableTopRounded && (
             <group>
