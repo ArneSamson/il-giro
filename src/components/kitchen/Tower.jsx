@@ -17,6 +17,7 @@ import { useShallow } from "zustand/react/shallow";
 
 import WineStand from "./accessoires/WineStand.jsx";
 import { WineBottle } from "./accessoires/extras/Alcohol.jsx";
+import CoffeeMachine from "./accessoires/CoffeeMachine.jsx";
 
 import { BakePlane } from "../lighting&shadows/ShadowPlanes.jsx";
 
@@ -496,13 +497,9 @@ export default function Tower({ props }) {
             </mesh>
           </mesh>
 
-          <WineStand
-            props={{
-              position: [0, 0, 0],
-              rotation: [0, 0, 0],
-              scale: [1, 1, 1],
-            }}
-          />
+          <WineStand />
+
+          <CoffeeMachine />
         </group>
       </group>
 
