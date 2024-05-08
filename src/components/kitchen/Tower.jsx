@@ -17,6 +17,7 @@ import { useShallow } from "zustand/react/shallow";
 
 import WineStand from "./accessoires/WineStand.jsx";
 import { WineBottle } from "./accessoires/extras/Alcohol.jsx";
+import Hinge from "./accessoires/extras/Hinge.jsx";
 
 import { BakePlane } from "../lighting&shadows/ShadowPlanes.jsx";
 
@@ -258,7 +259,12 @@ export default function Tower({ props }) {
             >
               <NewMaterial type={"main"} />
             </mesh>
-
+            <Hinge
+              range={4}
+              scale={[1, 1, 1]}
+              rotation={[0, 0, 0]}
+              position={[0.42, 1, 0.34]}
+            />
             <mesh
               name='door'
               ref={doorRef}

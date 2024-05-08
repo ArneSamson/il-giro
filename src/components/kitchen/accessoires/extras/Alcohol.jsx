@@ -94,7 +94,6 @@ export function WineBottle(props) {
   return (
     <>
       <Instances
-        range={props.range}
         geometry={
           nodes["Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1008"].geometry
         }
@@ -112,7 +111,6 @@ export function WineBottle(props) {
         ))}
       </Instances>
       <Instances
-        range={props.range}
         geometry={
           nodes["Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1010"].geometry
         }
@@ -134,7 +132,6 @@ export function WineBottle(props) {
         ))}
       </Instances>
       <Instances
-        range={props.range}
         geometry={
           nodes["Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1011"].geometry
         }
@@ -151,7 +148,6 @@ export function WineBottle(props) {
         ))}
       </Instances>
       <Instances
-        range={props.range}
         geometry={
           nodes["Food-Drink_Alcohol_Bottles-Wine-Red_01_Bottle1012"].geometry
         }
