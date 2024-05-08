@@ -17,7 +17,6 @@ import { useShallow } from "zustand/react/shallow";
 
 import WineStand from "./accessoires/WineStand.jsx";
 import { WineBottle } from "./accessoires/extras/Alcohol.jsx";
-import Hinge from "./accessoires/extras/Hinge.jsx";
 
 import { BakePlane } from "../lighting&shadows/ShadowPlanes.jsx";
 
@@ -98,6 +97,7 @@ export default function Tower({ props }) {
   const doorRef = useRef();
   const coolerRef = useRef();
   const drawersRef = useRef();
+  const hingeRef = useRef();
 
   useEffect(() => {
     if (cabinetRef.current && doorRef.current) {
@@ -144,6 +144,8 @@ export default function Tower({ props }) {
             doorOpeningRotation,
             delta * 2
           );
+          hingeRef.current.rotation.y =
+            doorRef.current.rotation.y - Math.PI / 2;
         }
       }
       if (drawersRef.current) {
@@ -175,6 +177,8 @@ export default function Tower({ props }) {
             doorOpeningRotation,
             delta * 2
           );
+          hingeRef.current.rotation.y =
+            doorRef.current.rotation.y - Math.PI / 2;
         }
       }
       if (drawersRef.current) {
@@ -259,12 +263,6 @@ export default function Tower({ props }) {
             >
               <NewMaterial type={"main"} />
             </mesh>
-            <Hinge
-              range={4}
-              scale={[1, 1, 1]}
-              rotation={[0, 0, 0]}
-              position={[0.42, 1, 0.34]}
-            />
             <mesh
               name='door'
               ref={doorRef}
@@ -295,6 +293,14 @@ export default function Tower({ props }) {
               >
                 <NewMaterial type={"main"} />
               </mesh>
+              <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes["hinge-door"].geometry}
+                material={fridgeBlackMaterial}
+                position={[0.502, -1.185, -0.209]}
+                rotation={[Math.PI, -1.065, Math.PI]}
+              />
             </mesh>
 
             <WineBottle
@@ -470,6 +476,24 @@ export default function Tower({ props }) {
               </mesh>
             </>
             {/* )} */}
+            <mesh
+              castShadow
+              receiveShadow
+              geometry={nodes["hinge-cabinet"].geometry}
+              material={materials.hingeblack}
+              position={[-0.01, -0.148, 0]}
+            >
+              <mesh
+                ref={hingeRef}
+                castShadow
+                receiveShadow
+                geometry={nodes.hinge.geometry}
+                position={[0.413, 0.52, 0.339]}
+                rotation={[0, 0.165, 0]}
+              >
+                <NewMaterial type={"accent"} ralExclude={true} />
+              </mesh>
+            </mesh>
           </mesh>
 
           <WineStand
