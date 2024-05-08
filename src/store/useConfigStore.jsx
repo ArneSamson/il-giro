@@ -78,6 +78,7 @@ export default create((set) => {
 
     applianceType: "fridge",
     wineStandSize: "medium",
+    coffeeMachine: false,
 
     mainDrawers: false,
     cooktopDrawers: false,
@@ -143,6 +144,7 @@ export default create((set) => {
     //appliances and winestand in tower
     setApplianceType: (type) => set({ applianceType: type }),
     setWineStandSize: (size) => set({ wineStandSize: size }),
+    setCoffeeMachine: (show) => set({ coffeeMachine: show }),
 
     //main drawers
     setMainDrawers: (drawers) => set({ mainDrawers: drawers }),

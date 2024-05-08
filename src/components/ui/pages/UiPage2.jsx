@@ -21,6 +21,8 @@ export default function UiPage2() {
     setApplianceType,
     wineStandSize,
     setWineStandSize,
+    coffeeMachine,
+    setCoffeeMachine,
 
     mainDrawers,
     setMainDrawers,
@@ -62,6 +64,8 @@ export default function UiPage2() {
       setApplianceType: state.setApplianceType,
       wineStandSize: state.wineStandSize,
       setWineStandSize: state.setWineStandSize,
+      coffeeMachine: state.coffeeMachine,
+      setCoffeeMachine: state.setCoffeeMachine,
 
       mainDrawers: state.mainDrawers,
       setMainDrawers: state.setMainDrawers,
@@ -116,6 +120,11 @@ export default function UiPage2() {
     { label: "Small", value: "small" },
     { label: "Medium", value: "medium" },
     { label: "Large", value: "tall" },
+  ];
+
+  const coffeeMachineOptions = [
+    { label: "Yes", value: true },
+    { label: "No", value: false },
   ];
 
   const mainDrawerOptions = [
@@ -305,6 +314,17 @@ export default function UiPage2() {
                       ).label
                     }
                     setOption={setWineStandSize}
+                  />
+
+                  <DetailWithButtons
+                    summary='Coffee machine: '
+                    options={coffeeMachineOptions}
+                    selectedOption={
+                      coffeeMachineOptions.find(
+                        (option) => option.value === coffeeMachine
+                      ).label
+                    }
+                    setOption={setCoffeeMachine}
                   />
 
                   <DetailWithButtons

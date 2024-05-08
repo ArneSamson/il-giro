@@ -34,6 +34,8 @@ export default function Tower({ props }) {
     applianceType,
     doorOpeningRotation,
 
+    coffeeMachine,
+
     allBevelled,
     visibleForPDF,
   } = useConfigStore(
@@ -43,6 +45,8 @@ export default function Tower({ props }) {
 
       towerPosition: state.towerPosition,
       towerRotation: state.towerRotation,
+
+      coffeeMachine: state.coffeeMachine,
 
       applianceType: state.applianceType,
       doorOpeningRotation: state.doorOpeningRotation,
@@ -497,9 +501,8 @@ export default function Tower({ props }) {
             </mesh>
           </mesh>
 
-          <WineStand />
-
-          <CoffeeMachine />
+          {!coffeeMachine && <WineStand />}
+          {coffeeMachine && <CoffeeMachine />}
         </group>
       </group>
 
